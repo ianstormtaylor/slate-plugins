@@ -22,7 +22,7 @@ const plugins = [
 ```
 
 #### Arguments
-- `[toEdge: String]` — the edge to collapse to, which can be either: `'start'`, `'end'`, `'anchor'` or `'focus'`. Defaults to `'start'`.
+- `[toEdge: String]` — the edge to collapse to, either: `'start'`, `'end'`, `'anchor'` or `'focus'`. Defaults to `'start'`.
 
 
 ## License
