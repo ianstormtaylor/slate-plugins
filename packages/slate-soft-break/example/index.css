@@ -1,0 +1,30 @@
+
+html {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.4;
+  background: #eee;
+  padding: 50px;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  max-width: 42em;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff;
+}
+
+main > * > * {
+  border: 2px solid #eee;
+}
+
+main > * > * + * {
+  margin-top: 1em;
+}
+
+pre {
+  font-family: monospace;
+}
