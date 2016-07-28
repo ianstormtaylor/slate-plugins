@@ -11,8 +11,8 @@ import toPascal from 'to-pascal-case'
 
 function CollapseOnEscape(options = {}) {
   return {
-    onKeyDown(e, state, editor) {
-      if (e.which != 27) return
+    onKeyDown(e, data, state) {
+      if (data.key != 'esc') return
       if (state.isCollapsed) return
 
       const edge = toPascal(options.toEdge || 'start')
