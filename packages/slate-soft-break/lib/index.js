@@ -10,8 +10,8 @@
 
 function SoftBreak(options = {}) {
   return {
-    onKeyDown(e, state, editor) {
-      if (e.which != 13) return
+    onKeyDown(e, data, state) {
+      if (data.key != 'enter') return
 
       const { startBlock } = state
       const { type } = startBlock

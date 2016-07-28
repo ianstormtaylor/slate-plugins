@@ -22,7 +22,7 @@ dist:
 
 # Build the example.
 example:
-	@ $(browserify) ./example/index.js $(browserify_opts)
+	@ $(browserify) ./example/index.js $(browserify_opts) --outfile ./example/build.js
 
 # Install the dependencies.
 install:
@@ -42,8 +42,7 @@ watch-dist:
 
 # Watch the example.
 watch-example:
-	@ $(MAKE) example browserify="$(watchify)" \
-		browserify_opts="$(browserify_opts) --outfile ./example/build.js"
+	@ $(MAKE) example browserify="$(watchify)"
 
 # Phony targets.
 .PHONY: dist
