@@ -29,5 +29,8 @@
     "react-dom": "^15.2.1",
     "slate": "^0.8.0",
     "watchify": "^3.7.0"
-  }
+  },
+  "keywords": [
+    "slate"
+  ]
 }
