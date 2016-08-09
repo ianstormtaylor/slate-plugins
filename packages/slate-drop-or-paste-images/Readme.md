@@ -15,6 +15,11 @@ When trying to add support for inserting images, there are many ways that a user
 It does not handle dragging and dropping Slate nodes or fragments, which is handled internally by Slate by default. And it does not handle insert images via an image chooser, which you'd want to implement with your own UI components.
 
 
+## Demo
+
+https://ianstormtaylor.github.io/slate-drop-or-paste-images/
+
+
 ## Install
 
 ```
@@ -44,6 +49,22 @@ const plugins = [
 #### Arguments
 - `applyTransform: Function` — a transforming function that is passed a Slate `Transform` and a `File` object representing an image. It should apply the proper transform that inserts the image into Slate based on your schema.
 - `[extensions: Array]` — an array of allowed extensions.
+
+
+## Development
+
+Clone the repository and then run:
+
+```
+npm install
+npm watch
+```
+
+And open the example page in your browser:
+
+```
+http://localhost:8888/
+```
 
 
 ## License
