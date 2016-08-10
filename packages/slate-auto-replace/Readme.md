@@ -46,8 +46,9 @@ Option | Type | Description
 **`ignoreIn`** | `Function` `Array` `String` | An optional block matcher to ignore triggers inside. If passed an array or string it will match by `node.type`.
 **`onlyIn`** | `Function` `Array` `String` | An optional block matcher to only replace triggers inside. If passed an array or string it will match by `node.type`.
 
+---
 
-## Development
+### Development
 
 Clone the repository and then run:
 
@@ -62,8 +63,9 @@ And open the example page in your browser:
 http://localhost:8888/
 ```
 
+---
 
-## License
+### License
 
 The MIT License
 
