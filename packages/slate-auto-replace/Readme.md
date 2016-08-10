@@ -1,5 +1,7 @@
 
-# `slate-auto-replace`
+<p align="center">
+  <h1>`slate-auto-replace`</h1>
+</p>
 
 A [**Slate**](https://github.com/ianstormtaylor/slate) plugin to automatically apply transforms when the user types certain strings. Useful for implementing "auto-markdown" or other hotkey-based replacement behaviors.
 
