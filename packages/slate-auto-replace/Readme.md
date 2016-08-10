@@ -14,7 +14,7 @@ https://ianstormtaylor.github.io/slate-auto-replace/
 ## Install
 
 ```
-npm install slate-auto-replace
+npm install --save slate-auto-replace
 ```
 
 
@@ -34,14 +34,14 @@ const plugins = [
 ]
 ```
 
-#### Arguments
-
-- `trigger: String || RegExp` — the trigger to match the inputed character against—either a character like `a` or a key name like `enter` or `tab`.
-- `transform: Function` — a function to apply the desired transform. It will be passed a Slate `Transform` object and the `data` object from the matching event handler.
-- `[before: RegExp]` — a regexp that must match the text before the trigger for the replacement to occur. Any capturing groups in the regexp will be deleted from the text content.
-- `[after: RegExp]` — a regexp that must match the text after the trigger for the replacement to occur. Any capturing groups in the regexp will be deleted from the text content.
-- `[ignoreIn: Function || Array || String]` — a block matcher to ignore triggers inside. If passed an array or string it will match by `node.type`.
-- `[onlyIn: Function || Array || String]` — a block matcher to only replace triggers inside. If passed an array or string it will match by `node.type`.
+| --- | --- |
+| **`trigger`** `String || RegExp` | The trigger to match the inputed character against—either a character like `a` or a key name like `enter` or `tab`. |
+| **`transform`** `Function` | A function to apply the desired transform. It will be passed a Slate `Transform` object and the `data` object from the matching event handler. |
+| **`[before]`** `RegExp` | An optional regexp that must match the text before the trigger for the replacement to occur. Any capturing groups in the regexp will be deleted from the text content. |
+| **`[after]`** `RegExp` | An optional regexp that must match the text after the trigger for the replacement to occur. Any capturing groups in the regexp will be deleted from the text content. |
+| **`[ignoreIn]`** `Function || Array || String` | A block matcher to ignore triggers inside. If passed an array or string it will match by `node.type`. |
+| **`[onlyIn]`** `Function || Array || String` | A block matcher to only replace triggers inside. If passed an array or string it will match by `node.type`. |
+| --- | --- |
 
 
 ## Development
