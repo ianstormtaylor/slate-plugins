@@ -3,11 +3,8 @@
 
 A [**Slate**](https://github.com/ianstormtaylor/slate) plugin to automatically apply transforms when the user types certain strings. Useful for implementing "auto-markdown" or other hotkey-based replacement behaviors.
 
----
-
-### Demo
-
-https://ianstormtaylor.github.io/slate-auto-replace/
+[![](./example/screenshot.png)](
+https://ianstormtaylor.github.io/slate-auto-replace/)
 
 ---
 
