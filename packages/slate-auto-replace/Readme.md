@@ -40,8 +40,8 @@ const plugins = [
 - `transform: Function` — a function to apply the desired transform. It will be passed a Slate `Transform` object and the `data` object from the matching event handler.
 - `[before: RegExp]` — a regexp that must match the text before the trigger for the replacement to occur. Any capturing groups in the regexp will be deleted from the text content.
 - `[after: RegExp]` — a regexp that must match the text after the trigger for the replacement to occur. Any capturing groups in the regexp will be deleted from the text content.
-- `[ignoreIn: Array]` — an array of block types to ignore replacement inside.
-- `[onlyIn: Array]` — an array of block types to only replace inside.
+- `[ignoreIn: Function || Array || String]` — a block matcher to ignore triggers inside. If passed an array or string it will match by `node.type`.
+- `[onlyIn: Function || Array || String]` — a block matcher to only replace triggers inside. If passed an array or string it will match by `node.type`.
 
 
 ## Development
