@@ -1,15 +1,17 @@
 
 # `slate-auto-replace`
 
-A Slate plugin to automatically apply transforms when the user types certain strings. Useful for implementing "auto-markdown" or other hotkey-based replacement behaviors.
+A [**Slate**](https://github.com/ianstormtaylor/slate) plugin to automatically apply transforms when the user types certain strings. Useful for implementing "auto-markdown" or other hotkey-based replacement behaviors.
 
+---
 
-## Demo
+### Demo
 
 https://ianstormtaylor.github.io/slate-auto-replace/
 
+---
 
-## Install
+### Install
 
 ```
 npm install --save slate-auto-replace
@@ -17,8 +19,9 @@ npm install --save slate-auto-replace
 
 _You will need to have installed `slate` as a dependency already._
 
+---
 
-## Usage
+### Usage
 
 ```js
 import AutoReplace from 'slate-auto-replace'
