@@ -21,10 +21,10 @@ npm install --save slate-auto-replace
 ## Usage
 
 ```js
-import Replace from 'slate-auto-replace'
+import AutoReplace from 'slate-auto-replace'
 
 const plugins = [
-  Replace({
+  AutoReplace({
     trigger: 'space',
     before: /^(>)$/,
     transform: (transform, e, data, matches) => {
@@ -38,8 +38,8 @@ Option | Type | Description
 --- | --- | ---
 **`trigger`** | `String` `RegExp` | The trigger to match the inputed character against—either a character like `a` or a key name like `enter` or `tab`.
 **`transform`** | `Function` | A function to apply the desired transform. It will be passed a Slate `Transform` object and the `data` object from the matching event handler.
-`before` | `RegExp` | An optional regexp that must match the text before the trigger for the replacement to occur. Any capturing groups in the regexp will be deleted from the text content.
 `after` | `RegExp` | An optional regexp that must match the text after the trigger for the replacement to occur. Any capturing groups in the regexp will be deleted from the text content.
+`before` | `RegExp` | An optional regexp that must match the text before the trigger for the replacement to occur. Any capturing groups in the regexp will be deleted from the text content.
 `ignoreIn` | `Function` `Array` `String` | An optional block matcher to ignore triggers inside. If passed an array or string it will match by `node.type`.
 `onlyIn` | `Function` `Array` `String` | An optional block matcher to only replace triggers inside. If passed an array or string it will match by `node.type`.
 
