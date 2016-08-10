@@ -22,7 +22,9 @@ _You will need to have installed `slate` as a dependency already._
 
 ```js
 import AutoReplace from 'slate-auto-replace'
+import { Editor } from 'slate'
 
+// Add the plugin to your set of plugins...
 const plugins = [
   AutoReplace({
     trigger: 'space',
@@ -32,6 +34,12 @@ const plugins = [
     }
   })
 ]
+
+// And later pass it into the Slate editor...
+<Editor
+  ...
+  plugins={plugins}
+/>
 ```
 
 Option | Type | Description
