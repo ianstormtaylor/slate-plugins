@@ -1,6 +1,6 @@
 {
   "name": "slate-auto-replace",
-  "description": "A Slate plugin to automatically apply transforms when the user types certain strings.",
+  "description": "A Slate plugin to automatically transform certain input.",
   "version": "0.1.0",
   "license": "MIT",
   "repository": "git://github.com/ianstormtaylor/slate-auto-replace.git",

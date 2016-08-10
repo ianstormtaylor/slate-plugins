@@ -1,7 +1,7 @@
 
 <h3 align="center"><code>slate-auto-replace</code></h3>
 
-A [**Slate**](https://github.com/ianstormtaylor/slate) plugin to automatically apply transforms when the user types certain strings. Useful for implementing "auto-markdown" or other hotkey-based replacement behaviors.
+A [**Slate**](https://github.com/ianstormtaylor/slate) plugin to automatically replace text and apply transforms when the user types certain strings. Useful for implementing "auto-markdown" or other hotkey-based replacement behaviors.
 
 [![](./example/screenshot.png)](
 https://ianstormtaylor.github.io/slate-auto-replace/)
