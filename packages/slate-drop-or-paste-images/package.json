@@ -1,7 +1,7 @@
 {
   "name": "slate-drop-or-paste-images",
   "description": "A Slate plugin that inserts images on drop or paste.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "license": "MIT",
   "repository": "git://github.com/ianstormtaylor/slate-drop-or-paste-images.git",
   "main": "./dist/index.js",
