@@ -27,7 +27,7 @@
     "mime-types": "^2.1.11"
   },
   "peerDependencies": {
-    "slate": "^0.12.1"
+    "slate": "^0.14.2"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
@@ -45,7 +45,7 @@
     "npm-run-all": "^2.3.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
-    "slate": "^0.12.1",
+    "slate": "^0.14.2",
     "watchify": "^3.7.0"
   },
   "keywords": [

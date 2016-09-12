@@ -5,49 +5,6 @@ import ReactDOM from 'react-dom'
 import initialState from './state.json'
 import { Editor, Raw } from 'slate'
 
-class Example extends React.Component {
-
-  nodes = {
-    image: Image
-  }
-
-  plugins = [
-    InsertImages({
-      applyTransform: (transform, file) => {
-        return transform.insertBlock({
-          type: 'image',
-          isVoid: true,
-          data: { file },
-        })
-      }
-    })
-  ];
-
-  state = {
-    state: Raw.deserialize(initialState, { terse: true })
-  };
-
-  onChange = (state) => {
-    this.setState({ state })
-  }
-
-  render = () => {
-    return (
-      <Editor
-        onChange={this.onChange}
-        plugins={this.plugins}
-        state={this.state.state}
-        renderNode={this.renderNode}
-      />
-    )
-  }
-
-  renderNode = (node) => {
-    return this.nodes[node.type]
-  }
-
-}
-
 class Image extends React.Component {
 
   state = {};
@@ -73,6 +30,46 @@ class Image extends React.Component {
       : <span>Loading...</span>
   }
 
+}
+
+const schema = {
+  nodes: {
+    image: Image
+  }
+}
+
+class Example extends React.Component {
+
+  plugins = [
+    InsertImages({
+      applyTransform: (transform, file) => {
+        return transform.insertBlock({
+          type: 'image',
+          isVoid: true,
+          data: { file },
+        })
+      }
+    })
+  ];
+
+  state = {
+    state: Raw.deserialize(initialState, { terse: true })
+  };
+
+  onChange = (state) => {
+    this.setState({ state })
+  }
+
+  render = () => {
+    return (
+      <Editor
+        schema={schema}
+        onChange={this.onChange}
+        plugins={this.plugins}
+        state={this.state.state}
+      />
+    )
+  }
 }
 
 const example = <Example />
