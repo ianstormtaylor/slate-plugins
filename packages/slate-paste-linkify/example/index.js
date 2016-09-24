@@ -1,5 +1,5 @@
 
-import PasteLinkify from '..'
+import PasteLinkify from '../lib'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import initialState from './state.json'
@@ -10,10 +10,7 @@ class Example extends React.Component {
   nodes = {
     link: (props) => {
       return (
-        <a
-          {...props.attributes}
-          href={props.node.data.get('url')}
-        >
+        <a {...props.attributes} href={props.node.data.get('url')}>
           {props.children}
         </a>
       )
@@ -29,7 +26,7 @@ class Example extends React.Component {
   ];
 
   state = {
-    state: Raw.deserialize(initialState)
+    state: Raw.deserialize(initialState, { terse: true })
   };
 
   onChange = (state) => {
@@ -42,13 +39,9 @@ class Example extends React.Component {
         onChange={this.onChange}
         plugins={this.plugins}
         state={this.state.state}
-        renderNode={this.renderNode}
+        schema={{nodes: this.nodes}}
       />
     )
-  }
-
-  renderNode = (node) => {
-    return this.nodes[node.type]
   }
 
 }

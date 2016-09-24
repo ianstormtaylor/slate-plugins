@@ -31,7 +31,7 @@
     "http-server": "^0.9.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
-    "slate": "^0.1.6",
+    "slate": "^0.14.9",
     "watchify": "^3.7.0"
   },
   "keywords": [

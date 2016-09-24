@@ -10,11 +10,17 @@ import toPascal from 'to-pascal-case'
  */
 
 function PasteLinkify(options = {}) {
+  function hasLinks(state) {
+    console.log(state.inlines)
+    return state.inlines.some(inline => inline.type == 'link')
+  }
+
   return {
-    onPaste(e, paste, state, editor) {
+    onPaste(e, paste, state) {
       if (state.isCollapsed) return
-      if (paste.type != 'text' && paste.type != 'html') return
+      if (paste.type !== 'text' && paste.type !== 'html') return
       if (!isUrl(paste.text)) return
+
 
       const type = options.type
       const data = {
@@ -23,9 +29,14 @@ function PasteLinkify(options = {}) {
 
       let transform = state
         .transform()
-        .wrapInline(type, data)
 
-      if (options.collapseTo) {
+      if (hasLinks(state)) {
+        transform = transform.unwrapInline('link')
+      }
+
+      transform = transform.wrapInline({type, data})
+
+      if (options.collapseTo || 'end') {
         transform = transform[`collapseTo${toPascal(options.collapseTo)}`]()
       }
 

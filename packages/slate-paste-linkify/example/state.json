@@ -6,11 +6,7 @@
       "nodes": [
         {
           "kind": "text",
-          "ranges": [
-            {
-              "text": "Try selecting text and then pasting a URL."
-            }
-          ]
+          "text": "Try selecting text and then pasting a URL."
         }
       ]
     }
