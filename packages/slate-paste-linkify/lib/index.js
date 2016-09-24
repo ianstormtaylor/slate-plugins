@@ -11,7 +11,6 @@ import toPascal from 'to-pascal-case'
 
 function PasteLinkify(options = {}) {
   function hasLinks(state) {
-    console.log(state.inlines)
     return state.inlines.some(inline => inline.type == 'link')
   }
 
