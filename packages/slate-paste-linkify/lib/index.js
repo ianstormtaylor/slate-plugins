@@ -35,7 +35,7 @@ function PasteLinkify(options = {}) {
 
       transform = transform.wrapInline({type, data})
 
-      if (options.collapseTo || 'end') {
+      if (options.collapseTo) {
         transform = transform[`collapseTo${toPascal(options.collapseTo)}`]()
       }
 
