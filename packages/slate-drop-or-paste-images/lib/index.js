@@ -1,4 +1,5 @@
 
+import Promise from 'es6-promise'
 import isImage from 'is-image'
 import isUrl from 'is-url'
 import mime from 'mime-types'
@@ -21,6 +22,24 @@ function DropOrPasteImages({
   if (!applyTransform) {
     throw new Error('You must supply an `applyTransform` function.')
   }
+
+  /**
+   * Apply the transform for a given file and update the editor with the result.
+   *
+   * @param {Transform} transform
+   * @param {Editor} editor
+   * @param {Blob} file
+   * @return {Promise}
+   */
+
+  function onApplyInsert(transform, editor, file) {
+      return Promise.resolve(applyTransform(transform, file))
+      .then(resultTransform => {
+          const next = resultTransform.apply()
+          editor.onChange(next)
+      })
+  }
+
 
   /**
    * On drop or paste.
@@ -52,8 +71,6 @@ function DropOrPasteImages({
 
   function onInsertFiles(e, data, state, editor) {
     const { target, files } = data
-    let transform = state.transform()
-    if (target) transform = transform.moveTo(target)
 
     for (const file of files) {
       if (extensions) {
@@ -61,10 +78,13 @@ function DropOrPasteImages({
         if (!extensions.includes(ext)) continue
       }
 
-      transform = applyTransform(transform, file)
+      let transform = state.transform()
+      if (target) transform = transform.moveTo(target)
+
+      onApplyInsert(transform, editor, file)
     }
 
-    return transform.apply()
+    return state
   }
 
   /**
@@ -96,9 +116,7 @@ function DropOrPasteImages({
       if (err) return
       let transform = editor.getState().transform()
       if (target) transform = transform.moveTo(target)
-      transform = applyTransform(transform, file)
-      const next = transform.apply()
-      editor.onChange(next)
+      onApplyInsert(transform, editor, file)
     })
 
     return state
@@ -123,9 +141,7 @@ function DropOrPasteImages({
       if (err) return
       let transform = editor.getState().transform()
       if (target) transform = transform.moveTo(target)
-      transform = applyTransform(transform, file)
-      const next = transform.apply()
-      editor.onChange(next)
+      onApplyInsert(transform, editor, file)
     })
 
     return state

@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "data-uri-to-blob": "0.0.4",
+    "es6-promise": "^4.0.5",
     "image-to-data-uri": "^1.0.0",
     "is-data-uri": "^0.1.0",
     "is-image": "^1.0.1",
