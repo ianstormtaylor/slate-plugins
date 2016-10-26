@@ -169,9 +169,9 @@ function normalizeMatcher(matcher) {
     case 'function':
       return matcher
     case 'array':
-      return node => matcher.includes(node.type)
+      return node => matcher.includes(node)
     case 'string':
-      return node => node.type == matcher
+      return node => node == matcher
   }
 }
 
