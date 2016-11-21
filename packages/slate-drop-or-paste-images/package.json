@@ -25,10 +25,11 @@
     "is-data-uri": "^0.1.0",
     "is-image": "^1.0.1",
     "is-url": "^1.2.2",
-    "mime-types": "^2.1.11"
+    "mime-types": "^2.1.11",
+    "slate": "^0.15.5"
   },
   "peerDependencies": {
-    "slate": "^0.14.2"
+    "slate": "^0.15.5"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
