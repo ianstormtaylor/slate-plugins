@@ -75,7 +75,7 @@ function AutoReplace(opts) {
       .moveToOffsets(start, end)
       .delete()
 
-    transform = opts.transform(transform, e, data, matches)
+    opts.transform(transform, e, data, matches)
     return transform.apply()
   }
 
