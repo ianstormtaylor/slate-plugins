@@ -35,8 +35,8 @@ function DropOrPasteImages({
   function asyncApplyTransform(transform, editor, file) {
     return Promise
       .resolve(applyTransform(transform, file))
-      .then((t) => {
-        const next = t.apply()
+      .then(() => {
+        const next = transform.apply()
         editor.onChange(next)
       })
   }
@@ -80,7 +80,7 @@ function DropOrPasteImages({
       }
 
       let transform = state.transform()
-      if (target) transform = transform.moveTo(target)
+      if (target) transform.moveTo(target)
 
       asyncApplyTransform(transform, editor, file)
     }
@@ -116,7 +116,7 @@ function DropOrPasteImages({
     loadImageFile(src, (err, file) => {
       if (err) return
       let transform = editor.getState().transform()
-      if (target) transform = transform.moveTo(target)
+      if (target) transform.moveTo(target)
       asyncApplyTransform(transform, editor, file)
     })
 
@@ -141,7 +141,7 @@ function DropOrPasteImages({
     loadImageFile(text, (err, file) => {
       if (err) return
       let transform = editor.getState().transform()
-      if (target) transform = transform.moveTo(target)
+      if (target) transform.moveTo(target)
       asyncApplyTransform(transform, editor, file)
     })
 
