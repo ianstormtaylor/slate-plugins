@@ -28,7 +28,7 @@
     "mime-types": "^2.1.11"
   },
   "peerDependencies": {
-    "slate": "^0.15.8"
+    "slate": ">=0.15.0"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
