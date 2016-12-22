@@ -80,15 +80,16 @@ function AutoReplace(opts) {
   }
 
   /**
-   * Try to match a `state` with the `before` and `after` regexes.
+   * Try to match the current text of a `state` with the `before` and
+   * `after` regexes.
    *
    * @param {State} state
    * @return {Object}
    */
 
   function getMatches(state) {
-    const { startBlock, startOffset } = state
-    const { text } = startBlock
+    const { startText, startOffset } = state
+    const { text } = startText
     let after = null
     let before = null
 
