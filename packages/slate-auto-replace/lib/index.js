@@ -27,12 +27,13 @@ function AutoReplace(opts = {}) {
    * @param {Event} e
    * @param {Object} data
    * @param {State} state
+   * @param {Editor} editor
    * @return {State}
    */
 
-  function onBeforeInput(e, data, state) {
+  function onBeforeInput(e, data, state, editor) {
     if (trigger(e, data)) {
-      return replace(e, data, state)
+      return replace(e, data, state, editor)
     }
   }
 
@@ -42,17 +43,18 @@ function AutoReplace(opts = {}) {
    * @param {Event} e
    * @param {Object} data
    * @param {State} state
+   * @param {Editor} editor
    * @return {State}
    */
 
-  function onKeyDown(e, data, state) {
+  function onKeyDown(e, data, state, editor) {
     // Don't waste cycles checking regexs or characters, since they should be
     // handled in the `onBeforeInput` handler instead.
     if (typeof opts.trigger != 'string') return
     if (opts.trigger.length == 1) return
 
     if (trigger(e, data, { key: true })) {
-      return replace(e, data, state)
+      return replace(e, data, state, editor)
     }
   }
 
@@ -62,10 +64,11 @@ function AutoReplace(opts = {}) {
    * @param {Event} e
    * @param {Object} data
    * @param {State} state
+   * @param {Editor} editor
    * @return {State}
    */
 
-  function replace(e, data, state) {
+  function replace(e, data, state, editor) {
     if (state.isExpanded) return
 
     const block = state.startBlock
@@ -83,7 +86,7 @@ function AutoReplace(opts = {}) {
       .transform()
       .moveToOffsets(start, end)
       .delete()
-      .call(transform, e, data, matches)
+      .call(transform, e, data, matches, editor)
       .apply()
   }
 
