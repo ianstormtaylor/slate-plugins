@@ -50,8 +50,8 @@ function AutoReplace(opts = {}) {
   function onKeyDown(e, data, state, editor) {
     // Don't waste cycles checking regexs or characters, since they should be
     // handled in the `onBeforeInput` handler instead.
-    if (typeof opts.trigger != 'string') return
-    if (opts.trigger.length == 1) return
+    if (typeOf(opts.trigger) == 'regexp') return
+    if (typeOf(opts.trigger) == 'string' && opts.trigger.length == 1) return
 
     if (trigger(e, data, { key: true })) {
       return replace(e, data, state, editor)
@@ -162,6 +162,8 @@ function AutoReplace(opts = {}) {
 
 function normalizeTrigger(trigger) {
   switch (typeOf(trigger)) {
+    case 'function':
+      return trigger
     case 'regexp':
       return (e, data) => {
         return !!(e.data && e.data.match(trigger))
