@@ -44,8 +44,8 @@ const plugins = [
 
 Option | Type | Description
 --- | --- | ---
-**`trigger`** | `String` `RegExp` | The trigger to match the inputed character against—either a character like `a` or a key name like `enter` or `tab`.
-**`transform`** | `Function` | A function to apply the desired transform. It will be passed a Slate `Transform` object and the `data` object from the matching event handler.
+**`trigger`** | `String` `RegExp` `Function` | The trigger to match the inputed character against—either a character like `a` or a key name like `enter` or `tab`.
+**`transform`** | `Function` | A function to apply the desired transform. It will be called with `transform, e, data, matches, editor` from the event handler.
 **`after`** | `RegExp` | An optional regexp that must match the text after the trigger for the replacement to occur. Any capturing groups in the regexp will be deleted from the text content.
 **`before`** | `RegExp` | An optional regexp that must match the text before the trigger for the replacement to occur. Any capturing groups in the regexp will be deleted from the text content.
 **`ignoreIn`** | `Function` `Array` `String` | An optional block matcher to ignore triggers inside. If passed an array or string it will match by `node.type`.
