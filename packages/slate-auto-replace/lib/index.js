@@ -9,13 +9,17 @@ import typeOf from 'type-of'
  * @return {Object}
  */
 
-function AutoReplace(opts) {
-  opts.trigger = normalizeTrigger(opts.trigger)
-  if (opts.ignoreIn) opts.ignoreIn = normalizeMatcher(opts.ignoreIn)
-  if (opts.onlyIn) opts.onlyIn = normalizeMatcher(opts.onlyIn)
+function AutoReplace(opts = {}) {
+  const { transform } = opts
+  const trigger = normalizeTrigger(opts.trigger)
+  let ignoreIn
+  let onlyIn
 
-  if (!opts.transform) throw new Error('You must provide a `transform` option.')
-  if (!opts.trigger) throw new Error('You must provide a `trigger` option.')
+  if (opts.ignoreIn) ignoreIn = normalizeMatcher(opts.ignoreIn)
+  if (opts.onlyIn) onlyIn = normalizeMatcher(opts.onlyIn)
+
+  if (!transform) throw new Error('You must provide a `transform` option.')
+  if (!trigger) throw new Error('You must provide a `trigger` option.')
 
   /**
    * On before input.
@@ -27,7 +31,7 @@ function AutoReplace(opts) {
    */
 
   function onBeforeInput(e, data, state) {
-    if (opts.trigger(e, data)) {
+    if (trigger(e, data)) {
       return replace(e, data, state)
     }
   }
@@ -42,7 +46,12 @@ function AutoReplace(opts) {
    */
 
   function onKeyDown(e, data, state) {
-    if (opts.trigger(e, data)) {
+    // Don't waste cycles checking regexs or characters, since they should be
+    // handled in the `onBeforeInput` handler instead.
+    if (typeof opts.trigger != 'string') return
+    if (opts.trigger.length == 1) return
+
+    if (trigger(e, data, { key: true })) {
       return replace(e, data, state)
     }
   }
@@ -61,22 +70,21 @@ function AutoReplace(opts) {
 
     const block = state.startBlock
     const type = block.type
-    if (opts.onlyIn && !opts.onlyIn(type)) return
-    if (opts.ignoreIn && opts.ignoreIn(type)) return
+    if (onlyIn && !onlyIn(type)) return
+    if (ignoreIn && ignoreIn(type)) return
 
     const matches = getMatches(state)
     if (!matches) return
 
     e.preventDefault()
-
     const { start, end } = getOffsets(matches, state.startOffset)
-    let transform = state
+
+    return state
       .transform()
       .moveToOffsets(start, end)
       .delete()
-
-    opts.transform(transform, e, data, matches)
-    return transform.apply()
+      .call(transform, e, data, matches)
+      .apply()
   }
 
   /**
@@ -152,9 +160,15 @@ function AutoReplace(opts) {
 function normalizeTrigger(trigger) {
   switch (typeOf(trigger)) {
     case 'regexp':
-      return (e, data) => !!(e.data && e.data.match(trigger))
+      return (e, data) => {
+        return !!(e.data && e.data.match(trigger))
+      }
     case 'string':
-      return (e, data) => data.key ? data.key == trigger : e.data == trigger
+      return (e, data, opts = {}) => {
+        return opts.key
+          ? data.key == trigger
+          : e.data == trigger
+      }
   }
 }
 

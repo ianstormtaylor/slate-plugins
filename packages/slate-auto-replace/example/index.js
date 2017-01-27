@@ -7,16 +7,18 @@ import { Editor, Raw } from 'slate'
 
 class Example extends React.Component {
 
-  nodes = {
-    blockquote: props => <blockquote {...props.attributes}><p>{props.children}</p></blockquote>,
-    hr: props => <hr />,
-    ul: props => <ul {...props.attributes}>{props.children}</ul>,
-    li: props => <li {...props.attributes}>{props.children}</li>,
-    h: props => {
-      const { attributes, children, node } = props
-      const level = node.data.get('level')
-      const Tag = `h${level}`
-      return <Tag {...attributes}>{children}</Tag>
+  schema = {
+    nodes: {
+      blockquote: props => <blockquote {...props.attributes}><p>{props.children}</p></blockquote>,
+      hr: props => <hr />,
+      ul: props => <ul {...props.attributes}>{props.children}</ul>,
+      li: props => <li {...props.attributes}>{props.children}</li>,
+      h: props => {
+        const { attributes, children, node } = props
+        const level = node.data.get('level')
+        const Tag = `h${level}`
+        return <Tag {...attributes}>{children}</Tag>
+      }
     }
   }
 
@@ -74,13 +76,9 @@ class Example extends React.Component {
         onChange={this.onChange}
         plugins={this.plugins}
         state={this.state.state}
-        renderNode={this.renderNode}
+        schema={this.schema}
       />
     )
-  }
-
-  renderNode = (node) => {
-    return this.nodes[node.type]
   }
 
 }
