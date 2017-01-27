@@ -24,6 +24,7 @@ const plugins = [
 ```
 
 #### Arguments
+- `[shift: Boolean]` — require the <kbd>shift</kbd> key to be pressed.
 - `[ignoreIn: Array]` — an array of block types to not soft break inside.
 - `[onlyIn: Array]` — an array of block types to only soft break inside.
 
