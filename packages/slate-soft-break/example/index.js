@@ -7,13 +7,19 @@ import { Editor, Raw } from 'slate'
 
 class Example extends React.Component {
 
-  nodes = {
-    code: props => <pre {...props.attributes}><code>{props.children}</code></pre>
+  schema = {
+    nodes: {
+      code: props => <pre {...props.attributes}><code>{props.children}</code></pre>
+    }
   }
 
   plugins = [
     SoftBreak({
-      onlyIn: ['code']
+      onlyIn: ['code'],
+    }),
+    SoftBreak({
+      ignoreIn: ['code'],
+      shift: true,
     })
   ];
 
@@ -31,13 +37,9 @@ class Example extends React.Component {
         onChange={this.onChange}
         plugins={this.plugins}
         state={this.state.state}
-        renderNode={this.renderNode}
+        schema={this.schema}
       />
     )
-  }
-
-  renderNode = (node) => {
-    return this.nodes[node.type]
   }
 
 }

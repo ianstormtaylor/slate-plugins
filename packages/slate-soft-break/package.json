@@ -27,7 +27,7 @@
     "http-server": "^0.9.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
-    "slate": "^0.8.0",
+    "slate": "*",
     "watchify": "^3.7.0"
   },
   "keywords": [
