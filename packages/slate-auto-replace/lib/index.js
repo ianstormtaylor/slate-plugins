@@ -80,12 +80,23 @@ function AutoReplace(opts = {}) {
     if (!matches) return
 
     e.preventDefault()
-    const { start, end } = getOffsets(matches, state.startOffset)
 
-    return state
-      .transform()
-      .moveOffsetsTo(start, end)
-      .delete()
+    let startOffset = state.startOffset
+    let totalRemoved = 0
+    const currentTransform = state.transform()
+    const offsets = getOffsets(matches, startOffset)
+
+    offsets.forEach(function (offset) {
+      currentTransform
+        .moveToOffsets(offset.start, offset.end)
+        .delete()
+      totalRemoved += offset.total
+    });
+
+    startOffset -= totalRemoved
+    currentTransform.moveToOffsets(startOffset, startOffset)
+
+    return currentTransform
       .call(transform, e, data, matches, editor)
       .apply()
   }
@@ -120,6 +131,10 @@ function AutoReplace(opts = {}) {
 
     // Return null unless we have a match.
     if (!before && !after) return null
+
+    if(after) after[0] = after[0].replace(/\s+$/,"")
+    if(before) before[0] = before[0].replace(/^\s+/,"")
+
     return { before, after }
   }
 
@@ -134,11 +149,48 @@ function AutoReplace(opts = {}) {
   function getOffsets(matches, start) {
     const { before, after } = matches
     let end = start
+    let offsets = []
+    let totalRemoved = 0
 
-    if (before && before[1]) start -= before[1].length
-    if (after && after[1]) end += after[1].length
+    if (before && before.length == 3) {
+      // Offset to remove first match
+      offsets.push({
+        start: start - before[0].length,
+        end: end - before[0].length + before[1].length,
+        total: before[1].length
+      })
+      totalRemoved += before[1].length
 
-    return { start, end }
+      // Offset to remove last match
+      offsets.push({
+        start: start - before[2].length - totalRemoved,
+        end: end - totalRemoved,
+        total: before[2].length
+      })
+
+      return offsets
+    }
+
+    if (before && before.length == 2) {
+      // Offset to remove first match
+      offsets.push({
+        start: start - before[0].length,
+        end: end - before[0].length + before[1].length,
+        total: before[1].length
+      })
+      totalRemoved += before[1].length
+    }
+
+    if(after && after.length == 2) {
+      // Offset to remove last match
+      offsets.push({
+        start: start - totalRemoved + after[0].length - after[1].length,
+        end: end - totalRemoved + after[0].length,
+        total: 0
+      })
+    }
+
+    return offsets
   }
 
   /**
