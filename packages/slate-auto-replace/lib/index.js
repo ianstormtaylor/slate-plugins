@@ -84,7 +84,7 @@ function AutoReplace(opts = {}) {
 
     return state
       .transform()
-      .moveToOffsets(start, end)
+      .moveOffsetsTo(start, end)
       .delete()
       .call(transform, e, data, matches, editor)
       .apply()

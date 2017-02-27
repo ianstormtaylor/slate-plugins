@@ -22,7 +22,7 @@
     "type-of": "^2.0.1"
   },
   "peerDependencies": {
-    "slate": "*"
+    "slate": ">=0.17.0"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
