@@ -132,8 +132,8 @@ function AutoReplace(opts = {}) {
     // Return null unless we have a match.
     if (!before && !after) return null
 
-    if(after) after[0] = after[0].replace(/\s+$/,"")
-    if(before) before[0] = before[0].replace(/^\s+/,"")
+    if (after) after[0] = after[0].replace(/\s+$/,"")
+    if (before) before[0] = before[0].replace(/^\s+/,"")
 
     return { before, after }
   }
@@ -152,42 +152,46 @@ function AutoReplace(opts = {}) {
     let offsets = []
     let totalRemoved = 0
 
-    if (before && before.length == 3) {
-      // Offset to remove first match
-      offsets.push({
-        start: start - before[0].length,
-        end: end - before[0].length + before[1].length,
-        total: before[1].length
-      })
-      totalRemoved += before[1].length
+    if (before) {
+      let match = before[0]
+      let startOffset = 0
+      let matchIndex = 0
 
-      // Offset to remove last match
-      offsets.push({
-        start: start - before[2].length - totalRemoved,
-        end: end - totalRemoved,
-        total: before[2].length
-      })
+      before.slice(1, before.length)
+        .forEach(function (current) {
+          matchIndex = match.indexOf(current, matchIndex)
+          startOffset = start - totalRemoved + matchIndex - match.length
 
-      return offsets
+          offsets.push({
+            start: startOffset,
+            end: startOffset + current.length,
+            total: current.length
+          })
+
+          totalRemoved += current.length
+          matchIndex += current.length
+        });
     }
 
-    if (before && before.length == 2) {
-      // Offset to remove first match
-      offsets.push({
-        start: start - before[0].length,
-        end: end - before[0].length + before[1].length,
-        total: before[1].length
-      })
-      totalRemoved += before[1].length
-    }
+    if(after) {
+      let match = after[0]
+      let startOffset = 0
+      let matchIndex = 0
 
-    if(after && after.length == 2) {
-      // Offset to remove last match
-      offsets.push({
-        start: start - totalRemoved + after[0].length - after[1].length,
-        end: end - totalRemoved + after[0].length,
-        total: 0
-      })
+      after.slice(1, after.length)
+        .forEach(function (current) {
+          matchIndex = match.indexOf(current, matchIndex)
+          startOffset = start - totalRemoved + matchIndex
+
+          offsets.push({
+            start: startOffset,
+            end: startOffset + current.length,
+            total: 0
+          })
+
+          totalRemoved += current.length
+          matchIndex += current.length
+        })
     }
 
     return offsets
