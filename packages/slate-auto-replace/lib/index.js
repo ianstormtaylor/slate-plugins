@@ -86,12 +86,12 @@ function AutoReplace(opts = {}) {
     const currentTransform = state.transform()
     const offsets = getOffsets(matches, startOffset)
 
-    offsets.forEach(function (offset) {
+    offsets.forEach((offset) => {
       currentTransform
         .moveToOffsets(offset.start, offset.end)
         .delete()
       totalRemoved += offset.total
-    });
+    })
 
     startOffset -= totalRemoved
     currentTransform.moveToOffsets(startOffset, startOffset)
@@ -132,8 +132,8 @@ function AutoReplace(opts = {}) {
     // Return null unless we have a match.
     if (!before && !after) return null
 
-    if (after) after[0] = after[0].replace(/\s+$/,"")
-    if (before) before[0] = before[0].replace(/^\s+/,"")
+    if (after) after[0] = after[0].replace(/\s+$/, '')
+    if (before) before[0] = before[0].replace(/^\s+/, '')
 
     return { before, after }
   }
@@ -157,20 +157,19 @@ function AutoReplace(opts = {}) {
       let startOffset = 0
       let matchIndex = 0
 
-      before.slice(1, before.length)
-        .forEach(function (current) {
-          matchIndex = match.indexOf(current, matchIndex)
-          startOffset = start - totalRemoved + matchIndex - match.length
+      before.slice(1, before.length).forEach((current) => {
+        matchIndex = match.indexOf(current, matchIndex)
+        startOffset = start - totalRemoved + matchIndex - match.length
 
-          offsets.push({
-            start: startOffset,
-            end: startOffset + current.length,
-            total: current.length
-          })
+        offsets.push({
+          start: startOffset,
+          end: startOffset + current.length,
+          total: current.length
+        })
 
-          totalRemoved += current.length
-          matchIndex += current.length
-        });
+        totalRemoved += current.length
+        matchIndex += current.length
+      })
     }
 
     if(after) {
@@ -178,20 +177,19 @@ function AutoReplace(opts = {}) {
       let startOffset = 0
       let matchIndex = 0
 
-      after.slice(1, after.length)
-        .forEach(function (current) {
-          matchIndex = match.indexOf(current, matchIndex)
-          startOffset = start - totalRemoved + matchIndex
+      after.slice(1, after.length).forEach((current) => {
+        matchIndex = match.indexOf(current, matchIndex)
+        startOffset = start - totalRemoved + matchIndex
 
-          offsets.push({
-            start: startOffset,
-            end: startOffset + current.length,
-            total: 0
-          })
-
-          totalRemoved += current.length
-          matchIndex += current.length
+        offsets.push({
+          start: startOffset,
+          end: startOffset + current.length,
+          total: 0
         })
+
+        totalRemoved += current.length
+        matchIndex += current.length
+      })
     }
 
     return offsets
@@ -205,7 +203,7 @@ function AutoReplace(opts = {}) {
 
   return {
     onBeforeInput,
-    onKeyDown
+    onKeyDown,
   }
 }
 
