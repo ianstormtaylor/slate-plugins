@@ -158,6 +158,8 @@ function AutoReplace(opts = {}) {
       let matchIndex = 0
 
       before.slice(1, before.length).forEach((current) => {
+        if(current === undefined) return
+
         matchIndex = match.indexOf(current, matchIndex)
         startOffset = start - totalRemoved + matchIndex - match.length
 
@@ -178,6 +180,8 @@ function AutoReplace(opts = {}) {
       let matchIndex = 0
 
       after.slice(1, after.length).forEach((current) => {
+        if(current === undefined) return
+
         matchIndex = match.indexOf(current, matchIndex)
         startOffset = start - totalRemoved + matchIndex
 
