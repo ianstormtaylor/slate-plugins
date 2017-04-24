@@ -88,13 +88,13 @@ function AutoReplace(opts = {}) {
 
     offsets.forEach((offset) => {
       currentTransform
-        .moveToOffsets(offset.start, offset.end)
+        .moveOffsetsTo(offset.start, offset.end)
         .delete()
       totalRemoved += offset.total
     })
 
     startOffset -= totalRemoved
-    currentTransform.moveToOffsets(startOffset, startOffset)
+    currentTransform.moveOffsetsTo(startOffset, startOffset)
 
     return currentTransform
       .call(transform, e, data, matches, editor)
