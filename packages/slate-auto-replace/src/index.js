@@ -26,14 +26,14 @@ function AutoReplace(opts = {}) {
    *
    * @param {Event} e
    * @param {Object} data
-   * @param {State} state
+   * @param {Change} change
    * @param {Editor} editor
    * @return {State}
    */
 
-  function onBeforeInput(e, data, state, editor) {
+  function onBeforeInput(e, data, change, editor) {
     if (trigger(e, data)) {
-      return replace(e, data, state, editor)
+      return replace(e, data, change, editor)
     }
   }
 
@@ -42,19 +42,19 @@ function AutoReplace(opts = {}) {
    *
    * @param {Event} e
    * @param {Object} data
-   * @param {State} state
+   * @param {Change} change
    * @param {Editor} editor
    * @return {State}
    */
 
-  function onKeyDown(e, data, state, editor) {
+  function onKeyDown(e, data, change, editor) {
     // Don't waste cycles checking regexs or characters, since they should be
     // handled in the `onBeforeInput` handler instead.
     if (typeOf(opts.trigger) == 'regexp') return
     if (typeOf(opts.trigger) == 'string' && opts.trigger.length == 1) return
 
     if (trigger(e, data, { key: true })) {
-      return replace(e, data, state, editor)
+      return replace(e, data, change, editor)
     }
   }
 
@@ -63,12 +63,13 @@ function AutoReplace(opts = {}) {
    *
    * @param {Event} e
    * @param {Object} data
-   * @param {State} state
+   * @param {Change} change
    * @param {Editor} editor
    * @return {State}
    */
 
-  function replace(e, data, state, editor) {
+  function replace(e, data, change, editor) {
+    const { state } = change
     if (state.isExpanded) return
 
     const block = state.startBlock
@@ -83,22 +84,19 @@ function AutoReplace(opts = {}) {
 
     let startOffset = state.startOffset
     let totalRemoved = 0
-    const currentTransform = state.transform()
     const offsets = getOffsets(matches, startOffset)
 
     offsets.forEach((offset) => {
-      currentTransform
+      change
         .moveOffsetsTo(offset.start, offset.end)
         .delete()
       totalRemoved += offset.total
     })
 
     startOffset -= totalRemoved
-    currentTransform.moveOffsetsTo(startOffset, startOffset)
+    change.moveOffsetsTo(startOffset, startOffset)
 
-    return currentTransform
-      .call(transform, e, data, matches, editor)
-      .apply()
+    return change.call(transform, e, data, matches, editor)
   }
 
   /**
@@ -252,7 +250,6 @@ function normalizeMatcher(matcher) {
       return node => node == matcher
   }
 }
-
 
 /**
  * Export.

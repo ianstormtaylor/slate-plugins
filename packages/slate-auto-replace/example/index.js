@@ -60,13 +60,13 @@ class Example extends React.Component {
         })
       }
     })
-  ];
+  ]
 
   state = {
     state: Raw.deserialize(initialState, { terse: true })
-  };
+  }
 
-  onChange = (state) => {
+  onChange = ({ state }) => {
     this.setState({ state })
   }
 
