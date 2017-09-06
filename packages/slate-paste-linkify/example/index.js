@@ -7,13 +7,15 @@ import { Editor, Raw } from 'slate'
 
 class Example extends React.Component {
 
-  nodes = {
-    link: (props) => {
-      return (
-        <a {...props.attributes} href={props.node.data.get('url')}>
-          {props.children}
-        </a>
-      )
+  schema = {
+    nodes: {
+      link: (props) => {
+        return (
+          <a {...props.attributes} href={props.node.data.get('url')}>
+            {props.children}
+          </a>
+        )
+      }
     }
   }
 
@@ -23,13 +25,13 @@ class Example extends React.Component {
       hrefProperty: 'url',
       collapseTo: 'end'
     })
-  ];
+  ]
 
   state = {
     state: Raw.deserialize(initialState, { terse: true })
-  };
+  }
 
-  onChange = (state) => {
+  onChange = ({ state }) => {
     this.setState({ state })
   }
 
@@ -38,8 +40,8 @@ class Example extends React.Component {
       <Editor
         onChange={this.onChange}
         plugins={this.plugins}
+        schema={this.schema}
         state={this.state.state}
-        schema={{nodes: this.nodes}}
       />
     )
   }

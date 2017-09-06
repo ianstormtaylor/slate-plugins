@@ -4,12 +4,7 @@
   "version": "0.2.1",
   "license": "MIT",
   "repository": "git://github.com/ianstormtaylor/slate-paste-linkify.git",
-  "main": "./dist/index.js",
-  "scripts": {
-    "prepublish": "make dist",
-    "start": "make start",
-    "test": "make lint"
-  },
+  "main": "./lib/index.js",
   "dependencies": {
     "is-url": "^1.2.2",
     "to-pascal-case": "^1.0.0"
@@ -28,11 +23,29 @@
     "eslint": "^3.0.1",
     "eslint-plugin-import": "^1.10.2",
     "eslint-plugin-react": "^5.2.2",
+    "gh-pages": "^1.0.0",
     "http-server": "^0.9.0",
+    "np": "^2.16.0",
+    "npm-run-all": "^4.1.1",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
-    "slate": "^0.14.9",
+    "slate": "^0.22.0",
     "watchify": "^3.7.0"
+  },
+  "scripts": {
+    "build": "babel ./src --out-dir ./lib",
+    "clean": "rm -rf ./lib ./node_modules",
+    "example": "browserify ./example/index.js --outfile ./example/build.js --debug --transform babelify",
+    "gh-pages": "npm run build && npm run example && gh-pages --dist ./example",
+    "lint": "eslint '{example,src}/**/*.js' --ignore-pattern 'build.js'",
+    "prepublish": "yarn run build",
+    "postpublish": "npm run gh-pages",
+    "release": "np",
+    "start": "http-server ./example",
+    "test": "yarn run lint",
+    "watch": "npm-run-all --parallel watch:build watch:example start",
+    "watch:build": "babel ./src --out-dir ./lib --watch",
+    "watch:example": "watchify ./example/index.js --outfile ./example/build.js --debug --transform babelify"
   },
   "keywords": [
     "slate"
