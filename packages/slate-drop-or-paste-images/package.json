@@ -4,20 +4,7 @@
   "version": "0.5.0",
   "license": "MIT",
   "repository": "git://github.com/ianstormtaylor/slate-drop-or-paste-images.git",
-  "main": "./dist/index.js",
-  "scripts": {
-    "clean": "rm -rf ./dist ./node_modules",
-    "dist": "babel ./lib --out-dir ./dist",
-    "example": "browserify ./example/index.js --debug --transform babelify > ./example/build.js",
-    "gh-pages": "npm run dist && npm run example && gh-pages --dist ./example",
-    "lint": "eslint 'lib/**/*.js' 'example/index.js'",
-    "prepublish": "npm run dist",
-    "start": "http-server ./example -p 8888",
-    "test": "npm run lint",
-    "watch": "npm-run-all --parallel --print-label watch:dist watch:example start",
-    "watch:dist": "babel ./lib --out-dir ./dist --watch",
-    "watch:example": "watchify ./example/index.js --debug --transform babelify --outfile ./example/build.js"
-  },
+  "main": "./lib/index.js",
   "dependencies": {
     "data-uri-to-blob": "0.0.4",
     "es6-promise": "^4.0.5",
@@ -43,11 +30,27 @@
     "eslint-plugin-react": "^5.2.2",
     "gh-pages": "^0.11.0",
     "http-server": "^0.9.0",
+    "np": "^2.16.0",
     "npm-run-all": "^2.3.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
-    "slate": "^0.15.8",
+    "slate": "^0.22.0",
     "watchify": "^3.7.0"
+  },
+  "scripts": {
+    "build": "babel ./src --out-dir ./lib",
+    "clean": "rm -rf ./lib ./node_modules",
+    "example": "browserify ./example/index.js --outfile ./example/build.js --debug --transform babelify",
+    "gh-pages": "npm run build && npm run example && gh-pages --dist ./example",
+    "lint": "eslint '{example,src}/**/*.js' --ignore-pattern 'build.js'",
+    "prepublish": "yarn run build",
+    "postpublish": "npm run gh-pages",
+    "release": "np",
+    "start": "http-server ./example",
+    "test": "yarn run lint",
+    "watch": "npm-run-all --parallel watch:build watch:example start",
+    "watch:build": "babel ./src --out-dir ./lib --watch",
+    "watch:example": "watchify ./example/index.js --outfile ./example/build.js --debug --transform babelify"
   },
   "keywords": [
     "slate"

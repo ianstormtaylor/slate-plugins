@@ -7,7 +7,7 @@ import { Editor, Raw } from 'slate'
 
 class Image extends React.Component {
 
-  state = {};
+  state = {}
 
   componentDidMount() {
     const { node } = this.props
@@ -32,13 +32,13 @@ class Image extends React.Component {
 
 }
 
-const schema = {
-  nodes: {
-    image: Image
-  }
-}
-
 class Example extends React.Component {
+
+  schema = {
+    nodes: {
+      image: Image
+    }
+  }
 
   plugins = [
     InsertImages({
@@ -50,22 +50,22 @@ class Example extends React.Component {
         })
       }
     })
-  ];
+  ]
 
   state = {
     state: Raw.deserialize(initialState, { terse: true })
-  };
+  }
 
-  onChange = (state) => {
+  onChange = ({ state }) => {
     this.setState({ state })
   }
 
-  render = () => {
+  render() {
     return (
       <Editor
-        schema={schema}
         onChange={this.onChange}
         plugins={this.plugins}
+        schema={this.schema}
         state={this.state.state}
       />
     )

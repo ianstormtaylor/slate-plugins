@@ -24,20 +24,19 @@ function DropOrPasteImages({
   }
 
   /**
-   * Apply the transform for a given file and update the editor with the result.
+   * Apply the change for a given file and update the editor with the result.
    *
-   * @param {Transform} transform
+   * @param {Change} change
    * @param {Editor} editor
    * @param {Blob} file
    * @return {Promise}
    */
 
-  function asyncApplyTransform(transform, editor, file) {
+  function asyncApplyChange(change, editor, file) {
     return Promise
-      .resolve(applyTransform(transform, file))
+      .resolve(applyTransform(change, file))
       .then(() => {
-        const next = transform.apply()
-        editor.onChange(next)
+        editor.onChange(change)
       })
   }
 
@@ -47,16 +46,16 @@ function DropOrPasteImages({
    *
    * @param {Event} e
    * @param {Object} data
-   * @param {State} state
+   * @param {Change} change
    * @param {Editor} editor
    * @return {State}
    */
 
-  function onInsert(e, data, state, editor) {
+  function onInsert(e, data, change, editor) {
     switch (data.type) {
-      case 'files': return onInsertFiles(e, data, state, editor)
-      case 'html': return onInsertHtml(e, data, state, editor)
-      case 'text': return onInsertText(e, data, state, editor)
+      case 'files': return onInsertFiles(e, data, change, editor)
+      case 'html': return onInsertHtml(e, data, change, editor)
+      case 'text': return onInsertText(e, data, change, editor)
     }
   }
 
@@ -65,12 +64,13 @@ function DropOrPasteImages({
    *
    * @param {Event} e
    * @param {Object} data
-   * @param {State} state
+   * @param {Change} change
    * @param {Editor} editor
-   * @return {State}
+   * @return {Boolean}
    */
 
-  function onInsertFiles(e, data, state, editor) {
+  function onInsertFiles(e, data, change, editor) {
+    const { state } = change
     const { target, files } = data
 
     for (const file of files) {
@@ -79,13 +79,14 @@ function DropOrPasteImages({
         if (!extensions.includes(ext)) continue
       }
 
-      let transform = state.transform()
-      if (target) transform.select(target)
+      if (target) {
+        change.select(target)
+      }
 
-      asyncApplyTransform(transform, editor, file)
+      asyncApplyChange(change, editor, file)
     }
 
-    return state
+    return true
   }
 
   /**
@@ -93,12 +94,13 @@ function DropOrPasteImages({
    *
    * @param {Event} e
    * @param {Object} data
-   * @param {State} state
+   * @param {Change} change
    * @param {Editor} editor
-   * @return {State}
+   * @return {Boolean}
    */
 
-  function onInsertHtml(e, data, state, editor) {
+  function onInsertHtml(e, data, change, editor) {
+    const { state } = change
     const { html, target } = data
     const parser = new DOMParser()
     const doc = parser.parseFromString(html, 'text/html')
@@ -115,12 +117,12 @@ function DropOrPasteImages({
 
     loadImageFile(src, (err, file) => {
       if (err) return
-      let transform = editor.getState().transform()
-      if (target) transform.select(target)
-      asyncApplyTransform(transform, editor, file)
+      let c = editor.getState().change()
+      if (target) c.select(target)
+      asyncApplyChange(c, editor, file)
     })
 
-    return state
+    return true
   }
 
   /**
@@ -128,24 +130,25 @@ function DropOrPasteImages({
    *
    * @param {Event} e
    * @param {Object} data
-   * @param {State} state
+   * @param {Change} change
    * @param {Editor} editor
-   * @return {State}
+   * @return {Boolean}
    */
 
-  function onInsertText(e, data, state, editor) {
+  function onInsertText(e, data, change, editor) {
+    const { state } = change
     const { text, target } = data
     if (!isUrl(text)) return
     if (!isImage(text)) return
 
     loadImageFile(text, (err, file) => {
       if (err) return
-      let transform = editor.getState().transform()
-      if (target) transform.select(target)
-      asyncApplyTransform(transform, editor, file)
+      const c = editor.getState().change()
+      if (target) c.select(target)
+      asyncApplyChange(c, editor, file)
     })
 
-    return state
+    return true
   }
 
   /**
