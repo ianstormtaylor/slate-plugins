@@ -35,6 +35,7 @@
     "gh-pages": "npm run build && npm run example && gh-pages --dist ./example",
     "lint": "eslint '{example,src}/**/*.js' --ignore-pattern 'build.js'",
     "prepublish": "yarn run build",
+    "postpublish": "npm run gh-pages",
     "release": "np",
     "start": "http-server ./example",
     "test": "yarn run lint",
