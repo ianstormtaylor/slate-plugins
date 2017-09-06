@@ -3,14 +3,15 @@
  * A Slate plugin to add soft breaks on return.
  *
  * @param {Object} options
- *   @property {Array} onlyIn (optional)
- *   @property {Array} ignoreIn (optional)
+ *   @property {Array} onlyIn
+ *   @property {Array} ignoreIn
  * @return {Object}
  */
 
 function SoftBreak(options = {}) {
   return {
-    onKeyDown(e, data, state) {
+    onKeyDown(e, data, change) {
+      const { state } = change
       if (data.key != 'enter') return
       if (options.shift && e.shiftKey == false) return
 
@@ -19,10 +20,7 @@ function SoftBreak(options = {}) {
       if (options.onlyIn && !options.onlyIn.includes(type)) return
       if (options.ignoreIn && options.ignoreIn.includes(type)) return
 
-      return state
-        .transform()
-        .insertText('\n')
-        .apply()
+      return change.insertText('\n')
     }
   }
 }
