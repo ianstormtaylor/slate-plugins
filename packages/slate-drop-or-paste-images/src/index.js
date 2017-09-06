@@ -22,7 +22,7 @@ function DropOrPasteImages(options = {}) {
   } = options
 
   if (options.applyTransform && typeof console != 'undefined') {
-    console.log('Deprecation (v0.5.0): The `applyTransform` argument to `slate-drop-or-paste-images` has been renamed to `insertImage` instead.')
+    console.log('Deprecation (v0.6.0): The `applyTransform` argument to `slate-drop-or-paste-images` has been renamed to `insertImage` instead.')
   }
 
   if (!insertImage) {
