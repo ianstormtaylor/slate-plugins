@@ -10,17 +10,23 @@ import loadImageFile from './load-image-file'
  * Insert images on drop or paste.
  *
  * @param {Object} options
- *   @property {Function} applyTransform
+ *   @property {Function} insertImage
  *   @property {Array} extensions (optional)
  * @return {Object} plugin
  */
 
-function DropOrPasteImages({
-  applyTransform,
-  extensions
-}) {
-  if (!applyTransform) {
-    throw new Error('You must supply an `applyTransform` function.')
+function DropOrPasteImages(options = {}) {
+  const {
+    insertImage,
+    extensions,
+  } = options
+
+  if (options.applyTransform && typeof console != 'undefined') {
+    console.log('Deprecation (v0.5.0): The `applyTransform` argument to `slate-drop-or-paste-images` has been renamed to `insertImage` instead.')
+  }
+
+  if (!insertImage) {
+    throw new Error('You must supply an `insertImage` function.')
   }
 
   /**
@@ -34,7 +40,7 @@ function DropOrPasteImages({
 
   function asyncApplyChange(change, editor, file) {
     return Promise
-      .resolve(applyTransform(change, file))
+      .resolve(insertImage(change, file))
       .then(() => {
         editor.onChange(change)
       })
