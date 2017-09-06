@@ -3988,7 +3988,7 @@ slash@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
 
-slate@*:
+slate@^0.22:
   version "0.22.0"
   resolved "https://registry.yarnpkg.com/slate/-/slate-0.22.0.tgz#6dced48fc571689314b5f72b9ce320d5a4a5f65c"
   dependencies:
