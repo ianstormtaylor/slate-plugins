@@ -7,19 +7,21 @@ import { Editor, Raw } from 'slate'
 
 class Example extends React.Component {
 
-  nodes = {
-    code: props => <pre {...props.attributes}><code>{props.children}</code></pre>
+  schema = {
+    nodes: {
+      code: props => <pre {...props.attributes}><code>{props.children}</code></pre>
+    }
   }
 
   plugins = [
     CollapseOnEscape()
-  ];
+  ]
 
   state = {
     state: Raw.deserialize(initialState, { terse: true })
-  };
+  }
 
-  onChange = (state) => {
+  onChange = ({ state }) => {
     this.setState({ state })
   }
 
@@ -28,14 +30,10 @@ class Example extends React.Component {
       <Editor
         onChange={this.onChange}
         plugins={this.plugins}
+        schema={this.schema}
         state={this.state.state}
-        renderNode={this.renderNode}
       />
     )
-  }
-
-  renderNode = (node) => {
-    return this.nodes[node.type]
   }
 
 }
