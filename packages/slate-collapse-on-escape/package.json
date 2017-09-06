@@ -13,7 +13,7 @@
     "prepublish": "yarn run build",
     "release": "np",
     "start": "http-server ./example",
-    "test": "make lint",
+    "test": "yarn run lint",
     "watch": "npm-run-all --parallel watch:build watch:example start",
     "watch:build": "babel ./src --out-dir ./lib --watch",
     "watch:example": "watchify ./example/index.js --outfile ./example/build.js --debug --transform babelify"
