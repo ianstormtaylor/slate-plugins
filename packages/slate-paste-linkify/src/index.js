@@ -36,15 +36,21 @@ function PasteLinkify(options = {}) {
   return {
     onPaste(e, paste, change) {
       const { state } = change
-      if (state.isCollapsed) return
       if (paste.type !== 'text' && paste.type !== 'html') return
       if (!isUrl(paste.text)) return
 
-      if (hasLinks(state)) {
+      const { text } = paste
+
+      if (state.isCollapsed) {
+        const { startOffset } = state
+        change.insertText(text).moveOffsetsTo(startOffset, startOffset + text.length)
+      }
+
+      else if (hasLinks(state)) {
         change.call(unwrapLink)
       }
 
-      change.call(wrapLink, paste.text)
+      change.call(wrapLink, text)
 
       if (options.collapseTo) {
         change[`collapseTo${toPascal(options.collapseTo)}`]()
