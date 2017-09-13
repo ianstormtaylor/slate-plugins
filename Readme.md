@@ -17,6 +17,13 @@ _Note: this is not an "official" set of plugins, just ones that I've happened to
 
 <br/>
 
+### Demo
+
+Check out the [**live demo**](https://ianstormtaylor.github.io/slate-plugins) of each of the plugins!
+
+
+<br/>
+
 ### Contributing!
 
 All contributions are super welcome! Check out the [Contributing instructions](./Contributing.md) for more info!

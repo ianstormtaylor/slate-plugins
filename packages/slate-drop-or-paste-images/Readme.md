@@ -14,6 +14,8 @@ When trying to add support for inserting images, there are many ways that a user
 
 It does not handle dragging and dropping Slate nodes or fragments, which is handled internally by Slate by default. And it does not handle insert images via an image chooser, which you'd want to implement with your own UI components.
 
+[View Demo ⬈](https://ianstormtaylor.github.io/slate-plugins/#/slate-drop-or-paste-images)
+
 ```js
 import InsertImages from 'slate-drop-or-paste-images'
 import { Editor } from 'slate-react'

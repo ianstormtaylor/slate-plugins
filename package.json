@@ -53,7 +53,7 @@
     "build:examples:prod": "NODE_ENV=production browserify --transform babelify ./examples/index.js > ./examples/build.prod.js",
     "build:packages": "lerna run build",
     "clean": "lerna run clean && lerna clean",
-    "gh-pages": "yarn run build && yarn run build:examples && gh-pages --dist ./examples",
+    "gh-pages": "yarn run build:examples && gh-pages --dist ./examples",
     "lint": "eslint packages/*/src packages/*/test examples/*/*.js",
     "open": "open http://localhost:8080/dev.html",
     "release": "yarn run test && yarn run lint && lerna publish && yarn run gh-pages",

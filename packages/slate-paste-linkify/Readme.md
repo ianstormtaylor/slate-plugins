@@ -3,6 +3,8 @@
 
 A Slate plugin that wraps a selection in an inline link element when a URL is pasted from the clipboard.
 
+[View Demo ⬈](https://ianstormtaylor.github.io/slate-plugins/#/slate-paste-linkify)
+
 ```js
 import PasteLinkify from 'slate-paste-linkify'
 import { Editor } from 'slate-react'
