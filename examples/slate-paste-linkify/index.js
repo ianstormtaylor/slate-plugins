@@ -1,9 +1,10 @@
 
-import PasteLinkify from '../lib'
+import PasteLinkify from 'slate-paste-linkify'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import initialState from './state.json'
-import { Editor, Raw } from 'slate'
+import { Editor } from 'slate-react'
+import { State } from 'slate'
 
 class Example extends React.Component {
 
@@ -28,7 +29,7 @@ class Example extends React.Component {
   ]
 
   state = {
-    state: Raw.deserialize(initialState, { terse: true })
+    state: State.fromJSON(initialState)
   }
 
   onChange = ({ state }) => {

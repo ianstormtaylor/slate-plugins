@@ -6,7 +6,11 @@
       "nodes": [
         {
           "kind": "text",
-          "text": "Hitting return here should not be soft."
+          "ranges": [
+            {
+              "text": "Hitting return here should not be soft."
+            }
+          ]
         }
       ]
     },
@@ -16,7 +20,11 @@
       "nodes": [
         {
           "kind": "text",
-          "text": "Hitting return here should be soft!"
+          "ranges": [
+            {
+              "text": "Hitting return here should be soft!"
+            }
+          ]
         }
       ]
     },
@@ -26,7 +34,11 @@
       "nodes": [
         {
           "kind": "text",
-          "text": "Hitting shift+return here should be soft."
+          "ranges": [
+            {
+              "text": "Hitting shift+return here should be soft."
+            }
+          ]
         }
       ]
     }

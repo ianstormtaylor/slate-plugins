@@ -29,8 +29,6 @@ http://recordit.co/
 <!-- 
 The fastest, and most appreciated way to have your issue fixed is to create a pull request with working, tested code and we will help get it merged. Don't be scared to open a pull request that isn't completed and ask for input. We're happy to give direction! Also, researching how other editors handle this issue is super helpful.
 
-Slate is solving a pretty complex problem, and we can't do it without active contributors, so thank you so much for your help!
-
 https://draftjs.org/
 http://prosemirror.net/
 https://quilljs.com/

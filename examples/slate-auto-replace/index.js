@@ -1,24 +1,33 @@
 
-import AutoReplace from '..'
+import AutoReplace from 'slate-auto-replace'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import initialState from './state.json'
-import { Editor, Raw } from 'slate'
+import { Editor } from 'slate-react'
+import { State } from 'slate'
 
 class Example extends React.Component {
 
   schema = {
     nodes: {
-      blockquote: props => <blockquote {...props.attributes}><p>{props.children}</p></blockquote>,
-      hr: props => <hr />,
-      ul: props => <ul {...props.attributes}>{props.children}</ul>,
-      li: props => <li {...props.attributes}>{props.children}</li>,
-      h: props => {
+      blockquote: (props) => {
+        return <blockquote {...props.attributes}><p>{props.children}</p></blockquote>
+      },
+      hr: (props) => {
+        return <hr />
+      },
+      ul: (props) => {
+        return <ul {...props.attributes}>{props.children}</ul>
+      },
+      li: (props) => {
+        return <li {...props.attributes}>{props.children}</li>
+      },
+      h: (props) => {
         const { attributes, children, node } = props
         const level = node.data.get('level')
         const Tag = `h${level}`
         return <Tag {...attributes}>{children}</Tag>
-      }
+      },
     }
   }
 
@@ -63,7 +72,7 @@ class Example extends React.Component {
   ]
 
   state = {
-    state: Raw.deserialize(initialState, { terse: true })
+    state: State.fromJSON(initialState),
   }
 
   onChange = ({ state }) => {

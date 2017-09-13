@@ -9,42 +9,21 @@
     "type-of": "^2.0.1"
   },
   "peerDependencies": {
-    "slate": ">=0.17.0"
+    "slate": ">=0.23.0"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
-    "babel-eslint": "^6.1.2",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.11.1",
-    "babel-preset-stage-0": "^6.5.0",
-    "babelify": "^7.3.0",
     "browserify": "^13.0.1",
-    "eslint": "^3.0.1",
-    "eslint-plugin-import": "^1.10.2",
-    "eslint-plugin-react": "^5.2.2",
-    "gh-pages": "^0.11.0",
-    "http-server": "^0.9.0",
-    "np": "^2.16.0",
-    "npm-run-all": "^2.3.0",
-    "react": "^15.2.1",
-    "react-dom": "^15.2.1",
-    "slate": "^0.22.0",
-    "watchify": "^3.7.0"
+    "slate": "^0.23.0",
+    "uglify-js": "^2.7.0"
   },
   "scripts": {
-    "build": "babel ./src --out-dir ./lib",
-    "clean": "rm -rf ./lib ./node_modules",
-    "example": "browserify ./example/index.js --outfile ./example/build.js --debug --transform babelify",
-    "gh-pages": "npm run build && npm run example && gh-pages --dist ./example",
-    "lint": "eslint '{example,src}/**/*.js' --ignore-pattern 'build.js'",
-    "prepublish": "yarn run build",
-    "postpublish": "npm run gh-pages",
-    "release": "np",
-    "start": "http-server ./example",
-    "test": "yarn run lint",
-    "watch": "npm-run-all --parallel watch:build watch:example start",
-    "watch:build": "babel ./src --out-dir ./lib --watch",
-    "watch:example": "watchify ./example/index.js --outfile ./example/build.js --debug --transform babelify"
+    "build": "babel --out-dir ./lib ./src",
+    "build:max": "mkdir -p ./dist && NODE_ENV=production browserify ./src/index.js --transform babelify --transform envify --transform [ browserify-global-shim --global ] --standalone SlateAutoReplace > ./dist/slate-auto-replace.js",
+    "build:min": "mkdir -p ./dist && NODE_ENV=production browserify ./src/index.js --transform babelify --transform envify --transform [ browserify-global-shim --global ] --transform uglifyify --standalone SlateAutoReplace | uglifyjs > ./dist/slate-auto-replace.min.js",
+    "clean": "rm -rf ./dist ./lib ./node_modules",
+    "prepublish": "yarn run build:max && yarn run build:min",
+    "watch": "babel --watch --out-dir ./lib ./src --source-maps inline"
   },
   "keywords": [
     "slate"

@@ -1,9 +1,10 @@
 
-import SoftBreak from '..'
+import CollapseOnEscape from 'slate-collapse-on-escape'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import initialState from './state.json'
-import { Editor, Raw } from 'slate'
+import { Editor } from 'slate-react'
+import { State } from 'slate'
 
 class Example extends React.Component {
 
@@ -14,17 +15,11 @@ class Example extends React.Component {
   }
 
   plugins = [
-    SoftBreak({
-      onlyIn: ['code'],
-    }),
-    SoftBreak({
-      ignoreIn: ['code'],
-      shift: true,
-    })
+    CollapseOnEscape()
   ]
 
   state = {
-    state: Raw.deserialize(initialState, { terse: true })
+    state: State.fromJSON(initialState)
   }
 
   onChange = ({ state }) => {
@@ -36,8 +31,8 @@ class Example extends React.Component {
       <Editor
         onChange={this.onChange}
         plugins={this.plugins}
-        state={this.state.state}
         schema={this.schema}
+        state={this.state.state}
       />
     )
   }
