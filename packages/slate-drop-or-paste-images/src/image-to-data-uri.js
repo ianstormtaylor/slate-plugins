@@ -3,7 +3,7 @@
  * Convert an <img> source `url` to a data URI and `callback(err, uri)`.
  *
  * @param {String} url
- * @param {Function} callback(err, uri)
+ * @param {Function} callback
  */
 
 function srcToDataUri(url, callback) {
@@ -33,6 +33,8 @@ function srcToDataUri(url, callback) {
 
 /**
  * Export.
+ *
+ * @type {Function}
  */
 
 export default srcToDataUri
