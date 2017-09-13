@@ -1,5 +1,5 @@
 
-import dataUriToBlob from 'data-uri-to-blob'
+import dataUriToBlob from './data-uri-to-blob'
 import isDataUri from 'is-data-uri'
 import imageToDataUri from './image-to-data-uri'
 
