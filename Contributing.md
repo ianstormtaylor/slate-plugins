@@ -15,13 +15,13 @@ If you run into any weird behavior while using one of these plugins, feel free t
 
 Any issue you open must include:
 
-- A [JSFiddle](https://jsfiddle.net/2zokvrvt/7/) that reproduces the bug with a minimal setup.
+- A [JSFiddle](https://jsfiddle.net/wphujnwf/7/) that reproduces the bug with a minimal setup.
 - A GIF showing the issue in action. (Using something like [RecordIt](http://recordit.co/).)
 - A clear explanation of what the issue is.
 
-Here's a [JSFiddle template for Slate](https://jsfiddle.net/2zokvrvt/7/) to get you started:
+Here's a [JSFiddle template with the plugins](https://jsfiddle.net/wphujnwf/7/) to get you started:
 
-[![](./docs/images/jsfiddle.png)](https://jsfiddle.net/2zokvrvt/7/)
+[![](./docs/images/jsfiddle.png)](https://jsfiddle.net/wphujnwf/7/)
 
 
 ## Running Examples
