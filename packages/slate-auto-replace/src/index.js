@@ -146,17 +146,16 @@ function AutoReplace(opts = {}) {
 
   function getOffsets(matches, start) {
     const { before, after } = matches
-    let end = start
-    let offsets = []
+    const offsets = []
     let totalRemoved = 0
 
     if (before) {
-      let match = before[0]
+      const match = before[0]
       let startOffset = 0
       let matchIndex = 0
 
       before.slice(1, before.length).forEach((current) => {
-        if(current === undefined) return
+        if (current === undefined) return
 
         matchIndex = match.indexOf(current, matchIndex)
         startOffset = start - totalRemoved + matchIndex - match.length
@@ -172,13 +171,13 @@ function AutoReplace(opts = {}) {
       })
     }
 
-    if(after) {
-      let match = after[0]
+    if (after) {
+      const match = after[0]
       let startOffset = 0
       let matchIndex = 0
 
       after.slice(1, after.length).forEach((current) => {
-        if(current === undefined) return
+        if (current === undefined) return
 
         matchIndex = match.indexOf(current, matchIndex)
         startOffset = start - totalRemoved + matchIndex

@@ -12,7 +12,7 @@ This repository contains a few of [my](https://github.com/ianstormtaylor) Slate 
 - [`slate-paste-linkify`](./packages/slate-paste-linkify)
 - [`slate-soft-break`](./packages/slate-soft-break)
 
-_Note: this is not an "official" set of plugins, just ones that I've happened to need and have made. If you have an idea for a plugin, there's no need to pull request it here, you can keep them in your own repos._
+_Note: this is not an "official" set of plugins, just ones that I've happened to need and have made. If you have an idea for a plugin, don't pull request it here, you should keep them in your own repos. (Feel free to use this monorepo as a template for your own!)_
 
 
 <br/>

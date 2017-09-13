@@ -2,6 +2,7 @@
 import Promise from 'es6-promise'
 import isImage from 'is-image'
 import isUrl from 'is-url'
+import logger from 'slate-dev-logger'
 import mime from 'mime-types'
 import { extname } from 'path'
 import loadImageFile from './load-image-file'
@@ -16,13 +17,14 @@ import loadImageFile from './load-image-file'
  */
 
 function DropOrPasteImages(options = {}) {
-  const {
+  let {
     insertImage,
     extensions,
   } = options
 
-  if (options.applyTransform && typeof console != 'undefined') {
-    console.log('Deprecation (v0.6.0): The `applyTransform` argument to `slate-drop-or-paste-images` has been renamed to `insertImage` instead.')
+  if (options.applyTransform) {
+    logger.deprecate('0.6.0', 'The `applyTransform` argument to `slate-drop-or-paste-images` has been renamed to `insertImage` instead.')
+    insertImage = options.applyTransform
   }
 
   if (!insertImage) {
@@ -76,7 +78,6 @@ function DropOrPasteImages(options = {}) {
    */
 
   function onInsertFiles(e, data, change, editor) {
-    const { state } = change
     const { target, files } = data
 
     for (const file of files) {
@@ -106,7 +107,6 @@ function DropOrPasteImages(options = {}) {
    */
 
   function onInsertHtml(e, data, change, editor) {
-    const { state } = change
     const { html, target } = data
     const parser = new DOMParser()
     const doc = parser.parseFromString(html, 'text/html')
@@ -123,7 +123,7 @@ function DropOrPasteImages(options = {}) {
 
     loadImageFile(src, (err, file) => {
       if (err) return
-      let c = editor.getState().change()
+      const c = editor.getState().change()
       if (target) c.select(target)
       asyncApplyChange(c, editor, file)
     })
@@ -142,7 +142,6 @@ function DropOrPasteImages(options = {}) {
    */
 
   function onInsertText(e, data, change, editor) {
-    const { state } = change
     const { text, target } = data
     if (!isUrl(text)) return
     if (!isImage(text)) return
