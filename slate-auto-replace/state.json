@@ -1,0 +1,76 @@
+{
+  "document": {
+    "nodes": [
+      {
+        "kind": "block",
+        "type": "paragraph",
+        "nodes": [
+          {
+            "kind": "text",
+            "ranges": [
+              {
+                "text": "Try typing '(c)' in this block."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "block",
+        "type": "paragraph",
+        "nodes": [
+          {
+            "kind": "text",
+            "ranges": [
+              {
+                "text": "Try typing '> ' at the start of this block."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "block",
+        "type": "paragraph",
+        "nodes": [
+          {
+            "kind": "text",
+            "ranges": [
+              {
+                "text": "Try typing '### ' at the start of this block."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "block",
+        "type": "paragraph",
+        "nodes": [
+          {
+            "kind": "text",
+            "ranges": [
+              {
+                "text": "Try typing '- ' at the start of this block."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "block",
+        "type": "paragraph",
+        "nodes": [
+          {
+            "kind": "text",
+            "ranges": [
+              {
+                "text": "Try typing '---<enter>' in a new block."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "document": {
+    "nodes": [
+      {
+        "kind": "block",
+        "type": "paragraph",
+        "nodes": [
+          {
+            "kind": "text",
+            "ranges": [
+              {
+                "text": "Hitting return here should not be soft."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "block",
+        "type": "code",
+        "nodes": [
+          {
+            "kind": "text",
+            "ranges": [
+              {
+                "text": "Hitting return here should be soft!"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "kind": "block",
+        "type": "paragraph",
+        "nodes": [
+          {
+            "kind": "text",
+            "ranges": [
+              {
+                "text": "Hitting shift+return here should be soft."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
