@@ -65076,15 +65076,21 @@ function PasteLinkify() {
     onPaste: function onPaste(e, paste, change) {
       var state = change.state;
 
-      if (state.isCollapsed) return;
       if (paste.type !== 'text' && paste.type !== 'html') return;
       if (!(0, _isUrl2.default)(paste.text)) return;
 
-      if (hasLinks(state)) {
+      var text = paste.text;
+
+
+      if (state.isCollapsed) {
+        var startOffset = state.startOffset;
+
+        change.insertText(text).moveOffsetsTo(startOffset, startOffset + text.length);
+      } else if (hasLinks(state)) {
         change.call(unwrapLink);
       }
 
-      change.call(wrapLink, paste.text);
+      change.call(wrapLink, text);
 
       if (options.collapseTo) {
         change['collapseTo' + (0, _toPascalCase2.default)(options.collapseTo)]();
@@ -65102,6 +65108,7 @@ function PasteLinkify() {
  */
 
 exports.default = PasteLinkify;
+
 },{"is-url":112,"to-pascal-case":522}],536:[function(require,module,exports){
 'use strict';
 
