@@ -57536,7 +57536,7 @@ Object.defineProperty(exports, "__esModule", {
  * Convert an <img> source `url` to a data URI and `callback(err, uri)`.
  *
  * @param {String} url
- * @param {Function} callback(err, uri)
+ * @param {Function} callback
  */
 
 function srcToDataUri(url, callback) {
@@ -57566,9 +57566,12 @@ function srcToDataUri(url, callback) {
 
 /**
  * Export.
+ *
+ * @type {Function}
  */
 
 exports.default = srcToDataUri;
+
 },{}],530:[function(require,module,exports){
 'use strict';
 
