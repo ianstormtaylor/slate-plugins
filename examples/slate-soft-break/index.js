@@ -1,16 +1,29 @@
 
 import SoftBreak from 'slate-soft-break'
 import React from 'react'
-import ReactDOM from 'react-dom'
 import initialState from './state.json'
 import { Editor } from 'slate-react'
 import { State } from 'slate'
+
+/**
+ * Example.
+ *
+ * @type {Component}
+ */
 
 class Example extends React.Component {
 
   schema = {
     nodes: {
-      code: props => <pre {...props.attributes}><code>{props.children}</code></pre>
+      paragraph: (props) => {
+        const { attributes, children } = props
+        const style = { marginTop: '1em', border: '2px solid #eee' }
+        return <p {...attributes} style={style}>{children}</p>
+      },
+      code: (props) => {
+        const { attributes, children } = props
+        return <pre {...attributes}><code>{children}</code></pre>
+      },
     }
   }
 
@@ -45,6 +58,10 @@ class Example extends React.Component {
 
 }
 
-const example = <Example />
-const root = document.body.querySelector('main')
-ReactDOM.render(example, root)
+/**
+ * Export.
+ *
+ * @type {Component}
+ */
+
+export default Example

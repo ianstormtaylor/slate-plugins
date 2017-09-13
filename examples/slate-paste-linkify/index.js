@@ -1,10 +1,15 @@
 
 import PasteLinkify from 'slate-paste-linkify'
 import React from 'react'
-import ReactDOM from 'react-dom'
 import initialState from './state.json'
 import { Editor } from 'slate-react'
 import { State } from 'slate'
+
+/**
+ * Example.
+ *
+ * @type {Component}
+ */
 
 class Example extends React.Component {
 
@@ -49,6 +54,10 @@ class Example extends React.Component {
 
 }
 
-const example = <Example />
-const root = document.body.querySelector('main')
-ReactDOM.render(example, root)
+/**
+ * Export.
+ *
+ * @type {Component}
+ */
+
+export default Example

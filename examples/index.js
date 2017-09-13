@@ -52,7 +52,7 @@ class App extends React.Component {
             {EXAMPLES.map(([ name, Component, path ]) => (
               <Route key={path} path={path} component={Component} />
             ))}
-            <Redirect from="/" to="/rich-text" />
+            <Redirect from="/" to={EXAMPLES[0][2]} />
           </Switch>
         </div>
       </div>
