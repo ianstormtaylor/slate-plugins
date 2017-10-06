@@ -57248,8 +57248,11 @@ function AutoReplace() {
 
     if (state.isExpanded) return;
 
-    var block = state.startBlock;
-    var type = block.type;
+    var startBlock = state.startBlock;
+
+    if (!startBlock) return;
+
+    var type = startBlock.type;
     if (onlyIn && !onlyIn(type)) return;
     if (ignoreIn && ignoreIn(type)) return;
 
@@ -57546,7 +57549,6 @@ function hasArrayBufferView() {
  */
 
 exports.default = dataUriToBlob;
-
 },{}],529:[function(require,module,exports){
 'use strict';
 
@@ -57593,7 +57595,6 @@ function srcToDataUri(url, callback) {
  */
 
 exports.default = srcToDataUri;
-
 },{}],530:[function(require,module,exports){
 'use strict';
 
@@ -57872,7 +57873,6 @@ function loadImageFile(url, callback) {
  */
 
 exports.default = loadImageFile;
-
 },{"./data-uri-to-blob":528,"./image-to-data-uri":529,"is-data-uri":106}],532:[function(require,module,exports){
 module.exports={
   "application/1d-interleaved-parityfec": {
@@ -65134,7 +65134,6 @@ function PasteLinkify() {
  */
 
 exports.default = PasteLinkify;
-
 },{"is-url":111,"to-pascal-case":521}],536:[function(require,module,exports){
 'use strict';
 
