@@ -1722,10 +1722,6 @@ data-uri-regex@^0.1.2:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/data-uri-regex/-/data-uri-regex-0.1.4.tgz#1e1db6c8397eca8a48ecdb55ad1b927ec0bbac2e"
 
-data-uri-to-blob@0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/data-uri-to-blob/-/data-uri-to-blob-0.0.4.tgz#087a7bff42f41a6cc0b2e2fb7312a7c29904fbaa"
-
 date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"

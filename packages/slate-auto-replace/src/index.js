@@ -72,8 +72,10 @@ function AutoReplace(opts = {}) {
     const { state } = change
     if (state.isExpanded) return
 
-    const block = state.startBlock
-    const type = block.type
+    const { startBlock } = state
+    if (!startBlock) return
+
+    const type = startBlock.type
     if (onlyIn && !onlyIn(type)) return
     if (ignoreIn && ignoreIn(type)) return
 

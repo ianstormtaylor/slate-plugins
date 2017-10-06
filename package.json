@@ -56,7 +56,7 @@
     "gh-pages": "yarn run build:examples && gh-pages --dist ./examples",
     "lint": "eslint packages/*/src packages/*/test examples/*/*.js",
     "open": "open http://localhost:8080/dev.html",
-    "release": "yarn run test && yarn run lint && lerna publish && yarn run gh-pages",
+    "release": "yarn run build && yarn run test && yarn run lint && lerna publish && yarn run gh-pages",
     "start": "http-server ./examples",
     "updated": "lerna updated",
     "test": "mocha --compilers js:babel-core/register ./packages/*/test/index.js",
