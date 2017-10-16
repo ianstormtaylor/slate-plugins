@@ -7,6 +7,11 @@ This document maintains a list of changes to the `slate-collapse-on-escape` pack
 ---
 
 
+### `0.7.0` — October 16, 2017
+
+- Update for `slate-react@0.5.0`.
+- Change all triggers to be `onKeyDown` instead of `onBeforeInput`.
+
 ### `0.6.0` — September 6, 2017
 
 - Update for `slate@0.22.0`.
