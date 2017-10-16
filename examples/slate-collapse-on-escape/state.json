@@ -7,7 +7,7 @@
         "nodes": [
           {
             "kind": "text",
-            "ranges": [
+            "leaves": [
               {
                 "text": "Try selecting some text and then hitting escape."
               }

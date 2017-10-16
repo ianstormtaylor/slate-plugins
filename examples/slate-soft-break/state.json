@@ -7,7 +7,7 @@
         "nodes": [
           {
             "kind": "text",
-            "ranges": [
+            "leaves": [
               {
                 "text": "Hitting return here should not be soft."
               }
@@ -21,7 +21,7 @@
         "nodes": [
           {
             "kind": "text",
-            "ranges": [
+            "leaves": [
               {
                 "text": "Hitting return here should be soft!"
               }
@@ -35,7 +35,7 @@
         "nodes": [
           {
             "kind": "text",
-            "ranges": [
+            "leaves": [
               {
                 "text": "Hitting shift+return here should be soft."
               }

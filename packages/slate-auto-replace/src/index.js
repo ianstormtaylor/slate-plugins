@@ -1,4 +1,5 @@
 
+import isHotkey from 'is-hotkey'
 import typeOf from 'type-of'
 
 /**
@@ -22,22 +23,6 @@ function AutoReplace(opts = {}) {
   if (!trigger) throw new Error('You must provide a `trigger` option.')
 
   /**
-   * On before input.
-   *
-   * @param {Event} e
-   * @param {Object} data
-   * @param {Change} change
-   * @param {Editor} editor
-   * @return {State}
-   */
-
-  function onBeforeInput(e, data, change, editor) {
-    if (trigger(e, data)) {
-      return replace(e, data, change, editor)
-    }
-  }
-
-  /**
    * On key down.
    *
    * @param {Event} e
@@ -48,12 +33,9 @@ function AutoReplace(opts = {}) {
    */
 
   function onKeyDown(e, data, change, editor) {
-    // Don't waste cycles checking regexs or characters, since they should be
-    // handled in the `onBeforeInput` handler instead.
-    if (typeOf(opts.trigger) == 'regexp') return
-    if (typeOf(opts.trigger) == 'string' && opts.trigger.length == 1) return
-
-    if (trigger(e, data, { key: true })) {
+    console.log('EVENT', e, e.key, e.data)
+    if (trigger(e)) {
+      console.log('TRIGGERS!')
       return replace(e, data, change, editor)
     }
   }
@@ -204,10 +186,7 @@ function AutoReplace(opts = {}) {
    * @type {Object}
    */
 
-  return {
-    onBeforeInput,
-    onKeyDown,
-  }
+  return { onKeyDown }
 }
 
 /**
@@ -222,22 +201,16 @@ function normalizeTrigger(trigger) {
     case 'function':
       return trigger
     case 'regexp':
-      return (e, data) => {
-        return !!(e.data && e.data.match(trigger))
-      }
+      return e => !!(e.key && e.key.match(trigger))
     case 'string':
-      return (e, data, opts = {}) => {
-        return opts.key
-          ? data.key == trigger
-          : e.data == trigger
-      }
+      return isHotkey(trigger)
   }
 }
 
 /**
  * Normalize a node matching plugin option.
  *
- * @param {Function || Array || String} matchIn
+ * @param {Function|Array|String} matchIn
  * @return {Function}
  */
 

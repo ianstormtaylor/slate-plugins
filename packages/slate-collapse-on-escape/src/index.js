@@ -13,7 +13,7 @@ function CollapseOnEscape(options = {}) {
   return {
     onKeyDown(e, data, change) {
       const { state } = change
-      if (data.key != 'esc') return
+      if (e.key != 'Escape') return
       if (state.isCollapsed) return
       const edge = toPascal(options.toEdge || 'start')
       return change[`collapseTo${edge}`]()

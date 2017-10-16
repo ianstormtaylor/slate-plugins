@@ -34,12 +34,12 @@ function PasteLinkify(options = {}) {
   }
 
   return {
-    onPaste(e, paste, change) {
+    onPaste(e, data, change) {
       const { state } = change
-      if (paste.type !== 'text' && paste.type !== 'html') return
-      if (!isUrl(paste.text)) return
+      if (data.type !== 'text' && data.type !== 'html') return
+      if (!isUrl(data.text)) return
 
-      const { text } = paste
+      const { text } = data
 
       if (state.isCollapsed) {
         const { startOffset } = state

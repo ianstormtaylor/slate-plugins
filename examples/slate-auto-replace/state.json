@@ -7,7 +7,7 @@
         "nodes": [
           {
             "kind": "text",
-            "ranges": [
+            "leaves": [
               {
                 "text": "Try typing '(c)' in this block."
               }
@@ -21,7 +21,7 @@
         "nodes": [
           {
             "kind": "text",
-            "ranges": [
+            "leaves": [
               {
                 "text": "Try typing '> ' at the start of this block."
               }
@@ -35,7 +35,7 @@
         "nodes": [
           {
             "kind": "text",
-            "ranges": [
+            "leaves": [
               {
                 "text": "Try typing '### ' at the start of this block."
               }
@@ -49,7 +49,7 @@
         "nodes": [
           {
             "kind": "text",
-            "ranges": [
+            "leaves": [
               {
                 "text": "Try typing '- ' at the start of this block."
               }
@@ -63,7 +63,7 @@
         "nodes": [
           {
             "kind": "text",
-            "ranges": [
+            "leaves": [
               {
                 "text": "Try typing '---<enter>' in a new block."
               }

@@ -12,7 +12,7 @@ function SoftBreak(options = {}) {
   return {
     onKeyDown(e, data, change) {
       const { state } = change
-      if (data.key != 'enter') return
+      if (e.key != 'Enter') return
       if (options.shift && e.shiftKey == false) return
 
       const { startBlock } = state
