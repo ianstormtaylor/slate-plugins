@@ -33,9 +33,7 @@ function AutoReplace(opts = {}) {
    */
 
   function onKeyDown(e, data, change, editor) {
-    console.log('EVENT', e, e.key, e.data)
     if (trigger(e)) {
-      console.log('TRIGGERS!')
       return replace(e, data, change, editor)
     }
   }
