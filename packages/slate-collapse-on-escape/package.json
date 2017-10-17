@@ -1,7 +1,7 @@
 {
   "name": "slate-collapse-on-escape",
   "description": "A Slate plugin that simply collapses the selection on escape.",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "license": "MIT",
   "repository": "git://github.com/ianstormtaylor/slate-collapse-on-escape.git",
   "main": "./lib/index.js",
