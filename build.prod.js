@@ -58511,7 +58511,7 @@ function DropOrPasteImages() {
    */
 
   function onInsert(event, change, editor) {
-    var transfer = (0, _slateReact.getEventTranfser)(event);
+    var transfer = (0, _slateReact.getEventTransfer)(event);
     switch (transfer.type) {
       case 'files':
         return onInsertFiles(event, change, editor, transfer);
