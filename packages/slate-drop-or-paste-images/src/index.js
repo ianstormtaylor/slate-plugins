@@ -6,7 +6,7 @@ import logger from 'slate-dev-logger'
 import mime from 'mime-types'
 import loadImageFile from './load-image-file'
 import { extname } from 'path'
-import { getEventTranfser } from 'slate-react'
+import { getEventTransfer } from 'slate-react'
 
 /**
  * Insert images on drop or paste.
@@ -60,7 +60,7 @@ function DropOrPasteImages(options = {}) {
    */
 
   function onInsert(event, change, editor) {
-    const transfer = getEventTranfser(event)
+    const transfer = getEventTransfer(event)
     switch (transfer.type) {
       case 'files': return onInsertFiles(event, change, editor, transfer)
       case 'html': return onInsertHtml(event, change, editor, transfer)
