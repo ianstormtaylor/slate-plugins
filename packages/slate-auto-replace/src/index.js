@@ -25,30 +25,28 @@ function AutoReplace(opts = {}) {
   /**
    * On key down.
    *
-   * @param {Event} e
-   * @param {Object} data
+   * @param {Event} event
    * @param {Change} change
    * @param {Editor} editor
    * @return {State}
    */
 
-  function onKeyDown(e, data, change, editor) {
-    if (trigger(e)) {
-      return replace(e, data, change, editor)
+  function onKeyDown(event, change, editor) {
+    if (trigger(event)) {
+      return replace(event, change, editor)
     }
   }
 
   /**
    * Replace a block's properties.
    *
-   * @param {Event} e
-   * @param {Object} data
+   * @param {Event} event
    * @param {Change} change
    * @param {Editor} editor
    * @return {State}
    */
 
-  function replace(e, data, change, editor) {
+  function replace(event, change, editor) {
     const { state } = change
     if (state.isExpanded) return
 
@@ -62,7 +60,7 @@ function AutoReplace(opts = {}) {
     const matches = getMatches(state)
     if (!matches) return
 
-    e.preventDefault()
+    event.preventDefault()
 
     let startOffset = state.startOffset
     let totalRemoved = 0
@@ -78,7 +76,7 @@ function AutoReplace(opts = {}) {
     startOffset -= totalRemoved
     change.moveOffsetsTo(startOffset, startOffset)
 
-    return change.call(transform, e, data, matches, editor)
+    return change.call(transform, event, matches, editor)
   }
 
   /**
@@ -199,7 +197,7 @@ function normalizeTrigger(trigger) {
     case 'function':
       return trigger
     case 'regexp':
-      return e => !!(e.key && e.key.match(trigger))
+      return event => !!(event.key && event.key.match(trigger))
     case 'string':
       return isHotkey(trigger)
   }

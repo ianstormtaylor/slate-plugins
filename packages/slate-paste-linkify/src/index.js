@@ -1,6 +1,7 @@
 
 import isUrl from 'is-url'
 import toPascal from 'to-pascal-case'
+import { getEventTransfer } from 'slate-react'
 
 /**
  * A Slate plugin to add soft breaks on return.
@@ -34,12 +35,12 @@ function PasteLinkify(options = {}) {
   }
 
   return {
-    onPaste(e, data, change) {
+    onPaste(event, change) {
+      const transfer = getEventTransfer(event)
       const { state } = change
-      if (data.type !== 'text' && data.type !== 'html') return
-      if (!isUrl(data.text)) return
-
-      const { text } = data
+      const { text } = transfer
+      if (transfer.type !== 'text' && transfer.type !== 'html') return
+      if (!isUrl(text)) return
 
       if (state.isCollapsed) {
         const { startOffset } = state

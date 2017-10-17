@@ -4,8 +4,9 @@ import isImage from 'is-image'
 import isUrl from 'is-url'
 import logger from 'slate-dev-logger'
 import mime from 'mime-types'
-import { extname } from 'path'
 import loadImageFile from './load-image-file'
+import { extname } from 'path'
+import { getEventTranfser } from 'slate-react'
 
 /**
  * Insert images on drop or paste.
@@ -52,33 +53,33 @@ function DropOrPasteImages(options = {}) {
   /**
    * On drop or paste.
    *
-   * @param {Event} e
-   * @param {Object} data
+   * @param {Event} event
    * @param {Change} change
    * @param {Editor} editor
    * @return {State}
    */
 
-  function onInsert(e, data, change, editor) {
-    switch (data.type) {
-      case 'files': return onInsertFiles(e, data, change, editor)
-      case 'html': return onInsertHtml(e, data, change, editor)
-      case 'text': return onInsertText(e, data, change, editor)
+  function onInsert(event, change, editor) {
+    const transfer = getEventTranfser(event)
+    switch (transfer.type) {
+      case 'files': return onInsertFiles(event, change, editor, transfer)
+      case 'html': return onInsertHtml(event, change, editor, transfer)
+      case 'text': return onInsertText(event, change, editor, transfer)
     }
   }
 
   /**
    * On drop or paste files.
    *
-   * @param {Event} e
-   * @param {Object} data
+   * @param {Event} event
    * @param {Change} change
    * @param {Editor} editor
+   * @param {Object} transfer
    * @return {Boolean}
    */
 
-  function onInsertFiles(e, data, change, editor) {
-    const { target, files } = data
+  function onInsertFiles(event, change, editor, transfer) {
+    const { target, files } = transfer
 
     for (const file of files) {
       if (extensions) {
@@ -99,15 +100,15 @@ function DropOrPasteImages(options = {}) {
   /**
    * On drop or paste html.
    *
-   * @param {Event} e
-   * @param {Object} data
+   * @param {Event} event
    * @param {Change} change
    * @param {Editor} editor
+   * @param {Object} transfer
    * @return {Boolean}
    */
 
-  function onInsertHtml(e, data, change, editor) {
-    const { html, target } = data
+  function onInsertHtml(event, change, editor, transfer) {
+    const { html, target } = transfer
     const parser = new DOMParser()
     const doc = parser.parseFromString(html, 'text/html')
     const body = doc.body
@@ -134,15 +135,15 @@ function DropOrPasteImages(options = {}) {
   /**
    * On drop or paste text.
    *
-   * @param {Event} e
-   * @param {Object} data
+   * @param {Event} event
    * @param {Change} change
    * @param {Editor} editor
+   * @param {Object} transfer
    * @return {Boolean}
    */
 
-  function onInsertText(e, data, change, editor) {
-    const { text, target } = data
+  function onInsertText(event, change, editor, transfer) {
+    const { text, target } = transfer
     if (!isUrl(text)) return
     if (!isImage(text)) return
 
