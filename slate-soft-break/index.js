@@ -1,9 +1,9 @@
 
 import SoftBreak from 'slate-soft-break'
 import React from 'react'
-import initialState from './state.json'
+import initialValue from './value.json'
 import { Editor } from 'slate-react'
-import { State } from 'slate'
+import { Value } from 'slate'
 
 /**
  * Example.
@@ -12,20 +12,6 @@ import { State } from 'slate'
  */
 
 class Example extends React.Component {
-
-  schema = {
-    nodes: {
-      paragraph: (props) => {
-        const { attributes, children } = props
-        const style = { marginTop: '1em', border: '2px solid #eee' }
-        return <p {...attributes} style={style}>{children}</p>
-      },
-      code: (props) => {
-        const { attributes, children } = props
-        return <pre {...attributes}><code>{children}</code></pre>
-      },
-    }
-  }
 
   plugins = [
     SoftBreak({
@@ -38,22 +24,33 @@ class Example extends React.Component {
   ]
 
   state = {
-    state: State.fromJSON(initialState)
+    value: Value.fromJSON(initialValue)
   }
 
-  onChange = ({ state }) => {
-    this.setState({ state })
+  onChange = ({ value }) => {
+    this.setState({ value })
   }
 
   render = () => {
     return (
       <Editor
-        onChange={this.onChange}
+        value={this.state.value}
         plugins={this.plugins}
-        state={this.state.state}
-        schema={this.schema}
+        onChange={this.onChange}
+        renderNode={this.renderNode}
       />
     )
+  }
+
+  renderNode = (props) => {
+    const { node, attributes, children } = props
+    switch (node.type) {
+      case 'paragraph':
+        const style = { marginTop: '1em', border: '2px solid #eee' }
+        return <p {...attributes} style={style}>{children}</p>
+      case 'code':
+        return <pre {...attributes}><code>{children}</code></pre>
+    }
   }
 
 }
