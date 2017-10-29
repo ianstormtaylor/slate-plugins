@@ -1,9 +1,9 @@
 
 import AutoReplace from 'slate-auto-replace'
 import React from 'react'
-import initialState from './state.json'
+import initialValue from './value.json'
 import { Editor } from 'slate-react'
-import { State } from 'slate'
+import { Value } from 'slate'
 
 /**
  * Example.
@@ -12,29 +12,6 @@ import { State } from 'slate'
  */
 
 class Example extends React.Component {
-
-  schema = {
-    nodes: {
-      blockquote: (props) => {
-        return <blockquote {...props.attributes}><p>{props.children}</p></blockquote>
-      },
-      hr: (props) => {
-        return <hr />
-      },
-      ul: (props) => {
-        return <ul {...props.attributes}>{props.children}</ul>
-      },
-      li: (props) => {
-        return <li {...props.attributes}>{props.children}</li>
-      },
-      h: (props) => {
-        const { attributes, children, node } = props
-        const level = node.data.get('level')
-        const Tag = `h${level}`
-        return <Tag {...attributes}>{children}</Tag>
-      },
-    }
-  }
 
   plugins = [
     AutoReplace({
@@ -55,7 +32,7 @@ class Example extends React.Component {
     AutoReplace({
       trigger: 'space',
       before: /^(#{1,6})$/,
-      transform: (transform, e, data, matches) => {
+      transform: (transform, event, matches) => {
         const [ hashes ] = matches.before
         const level = hashes.length
         return transform.setBlock({
@@ -77,22 +54,40 @@ class Example extends React.Component {
   ]
 
   state = {
-    state: State.fromJSON(initialState),
+    value: Value.fromJSON(initialValue),
   }
 
-  onChange = ({ state }) => {
-    this.setState({ state })
+  onChange = ({ value }) => {
+    this.setState({ value })
   }
 
   render = () => {
     return (
       <Editor
-        onChange={this.onChange}
+        value={this.state.value}
         plugins={this.plugins}
-        state={this.state.state}
-        schema={this.schema}
+        onChange={this.onChange}
+        renderNode={this.renderNode}
       />
     )
+  }
+
+  renderNode = (props) => {
+    const { node, attributes, children } = props
+    switch (node.type) {
+      case 'blockquote':
+        return <blockquote {...attributes}><p>{children}</p></blockquote>
+      case 'hr':
+        return <hr />
+      case 'ul':
+        return <ul {...attributes}>{children}</ul>
+      case 'li':
+        return <li {...attributes}>{children}</li>
+      case 'h':
+        const level = node.data.get('level')
+        const Tag = `h${level}`
+        return <Tag {...attributes}>{children}</Tag>
+    }
   }
 
 }

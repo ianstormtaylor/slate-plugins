@@ -1,9 +1,9 @@
 
 import CollapseOnEscape from 'slate-collapse-on-escape'
 import React from 'react'
-import initialState from './state.json'
+import initialValue from './value.json'
 import { Editor } from 'slate-react'
-import { State } from 'slate'
+import { Value } from 'slate'
 
 /**
  * Example.
@@ -13,33 +13,35 @@ import { State } from 'slate'
 
 class Example extends React.Component {
 
-  schema = {
-    nodes: {
-      code: props => <pre {...props.attributes}><code>{props.children}</code></pre>
-    }
-  }
-
   plugins = [
     CollapseOnEscape()
   ]
 
   state = {
-    state: State.fromJSON(initialState)
+    value: Value.fromJSON(initialValue)
   }
 
-  onChange = ({ state }) => {
-    this.setState({ state })
+  onChange = ({ value }) => {
+    this.setState({ value })
   }
 
   render = () => {
     return (
       <Editor
-        onChange={this.onChange}
+        value={this.state.value}
         plugins={this.plugins}
-        schema={this.schema}
-        state={this.state.state}
+        onChange={this.onChange}
+        renderNode={this.renderNode}
       />
     )
+  }
+
+  renderNode = (props) => {
+    const { node, attributes, children } = props
+    switch (node.type) {
+      case 'code':
+        return <pre {...attributes}><code>{children}</code></pre>
+    }
   }
 
 }

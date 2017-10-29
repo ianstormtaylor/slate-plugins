@@ -124,7 +124,7 @@ function DropOrPasteImages(options = {}) {
 
     loadImageFile(src, (err, file) => {
       if (err) return
-      const c = editor.getState().change()
+      const c = editor.value.change()
       if (target) c.select(target)
       asyncApplyChange(c, editor, file)
     })
@@ -149,7 +149,7 @@ function DropOrPasteImages(options = {}) {
 
     loadImageFile(text, (err, file) => {
       if (err) return
-      const c = editor.getState().change()
+      const c = editor.value.change()
       if (target) c.select(target)
       asyncApplyChange(c, editor, file)
     })

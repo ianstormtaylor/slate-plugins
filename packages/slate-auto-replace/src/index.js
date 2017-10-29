@@ -28,7 +28,7 @@ function AutoReplace(opts = {}) {
    * @param {Event} event
    * @param {Change} change
    * @param {Editor} editor
-   * @return {State}
+   * @return {Value}
    */
 
   function onKeyDown(event, change, editor) {
@@ -43,26 +43,26 @@ function AutoReplace(opts = {}) {
    * @param {Event} event
    * @param {Change} change
    * @param {Editor} editor
-   * @return {State}
+   * @return {Value}
    */
 
   function replace(event, change, editor) {
-    const { state } = change
-    if (state.isExpanded) return
+    const { value } = change
+    if (value.isExpanded) return
 
-    const { startBlock } = state
+    const { startBlock } = value
     if (!startBlock) return
 
     const type = startBlock.type
     if (onlyIn && !onlyIn(type)) return
     if (ignoreIn && ignoreIn(type)) return
 
-    const matches = getMatches(state)
+    const matches = getMatches(value)
     if (!matches) return
 
     event.preventDefault()
 
-    let startOffset = state.startOffset
+    let startOffset = value.startOffset
     let totalRemoved = 0
     const offsets = getOffsets(matches, startOffset)
 
@@ -80,15 +80,15 @@ function AutoReplace(opts = {}) {
   }
 
   /**
-   * Try to match the current text of a `state` with the `before` and
+   * Try to match the current text of a `value` with the `before` and
    * `after` regexes.
    *
-   * @param {State} state
+   * @param {Value} value
    * @return {Object}
    */
 
-  function getMatches(state) {
-    const { startText, startOffset } = state
+  function getMatches(value) {
+    const { startText, startOffset } = value
     const { text } = startText
     let after = null
     let before = null

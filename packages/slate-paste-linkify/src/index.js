@@ -19,8 +19,8 @@ function PasteLinkify(options = {}) {
     hrefProperty = 'href',
   } = options
 
-  function hasLinks(state) {
-    return state.inlines.some(inline => inline.type == type)
+  function hasLinks(value) {
+    return value.inlines.some(inline => inline.type == type)
   }
 
   function unwrapLink(change) {
@@ -37,17 +37,17 @@ function PasteLinkify(options = {}) {
   return {
     onPaste(event, change) {
       const transfer = getEventTransfer(event)
-      const { state } = change
+      const { value } = change
       const { text } = transfer
       if (transfer.type !== 'text' && transfer.type !== 'html') return
       if (!isUrl(text)) return
 
-      if (state.isCollapsed) {
-        const { startOffset } = state
+      if (value.isCollapsed) {
+        const { startOffset } = value
         change.insertText(text).moveOffsetsTo(startOffset, startOffset + text.length)
       }
 
-      else if (hasLinks(state)) {
+      else if (hasLinks(value)) {
         change.call(unwrapLink)
       }
 

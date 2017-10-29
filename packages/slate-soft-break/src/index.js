@@ -11,11 +11,11 @@
 function SoftBreak(options = {}) {
   return {
     onKeyDown(event, change) {
-      const { state } = change
+      const { value } = change
       if (event.key != 'Enter') return
       if (options.shift && event.shiftKey == false) return
 
-      const { startBlock } = state
+      const { startBlock } = value
       const { type } = startBlock
       if (options.onlyIn && !options.onlyIn.includes(type)) return
       if (options.ignoreIn && options.ignoreIn.includes(type)) return

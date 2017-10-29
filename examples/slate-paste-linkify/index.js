@@ -1,9 +1,9 @@
 
 import PasteLinkify from 'slate-paste-linkify'
 import React from 'react'
-import initialState from './state.json'
+import initialValue from './value.json'
 import { Editor } from 'slate-react'
-import { State } from 'slate'
+import { Value } from 'slate'
 
 /**
  * Example.
@@ -12,18 +12,6 @@ import { State } from 'slate'
  */
 
 class Example extends React.Component {
-
-  schema = {
-    nodes: {
-      link: (props) => {
-        return (
-          <a {...props.attributes} href={props.node.data.get('url')}>
-            {props.children}
-          </a>
-        )
-      }
-    }
-  }
 
   plugins = [
     PasteLinkify({
@@ -34,22 +22,30 @@ class Example extends React.Component {
   ]
 
   state = {
-    state: State.fromJSON(initialState)
+    value: Value.fromJSON(initialValue)
   }
 
-  onChange = ({ state }) => {
-    this.setState({ state })
+  onChange = ({ value }) => {
+    this.setState({ value })
   }
 
   render = () => {
     return (
       <Editor
-        onChange={this.onChange}
+        value={this.state.value}
         plugins={this.plugins}
-        schema={this.schema}
-        state={this.state.state}
+        onChange={this.onChange}
+        renderNode={this.renderNode}
       />
     )
+  }
+
+  renderNode = (props) => {
+    const { node, attributes, children } = props
+    switch (node.type) {
+      case 'link':
+        return <a {...attributes} href={node.data.get('url')}>{children}</a>
+    }
   }
 
 }

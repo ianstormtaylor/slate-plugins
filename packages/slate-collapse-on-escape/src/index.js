@@ -12,9 +12,9 @@ import toPascal from 'to-pascal-case'
 function CollapseOnEscape(options = {}) {
   return {
     onKeyDown(event, change) {
-      const { state } = change
+      const { value } = change
       if (event.key != 'Escape') return
-      if (state.isCollapsed) return
+      if (value.isCollapsed) return
       const edge = toPascal(options.toEdge || 'start')
       return change[`collapseTo${edge}`]()
     }

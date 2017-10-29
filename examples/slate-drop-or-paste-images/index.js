@@ -1,9 +1,9 @@
 
 import DropOrPasteImages from 'slate-drop-or-paste-images'
 import React from 'react'
-import initialState from './state.json'
+import initialValue from './value.json'
 import { Editor } from 'slate-react'
-import { State } from 'slate'
+import { Value } from 'slate'
 
 /**
  * Image node renderer.
@@ -65,22 +65,28 @@ class Example extends React.Component {
   ]
 
   state = {
-    state: State.fromJSON(initialState)
+    value: Value.fromJSON(initialValue)
   }
 
-  onChange = ({ state }) => {
-    this.setState({ state })
+  onChange = ({ value }) => {
+    this.setState({ value })
   }
 
   render() {
     return (
       <Editor
-        onChange={this.onChange}
+        value={this.state.value}
         plugins={this.plugins}
-        schema={this.schema}
-        state={this.state.state}
+        onChange={this.onChange}
+        renderNode={this.renderNode}
       />
     )
+  }
+
+  renderNode = (props) => {
+    switch (props.node.type) {
+      case 'image': return <Image {...props} />
+    }
   }
 
 }
