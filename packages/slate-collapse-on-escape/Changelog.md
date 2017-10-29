@@ -7,6 +7,10 @@ This document maintains a list of changes to the `slate-collapse-on-escape` pack
 ---
 
 
+### `0.6.0` — October 28, 2017
+
+- Udate for `slate@0.29.0`.
+
 ### `0.5.0` — October 17, 2017
 
 - Update for `slate-react@0.6.0`.
