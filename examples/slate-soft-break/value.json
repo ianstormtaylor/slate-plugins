@@ -2,11 +2,11 @@
   "document": {
     "nodes": [
       {
-        "kind": "block",
+        "object": "block",
         "type": "paragraph",
         "nodes": [
           {
-            "kind": "text",
+            "object": "text",
             "leaves": [
               {
                 "text": "Hitting return here should not be soft."
@@ -16,11 +16,11 @@
         ]
       },
       {
-        "kind": "block",
+        "object": "block",
         "type": "code",
         "nodes": [
           {
-            "kind": "text",
+            "object": "text",
             "leaves": [
               {
                 "text": "Hitting return here should be soft!"
@@ -30,11 +30,11 @@
         ]
       },
       {
-        "kind": "block",
+        "object": "block",
         "type": "paragraph",
         "nodes": [
           {
-            "kind": "text",
+            "object": "text",
             "leaves": [
               {
                 "text": "Hitting shift+return here should be soft."
