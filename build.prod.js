@@ -58054,7 +58054,6 @@ function normalizeMatcher(matcher) {
  */
 
 exports.default = AutoReplace;
-
 },{"is-hotkey":465,"type-of":461}],465:[function(require,module,exports){
 'use strict';
 
@@ -58278,7 +58277,6 @@ function CollapseOnEscape() {
  */
 
 exports.default = CollapseOnEscape;
-
 },{"to-pascal-case":459}],467:[function(require,module,exports){
 'use strict';
 
@@ -58345,7 +58343,6 @@ function hasArrayBufferView() {
  */
 
 exports.default = dataUriToBlob;
-
 },{}],468:[function(require,module,exports){
 'use strict';
 
@@ -58392,7 +58389,6 @@ function srcToDataUri(url, callback) {
  */
 
 exports.default = srcToDataUri;
-
 },{}],469:[function(require,module,exports){
 'use strict';
 
@@ -58464,7 +58460,7 @@ function DropOrPasteImages() {
    */
 
   function asyncApplyChange(change, editor, file) {
-    return _es6Promise2.default.resolve(insertImage(change, file)).then(function () {
+    return _es6Promise2.default.resolve(insertImage(change, file, editor)).then(function () {
       editor.onChange(change);
     });
   }
@@ -58480,13 +58476,14 @@ function DropOrPasteImages() {
 
   function onInsert(event, change, editor) {
     var transfer = (0, _slateReact.getEventTransfer)(event);
+    var range = (0, _slateReact.getEventRange)(event, change.value);
     switch (transfer.type) {
       case 'files':
-        return onInsertFiles(event, change, editor, transfer);
+        return onInsertFiles(event, change, editor, transfer, range);
       case 'html':
-        return onInsertHtml(event, change, editor, transfer);
+        return onInsertHtml(event, change, editor, transfer, range);
       case 'text':
-        return onInsertText(event, change, editor, transfer);
+        return onInsertText(event, change, editor, transfer, range);
     }
   }
 
@@ -58497,12 +58494,12 @@ function DropOrPasteImages() {
    * @param {Change} change
    * @param {Editor} editor
    * @param {Object} transfer
+   * @param {Range} range
    * @return {Boolean}
    */
 
-  function onInsertFiles(event, change, editor, transfer) {
-    var target = transfer.target,
-        files = transfer.files;
+  function onInsertFiles(event, change, editor, transfer, range) {
+    var files = transfer.files;
     var _iteratorNormalCompletion = true;
     var _didIteratorError = false;
     var _iteratorError = undefined;
@@ -58517,8 +58514,8 @@ function DropOrPasteImages() {
           if (!extensions.includes(ext)) continue;
         }
 
-        if (target) {
-          change.select(target);
+        if (range) {
+          change.select(range);
         }
 
         asyncApplyChange(change, editor, file);
@@ -58548,12 +58545,12 @@ function DropOrPasteImages() {
    * @param {Change} change
    * @param {Editor} editor
    * @param {Object} transfer
+   * @param {Range} range
    * @return {Boolean}
    */
 
-  function onInsertHtml(event, change, editor, transfer) {
-    var html = transfer.html,
-        target = transfer.target;
+  function onInsertHtml(event, change, editor, transfer, range) {
+    var html = transfer.html;
 
     var parser = new DOMParser();
     var doc = parser.parseFromString(html, 'text/html');
@@ -58571,7 +58568,7 @@ function DropOrPasteImages() {
     (0, _loadImageFile2.default)(src, function (err, file) {
       if (err) return;
       var c = editor.value.change();
-      if (target) c.select(target);
+      if (range) c.select(range);
       asyncApplyChange(c, editor, file);
     });
 
@@ -58585,12 +58582,12 @@ function DropOrPasteImages() {
    * @param {Change} change
    * @param {Editor} editor
    * @param {Object} transfer
+   * @param {Range} range
    * @return {Boolean}
    */
 
-  function onInsertText(event, change, editor, transfer) {
-    var text = transfer.text,
-        target = transfer.target;
+  function onInsertText(event, change, editor, transfer, range) {
+    var text = transfer.text;
 
     if (!(0, _isUrl2.default)(text)) return;
     if (!(0, _isImage2.default)(text)) return;
@@ -58598,7 +58595,7 @@ function DropOrPasteImages() {
     (0, _loadImageFile2.default)(text, function (err, file) {
       if (err) return;
       var c = editor.value.change();
-      if (target) c.select(target);
+      if (range) c.select(range);
       asyncApplyChange(c, editor, file);
     });
 
@@ -58624,7 +58621,6 @@ function DropOrPasteImages() {
  */
 
 exports.default = DropOrPasteImages;
-
 },{"./load-image-file":470,"es6-promise":14,"is-image":56,"is-url":59,"mime-types":473,"path":231,"slate-dev-logger":474,"slate-react":429}],470:[function(require,module,exports){
 'use strict';
 
@@ -58674,7 +58670,6 @@ function loadImageFile(url, callback) {
  */
 
 exports.default = loadImageFile;
-
 },{"./data-uri-to-blob":467,"./image-to-data-uri":468,"is-data-uri":53}],471:[function(require,module,exports){
 module.exports={
   "application/1d-interleaved-parityfec": {
@@ -66020,7 +66015,6 @@ function PasteLinkify() {
  */
 
 exports.default = PasteLinkify;
-
 },{"is-url":59,"slate-react":429,"to-pascal-case":459}],476:[function(require,module,exports){
 'use strict';
 
@@ -66063,5 +66057,4 @@ function SoftBreak() {
  */
 
 exports.default = SoftBreak;
-
 },{}]},{},[1]);
