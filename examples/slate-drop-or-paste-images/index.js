@@ -1,5 +1,5 @@
 
-import DropOrPasteImages from '../../packages/slate-drop-or-paste-images/src/index.js'
+import DropOrPasteImages from 'slate-drop-or-paste-images'
 import React from 'react'
 import initialValue from './value.json'
 import { Editor } from 'slate-react'
@@ -54,7 +54,6 @@ class Example extends React.Component {
 
   plugins = [
     DropOrPasteImages({
-      extensions: ['jpeg'],
       insertImage: (transform, file) => {
         return transform.insertBlock({
           type: 'image',

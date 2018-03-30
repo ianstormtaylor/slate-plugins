@@ -1,7 +1,7 @@
 {
-  "name": "@roast-cms/slate-drop-or-paste-images",
+  "name": "slate-drop-or-paste-images",
   "description": "A Slate plugin that inserts images on drop or paste.",
-  "version": "0.8.2",
+  "version": "0.8.1",
   "license": "MIT",
   "repository": "git://github.com/ianstormtaylor/slate-drop-or-paste-images.git",
   "main": "./lib/index.js",
@@ -11,7 +11,6 @@
     "is-data-uri": "^0.1.0",
     "is-image": "^1.0.1",
     "is-url": "^1.2.2",
-    "mime-types": "^2.1.11",
     "slate-dev-logger": "^0.1.0"
   },
   "peerDependencies": {
