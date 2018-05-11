@@ -101,7 +101,8 @@ function DropOrPasteImages(options = {}) {
     for (const file of files) {
       if (extensions) {
         const type = file.type
-        if(!matchExt(type)) continue
+        const [ , ext ] = type.split('/')
+        if (!matchExt(ext)) continue
       }
 
       if (range) {

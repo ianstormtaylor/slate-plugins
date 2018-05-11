@@ -28,7 +28,8 @@
     "watch": "babel --watch --out-dir ./lib ./src --source-maps inline"
   },
   "browserify-global-shim": {
-    "slate": "Slate"
+    "slate": "Slate",
+    "slate-react": "SlateReact"
   },
   "keywords": [
     "slate"
