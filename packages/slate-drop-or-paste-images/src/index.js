@@ -138,7 +138,7 @@ function DropOrPasteImages(options = {}) {
 
     if (extensions) {
       const ext = extname(src).slice(1)
-        if(!matchExt(ext)) return
+      if (!matchExt(ext)) return
     }
 
     loadImageFile(src, (err, file) => {
