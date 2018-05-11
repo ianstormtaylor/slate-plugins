@@ -3,7 +3,6 @@ import Promise from 'es6-promise'
 import isImage from 'is-image'
 import isUrl from 'is-url'
 import logger from 'slate-dev-logger'
-import mime from 'mime-types'
 import loadImageFile from './load-image-file'
 import { extname } from 'path'
 import { getEventTransfer, getEventRange } from 'slate-react'
@@ -31,6 +30,22 @@ function DropOrPasteImages(options = {}) {
   if (!insertImage) {
     throw new Error('You must supply an `insertImage` function.')
   }
+
+  /**
+   * Check file extension against user-defined options.
+   *
+   * @param {Type} string
+   * @return {Boolean}
+   */
+
+  function matchExt(type) {
+    let accepted = false
+    for (const ext of extensions) {
+      if (type.includes(ext)) accepted = true
+    }
+    return accepted
+  }
+
 
   /**
    * Apply the change for a given file and update the editor with the result.
@@ -85,8 +100,8 @@ function DropOrPasteImages(options = {}) {
 
     for (const file of files) {
       if (extensions) {
-        const ext = mime.extension(file.type)
-        if (!extensions.includes(ext)) continue
+        const type = file.type
+        if(!matchExt(type)) continue
       }
 
       if (range) {
@@ -122,7 +137,7 @@ function DropOrPasteImages(options = {}) {
 
     if (extensions) {
       const ext = extname(src).slice(1)
-      if (!extensions.includes(ext)) return
+        if(!matchExt(ext)) return
     }
 
     loadImageFile(src, (err, file) => {
