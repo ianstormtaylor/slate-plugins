@@ -32,7 +32,7 @@ function AutoReplace(opts = {}) {
    */
 
   function onKeyDown(event, change, editor) {
-    if (trigger(event)) {
+    if (trigger(event, change, editor)) {
       return replace(event, change, editor)
     }
   }
