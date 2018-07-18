@@ -45,3 +45,4 @@ Option | Type | Description
 --- | --- | ---
 **`insertImage`** | `Function` | A transforming function that is passed a Slate `Change` and a `File` object representing an image. It should apply the proper transform that inserts the image into Slate based on your schema. It can return a promise resolved with the resulting Slate `Change`.
 **`extensions`** | `Array` | An array of allowed extensions.
+**`fallsThrough`** | `Boolean` | A boolean indicating whether the plugin should allow other plugins in the stack to handle the unhandled drop/paste events or not.

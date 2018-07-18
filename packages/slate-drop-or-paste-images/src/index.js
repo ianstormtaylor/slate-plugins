@@ -13,6 +13,7 @@ import { getEventTransfer, getEventRange } from 'slate-react'
  * @param {Object} options
  *   @property {Function} insertImage
  *   @property {Array} extensions (optional)
+ *   @property {Boolean} fallsThrough (optional)
  * @return {Object} plugin
  */
 
@@ -20,6 +21,7 @@ function DropOrPasteImages(options = {}) {
   let {
     insertImage,
     extensions,
+    fallsThrough,
   } = options
 
   if (options.applyTransform) {
@@ -92,7 +94,7 @@ function DropOrPasteImages(options = {}) {
    * @param {Editor} editor
    * @param {Object} transfer
    * @param {Range} range
-   * @return {Boolean}
+   * @return {Boolean | void}
    */
 
   function onInsertFiles(event, change, editor, transfer, range) {
@@ -112,7 +114,9 @@ function DropOrPasteImages(options = {}) {
       asyncApplyChange(change, editor, file)
     }
 
-    return true
+    if (!fallsThrough) {
+      return true
+    }
   }
 
   /**
@@ -123,7 +127,7 @@ function DropOrPasteImages(options = {}) {
    * @param {Editor} editor
    * @param {Object} transfer
    * @param {Range} range
-   * @return {Boolean}
+   * @return {Boolean | void}
    */
 
   function onInsertHtml(event, change, editor, transfer, range) {
@@ -148,7 +152,9 @@ function DropOrPasteImages(options = {}) {
       asyncApplyChange(c, editor, file)
     })
 
-    return true
+    if (!fallsThrough) {
+      return true
+    }
   }
 
   /**
@@ -159,7 +165,7 @@ function DropOrPasteImages(options = {}) {
    * @param {Editor} editor
    * @param {Object} transfer
    * @param {Range} range
-   * @return {Boolean}
+   * @return {Boolean | void}
    */
 
   function onInsertText(event, change, editor, transfer, range) {
@@ -173,6 +179,10 @@ function DropOrPasteImages(options = {}) {
       if (range) c.select(range)
       asyncApplyChange(c, editor, file)
     })
+
+    if (!fallsThrough) {
+      return true
+    }
 
     return true
   }
