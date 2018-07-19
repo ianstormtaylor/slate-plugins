@@ -1,9 +1,12 @@
 {
-  "name": "slate-drop-or-paste-images",
+  "name": "@oozou/slate-drop-or-paste-images",
   "description": "A Slate plugin that inserts images on drop or paste.",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "license": "MIT",
-  "repository": "git://github.com/ianstormtaylor/slate-drop-or-paste-images.git",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/oozou/slate-plugins.git"
+  },
   "main": "./lib/index.js",
   "dependencies": {
     "es6-promise": "^4.0.5",
@@ -38,5 +41,14 @@
   },
   "keywords": [
     "slate"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/oozou/slate-plugins/issues"
+  },
+  "homepage": "https://github.com/oozou/slate-plugins/tree/master/packages/slate-drop-or-paste-images#readme",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "author": "Jessada Trirongkit <aun.t@oozou.com>"
 }

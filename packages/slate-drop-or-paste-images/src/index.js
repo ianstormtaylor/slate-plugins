@@ -79,6 +79,7 @@ function DropOrPasteImages(options = {}) {
   function onInsert(event, change, editor) {
     const transfer = getEventTransfer(event)
     const range = getEventRange(event, change.value)
+
     switch (transfer.type) {
       case 'files': return onInsertFiles(event, change, editor, transfer, range)
       case 'html': return onInsertHtml(event, change, editor, transfer, range)
@@ -100,6 +101,7 @@ function DropOrPasteImages(options = {}) {
   function onInsertFiles(event, change, editor, transfer, range) {
     const { files } = transfer
 
+    let handled = false
     for (const file of files) {
       if (extensions) {
         const type = file.type
@@ -112,9 +114,10 @@ function DropOrPasteImages(options = {}) {
       }
 
       asyncApplyChange(change, editor, file)
+      handled = true
     }
 
-    if (!fallsThrough) {
+    if (handled || !fallsThrough) {
       return true
     }
   }
@@ -152,9 +155,7 @@ function DropOrPasteImages(options = {}) {
       asyncApplyChange(c, editor, file)
     })
 
-    if (!fallsThrough) {
-      return true
-    }
+    return true
   }
 
   /**
@@ -183,8 +184,6 @@ function DropOrPasteImages(options = {}) {
     if (!fallsThrough) {
       return true
     }
-
-    return true
   }
 
   /**
