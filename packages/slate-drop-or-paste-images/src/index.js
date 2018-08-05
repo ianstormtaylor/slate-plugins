@@ -110,9 +110,9 @@ function DropOrPasteImages(options = {}) {
       }
 
       asyncApplyChange(change, editor, file)
-    }
 
-    return true
+      return true
+    }
   }
 
   /**
@@ -146,9 +146,8 @@ function DropOrPasteImages(options = {}) {
       const c = editor.value.change()
       if (range) c.select(range)
       asyncApplyChange(c, editor, file)
+      return true
     })
-
-    return true
   }
 
   /**
@@ -172,9 +171,8 @@ function DropOrPasteImages(options = {}) {
       const c = editor.value.change()
       if (range) c.select(range)
       asyncApplyChange(c, editor, file)
+      return true
     })
-
-    return true
   }
 
   /**
