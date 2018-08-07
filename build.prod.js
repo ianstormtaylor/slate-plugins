@@ -1,4 +1,4 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
 'use strict';
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
@@ -308,7 +308,7 @@ var Example = function (_React$Component) {
 
 exports.default = Example;
 
-},{"./value.json":3,"react":423,"slate":453,"slate-auto-replace":464,"slate-react":429}],3:[function(require,module,exports){
+},{"./value.json":3,"react":423,"slate":453,"slate-auto-replace":463,"slate-react":430}],3:[function(require,module,exports){
 module.exports={
   "document": {
     "nodes": [
@@ -481,7 +481,7 @@ var Example = function (_React$Component) {
 
 exports.default = Example;
 
-},{"./value.json":5,"react":423,"slate":453,"slate-collapse-on-escape":466,"slate-react":429}],5:[function(require,module,exports){
+},{"./value.json":5,"react":423,"slate":453,"slate-collapse-on-escape":465,"slate-react":430}],5:[function(require,module,exports){
 module.exports={
   "document": {
     "nodes": [
@@ -667,7 +667,7 @@ var Example = function (_React$Component2) {
 
 exports.default = Example;
 
-},{"./value.json":7,"react":423,"slate":453,"slate-drop-or-paste-images":469,"slate-react":429}],7:[function(require,module,exports){
+},{"./value.json":7,"react":423,"slate":453,"slate-drop-or-paste-images":468,"slate-react":430}],7:[function(require,module,exports){
 module.exports={
   "document": {
     "nodes": [
@@ -870,7 +870,7 @@ var Example = function (_React$Component) {
 
 exports.default = Example;
 
-},{"./value.json":9,"react":423,"slate":453,"slate-paste-linkify":472,"slate-react":429}],9:[function(require,module,exports){
+},{"./value.json":9,"react":423,"slate":453,"slate-paste-linkify":470,"slate-react":430}],9:[function(require,module,exports){
 module.exports={
   "document": {
     "nodes": [
@@ -1001,7 +1001,7 @@ var Example = function (_React$Component) {
 
 exports.default = Example;
 
-},{"./value.json":11,"react":423,"slate":453,"slate-react":429,"slate-soft-break":473}],11:[function(require,module,exports){
+},{"./value.json":11,"react":423,"slate":453,"slate-react":430,"slate-soft-break":542}],11:[function(require,module,exports){
 module.exports={
   "document": {
     "nodes": [
@@ -1140,7 +1140,7 @@ module.exports = direction;
  * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
  * @license   Licensed under MIT license
  *            See https://raw.githubusercontent.com/stefanpenner/es6-promise/master/LICENSE
- * @version   4.1.1
+ * @version   v4.2.4+314e4831
  */
 
 (function (global, factory) {
@@ -1158,7 +1158,9 @@ function isFunction(x) {
   return typeof x === 'function';
 }
 
-var _isArray = undefined;
+
+
+var _isArray = void 0;
 if (Array.isArray) {
   _isArray = Array.isArray;
 } else {
@@ -1170,8 +1172,8 @@ if (Array.isArray) {
 var isArray = _isArray;
 
 var len = 0;
-var vertxNext = undefined;
-var customSchedulerFn = undefined;
+var vertxNext = void 0;
+var customSchedulerFn = void 0;
 
 var asap = function asap(callback, arg) {
   queue[len] = callback;
@@ -1200,7 +1202,7 @@ function setAsap(asapFn) {
 var browserWindow = typeof window !== 'undefined' ? window : undefined;
 var browserGlobal = browserWindow || {};
 var BrowserMutationObserver = browserGlobal.MutationObserver || browserGlobal.WebKitMutationObserver;
-var isNode = typeof self === 'undefined' && typeof process !== 'undefined' && ({}).toString.call(process) === '[object process]';
+var isNode = typeof self === 'undefined' && typeof process !== 'undefined' && {}.toString.call(process) === '[object process]';
 
 // test for web worker but not in IE10
 var isWorker = typeof Uint8ClampedArray !== 'undefined' && typeof importScripts !== 'undefined' && typeof MessageChannel !== 'undefined';
@@ -1271,8 +1273,7 @@ function flush() {
 
 function attemptVertx() {
   try {
-    var r = require;
-    var vertx = r('vertx');
+    var vertx = Function('return this')().require('vertx');
     vertxNext = vertx.runOnLoop || vertx.runOnContext;
     return useVertxTimer();
   } catch (e) {
@@ -1280,7 +1281,7 @@ function attemptVertx() {
   }
 }
 
-var scheduleFlush = undefined;
+var scheduleFlush = void 0;
 // Decide what async method to use to triggering processing of queued callbacks:
 if (isNode) {
   scheduleFlush = useNextTick();
@@ -1295,8 +1296,6 @@ if (isNode) {
 }
 
 function then(onFulfillment, onRejection) {
-  var _arguments = arguments;
-
   var parent = this;
 
   var child = new this.constructor(noop);
@@ -1307,13 +1306,12 @@ function then(onFulfillment, onRejection) {
 
   var _state = parent._state;
 
+
   if (_state) {
-    (function () {
-      var callback = _arguments[_state - 1];
-      asap(function () {
-        return invokeCallback(_state, child, callback, parent._result);
-      });
-    })();
+    var callback = arguments[_state - 1];
+    asap(function () {
+      return invokeCallback(_state, child, callback, parent._result);
+    });
   } else {
     subscribe(parent, child, onFulfillment, onRejection);
   }
@@ -1365,7 +1363,7 @@ function resolve$1(object) {
   return promise;
 }
 
-var PROMISE_ID = Math.random().toString(36).substring(16);
+var PROMISE_ID = Math.random().toString(36).substring(2);
 
 function noop() {}
 
@@ -1373,7 +1371,7 @@ var PENDING = void 0;
 var FULFILLED = 1;
 var REJECTED = 2;
 
-var GET_THEN_ERROR = new ErrorObject();
+var TRY_CATCH_ERROR = { error: null };
 
 function selfFulfillment() {
   return new TypeError("You cannot resolve a promise with itself");
@@ -1387,8 +1385,8 @@ function getThen(promise) {
   try {
     return promise.then;
   } catch (error) {
-    GET_THEN_ERROR.error = error;
-    return GET_THEN_ERROR;
+    TRY_CATCH_ERROR.error = error;
+    return TRY_CATCH_ERROR;
   }
 }
 
@@ -1447,9 +1445,9 @@ function handleMaybeThenable(promise, maybeThenable, then$$1) {
   if (maybeThenable.constructor === promise.constructor && then$$1 === then && maybeThenable.constructor.resolve === resolve$1) {
     handleOwnThenable(promise, maybeThenable);
   } else {
-    if (then$$1 === GET_THEN_ERROR) {
-      reject(promise, GET_THEN_ERROR.error);
-      GET_THEN_ERROR.error = null;
+    if (then$$1 === TRY_CATCH_ERROR) {
+      reject(promise, TRY_CATCH_ERROR.error);
+      TRY_CATCH_ERROR.error = null;
     } else if (then$$1 === undefined) {
       fulfill(promise, maybeThenable);
     } else if (isFunction(then$$1)) {
@@ -1505,6 +1503,7 @@ function subscribe(parent, child, onFulfillment, onRejection) {
   var _subscribers = parent._subscribers;
   var length = _subscribers.length;
 
+
   parent._onerror = null;
 
   _subscribers[length] = child;
@@ -1524,8 +1523,8 @@ function publish(promise) {
     return;
   }
 
-  var child = undefined,
-      callback = undefined,
+  var child = void 0,
+      callback = void 0,
       detail = promise._result;
 
   for (var i = 0; i < subscribers.length; i += 3) {
@@ -1542,12 +1541,6 @@ function publish(promise) {
   promise._subscribers.length = 0;
 }
 
-function ErrorObject() {
-  this.error = null;
-}
-
-var TRY_CATCH_ERROR = new ErrorObject();
-
 function tryCatch(callback, detail) {
   try {
     return callback(detail);
@@ -1559,10 +1552,10 @@ function tryCatch(callback, detail) {
 
 function invokeCallback(settled, promise, callback, detail) {
   var hasCallback = isFunction(callback),
-      value = undefined,
-      error = undefined,
-      succeeded = undefined,
-      failed = undefined;
+      value = void 0,
+      error = void 0,
+      succeeded = void 0,
+      failed = void 0;
 
   if (hasCallback) {
     value = tryCatch(callback, detail);
@@ -1587,14 +1580,14 @@ function invokeCallback(settled, promise, callback, detail) {
   if (promise._state !== PENDING) {
     // noop
   } else if (hasCallback && succeeded) {
-      resolve(promise, value);
-    } else if (failed) {
-      reject(promise, error);
-    } else if (settled === FULFILLED) {
-      fulfill(promise, value);
-    } else if (settled === REJECTED) {
-      reject(promise, value);
-    }
+    resolve(promise, value);
+  } else if (failed) {
+    reject(promise, error);
+  } else if (settled === FULFILLED) {
+    fulfill(promise, value);
+  } else if (settled === REJECTED) {
+    reject(promise, value);
+  }
 }
 
 function initializePromise(promise, resolver) {
@@ -1621,97 +1614,103 @@ function makePromise(promise) {
   promise._subscribers = [];
 }
 
-function Enumerator$1(Constructor, input) {
-  this._instanceConstructor = Constructor;
-  this.promise = new Constructor(noop);
-
-  if (!this.promise[PROMISE_ID]) {
-    makePromise(this.promise);
-  }
-
-  if (isArray(input)) {
-    this.length = input.length;
-    this._remaining = input.length;
-
-    this._result = new Array(this.length);
-
-    if (this.length === 0) {
-      fulfill(this.promise, this._result);
-    } else {
-      this.length = this.length || 0;
-      this._enumerate(input);
-      if (this._remaining === 0) {
-        fulfill(this.promise, this._result);
-      }
-    }
-  } else {
-    reject(this.promise, validationError());
-  }
-}
-
 function validationError() {
   return new Error('Array Methods must be provided an Array');
 }
 
-Enumerator$1.prototype._enumerate = function (input) {
-  for (var i = 0; this._state === PENDING && i < input.length; i++) {
-    this._eachEntry(input[i], i);
+var Enumerator = function () {
+  function Enumerator(Constructor, input) {
+    this._instanceConstructor = Constructor;
+    this.promise = new Constructor(noop);
+
+    if (!this.promise[PROMISE_ID]) {
+      makePromise(this.promise);
+    }
+
+    if (isArray(input)) {
+      this.length = input.length;
+      this._remaining = input.length;
+
+      this._result = new Array(this.length);
+
+      if (this.length === 0) {
+        fulfill(this.promise, this._result);
+      } else {
+        this.length = this.length || 0;
+        this._enumerate(input);
+        if (this._remaining === 0) {
+          fulfill(this.promise, this._result);
+        }
+      }
+    } else {
+      reject(this.promise, validationError());
+    }
   }
-};
 
-Enumerator$1.prototype._eachEntry = function (entry, i) {
-  var c = this._instanceConstructor;
-  var resolve$$1 = c.resolve;
+  Enumerator.prototype._enumerate = function _enumerate(input) {
+    for (var i = 0; this._state === PENDING && i < input.length; i++) {
+      this._eachEntry(input[i], i);
+    }
+  };
 
-  if (resolve$$1 === resolve$1) {
-    var _then = getThen(entry);
+  Enumerator.prototype._eachEntry = function _eachEntry(entry, i) {
+    var c = this._instanceConstructor;
+    var resolve$$1 = c.resolve;
 
-    if (_then === then && entry._state !== PENDING) {
-      this._settledAt(entry._state, i, entry._result);
-    } else if (typeof _then !== 'function') {
+
+    if (resolve$$1 === resolve$1) {
+      var _then = getThen(entry);
+
+      if (_then === then && entry._state !== PENDING) {
+        this._settledAt(entry._state, i, entry._result);
+      } else if (typeof _then !== 'function') {
+        this._remaining--;
+        this._result[i] = entry;
+      } else if (c === Promise$1) {
+        var promise = new c(noop);
+        handleMaybeThenable(promise, entry, _then);
+        this._willSettleAt(promise, i);
+      } else {
+        this._willSettleAt(new c(function (resolve$$1) {
+          return resolve$$1(entry);
+        }), i);
+      }
+    } else {
+      this._willSettleAt(resolve$$1(entry), i);
+    }
+  };
+
+  Enumerator.prototype._settledAt = function _settledAt(state, i, value) {
+    var promise = this.promise;
+
+
+    if (promise._state === PENDING) {
       this._remaining--;
-      this._result[i] = entry;
-    } else if (c === Promise$2) {
-      var promise = new c(noop);
-      handleMaybeThenable(promise, entry, _then);
-      this._willSettleAt(promise, i);
-    } else {
-      this._willSettleAt(new c(function (resolve$$1) {
-        return resolve$$1(entry);
-      }), i);
+
+      if (state === REJECTED) {
+        reject(promise, value);
+      } else {
+        this._result[i] = value;
+      }
     }
-  } else {
-    this._willSettleAt(resolve$$1(entry), i);
-  }
-};
 
-Enumerator$1.prototype._settledAt = function (state, i, value) {
-  var promise = this.promise;
-
-  if (promise._state === PENDING) {
-    this._remaining--;
-
-    if (state === REJECTED) {
-      reject(promise, value);
-    } else {
-      this._result[i] = value;
+    if (this._remaining === 0) {
+      fulfill(promise, this._result);
     }
-  }
+  };
 
-  if (this._remaining === 0) {
-    fulfill(promise, this._result);
-  }
-};
+  Enumerator.prototype._willSettleAt = function _willSettleAt(promise, i) {
+    var enumerator = this;
 
-Enumerator$1.prototype._willSettleAt = function (promise, i) {
-  var enumerator = this;
+    subscribe(promise, undefined, function (value) {
+      return enumerator._settledAt(FULFILLED, i, value);
+    }, function (reason) {
+      return enumerator._settledAt(REJECTED, i, reason);
+    });
+  };
 
-  subscribe(promise, undefined, function (value) {
-    return enumerator._settledAt(FULFILLED, i, value);
-  }, function (reason) {
-    return enumerator._settledAt(REJECTED, i, reason);
-  });
-};
+  return Enumerator;
+}();
 
 /**
   `Promise.all` accepts an array of promises, and returns a new promise which
@@ -1760,8 +1759,8 @@ Enumerator$1.prototype._willSettleAt = function (promise, i) {
   fulfilled, or rejected if any of them become rejected.
   @static
 */
-function all$1(entries) {
-  return new Enumerator$1(this, entries).promise;
+function all(entries) {
+  return new Enumerator(this, entries).promise;
 }
 
 /**
@@ -1829,7 +1828,7 @@ function all$1(entries) {
   @return {Promise} a promise which settles in the same way as the first passed
   promise to settle.
 */
-function race$1(entries) {
+function race(entries) {
   /*jshint validthis:true */
   var Constructor = this;
 
@@ -1996,300 +1995,323 @@ function needsNew() {
   ```
 
   @class Promise
-  @param {function} resolver
+  @param {Function} resolver
   Useful for tooling.
   @constructor
 */
-function Promise$2(resolver) {
-  this[PROMISE_ID] = nextId();
-  this._result = this._state = undefined;
-  this._subscribers = [];
 
-  if (noop !== resolver) {
-    typeof resolver !== 'function' && needsResolver();
-    this instanceof Promise$2 ? initializePromise(this, resolver) : needsNew();
+var Promise$1 = function () {
+  function Promise(resolver) {
+    this[PROMISE_ID] = nextId();
+    this._result = this._state = undefined;
+    this._subscribers = [];
+
+    if (noop !== resolver) {
+      typeof resolver !== 'function' && needsResolver();
+      this instanceof Promise ? initializePromise(this, resolver) : needsNew();
+    }
   }
-}
-
-Promise$2.all = all$1;
-Promise$2.race = race$1;
-Promise$2.resolve = resolve$1;
-Promise$2.reject = reject$1;
-Promise$2._setScheduler = setScheduler;
-Promise$2._setAsap = setAsap;
-Promise$2._asap = asap;
-
-Promise$2.prototype = {
-  constructor: Promise$2,
 
   /**
-    The primary way of interacting with a promise is through its `then` method,
-    which registers callbacks to receive either a promise's eventual value or the
-    reason why the promise cannot be fulfilled.
-  
-    ```js
-    findUser().then(function(user){
-      // user is available
-    }, function(reason){
-      // user is unavailable, and you are given the reason why
-    });
-    ```
-  
-    Chaining
-    --------
-  
-    The return value of `then` is itself a promise.  This second, 'downstream'
-    promise is resolved with the return value of the first promise's fulfillment
-    or rejection handler, or rejected if the handler throws an exception.
-  
-    ```js
-    findUser().then(function (user) {
-      return user.name;
-    }, function (reason) {
-      return 'default name';
-    }).then(function (userName) {
-      // If `findUser` fulfilled, `userName` will be the user's name, otherwise it
-      // will be `'default name'`
-    });
-  
-    findUser().then(function (user) {
-      throw new Error('Found user, but still unhappy');
-    }, function (reason) {
-      throw new Error('`findUser` rejected and we're unhappy');
-    }).then(function (value) {
-      // never reached
-    }, function (reason) {
-      // if `findUser` fulfilled, `reason` will be 'Found user, but still unhappy'.
-      // If `findUser` rejected, `reason` will be '`findUser` rejected and we're unhappy'.
-    });
-    ```
-    If the downstream promise does not specify a rejection handler, rejection reasons will be propagated further downstream.
-  
-    ```js
-    findUser().then(function (user) {
-      throw new PedagogicalException('Upstream error');
-    }).then(function (value) {
-      // never reached
-    }).then(function (value) {
-      // never reached
-    }, function (reason) {
-      // The `PedgagocialException` is propagated all the way down to here
-    });
-    ```
-  
-    Assimilation
-    ------------
-  
-    Sometimes the value you want to propagate to a downstream promise can only be
-    retrieved asynchronously. This can be achieved by returning a promise in the
-    fulfillment or rejection handler. The downstream promise will then be pending
-    until the returned promise is settled. This is called *assimilation*.
-  
-    ```js
-    findUser().then(function (user) {
-      return findCommentsByAuthor(user);
-    }).then(function (comments) {
-      // The user's comments are now available
-    });
-    ```
-  
-    If the assimliated promise rejects, then the downstream promise will also reject.
-  
-    ```js
-    findUser().then(function (user) {
-      return findCommentsByAuthor(user);
-    }).then(function (comments) {
-      // If `findCommentsByAuthor` fulfills, we'll have the value here
-    }, function (reason) {
-      // If `findCommentsByAuthor` rejects, we'll have the reason here
-    });
-    ```
-  
-    Simple Example
-    --------------
-  
-    Synchronous Example
-  
-    ```javascript
-    let result;
-  
-    try {
-      result = findResult();
-      // success
-    } catch(reason) {
+  The primary way of interacting with a promise is through its `then` method,
+  which registers callbacks to receive either a promise's eventual value or the
+  reason why the promise cannot be fulfilled.
+   ```js
+  findUser().then(function(user){
+    // user is available
+  }, function(reason){
+    // user is unavailable, and you are given the reason why
+  });
+  ```
+   Chaining
+  --------
+   The return value of `then` is itself a promise.  This second, 'downstream'
+  promise is resolved with the return value of the first promise's fulfillment
+  or rejection handler, or rejected if the handler throws an exception.
+   ```js
+  findUser().then(function (user) {
+    return user.name;
+  }, function (reason) {
+    return 'default name';
+  }).then(function (userName) {
+    // If `findUser` fulfilled, `userName` will be the user's name, otherwise it
+    // will be `'default name'`
+  });
+   findUser().then(function (user) {
+    throw new Error('Found user, but still unhappy');
+  }, function (reason) {
+    throw new Error('`findUser` rejected and we're unhappy');
+  }).then(function (value) {
+    // never reached
+  }, function (reason) {
+    // if `findUser` fulfilled, `reason` will be 'Found user, but still unhappy'.
+    // If `findUser` rejected, `reason` will be '`findUser` rejected and we're unhappy'.
+  });
+  ```
+  If the downstream promise does not specify a rejection handler, rejection reasons will be propagated further downstream.
+   ```js
+  findUser().then(function (user) {
+    throw new PedagogicalException('Upstream error');
+  }).then(function (value) {
+    // never reached
+  }).then(function (value) {
+    // never reached
+  }, function (reason) {
+    // The `PedgagocialException` is propagated all the way down to here
+  });
+  ```
+   Assimilation
+  ------------
+   Sometimes the value you want to propagate to a downstream promise can only be
+  retrieved asynchronously. This can be achieved by returning a promise in the
+  fulfillment or rejection handler. The downstream promise will then be pending
+  until the returned promise is settled. This is called *assimilation*.
+   ```js
+  findUser().then(function (user) {
+    return findCommentsByAuthor(user);
+  }).then(function (comments) {
+    // The user's comments are now available
+  });
+  ```
+   If the assimliated promise rejects, then the downstream promise will also reject.
+   ```js
+  findUser().then(function (user) {
+    return findCommentsByAuthor(user);
+  }).then(function (comments) {
+    // If `findCommentsByAuthor` fulfills, we'll have the value here
+  }, function (reason) {
+    // If `findCommentsByAuthor` rejects, we'll have the reason here
+  });
+  ```
+   Simple Example
+  --------------
+   Synchronous Example
+   ```javascript
+  let result;
+   try {
+    result = findResult();
+    // success
+  } catch(reason) {
+    // failure
+  }
+  ```
+   Errback Example
+   ```js
+  findResult(function(result, err){
+    if (err) {
       // failure
-    }
-    ```
-  
-    Errback Example
-  
-    ```js
-    findResult(function(result, err){
-      if (err) {
-        // failure
-      } else {
-        // success
-      }
-    });
-    ```
-  
-    Promise Example;
-  
-    ```javascript
-    findResult().then(function(result){
+    } else {
       // success
-    }, function(reason){
+    }
+  });
+  ```
+   Promise Example;
+   ```javascript
+  findResult().then(function(result){
+    // success
+  }, function(reason){
+    // failure
+  });
+  ```
+   Advanced Example
+  --------------
+   Synchronous Example
+   ```javascript
+  let author, books;
+   try {
+    author = findAuthor();
+    books  = findBooksByAuthor(author);
+    // success
+  } catch(reason) {
+    // failure
+  }
+  ```
+   Errback Example
+   ```js
+   function foundBooks(books) {
+   }
+   function failure(reason) {
+   }
+   findAuthor(function(author, err){
+    if (err) {
+      failure(err);
       // failure
-    });
-    ```
-  
-    Advanced Example
-    --------------
-  
-    Synchronous Example
-  
-    ```javascript
-    let author, books;
-  
-    try {
-      author = findAuthor();
-      books  = findBooksByAuthor(author);
-      // success
-    } catch(reason) {
-      // failure
-    }
-    ```
-  
-    Errback Example
-  
-    ```js
-  
-    function foundBooks(books) {
-  
-    }
-  
-    function failure(reason) {
-  
-    }
-  
-    findAuthor(function(author, err){
-      if (err) {
-        failure(err);
-        // failure
-      } else {
-        try {
-          findBoooksByAuthor(author, function(books, err) {
-            if (err) {
-              failure(err);
-            } else {
-              try {
-                foundBooks(books);
-              } catch(reason) {
-                failure(reason);
-              }
+    } else {
+      try {
+        findBoooksByAuthor(author, function(books, err) {
+          if (err) {
+            failure(err);
+          } else {
+            try {
+              foundBooks(books);
+            } catch(reason) {
+              failure(reason);
             }
-          });
-        } catch(error) {
-          failure(err);
-        }
-        // success
+          }
+        });
+      } catch(error) {
+        failure(err);
       }
-    });
-    ```
-  
-    Promise Example;
-  
-    ```javascript
-    findAuthor().
-      then(findBooksByAuthor).
-      then(function(books){
-        // found books
-    }).catch(function(reason){
-      // something went wrong
-    });
-    ```
-  
-    @method then
-    @param {Function} onFulfilled
-    @param {Function} onRejected
-    Useful for tooling.
-    @return {Promise}
+      // success
+    }
+  });
+  ```
+   Promise Example;
+   ```javascript
+  findAuthor().
+    then(findBooksByAuthor).
+    then(function(books){
+      // found books
+  }).catch(function(reason){
+    // something went wrong
+  });
+  ```
+   @method then
+  @param {Function} onFulfilled
+  @param {Function} onRejected
+  Useful for tooling.
+  @return {Promise}
   */
-  then: then,
 
   /**
-    `catch` is simply sugar for `then(undefined, onRejection)` which makes it the same
-    as the catch block of a try/catch statement.
+  `catch` is simply sugar for `then(undefined, onRejection)` which makes it the same
+  as the catch block of a try/catch statement.
+  ```js
+  function findAuthor(){
+  throw new Error('couldn't find that author');
+  }
+  // synchronous
+  try {
+  findAuthor();
+  } catch(reason) {
+  // something went wrong
+  }
+  // async with promises
+  findAuthor().catch(function(reason){
+  // something went wrong
+  });
+  ```
+  @method catch
+  @param {Function} onRejection
+  Useful for tooling.
+  @return {Promise}
+  */
+
+
+  Promise.prototype.catch = function _catch(onRejection) {
+    return this.then(null, onRejection);
+  };
+
+  /**
+    `finally` will be invoked regardless of the promise's fate just as native
+    try/catch/finally behaves
+  
+    Synchronous example:
   
     ```js
-    function findAuthor(){
-      throw new Error('couldn't find that author');
+    findAuthor() {
+      if (Math.random() > 0.5) {
+        throw new Error();
+      }
+      return new Author();
     }
   
-    // synchronous
     try {
-      findAuthor();
-    } catch(reason) {
-      // something went wrong
+      return findAuthor(); // succeed or fail
+    } catch(error) {
+      return findOtherAuther();
+    } finally {
+      // always runs
+      // doesn't affect the return value
     }
+    ```
   
-    // async with promises
+    Asynchronous example:
+  
+    ```js
     findAuthor().catch(function(reason){
-      // something went wrong
+      return findOtherAuther();
+    }).finally(function(){
+      // author was either found, or not
     });
     ```
   
-    @method catch
-    @param {Function} onRejection
-    Useful for tooling.
+    @method finally
+    @param {Function} callback
     @return {Promise}
   */
-  'catch': function _catch(onRejection) {
-    return this.then(null, onRejection);
-  }
-};
+
+
+  Promise.prototype.finally = function _finally(callback) {
+    var promise = this;
+    var constructor = promise.constructor;
+
+    return promise.then(function (value) {
+      return constructor.resolve(callback()).then(function () {
+        return value;
+      });
+    }, function (reason) {
+      return constructor.resolve(callback()).then(function () {
+        throw reason;
+      });
+    });
+  };
+
+  return Promise;
+}();
+
+Promise$1.prototype.then = then;
+Promise$1.all = all;
+Promise$1.race = race;
+Promise$1.resolve = resolve$1;
+Promise$1.reject = reject$1;
+Promise$1._setScheduler = setScheduler;
+Promise$1._setAsap = setAsap;
+Promise$1._asap = asap;
 
 /*global self*/
-function polyfill$1() {
-    var local = undefined;
+function polyfill() {
+  var local = void 0;
 
-    if (typeof global !== 'undefined') {
-        local = global;
-    } else if (typeof self !== 'undefined') {
-        local = self;
-    } else {
-        try {
-            local = Function('return this')();
-        } catch (e) {
-            throw new Error('polyfill failed because global object is unavailable in this environment');
-        }
+  if (typeof global !== 'undefined') {
+    local = global;
+  } else if (typeof self !== 'undefined') {
+    local = self;
+  } else {
+    try {
+      local = Function('return this')();
+    } catch (e) {
+      throw new Error('polyfill failed because global object is unavailable in this environment');
+    }
+  }
+
+  var P = local.Promise;
+
+  if (P) {
+    var promiseToString = null;
+    try {
+      promiseToString = Object.prototype.toString.call(P.resolve());
+    } catch (e) {
+      // silently ignored
     }
 
-    var P = local.Promise;
-
-    if (P) {
-        var promiseToString = null;
-        try {
-            promiseToString = Object.prototype.toString.call(P.resolve());
-        } catch (e) {
-            // silently ignored
-        }
-
-        if (promiseToString === '[object Promise]' && !P.cast) {
-            return;
-        }
+    if (promiseToString === '[object Promise]' && !P.cast) {
+      return;
     }
+  }
 
-    local.Promise = Promise$2;
+  local.Promise = Promise$1;
 }
 
 // Strange compat..
-Promise$2.polyfill = polyfill$1;
-Promise$2.Promise = Promise$2;
+Promise$1.polyfill = polyfill;
+Promise$1.Promise = Promise$1;
 
-return Promise$2;
+return Promise$1;
 
 })));
+
+
 
 
 
@@ -3718,7 +3740,7 @@ var createLocation = exports.createLocation = function createLocation(path, stat
 var locationsAreEqual = exports.locationsAreEqual = function locationsAreEqual(a, b) {
   return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash && a.key === b.key && (0, _valueEqual2.default)(a.state, b.state);
 };
-},{"./PathUtils":44,"resolve-pathname":424,"value-equal":462}],44:[function(require,module,exports){
+},{"./PathUtils":44,"resolve-pathname":424,"value-equal":461}],44:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4087,7 +4109,7 @@ var createBrowserHistory = function createBrowserHistory() {
 };
 
 exports.default = createBrowserHistory;
-},{"./DOMUtils":42,"./LocationUtils":43,"./PathUtils":44,"./createTransitionManager":48,"invariant":52,"warning":463}],46:[function(require,module,exports){
+},{"./DOMUtils":42,"./LocationUtils":43,"./PathUtils":44,"./createTransitionManager":48,"invariant":52,"warning":462}],46:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4410,7 +4432,7 @@ var createHashHistory = function createHashHistory() {
 };
 
 exports.default = createHashHistory;
-},{"./DOMUtils":42,"./LocationUtils":43,"./PathUtils":44,"./createTransitionManager":48,"invariant":52,"warning":463}],47:[function(require,module,exports){
+},{"./DOMUtils":42,"./LocationUtils":43,"./PathUtils":44,"./createTransitionManager":48,"invariant":52,"warning":462}],47:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4581,7 +4603,7 @@ var createMemoryHistory = function createMemoryHistory() {
 };
 
 exports.default = createMemoryHistory;
-},{"./LocationUtils":43,"./PathUtils":44,"./createTransitionManager":48,"warning":463}],48:[function(require,module,exports){
+},{"./LocationUtils":43,"./PathUtils":44,"./createTransitionManager":48,"warning":462}],48:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -4667,7 +4689,7 @@ var createTransitionManager = function createTransitionManager() {
 };
 
 exports.default = createTransitionManager;
-},{"warning":463}],49:[function(require,module,exports){
+},{"warning":462}],49:[function(require,module,exports){
 /**
  * Copyright 2015, Yahoo! Inc.
  * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
@@ -16145,6 +16167,10 @@ process.off = noop;
 process.removeListener = noop;
 process.removeAllListeners = noop;
 process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
 
 process.binding = function (name) {
     throw new Error('process.binding is not supported');
@@ -34707,7 +34733,7 @@ Route.childContextTypes = {
   router: _propTypes2.default.object.isRequired
 };
 exports.default = Route;
-},{"./matchPath":395,"prop-types":239,"react":423,"warning":463}],391:[function(require,module,exports){
+},{"./matchPath":395,"prop-types":239,"react":423,"warning":462}],391:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -34827,7 +34853,7 @@ Router.childContextTypes = {
   router: _propTypes2.default.object.isRequired
 };
 exports.default = Router;
-},{"invariant":52,"prop-types":239,"react":423,"warning":463}],392:[function(require,module,exports){
+},{"invariant":52,"prop-types":239,"react":423,"warning":462}],392:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -35093,7 +35119,7 @@ Switch.propTypes = {
   location: _propTypes2.default.object
 };
 exports.default = Switch;
-},{"./matchPath":395,"prop-types":239,"react":423,"warning":463}],394:[function(require,module,exports){
+},{"./matchPath":395,"prop-types":239,"react":423,"warning":462}],394:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -38266,6 +38292,348 @@ exports.default = index;
 
 
 },{"isomorphic-base64":61,"slate":453}],427:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var global$1 = typeof global !== "undefined" ? global :
+            typeof self !== "undefined" ? self :
+            typeof window !== "undefined" ? window : {}
+
+// shim for using process in browser
+// based off https://github.com/defunctzombie/node-process/blob/master/browser.js
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+var cachedSetTimeout = defaultSetTimout;
+var cachedClearTimeout = defaultClearTimeout;
+if (typeof global$1.setTimeout === 'function') {
+    cachedSetTimeout = setTimeout;
+}
+if (typeof global$1.clearTimeout === 'function') {
+    cachedClearTimeout = clearTimeout;
+}
+
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+function nextTick(fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+}
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+var title = 'browser';
+var platform = 'browser';
+var browser = true;
+var env = {};
+var argv = [];
+var version = ''; // empty string to avoid regexp issues
+var versions = {};
+var release = {};
+var config = {};
+
+function noop() {}
+
+var on = noop;
+var addListener = noop;
+var once = noop;
+var off = noop;
+var removeListener = noop;
+var removeAllListeners = noop;
+var emit = noop;
+
+function binding(name) {
+    throw new Error('process.binding is not supported');
+}
+
+function cwd () { return '/' }
+function chdir (dir) {
+    throw new Error('process.chdir is not supported');
+}
+function umask() { return 0; }
+
+// from https://github.com/kumavis/browser-process-hrtime/blob/master/index.js
+var performance = global$1.performance || {};
+var performanceNow =
+  performance.now        ||
+  performance.mozNow     ||
+  performance.msNow      ||
+  performance.oNow       ||
+  performance.webkitNow  ||
+  function(){ return (new Date()).getTime() };
+
+// generate timestamp or delta
+// see http://nodejs.org/api/process.html#process_process_hrtime
+function hrtime(previousTimestamp){
+  var clocktime = performanceNow.call(performance)*1e-3;
+  var seconds = Math.floor(clocktime);
+  var nanoseconds = Math.floor((clocktime%1)*1e9);
+  if (previousTimestamp) {
+    seconds = seconds - previousTimestamp[0];
+    nanoseconds = nanoseconds - previousTimestamp[1];
+    if (nanoseconds<0) {
+      seconds--;
+      nanoseconds += 1e9;
+    }
+  }
+  return [seconds,nanoseconds]
+}
+
+var startTime = new Date();
+function uptime() {
+  var currentTime = new Date();
+  var dif = currentTime - startTime;
+  return dif / 1000;
+}
+
+var process = {
+  nextTick: nextTick,
+  title: title,
+  browser: browser,
+  env: env,
+  argv: argv,
+  version: version,
+  versions: versions,
+  on: on,
+  addListener: addListener,
+  once: once,
+  off: off,
+  removeListener: removeListener,
+  removeAllListeners: removeAllListeners,
+  emit: emit,
+  binding: binding,
+  cwd: cwd,
+  chdir: chdir,
+  umask: umask,
+  hrtime: hrtime,
+  platform: platform,
+  release: release,
+  config: config,
+  uptime: uptime
+};
+
+/* eslint-disable no-console */
+
+/**
+ * Is in development?
+ *
+ * @type {Boolean}
+ */
+
+var IS_DEV = typeof process !== 'undefined' && process.env && "development" !== 'production';
+
+/**
+ * Has console?
+ *
+ * @type {Boolean}
+ */
+
+var HAS_CONSOLE = typeof console != 'undefined' && typeof console.log == 'function' && typeof console.warn == 'function' && typeof console.error == 'function';
+
+/**
+ * Log a `message` at `level`.
+ *
+ * @param {String} level
+ * @param {String} message
+ * @param {Any} ...args
+ */
+
+function log(level, message) {
+  if (!IS_DEV) {
+    return;
+  }
+
+  if (HAS_CONSOLE) {
+    var _console;
+
+    for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+      args[_key - 2] = arguments[_key];
+    }
+
+    (_console = console)[level].apply(_console, [message].concat(args));
+  }
+}
+
+/**
+ * Log an error `message`.
+ *
+ * @param {String} message
+ * @param {Any} ...args
+ */
+
+function error(message) {
+  if (HAS_CONSOLE) {
+    var _console2;
+
+    for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+
+    (_console2 = console).error.apply(_console2, [message].concat(args));
+  }
+}
+
+/**
+ * Log a warning `message` in development only.
+ *
+ * @param {String} message
+ * @param {Any} ...args
+ */
+
+function warn(message) {
+  for (var _len3 = arguments.length, args = Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+    args[_key3 - 1] = arguments[_key3];
+  }
+
+  log.apply(undefined, ['warn', 'Warning: ' + message].concat(args));
+}
+
+/**
+ * Log a deprecation warning `message`, with helpful `version` number in
+ * development only.
+ *
+ * @param {String} version
+ * @param {String} message
+ * @param {Any} ...args
+ */
+
+function deprecate(version$$1, message) {
+  for (var _len4 = arguments.length, args = Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
+    args[_key4 - 2] = arguments[_key4];
+  }
+
+  log.apply(undefined, ['warn', 'Deprecation (' + version$$1 + '): ' + message].concat(args));
+}
+
+/**
+ * Export.
+ *
+ * @type {Function}
+ */
+
+var index = {
+  deprecate: deprecate,
+  error: error,
+  warn: warn
+};
+
+exports.default = index;
+
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{}],428:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -38382,7 +38750,7 @@ var index = {
 exports.default = index;
 
 
-},{"immutable":51,"slate":453}],428:[function(require,module,exports){
+},{"immutable":51,"slate":453}],429:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -38513,7 +38881,7 @@ var Types = {
 exports.default = Types;
 
 
-},{"slate":453}],429:[function(require,module,exports){
+},{"slate":453}],430:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -38544,6 +38912,12 @@ var Portal = _interopDefault(require('react-portal'));
  */
 
 var EVENT_HANDLERS = ['onBeforeInput', 'onBlur', 'onClick', 'onCompositionEnd', 'onCompositionStart', 'onCopy', 'onCut', 'onDragEnd', 'onDragEnter', 'onDragExit', 'onDragLeave', 'onDragOver', 'onDragStart', 'onDrop', 'onInput', 'onFocus', 'onKeyDown', 'onKeyUp', 'onPaste', 'onSelect'];
+
+/**
+ * Export.
+ *
+ * @type {Array}
+ */
 
 var classCallCheck = function (instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -38689,16 +39063,10 @@ var toConsumableArray = function (arr) {
   }
 };
 
-/**
- * Props that can be defined by plugins.
- *
- * @type {Array}
- */
-
 var PLUGIN_PROPS = [].concat(toConsumableArray(EVENT_HANDLERS), ['decorateNode', 'onChange', 'renderMark', 'renderNode', 'renderPlaceholder', 'renderPortal', 'schema', 'validateNode']);
 
 /**
- * Browser matching rules.
+ * Export.
  *
  * @type {Array}
  */
@@ -38857,12 +39225,6 @@ var IS_MAC = OS === 'macos';
 
 
 var SUPPORTED_EVENTS = EVENTS;
-
-/**
- * Is Apple?
- *
- * @type {Boolean}
- */
 
 var IS_APPLE = IS_IOS || IS_MAC;
 
@@ -39193,12 +39555,22 @@ var Leaf = function (_React$Component) {
           index = _props3.index,
           leaves = _props3.leaves;
 
+      // COMPAT: If the text is empty and the only child, we need to render a
+      // line break when copying and pasting to support expected plain text.
+
+      if (text == '' && parent.kind == 'block' && parent.text == '') {
+        return React.createElement(
+          'span',
+          { 'data-slate-zero-width': 'n' },
+          '\u200B'
+        );
+      }
+
       // COMPAT: Render text inside void nodes with a zero-width space.
       // So the node can contain selection but the text is not visible.
-
       if (parent.isVoid) return React.createElement(
         'span',
-        { 'data-slate-zero-width': true },
+        { 'data-slate-zero-width': 'z' },
         '\u200B'
       );
 
@@ -39207,7 +39579,7 @@ var Leaf = function (_React$Component) {
       // inserted next to it still.
       if (text == '') return React.createElement(
         'span',
-        { 'data-slate-zero-width': true },
+        { 'data-slate-zero-width': 'z' },
         '\u200B'
       );
 
@@ -39254,12 +39626,6 @@ var _initialiseProps = function _initialiseProps() {
     debug.apply(undefined, [message, _this2.props.node.key + '-' + _this2.props.index].concat(args));
   };
 };
-
-/**
- * Debug.
- *
- * @type {Function}
- */
 
 var debug$1 = Debug('slate:node');
 
@@ -39459,12 +39825,6 @@ var _initialiseProps$1 = function _initialiseProps() {
   };
 };
 
-/**
- * Debug.
- *
- * @type {Function}
- */
-
 var debug$2 = Debug('slate:void');
 
 /**
@@ -39623,12 +39983,6 @@ var _initialiseProps$2 = function _initialiseProps() {
     });
   };
 };
-
-/**
- * Debug.
- *
- * @type {Function}
- */
 
 var debug$3 = Debug('slate:node');
 
@@ -39858,14 +40212,6 @@ var _initialiseProps$3 = function _initialiseProps() {
   };
 };
 
-/**
- * Find the DOM node for a `key`.
- *
- * @param {String|Node} key
- * @param {Window} win (optional)
- * @return {Element}
- */
-
 function findDOMNode(key) {
   var win = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : window;
 
@@ -39883,12 +40229,9 @@ function findDOMNode(key) {
 }
 
 /**
- * Find a native DOM selection point from a Slate `key` and `offset`.
+ * Export.
  *
- * @param {String} key
- * @param {Number} offset
- * @param {Window} win (optional)
- * @return {Object|Null}
+ * @type {Function}
  */
 
 function findDOMPoint(key, offset) {
@@ -39921,11 +40264,9 @@ function findDOMPoint(key, offset) {
 }
 
 /**
- * Find a native DOM range Slate `range`.
+ * Export.
  *
- * @param {Range} range
- * @param {Window} win (optional)
- * @return {Object|Null}
+ * @type {Function}
  */
 
 function findDOMRange(range) {
@@ -39950,11 +40291,13 @@ function findDOMRange(range) {
 }
 
 /**
- * Constants.
+ * Export.
  *
- * @type {String}
+ * @type {Function}
  */
 
+var ZERO_WIDTH_ATTRIBUTE = 'data-slate-zero-width';
+var ZERO_WIDTH_SELECTOR = '[' + ZERO_WIDTH_ATTRIBUTE + ']';
 var OFFSET_KEY_ATTRIBUTE = 'data-offset-key';
 var RANGE_SELECTOR = '[' + OFFSET_KEY_ATTRIBUTE + ']';
 var TEXT_SELECTOR = '[data-key]';
@@ -40005,7 +40348,7 @@ function findPoint(nativeNode, nativeOffset, value) {
   // text node should have no characters. However, during IME composition the
   // ASCII characters will be prepended to the zero-width space, so subtract 1
   // from the offset to account for the zero-width space character.
-  if (offset == node.textContent.length && parentNode.hasAttribute('data-slate-zero-width')) {
+  if (offset == node.textContent.length && parentNode.hasAttribute(ZERO_WIDTH_ATTRIBUTE)) {
     offset--;
   }
 
@@ -40108,11 +40451,9 @@ function getEditableChild(parent, index, direction) {
 }
 
 /**
- * Find a Slate range from a DOM `native` selection.
+ * Export.
  *
- * @param {Selection} native
- * @param {Value} value
- * @return {Range}
+ * @type {Function}
  */
 
 function findRange(native, value) {
@@ -40171,9 +40512,9 @@ function findRange(native, value) {
 }
 
 /**
- * CSS overflow values that would cause scrolling.
+ * Export.
  *
- * @type {Array}
+ * @type {Function}
  */
 
 var OVERFLOWS = ['auto', 'overlay', 'scroll'];
@@ -40348,7 +40689,7 @@ function scrollToSelection(selection) {
 }
 
 /**
- * Debug.
+ * Export.
  *
  * @type {Function}
  */
@@ -40890,11 +41231,9 @@ EVENT_HANDLERS.forEach(function (handler) {
 });
 
 /**
- * Prepares a Slate document fragment to be copied to the clipboard.
+ * Export.
  *
- * @param {Event} event
- * @param {Value} value
- * @param {Document} [fragment]
+ * @type {Component}
  */
 
 function cloneFragment(event, value) {
@@ -40953,9 +41292,9 @@ function cloneFragment(event, value) {
 
   // Remove any zero-width space spans from the cloned DOM so that they don't
   // show up elsewhere when pasted.
-  var zws = [].slice.call(contents.querySelectorAll('[data-slate-zero-width]'));
-  zws.forEach(function (zw) {
-    return zw.parentNode.removeChild(zw);
+  [].slice.call(contents.querySelectorAll(ZERO_WIDTH_SELECTOR)).forEach(function (zw) {
+    var isNewline = zw.getAttribute(ZERO_WIDTH_ATTRIBUTE) === 'n';
+    zw.textContent = isNewline ? '\n' : '';
   });
 
   // COMPAT: In Chrome and Safari, if the last element in the selection to
@@ -41038,11 +41377,9 @@ function findNode(element, value) {
 }
 
 /**
- * Get the target range from a DOM `event`.
+ * Export.
  *
- * @param {Event} event
- * @param {Value} value
- * @return {Range}
+ * @type {Function}
  */
 
 function getEventRange(event, value) {
@@ -41096,6 +41433,12 @@ function getEventRange(event, value) {
 }
 
 /**
+ * Export.
+ *
+ * @type {Function}
+ */
+
+/**
  * The transfer types that Slate recognizes.
  *
  * @type {Object}
@@ -41115,12 +41458,6 @@ var TRANSFER_TYPES = {
    */
 
 };
-
-/**
- * Transfer types.
- *
- * @type {String}
- */
 
 var FRAGMENT = TRANSFER_TYPES.FRAGMENT;
 var HTML = TRANSFER_TYPES.HTML;
@@ -41279,9 +41616,9 @@ function getType(transfer, type) {
 }
 
 /**
- * The default plain text transfer type.
+ * Export.
  *
- * @type {String}
+ * @type {Function}
  */
 
 var TEXT$1 = TRANSFER_TYPES.TEXT;
@@ -41336,7 +41673,7 @@ function setEventTransfer(event, type, content) {
 }
 
 /**
- * Debug.
+ * Export.
  *
  * @type {Function}
  */
@@ -41582,10 +41919,12 @@ function AfterPlugin() {
         if (n) change.collapseToStartOf(n);
       }
 
-      text.split('\n').forEach(function (line, i) {
-        if (i > 0) change.splitBlock();
-        change.insertText(line);
-      });
+      if (text) {
+        text.split('\n').forEach(function (line, i) {
+          if (i > 0) change.splitBlock();
+          change.insertText(line);
+        });
+      }
     }
 
     if (type == 'fragment') {
@@ -41593,11 +41932,11 @@ function AfterPlugin() {
     }
 
     if (type == 'node' && slate.Block.isBlock(node)) {
-      change.insertBlock(node).removeNodeByKey(node.key);
+      change.insertBlock(node.regenerateKey()).removeNodeByKey(node.key);
     }
 
     if (type == 'node' && slate.Inline.isInline(node)) {
-      change.insertInline(node).removeNodeByKey(node.key);
+      change.insertInline(node.regenerateKey()).removeNodeByKey(node.key);
     }
 
     // COMPAT: React's onSelect event breaks after an onDrop event
@@ -42033,9 +42372,9 @@ function AfterPlugin() {
 }
 
 /**
- * Debug.
+ * Export.
  *
- * @type {Function}
+ * @type {Object}
  */
 
 var debug$6 = Debug('slate:before');
@@ -42480,6 +42819,12 @@ function BeforePlugin() {
 }
 
 /**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+/**
  * Noop.
  *
  * @return {Void}
@@ -42488,7 +42833,7 @@ function BeforePlugin() {
 function noop() {}
 
 /**
- * Debug.
+ * Export.
  *
  * @type {Function}
  */
@@ -42922,7 +43267,7 @@ exports.BeforePlugin = BeforePlugin;
 exports.default = index;
 
 
-},{"debug":430,"get-window":40,"is-hotkey":55,"is-in-browser":57,"lodash/throttle":443,"prop-types":449,"react":423,"react-dom":241,"react-immutable-proptypes":367,"react-portal":368,"selection-is-backward":425,"slate":453,"slate-base64-serializer":426,"slate-dev-logger":451,"slate-plain-serializer":427,"slate-prop-types":428}],430:[function(require,module,exports){
+},{"debug":431,"get-window":40,"is-hotkey":55,"is-in-browser":57,"lodash/throttle":444,"prop-types":450,"react":423,"react-dom":241,"react-immutable-proptypes":367,"react-portal":368,"selection-is-backward":425,"slate":453,"slate-base64-serializer":426,"slate-dev-logger":427,"slate-plain-serializer":428,"slate-prop-types":429}],431:[function(require,module,exports){
 (function (process){
 /**
  * This is the web browser implementation of `debug()`.
@@ -43111,7 +43456,7 @@ function localstorage() {
 }
 
 }).call(this,require('_process'))
-},{"./debug":431,"_process":234}],431:[function(require,module,exports){
+},{"./debug":432,"_process":234}],432:[function(require,module,exports){
 
 /**
  * This is the common logic for both the Node.js and web browser
@@ -43315,19 +43660,19 @@ function coerce(val) {
   return val;
 }
 
-},{"ms":445}],432:[function(require,module,exports){
+},{"ms":446}],433:[function(require,module,exports){
 arguments[4][71][0].apply(exports,arguments)
-},{"./_root":437,"dup":71}],433:[function(require,module,exports){
+},{"./_root":438,"dup":71}],434:[function(require,module,exports){
 arguments[4][96][0].apply(exports,arguments)
-},{"./_Symbol":432,"./_getRawTag":435,"./_objectToString":436,"dup":96}],434:[function(require,module,exports){
+},{"./_Symbol":433,"./_getRawTag":436,"./_objectToString":437,"dup":96}],435:[function(require,module,exports){
 arguments[4][140][0].apply(exports,arguments)
-},{"dup":140}],435:[function(require,module,exports){
+},{"dup":140}],436:[function(require,module,exports){
 arguments[4][146][0].apply(exports,arguments)
-},{"./_Symbol":432,"dup":146}],436:[function(require,module,exports){
+},{"./_Symbol":433,"dup":146}],437:[function(require,module,exports){
 arguments[4][183][0].apply(exports,arguments)
-},{"dup":183}],437:[function(require,module,exports){
+},{"dup":183}],438:[function(require,module,exports){
 arguments[4][187][0].apply(exports,arguments)
-},{"./_freeGlobal":434,"dup":187}],438:[function(require,module,exports){
+},{"./_freeGlobal":435,"dup":187}],439:[function(require,module,exports){
 var isObject = require('./isObject'),
     now = require('./now'),
     toNumber = require('./toNumber');
@@ -43519,13 +43864,13 @@ function debounce(func, wait, options) {
 
 module.exports = debounce;
 
-},{"./isObject":439,"./now":442,"./toNumber":444}],439:[function(require,module,exports){
+},{"./isObject":440,"./now":443,"./toNumber":445}],440:[function(require,module,exports){
 arguments[4][214][0].apply(exports,arguments)
-},{"dup":214}],440:[function(require,module,exports){
+},{"dup":214}],441:[function(require,module,exports){
 arguments[4][215][0].apply(exports,arguments)
-},{"dup":215}],441:[function(require,module,exports){
+},{"dup":215}],442:[function(require,module,exports){
 arguments[4][217][0].apply(exports,arguments)
-},{"./_baseGetTag":433,"./isObjectLike":440,"dup":217}],442:[function(require,module,exports){
+},{"./_baseGetTag":434,"./isObjectLike":441,"dup":217}],443:[function(require,module,exports){
 var root = require('./_root');
 
 /**
@@ -43550,7 +43895,7 @@ var now = function() {
 
 module.exports = now;
 
-},{"./_root":437}],443:[function(require,module,exports){
+},{"./_root":438}],444:[function(require,module,exports){
 var debounce = require('./debounce'),
     isObject = require('./isObject');
 
@@ -43621,7 +43966,7 @@ function throttle(func, wait, options) {
 
 module.exports = throttle;
 
-},{"./debounce":438,"./isObject":439}],444:[function(require,module,exports){
+},{"./debounce":439,"./isObject":440}],445:[function(require,module,exports){
 var isObject = require('./isObject'),
     isSymbol = require('./isSymbol');
 
@@ -43689,7 +44034,7 @@ function toNumber(value) {
 
 module.exports = toNumber;
 
-},{"./isObject":439,"./isSymbol":441}],445:[function(require,module,exports){
+},{"./isObject":440,"./isSymbol":442}],446:[function(require,module,exports){
 /**
  * Helpers.
  */
@@ -43843,359 +44188,17 @@ function plural(ms, n, name) {
   return Math.ceil(ms / n) + ' ' + name + 's';
 }
 
-},{}],446:[function(require,module,exports){
+},{}],447:[function(require,module,exports){
 arguments[4][369][0].apply(exports,arguments)
-},{"./lib/ReactPropTypesSecret":450,"dup":369,"fbjs/lib/invariant":31,"fbjs/lib/warning":38}],447:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":451,"dup":369,"fbjs/lib/invariant":31,"fbjs/lib/warning":38}],448:[function(require,module,exports){
 arguments[4][370][0].apply(exports,arguments)
-},{"./lib/ReactPropTypesSecret":450,"dup":370,"fbjs/lib/emptyFunction":23,"fbjs/lib/invariant":31}],448:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":451,"dup":370,"fbjs/lib/emptyFunction":23,"fbjs/lib/invariant":31}],449:[function(require,module,exports){
 arguments[4][371][0].apply(exports,arguments)
-},{"./checkPropTypes":446,"./lib/ReactPropTypesSecret":450,"dup":371,"fbjs/lib/emptyFunction":23,"fbjs/lib/invariant":31,"fbjs/lib/warning":38}],449:[function(require,module,exports){
+},{"./checkPropTypes":447,"./lib/ReactPropTypesSecret":451,"dup":371,"fbjs/lib/emptyFunction":23,"fbjs/lib/invariant":31,"fbjs/lib/warning":38}],450:[function(require,module,exports){
 arguments[4][372][0].apply(exports,arguments)
-},{"./factoryWithThrowingShims":447,"./factoryWithTypeCheckers":448,"dup":372}],450:[function(require,module,exports){
+},{"./factoryWithThrowingShims":448,"./factoryWithTypeCheckers":449,"dup":372}],451:[function(require,module,exports){
 arguments[4][240][0].apply(exports,arguments)
-},{"dup":240}],451:[function(require,module,exports){
-(function (global){
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-var global$1 = typeof global !== "undefined" ? global :
-            typeof self !== "undefined" ? self :
-            typeof window !== "undefined" ? window : {}
-
-// shim for using process in browser
-// based off https://github.com/defunctzombie/node-process/blob/master/browser.js
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-var cachedSetTimeout = defaultSetTimout;
-var cachedClearTimeout = defaultClearTimeout;
-if (typeof global$1.setTimeout === 'function') {
-    cachedSetTimeout = setTimeout;
-}
-if (typeof global$1.clearTimeout === 'function') {
-    cachedClearTimeout = clearTimeout;
-}
-
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-function nextTick(fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-}
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-var title = 'browser';
-var platform = 'browser';
-var browser = true;
-var env = {};
-var argv = [];
-var version = ''; // empty string to avoid regexp issues
-var versions = {};
-var release = {};
-var config = {};
-
-function noop() {}
-
-var on = noop;
-var addListener = noop;
-var once = noop;
-var off = noop;
-var removeListener = noop;
-var removeAllListeners = noop;
-var emit = noop;
-
-function binding(name) {
-    throw new Error('process.binding is not supported');
-}
-
-function cwd () { return '/' }
-function chdir (dir) {
-    throw new Error('process.chdir is not supported');
-}
-function umask() { return 0; }
-
-// from https://github.com/kumavis/browser-process-hrtime/blob/master/index.js
-var performance = global$1.performance || {};
-var performanceNow =
-  performance.now        ||
-  performance.mozNow     ||
-  performance.msNow      ||
-  performance.oNow       ||
-  performance.webkitNow  ||
-  function(){ return (new Date()).getTime() };
-
-// generate timestamp or delta
-// see http://nodejs.org/api/process.html#process_process_hrtime
-function hrtime(previousTimestamp){
-  var clocktime = performanceNow.call(performance)*1e-3;
-  var seconds = Math.floor(clocktime);
-  var nanoseconds = Math.floor((clocktime%1)*1e9);
-  if (previousTimestamp) {
-    seconds = seconds - previousTimestamp[0];
-    nanoseconds = nanoseconds - previousTimestamp[1];
-    if (nanoseconds<0) {
-      seconds--;
-      nanoseconds += 1e9;
-    }
-  }
-  return [seconds,nanoseconds]
-}
-
-var startTime = new Date();
-function uptime() {
-  var currentTime = new Date();
-  var dif = currentTime - startTime;
-  return dif / 1000;
-}
-
-var process = {
-  nextTick: nextTick,
-  title: title,
-  browser: browser,
-  env: env,
-  argv: argv,
-  version: version,
-  versions: versions,
-  on: on,
-  addListener: addListener,
-  once: once,
-  off: off,
-  removeListener: removeListener,
-  removeAllListeners: removeAllListeners,
-  emit: emit,
-  binding: binding,
-  cwd: cwd,
-  chdir: chdir,
-  umask: umask,
-  hrtime: hrtime,
-  platform: platform,
-  release: release,
-  config: config,
-  uptime: uptime
-};
-
-/* eslint-disable no-console */
-
-/**
- * Is in development?
- *
- * @type {Boolean}
- */
-
-var IS_DEV = typeof process !== 'undefined' && process.env && "development" !== 'production';
-
-/**
- * Has console?
- *
- * @type {Boolean}
- */
-
-var HAS_CONSOLE = typeof console != 'undefined' && typeof console.log == 'function' && typeof console.warn == 'function' && typeof console.error == 'function';
-
-/**
- * Log a `message` at `level`.
- *
- * @param {String} level
- * @param {String} message
- * @param {Any} ...args
- */
-
-function log(level, message) {
-  if (!IS_DEV) {
-    return;
-  }
-
-  if (HAS_CONSOLE) {
-    var _console;
-
-    for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-      args[_key - 2] = arguments[_key];
-    }
-
-    (_console = console)[level].apply(_console, [message].concat(args));
-  }
-}
-
-/**
- * Log an error `message`.
- *
- * @param {String} message
- * @param {Any} ...args
- */
-
-function error(message) {
-  if (HAS_CONSOLE) {
-    var _console2;
-
-    for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-      args[_key2 - 1] = arguments[_key2];
-    }
-
-    (_console2 = console).error.apply(_console2, [message].concat(args));
-  }
-}
-
-/**
- * Log a warning `message` in development only.
- *
- * @param {String} message
- * @param {Any} ...args
- */
-
-function warn(message) {
-  for (var _len3 = arguments.length, args = Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
-    args[_key3 - 1] = arguments[_key3];
-  }
-
-  log.apply(undefined, ['warn', 'Warning: ' + message].concat(args));
-}
-
-/**
- * Log a deprecation warning `message`, with helpful `version` number in
- * development only.
- *
- * @param {String} version
- * @param {String} message
- * @param {Any} ...args
- */
-
-function deprecate(version$$1, message) {
-  for (var _len4 = arguments.length, args = Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
-    args[_key4 - 2] = arguments[_key4];
-  }
-
-  log.apply(undefined, ['warn', 'Deprecation (' + version$$1 + '): ' + message].concat(args));
-}
-
-/**
- * Export.
- *
- * @type {Function}
- */
-
-var index = {
-  deprecate: deprecate,
-  error: error,
-  warn: warn
-};
-
-exports.default = index;
-
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],452:[function(require,module,exports){
+},{"dup":240}],452:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -48394,12 +48397,14 @@ var Node = function () {
     value: function getMarksAtRangeAsArray(range) {
       range = range.normalize(this);
       if (range.isUnset) return [];
-      if (range.isCollapsed) return this.getMarksAtCollaspsedRangeAsArray(range);
+      if (range.isCollapsed) return this.getMarksAtCollapsedRangeAsArray(range);
 
       return this.getCharactersAtRange(range).reduce(function (memo, char) {
-        char.marks.toArray().forEach(function (c) {
-          return memo.push(c);
-        });
+        if (char) {
+          char.marks.toArray().forEach(function (c) {
+            return memo.push(c);
+          });
+        }
         return memo;
       }, []);
     }
@@ -48416,10 +48421,12 @@ var Node = function () {
     value: function getInsertMarksAtRangeAsArray(range) {
       range = range.normalize(this);
       if (range.isUnset) return [];
-      if (range.isCollapsed) return this.getMarksAtCollaspsedRangeAsArray(range);
+      if (range.isCollapsed) return this.getMarksAtCollapsedRangeAsArray(range);
 
       var text = this.getDescendant(range.startKey);
       var char = text.characters.get(range.startOffset);
+      if (!char) return [];
+
       return char.marks.toArray();
     }
 
@@ -48431,8 +48438,8 @@ var Node = function () {
      */
 
   }, {
-    key: 'getMarksAtCollaspsedRangeAsArray',
-    value: function getMarksAtCollaspsedRangeAsArray(range) {
+    key: 'getMarksAtCollapsedRangeAsArray',
+    value: function getMarksAtCollapsedRangeAsArray(range) {
       if (range.isUnset) return [];
 
       var startKey = range.startKey,
@@ -48442,12 +48449,19 @@ var Node = function () {
       if (startOffset == 0) {
         var previous = this.getPreviousText(startKey);
         if (!previous || previous.text.length == 0) return [];
+        if (this.getClosestBlock(startKey) !== this.getClosestBlock(previous.key)) {
+          return [];
+        }
         var _char = previous.characters.get(previous.text.length - 1);
+        if (!_char) return [];
+
         return _char.marks.toArray();
       }
 
       var text = this.getDescendant(startKey);
       var char = text.characters.get(startOffset - 1);
+      if (!char) return [];
+
       return char.marks.toArray();
     }
 
@@ -48463,7 +48477,7 @@ var Node = function () {
     value: function getActiveMarksAtRangeAsArray(range) {
       range = range.normalize(this);
       if (range.isUnset) return [];
-      if (range.isCollapsed) return this.getMarksAtCollaspsedRangeAsArray(range);
+      if (range.isCollapsed) return this.getMarksAtCollapsedRangeAsArray(range);
 
       // Otherwise, get a set of the marks for each character in the range.
       var chars = this.getCharactersAtRange(range);
@@ -48473,7 +48487,8 @@ var Node = function () {
       var memo = first.marks;
 
       chars.slice(1).forEach(function (char) {
-        memo = memo.intersect(char.marks);
+        var marks = char ? char.marks : [];
+        memo = memo.intersect(marks);
         return memo.size != 0;
       });
 
@@ -49086,15 +49101,15 @@ var Node = function () {
   }, {
     key: 'insertNode',
     value: function insertNode(index, node) {
-      var keys = this.getKeys();
+      var keys = this.getKeysAsArray();
 
-      if (keys.contains(node.key)) {
+      if (keys.includes(node.key)) {
         node = node.regenerateKey();
       }
 
       if (node.object != 'text') {
         node = node.mapDescendants(function (desc) {
-          return keys.contains(desc.key) ? desc.regenerateKey() : desc;
+          return keys.includes(desc.key) ? desc.regenerateKey() : desc;
         });
       }
 
@@ -49587,11 +49602,11 @@ function assertKey(arg) {
  * Memoize read methods.
  */
 
-memoize(Node.prototype, ['getBlocks', 'getBlocksAsArray', 'getCharacters', 'getCharactersAsArray', 'getFirstText', 'getInlines', 'getInlinesAsArray', 'getKeys', 'getKeysAsArray', 'getLastText', 'getMarks', 'getOrderedMarks', 'getMarksAsArray', 'getText', 'getTextDirection', 'getTexts', 'getTextsAsArray', 'isLeafBlock', 'isLeafInline'], {
+memoize(Node.prototype, ['getBlocksAsArray', 'getCharactersAsArray', 'getFirstText', 'getInlinesAsArray', 'getKeysAsArray', 'getLastText', 'getMarksAsArray', 'getText', 'getTextDirection', 'getTextsAsArray', 'isLeafBlock', 'isLeafInline'], {
   takesArguments: false
 });
 
-memoize(Node.prototype, ['areDescendantsSorted', 'getActiveMarksAtRange', 'getActiveMarksAtRangeAsArray', 'getAncestors', 'getBlocksAtRange', 'getBlocksAtRangeAsArray', 'getBlocksByType', 'getBlocksByTypeAsArray', 'getCharactersAtRange', 'getCharactersAtRangeAsArray', 'getChild', 'getClosestBlock', 'getClosestInline', 'getClosestVoid', 'getCommonAncestor', 'getDecorations', 'getDepth', 'getDescendant', 'getDescendantAtPath', 'getFragmentAtRange', 'getFurthestBlock', 'getFurthestInline', 'getFurthestAncestor', 'getFurthestOnlyChildAncestor', 'getInlinesAtRange', 'getInlinesAtRangeAsArray', 'getInlinesByType', 'getInlinesByTypeAsArray', 'getMarksAtRange', 'getInsertMarksAtRange', 'getOrderedMarksAtRange', 'getMarksAtRangeAsArray', 'getInsertMarksAtRangeAsArray', 'getMarksByType', 'getOrderedMarksByType', 'getMarksByTypeAsArray', 'getNextBlock', 'getNextSibling', 'getNextText', 'getNode', 'getNodeAtPath', 'getOffset', 'getOffsetAtRange', 'getParent', 'getPath', 'getPlaceholder', 'getPreviousBlock', 'getPreviousSibling', 'getPreviousText', 'getTextAtOffset', 'getTextsAtRange', 'getTextsAtRangeAsArray', 'hasChild', 'hasDescendant', 'hasNode', 'hasVoidParent', 'validate'], {
+memoize(Node.prototype, ['areDescendantsSorted', 'getActiveMarksAtRangeAsArray', 'getAncestors', 'getBlocksAtRangeAsArray', 'getBlocksByTypeAsArray', 'getCharactersAtRangeAsArray', 'getChild', 'getClosestBlock', 'getClosestInline', 'getClosestVoid', 'getCommonAncestor', 'getDecorations', 'getDepth', 'getDescendant', 'getDescendantAtPath', 'getFragmentAtRange', 'getFurthestBlock', 'getFurthestInline', 'getFurthestAncestor', 'getFurthestOnlyChildAncestor', 'getInlinesAtRangeAsArray', 'getInlinesByTypeAsArray', 'getMarksAtRangeAsArray', 'getInsertMarksAtRangeAsArray', 'getMarksByTypeAsArray', 'getNextBlock', 'getNextSibling', 'getNextText', 'getNode', 'getNodeAtPath', 'getOffset', 'getOffsetAtRange', 'getParent', 'getPath', 'getPlaceholder', 'getPreviousBlock', 'getPreviousSibling', 'getPreviousText', 'getTextAtOffset', 'getTextsAtRangeAsArray', 'hasVoidParent', 'validate'], {
   takesArguments: true
 });
 
@@ -51809,7 +51824,25 @@ Changes$1.setBlockAtRange = function (change, range, properties) {
 
   var blocks = document.getBlocksAtRange(range);
 
-  blocks.forEach(function (block) {
+  var startKey = range.startKey,
+      startOffset = range.startOffset,
+      endKey = range.endKey,
+      endOffset = range.endOffset,
+      isCollapsed = range.isCollapsed;
+
+  var isStartVoid = document.hasVoidParent(startKey);
+  var startBlock = document.getClosestBlock(startKey);
+  var endBlock = document.getClosestBlock(endKey);
+
+  // Check if we have a "hanging" selection case where the even though the
+  // selection extends into the start of the end node, we actually want to
+  // ignore that for UX reasons.
+  var isHanging = isCollapsed == false && startOffset == 0 && endOffset == 0 && isStartVoid == false && startKey == startBlock.getFirstText().key && endKey == endBlock.getFirstText().key;
+
+  // If it's a hanging selection, ignore the last block.
+  var sets = isHanging ? blocks.slice(0, -1) : blocks;
+
+  sets.forEach(function (block) {
     change.setNodeByKey(block.key, properties, { normalize: normalize });
   });
 };
@@ -57542,15 +57575,13 @@ exports.default = index;
 
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"debug":454,"direction":13,"esrever":15,"immutable":51,"is-empty":54,"is-plain-object":58,"lodash/isEqual":211,"lodash/mergeWith":223,"lodash/omit":224,"lodash/pick":225,"slate-dev-logger":457,"slate-schema-violations":452}],454:[function(require,module,exports){
-arguments[4][430][0].apply(exports,arguments)
-},{"./debug":455,"_process":234,"dup":430}],455:[function(require,module,exports){
+},{"debug":454,"direction":13,"esrever":15,"immutable":51,"is-empty":54,"is-plain-object":58,"lodash/isEqual":211,"lodash/mergeWith":223,"lodash/omit":224,"lodash/pick":225,"slate-dev-logger":427,"slate-schema-violations":452}],454:[function(require,module,exports){
 arguments[4][431][0].apply(exports,arguments)
-},{"dup":431,"ms":456}],456:[function(require,module,exports){
-arguments[4][445][0].apply(exports,arguments)
-},{"dup":445}],457:[function(require,module,exports){
-arguments[4][451][0].apply(exports,arguments)
-},{"dup":451}],458:[function(require,module,exports){
+},{"./debug":455,"_process":234,"dup":431}],455:[function(require,module,exports){
+arguments[4][432][0].apply(exports,arguments)
+},{"dup":432,"ms":456}],456:[function(require,module,exports){
+arguments[4][446][0].apply(exports,arguments)
+},{"dup":446}],457:[function(require,module,exports){
 
 /**
  * Export.
@@ -57619,7 +57650,7 @@ function uncamelize(string) {
   })
 }
 
-},{}],459:[function(require,module,exports){
+},{}],458:[function(require,module,exports){
 
 var space = require('to-space-case')
 
@@ -57642,7 +57673,7 @@ function toPascalCase(string) {
   })
 }
 
-},{"to-space-case":460}],460:[function(require,module,exports){
+},{"to-space-case":459}],459:[function(require,module,exports){
 
 var clean = require('to-no-case')
 
@@ -57665,7 +57696,7 @@ function toSpaceCase(string) {
   }).trim()
 }
 
-},{"to-no-case":458}],461:[function(require,module,exports){
+},{"to-no-case":457}],460:[function(require,module,exports){
 var toString = Object.prototype.toString
 
 module.exports = function(val){
@@ -57696,7 +57727,7 @@ module.exports = function(val){
   return typeof val
 }
 
-},{}],462:[function(require,module,exports){
+},{}],461:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -57737,7 +57768,7 @@ var valueEqual = function valueEqual(a, b) {
 };
 
 exports.default = valueEqual;
-},{}],463:[function(require,module,exports){
+},{}],462:[function(require,module,exports){
 /**
  * Copyright 2014-2015, Facebook, Inc.
  * All rights reserved.
@@ -57799,7 +57830,7 @@ if ("production" !== 'production') {
 
 module.exports = warning;
 
-},{}],464:[function(require,module,exports){
+},{}],463:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -57826,7 +57857,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function AutoReplace() {
   var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var transform = opts.transform;
+
+  if (!opts.change) throw new Error('You must provide a `options.change` option.');
+  if (!opts.trigger) throw new Error('You must provide a `options.trigger` option.');
 
   var trigger = normalizeTrigger(opts.trigger);
   var ignoreIn = void 0;
@@ -57834,9 +57867,6 @@ function AutoReplace() {
 
   if (opts.ignoreIn) ignoreIn = normalizeMatcher(opts.ignoreIn);
   if (opts.onlyIn) onlyIn = normalizeMatcher(opts.onlyIn);
-
-  if (!transform) throw new Error('You must provide a `transform` option.');
-  if (!trigger) throw new Error('You must provide a `trigger` option.');
 
   /**
    * On key down.
@@ -57848,7 +57878,7 @@ function AutoReplace() {
    */
 
   function onKeyDown(event, change, editor) {
-    if (trigger(event)) {
+    if (trigger(event, change, editor)) {
       return replace(event, change, editor);
     }
   }
@@ -57864,8 +57894,9 @@ function AutoReplace() {
 
   function replace(event, change, editor) {
     var value = change.value;
+    var selection = value.selection;
 
-    if (value.isExpanded) return;
+    if (selection.isExpanded) return;
 
     var startBlock = value.startBlock;
 
@@ -57880,7 +57911,8 @@ function AutoReplace() {
 
     event.preventDefault();
 
-    var startOffset = value.startOffset;
+    var startOffset = selection.startOffset;
+
     var totalRemoved = 0;
     var offsets = getOffsets(matches, startOffset);
 
@@ -57890,9 +57922,9 @@ function AutoReplace() {
     });
 
     startOffset -= totalRemoved;
-    change.moveOffsetsTo(startOffset, startOffset);
+    change.moveTo(startOffset);
 
-    return change.call(transform, event, matches, editor);
+    return change.call(opts.change, event, matches, editor);
   }
 
   /**
@@ -57904,8 +57936,9 @@ function AutoReplace() {
    */
 
   function getMatches(value) {
-    var startText = value.startText,
-        startOffset = value.startOffset;
+    var startText = value.startText;
+    var selection = value.selection;
+    var startOffset = selection.startOffset;
     var text = startText.text;
 
     var after = null;
@@ -58054,7 +58087,7 @@ function normalizeMatcher(matcher) {
  */
 
 exports.default = AutoReplace;
-},{"is-hotkey":465,"type-of":461}],465:[function(require,module,exports){
+},{"is-hotkey":464,"type-of":460}],464:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58236,7 +58269,7 @@ exports.default = isHotkey;
 exports.isHotkey = isHotkey;
 exports.parseHotkey = parseHotkey;
 exports.compareHotkey = compareHotkey;
-},{}],466:[function(require,module,exports){
+},{}],465:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58263,9 +58296,10 @@ function CollapseOnEscape() {
   return {
     onKeyDown: function onKeyDown(event, change) {
       var value = change.value;
+      var selection = value.selection;
 
       if (event.key != 'Escape') return;
-      if (value.isCollapsed) return;
+      if (selection.isCollapsed) return;
       var edge = (0, _toPascalCase2.default)(options.toEdge || 'start');
       return change['collapseTo' + edge]();
     }
@@ -58277,7 +58311,7 @@ function CollapseOnEscape() {
  */
 
 exports.default = CollapseOnEscape;
-},{"to-pascal-case":459}],467:[function(require,module,exports){
+},{"to-pascal-case":458}],466:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58343,7 +58377,7 @@ function hasArrayBufferView() {
  */
 
 exports.default = dataUriToBlob;
-},{}],468:[function(require,module,exports){
+},{}],467:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58389,7 +58423,7 @@ function srcToDataUri(url, callback) {
  */
 
 exports.default = srcToDataUri;
-},{}],469:[function(require,module,exports){
+},{}],468:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58661,7 +58695,7 @@ function DropOrPasteImages() {
  */
 
 exports.default = DropOrPasteImages;
-},{"./load-image-file":470,"es6-promise":14,"is-image":56,"is-url":59,"path":231,"slate-dev-logger":471,"slate-react":429}],470:[function(require,module,exports){
+},{"./load-image-file":469,"es6-promise":14,"is-image":56,"is-url":59,"path":231,"slate-dev-logger":427,"slate-react":430}],469:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58710,90 +58744,7 @@ function loadImageFile(url, callback) {
  */
 
 exports.default = loadImageFile;
-},{"./data-uri-to-blob":467,"./image-to-data-uri":468,"is-data-uri":53}],471:[function(require,module,exports){
-(function (process){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-/* eslint-disable no-console */
-
-/**
- * Is in development?
- *
- * @type {Boolean}
- */
-
-var IS_DEV = typeof process !== 'undefined' && process.env && process.env.NODE_ENV !== 'production';
-
-/**
- * Log a `message` at `level`.
- *
- * @param {String} level
- * @param {String} message
- * @param {Any} ...args
- */
-
-function log(level, message) {
-  if (!IS_DEV) {
-    return;
-  }
-
-  if (typeof console != 'undefined' && typeof console[level] == 'function') {
-    var _console;
-
-    for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-      args[_key - 2] = arguments[_key];
-    }
-
-    (_console = console)[level].apply(_console, [message].concat(args));
-  }
-}
-
-/**
- * Log a development warning `message`.
- *
- * @param {String} message
- * @param {Any} ...args
- */
-
-function warn(message) {
-  for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-    args[_key2 - 1] = arguments[_key2];
-  }
-
-  log.apply(undefined, ['warn', 'Warning: ' + message].concat(args));
-}
-
-/**
- * Log a deprecation warning `message`, with helpful `version` number.
- *
- * @param {String} version
- * @param {String} message
- * @param {Any} ...args
- */
-
-function deprecate(version, message) {
-  for (var _len3 = arguments.length, args = Array(_len3 > 2 ? _len3 - 2 : 0), _key3 = 2; _key3 < _len3; _key3++) {
-    args[_key3 - 2] = arguments[_key3];
-  }
-
-  log.apply(undefined, ['warn', 'Deprecation (v' + version + '): ' + message].concat(args));
-}
-
-/**
- * Export.
- *
- * @type {Function}
- */
-
-exports.default = {
-  deprecate: deprecate,
-  warn: warn
-};
-}).call(this,require('_process'))
-},{"_process":234}],472:[function(require,module,exports){
+},{"./data-uri-to-blob":466,"./image-to-data-uri":467,"is-data-uri":53}],470:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -58853,15 +58804,22 @@ function PasteLinkify() {
     onPaste: function onPaste(event, change) {
       var transfer = (0, _slateReact.getEventTransfer)(event);
       var value = change.value;
+      var selection = value.selection;
       var text = transfer.text;
 
-      if (transfer.type !== 'text' && transfer.type !== 'html') return;
-      if (!(0, _isUrl2.default)(text)) return;
 
-      if (value.isCollapsed) {
-        var startOffset = value.startOffset;
+      if (transfer.type !== 'text' && transfer.type !== 'html') {
+        return;
+      }
 
-        change.insertText(text).moveOffsetsTo(startOffset, startOffset + text.length);
+      if (!(0, _isUrl2.default)(text)) {
+        return;
+      }
+
+      if (selection.isCollapsed) {
+        var startOffset = selection.startOffset;
+
+        change.insertText(text).moveAnchorTo(startOffset).moveFocusTo(startOffset + text.length);
       } else if (hasLinks(value)) {
         change.call(unwrapLink);
       }
@@ -58869,7 +58827,7 @@ function PasteLinkify() {
       change.call(wrapLink, text);
 
       if (options.collapseTo) {
-        change['collapseTo' + (0, _toPascalCase2.default)(options.collapseTo)]();
+        change['moveTo' + (0, _toPascalCase2.default)(options.collapseTo)]();
       }
 
       return change;
@@ -58884,7 +58842,18420 @@ function PasteLinkify() {
  */
 
 exports.default = PasteLinkify;
-},{"is-url":59,"slate-react":429,"to-pascal-case":459}],473:[function(require,module,exports){
+},{"is-url":59,"slate-react":494,"to-pascal-case":458}],471:[function(require,module,exports){
+arguments[4][431][0].apply(exports,arguments)
+},{"./debug":472,"_process":234,"dup":431}],472:[function(require,module,exports){
+arguments[4][432][0].apply(exports,arguments)
+},{"dup":432,"ms":473}],473:[function(require,module,exports){
+arguments[4][446][0].apply(exports,arguments)
+},{"dup":446}],474:[function(require,module,exports){
+arguments[4][369][0].apply(exports,arguments)
+},{"./lib/ReactPropTypesSecret":478,"dup":369,"fbjs/lib/invariant":31,"fbjs/lib/warning":38}],475:[function(require,module,exports){
+arguments[4][370][0].apply(exports,arguments)
+},{"./lib/ReactPropTypesSecret":478,"dup":370,"fbjs/lib/emptyFunction":23,"fbjs/lib/invariant":31}],476:[function(require,module,exports){
+arguments[4][371][0].apply(exports,arguments)
+},{"./checkPropTypes":474,"./lib/ReactPropTypesSecret":478,"dup":371,"fbjs/lib/emptyFunction":23,"fbjs/lib/invariant":31,"fbjs/lib/warning":38}],477:[function(require,module,exports){
+arguments[4][372][0].apply(exports,arguments)
+},{"./factoryWithThrowingShims":475,"./factoryWithTypeCheckers":476,"dup":372}],478:[function(require,module,exports){
+arguments[4][240][0].apply(exports,arguments)
+},{"dup":240}],479:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slate = require('slate');
+
+var _isomorphicBase = require('isomorphic-base64');
+
+/**
+ * Encode a JSON `object` as base-64 `string`.
+ *
+ * @param {Object} object
+ * @return {String}
+ */
+
+function encode(object) {
+  var string = JSON.stringify(object);
+  var encoded = (0, _isomorphicBase.btoa)(encodeURIComponent(string));
+  return encoded;
+}
+
+/**
+ * Decode a base-64 `string` to a JSON `object`.
+ *
+ * @param {String} string
+ * @return {Object}
+ */
+
+function decode(string) {
+  var decoded = decodeURIComponent((0, _isomorphicBase.atob)(string));
+  var object = JSON.parse(decoded);
+  return object;
+}
+
+/**
+ * Deserialize a Value `string`.
+ *
+ * @param {String} string
+ * @return {Value}
+ */
+
+function deserialize(string, options) {
+  var raw = decode(string);
+  var value = _slate.Value.fromJSON(raw, options);
+  return value;
+}
+
+/**
+ * Deserialize a Node `string`.
+ *
+ * @param {String} string
+ * @return {Node}
+ */
+
+function deserializeNode(string, options) {
+  var _require = require('slate'),
+      Node = _require.Node;
+
+  var raw = decode(string);
+  var node = Node.fromJSON(raw, options);
+  return node;
+}
+
+/**
+ * Serialize a `value`.
+ *
+ * @param {Value} value
+ * @return {String}
+ */
+
+function serialize(value, options) {
+  var raw = value.toJSON(options);
+  var encoded = encode(raw);
+  return encoded;
+}
+
+/**
+ * Serialize a `node`.
+ *
+ * @param {Node} node
+ * @return {String}
+ */
+
+function serializeNode(node, options) {
+  var raw = node.toJSON(options);
+  var encoded = encode(raw);
+  return encoded;
+}
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = {
+  deserialize: deserialize,
+  deserializeNode: deserializeNode,
+  serialize: serialize,
+  serializeNode: serializeNode
+};
+},{"isomorphic-base64":61,"slate":519}],480:[function(require,module,exports){
+(function (process){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* eslint-disable no-console */
+
+/**
+ * Is in development?
+ *
+ * @type {Boolean}
+ */
+
+var IS_DEV = typeof process !== 'undefined' && process.env && process.env.NODE_ENV !== 'production';
+
+/**
+ * Has console?
+ *
+ * @type {Boolean}
+ */
+
+var HAS_CONSOLE = typeof console != 'undefined' && typeof console.log == 'function' && typeof console.warn == 'function' && typeof console.error == 'function';
+
+/**
+ * Log a `message` at `level`.
+ *
+ * @param {String} level
+ * @param {String} message
+ * @param {Any} ...args
+ */
+
+function log(level, message) {
+  if (!IS_DEV) {
+    return;
+  }
+
+  if (HAS_CONSOLE) {
+    var _console;
+
+    for (var _len = arguments.length, args = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+      args[_key - 2] = arguments[_key];
+    }
+
+    (_console = console)[level].apply(_console, [message].concat(args));
+  }
+}
+
+/**
+ * Log an error `message`.
+ *
+ * @param {String} message
+ * @param {Any} ...args
+ */
+
+function error(message) {
+  if (HAS_CONSOLE) {
+    var _console2;
+
+    for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+
+    (_console2 = console).error.apply(_console2, [message].concat(args));
+  }
+}
+
+/**
+ * Log a warning `message` in development only.
+ *
+ * @param {String} message
+ * @param {Any} ...args
+ */
+
+function warn(message) {
+  for (var _len3 = arguments.length, args = Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+    args[_key3 - 1] = arguments[_key3];
+  }
+
+  log.apply(undefined, ['warn', 'Warning: ' + message].concat(args));
+}
+
+/**
+ * Log a deprecation warning `message`, with helpful `version` number in
+ * development only.
+ *
+ * @param {String} version
+ * @param {String} message
+ * @param {Any} ...args
+ */
+
+function deprecate(version, message) {
+  for (var _len4 = arguments.length, args = Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
+    args[_key4 - 2] = arguments[_key4];
+  }
+
+  log.apply(undefined, ['warn', 'Deprecation (' + version + '): ' + message].concat(args));
+}
+
+/**
+ * Export.
+ *
+ * @type {Function}
+ */
+
+exports.default = {
+  deprecate: deprecate,
+  error: error,
+  warn: warn
+};
+}).call(this,require('_process'))
+},{"_process":234}],481:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _slate = require('slate');
+
+var _immutable = require('immutable');
+
+/**
+ * Deserialize a plain text `string` to a Slate value.
+ *
+ * @param {String} string
+ * @param {Object} options
+ *   @property {Boolean} toJSON
+ *   @property {String|Object|Block} defaultBlock
+ *   @property {Array|Set} defaultMarks
+ * @return {Value}
+ */
+
+function deserialize(string) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var _options$defaultBlock = options.defaultBlock,
+      defaultBlock = _options$defaultBlock === undefined ? 'line' : _options$defaultBlock,
+      _options$defaultMarks = options.defaultMarks,
+      defaultMarks = _options$defaultMarks === undefined ? [] : _options$defaultMarks,
+      _options$toJSON = options.toJSON,
+      toJSON = _options$toJSON === undefined ? false : _options$toJSON;
+
+
+  if (_immutable.Set.isSet(defaultMarks)) {
+    defaultMarks = defaultMarks.toArray();
+  }
+
+  defaultBlock = _slate.Node.createProperties(defaultBlock);
+  defaultMarks = defaultMarks.map(_slate.Mark.createProperties);
+
+  var json = {
+    kind: 'value',
+    document: {
+      kind: 'document',
+      data: {},
+      nodes: string.split('\n').map(function (line) {
+        return _extends({}, defaultBlock, {
+          kind: 'block',
+          isVoid: false,
+          data: {},
+          nodes: [{
+            kind: 'text',
+            leaves: [{
+              kind: 'leaf',
+              text: line,
+              marks: defaultMarks
+            }]
+          }]
+        });
+      })
+    }
+  };
+
+  var ret = toJSON ? json : _slate.Value.fromJSON(json);
+  return ret;
+}
+
+/**
+ * Serialize a Slate `value` to a plain text string.
+ *
+ * @param {Value} value
+ * @return {String}
+ */
+
+function serialize(value) {
+  return serializeNode(value.document);
+}
+
+/**
+ * Serialize a `node` to plain text.
+ *
+ * @param {Node} node
+ * @return {String}
+ */
+
+function serializeNode(node) {
+  if (node.kind == 'document' || node.kind == 'block' && _slate.Block.isBlockList(node.nodes)) {
+    return node.nodes.map(serializeNode).join('\n');
+  } else {
+    return node.text;
+  }
+}
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = {
+  deserialize: deserialize,
+  serialize: serialize
+};
+},{"immutable":51,"slate":519}],482:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slate = require('slate');
+
+/**
+ * Create a prop type checker for Slate objects with `name` and `validate`.
+ *
+ * @param {String} name
+ * @param {Function} validate
+ * @return {Function}
+ */
+
+function create(name, validate) {
+  function check(isRequired, props, propName, componentName, location) {
+    var value = props[propName];
+    if (value == null && !isRequired) return null;
+    if (value == null && isRequired) return new Error('The ' + location + ' `' + propName + '` is marked as required in `' + componentName + '`, but it was not supplied.');
+    if (validate(value)) return null;
+    return new Error('Invalid ' + location + ' `' + propName + '` supplied to `' + componentName + '`, expected a Slate `' + name + '` but received: ' + value);
+  }
+
+  function propType() {
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return check.apply(undefined, [false].concat(args));
+  }
+
+  propType.isRequired = function () {
+    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    return check.apply(undefined, [true].concat(args));
+  };
+
+  return propType;
+}
+
+/**
+ * Prop type checkers.
+ *
+ * @type {Object}
+ */
+
+var Types = {
+  block: create('Block', function (v) {
+    return _slate.Block.isBlock(v);
+  }),
+  blocks: create('List<Block>', function (v) {
+    return _slate.Block.isBlockList(v);
+  }),
+  change: create('Change', function (v) {
+    return _slate.Change.isChange(v);
+  }),
+  character: create('Character', function (v) {
+    return _slate.Character.isCharacter(v);
+  }),
+  characters: create('List<Character>', function (v) {
+    return _slate.Character.isCharacterList(v);
+  }),
+  data: create('Data', function (v) {
+    return _slate.Data.isData(v);
+  }),
+  document: create('Document', function (v) {
+    return _slate.Document.isDocument(v);
+  }),
+  history: create('History', function (v) {
+    return _slate.History.isHistory(v);
+  }),
+  inline: create('Inline', function (v) {
+    return _slate.Inline.isInline(v);
+  }),
+  inlines: create('Inline', function (v) {
+    return _slate.Inline.isInlineList(v);
+  }),
+  leaf: create('Leaf', function (v) {
+    return _slate.Leaf.isLeaf(v);
+  }),
+  leaves: create('List<Leaf>', function (v) {
+    return _slate.Leaf.isLeafList(v);
+  }),
+  mark: create('Mark', function (v) {
+    return _slate.Mark.isMark(v);
+  }),
+  marks: create('Set<Mark>', function (v) {
+    return _slate.Mark.isMarkSet(v);
+  }),
+  node: create('Node', function (v) {
+    return _slate.Node.isNode(v);
+  }),
+  nodes: create('List<Node>', function (v) {
+    return _slate.Node.isNodeList(v);
+  }),
+  range: create('Range', function (v) {
+    return _slate.Range.isRange(v);
+  }),
+  ranges: create('List<Range>', function (v) {
+    return _slate.Range.isRangeList(v);
+  }),
+  schema: create('Schema', function (v) {
+    return _slate.Schema.isSchema(v);
+  }),
+  stack: create('Stack', function (v) {
+    return _slate.Stack.isStack(v);
+  }),
+  value: create('Value', function (v) {
+    return _slate.Value.isValue(v);
+  }),
+  text: create('Text', function (v) {
+    return _slate.Text.isText(v);
+  }),
+  texts: create('List<Text>', function (v) {
+    return _slate.Text.isTextList(v);
+  })
+};
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = Types;
+},{"slate":519}],483:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _debug = require('debug');
+
+var _debug2 = _interopRequireDefault(_debug);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _getWindow = require('get-window');
+
+var _getWindow2 = _interopRequireDefault(_getWindow);
+
+var _slateDevLogger = require('slate-dev-logger');
+
+var _slateDevLogger2 = _interopRequireDefault(_slateDevLogger);
+
+var _eventHandlers = require('../constants/event-handlers');
+
+var _eventHandlers2 = _interopRequireDefault(_eventHandlers);
+
+var _node = require('./node');
+
+var _node2 = _interopRequireDefault(_node);
+
+var _findDomRange = require('../utils/find-dom-range');
+
+var _findDomRange2 = _interopRequireDefault(_findDomRange);
+
+var _findRange = require('../utils/find-range');
+
+var _findRange2 = _interopRequireDefault(_findRange);
+
+var _scrollToSelection = require('../utils/scroll-to-selection');
+
+var _scrollToSelection2 = _interopRequireDefault(_scrollToSelection);
+
+var _environment = require('../constants/environment');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Debug.
+ *
+ * @type {Function}
+ */
+
+var debug = (0, _debug2.default)('slate:content');
+
+/**
+ * Content.
+ *
+ * @type {Component}
+ */
+
+var Content = function (_React$Component) {
+  _inherits(Content, _React$Component);
+
+  /**
+   * Constructor.
+   *
+   * @param {Object} props
+   */
+
+  /**
+   * Property types.
+   *
+   * @type {Object}
+   */
+
+  function Content(props) {
+    _classCallCheck(this, Content);
+
+    var _this = _possibleConstructorReturn(this, (Content.__proto__ || Object.getPrototypeOf(Content)).call(this, props));
+
+    _this.componentDidMount = function () {
+      // Restrict scoped of `beforeinput` to mobile.
+      if ((_environment.IS_IOS || _environment.IS_ANDROID) && _environment.SUPPORTED_EVENTS.beforeinput) {
+        _this.element.addEventListener('beforeinput', _this.onNativeBeforeInput);
+      }
+
+      _this.updateSelection();
+
+      if (_this.props.autoFocus) {
+        _this.element.focus();
+      }
+    };
+
+    _this.componentDidUpdate = function () {
+      _this.updateSelection();
+    };
+
+    _this.updateSelection = function () {
+      var editor = _this.props.editor;
+      var value = editor.value;
+      var selection = value.selection;
+
+      var window = (0, _getWindow2.default)(_this.element);
+      var native = window.getSelection();
+      var rangeCount = native.rangeCount;
+
+      // If both selections are blurred, do nothing.
+
+      if (!rangeCount && selection.isBlurred) return;
+
+      // If the selection has been blurred, but is still inside the editor in the
+      // DOM, blur it manually.
+      if (selection.isBlurred) {
+        if (!_this.isInEditor(native.anchorNode)) return;
+        native.removeAllRanges();
+        _this.element.blur();
+        debug('updateSelection', { selection: selection, native: native });
+        return;
+      }
+
+      // If the selection isn't set, do nothing.
+      if (selection.isUnset) return;
+
+      // Otherwise, figure out which DOM nodes should be selected...
+      var current = !!rangeCount && native.getRangeAt(0);
+      var range = (0, _findDomRange2.default)(selection);
+
+      if (!range) {
+        _slateDevLogger2.default.error('Unable to find a native DOM range from the current selection.', { selection: selection });
+        return;
+      }
+
+      // If the new range matches the current selection, do nothing.
+      if (current && range.startContainer == current.startContainer && range.startOffset == current.startOffset && range.endContainer == current.endContainer && range.endOffset == current.endOffset) {
+        return;
+      }
+
+      // Otherwise, set the `isUpdatingSelection` flag and update the selection.
+      _this.tmp.isUpdatingSelection = true;
+      native.removeAllRanges();
+      native.addRange(range);
+      (0, _scrollToSelection2.default)(native);
+
+      // Then unset the `isUpdatingSelection` flag after a delay.
+      setTimeout(function () {
+        // COMPAT: In Firefox, it's not enough to create a range, you also need to
+        // focus the contenteditable element too. (2016/11/16)
+        if (_environment.IS_FIREFOX) _this.element.focus();
+        _this.tmp.isUpdatingSelection = false;
+      });
+
+      debug('updateSelection', { selection: selection, native: native });
+    };
+
+    _this.ref = function (element) {
+      _this.element = element;
+    };
+
+    _this.isInEditor = function (target) {
+      var element = _this.element;
+      // COMPAT: Text nodes don't have `isContentEditable` property. So, when
+      // `target` is a text node use its parent node for check.
+
+      var el = target.nodeType === 3 ? target.parentNode : target;
+      return el.isContentEditable && (el === element || el.closest('[data-slate-editor]') === element);
+    };
+
+    _this.onNativeBeforeInput = function (event) {
+      if (_this.props.readOnly) return;
+      if (!_this.isInEditor(event.target)) return;
+
+      var inputType = event.inputType;
+
+      if (inputType !== 'insertText' && inputType !== 'insertReplacementText') return;
+
+      var _event$getTargetRange = event.getTargetRanges(),
+          _event$getTargetRange2 = _slicedToArray(_event$getTargetRange, 1),
+          targetRange = _event$getTargetRange2[0];
+
+      if (!targetRange) return;
+
+      // `data` should have the text for the `insertText` input type and
+      // `dataTransfer` should have the text for the `insertReplacementText` input
+      // type, but Safari uses `insertText` for spell check replacements and sets
+      // `data` to `null`.
+      var text = event.data == null ? event.dataTransfer.getData('text/plain') : event.data;
+
+      if (text == null) return;
+
+      event.preventDefault();
+
+      var editor = _this.props.editor;
+      var value = editor.value;
+      var selection = value.selection;
+
+      var range = (0, _findRange2.default)(targetRange, value);
+
+      editor.change(function (change) {
+        change.insertTextAtRange(range, text, selection.marks);
+
+        // If the text was successfully inserted, and the selection had marks on it,
+        // unset the selection's marks.
+        if (selection.marks && value.document != change.value.document) {
+          change.select({ marks: null });
+        }
+      });
+    };
+
+    _this.renderNode = function (child, isSelected) {
+      var _this$props = _this.props,
+          editor = _this$props.editor,
+          readOnly = _this$props.readOnly;
+      var value = editor.value;
+      var document = value.document,
+          decorations = value.decorations;
+      var stack = editor.stack;
+
+      var decs = document.getDecorations(stack);
+      if (decorations) decs = decorations.concat(decs);
+      return _react2.default.createElement(_node2.default, {
+        block: null,
+        editor: editor,
+        decorations: decs,
+        isSelected: isSelected,
+        key: child.key,
+        node: child,
+        parent: document,
+        readOnly: readOnly
+      });
+    };
+
+    _this.tmp = {};
+    _this.tmp.key = 0;
+    _this.tmp.isUpdatingSelection = false;
+
+    _eventHandlers2.default.forEach(function (handler) {
+      _this[handler] = function (event) {
+        _this.onEvent(handler, event);
+      };
+    });
+    return _this;
+  }
+
+  /**
+   * When the editor first mounts in the DOM we need to:
+   *
+   *   - Add native DOM event listeners.
+   *   - Update the selection, in case it starts focused.
+   *   - Focus the editor if `autoFocus` is set.
+   */
+
+  /**
+   * Default properties.
+   *
+   * @type {Object}
+   */
+
+  _createClass(Content, [{
+    key: 'componentWillUnmount',
+
+
+    /**
+     * When unmounting, remove DOM event listeners.
+     */
+
+    value: function componentWillUnmount() {
+      // Restrict scoped of `beforeinput` to mobile.
+      if ((_environment.IS_IOS || _environment.IS_ANDROID) && _environment.SUPPORTED_EVENTS.beforeinput) {
+        this.element.removeEventListener('beforeinput', this.onNativeBeforeInput);
+      }
+    }
+
+    /**
+     * On update, update the selection.
+     */
+
+    /**
+     * Update the native DOM selection to reflect the internal model.
+     */
+
+    /**
+     * The React ref method to set the root content element locally.
+     *
+     * @param {Element} element
+     */
+
+    /**
+     * Check if an event `target` is fired from within the contenteditable
+     * element. This should be false for edits happening in non-contenteditable
+     * children, such as void nodes and other nested Slate editors.
+     *
+     * @param {Element} target
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'onEvent',
+
+
+    /**
+     * On `event` with `handler`.
+     *
+     * @param {String} handler
+     * @param {Event} event
+     */
+
+    value: function onEvent(handler, event) {
+      // COMPAT: Composition events can change the DOM out of under React, so we
+      // increment this key to ensure that a full re-render happens. (2017/10/16)
+      if (handler == 'onCompositionEnd') {
+        this.tmp.key++;
+      }
+
+      // Ignore `onBlur`, `onFocus` and `onSelect` events generated
+      // programmatically while updating selection.
+      if (this.tmp.isUpdatingSelection && (handler == 'onSelect' || handler == 'onBlur' || handler == 'onFocus')) {
+        return;
+      }
+
+      // COMPAT: There are situations where a select event will fire with a new
+      // native selection that resolves to the same internal position. In those
+      // cases we don't need to trigger any changes, since our internal model is
+      // already up to date, but we do want to update the native selection again
+      // to make sure it is in sync. (2017/10/16)
+      if (handler == 'onSelect') {
+        var editor = this.props.editor;
+        var value = editor.value;
+        var selection = value.selection;
+
+        var window = (0, _getWindow2.default)(event.target);
+        var native = window.getSelection();
+        var range = (0, _findRange2.default)(native, value);
+
+        if (range && range.equals(selection)) {
+          this.updateSelection();
+          return;
+        }
+      }
+
+      // Don't handle drag events coming from embedded editors.
+      if (handler == 'onDragEnd' || handler == 'onDragEnter' || handler == 'onDragExit' || handler == 'onDragLeave' || handler == 'onDragOver' || handler == 'onDragStart') {
+        var target = event.target;
+
+        var targetEditorNode = target.closest('[data-slate-editor]');
+        if (targetEditorNode !== this.element) return;
+      }
+
+      // Some events require being in editable in the editor, so if the event
+      // target isn't, ignore them.
+      if (handler == 'onBeforeInput' || handler == 'onBlur' || handler == 'onCompositionEnd' || handler == 'onCompositionStart' || handler == 'onCopy' || handler == 'onCut' || handler == 'onFocus' || handler == 'onInput' || handler == 'onKeyDown' || handler == 'onKeyUp' || handler == 'onPaste' || handler == 'onSelect') {
+        if (!this.isInEditor(event.target)) return;
+      }
+
+      this.props[handler](event);
+    }
+
+    /**
+     * On a native `beforeinput` event, use the additional range information
+     * provided by the event to insert text exactly as the browser would.
+     *
+     * @param {InputEvent} event
+     */
+
+  }, {
+    key: 'render',
+
+
+    /**
+     * Render the editor content.
+     *
+     * @return {Element}
+     */
+
+    value: function render() {
+      var _this2 = this;
+
+      var props = this.props;
+      var className = props.className,
+          readOnly = props.readOnly,
+          editor = props.editor,
+          tabIndex = props.tabIndex,
+          role = props.role,
+          tagName = props.tagName;
+      var value = editor.value;
+
+      var Container = tagName;
+      var document = value.document,
+          selection = value.selection;
+
+      var indexes = document.getSelectionIndexes(selection, selection.isFocused);
+      var children = document.nodes.toArray().map(function (child, i) {
+        var isSelected = !!indexes && indexes.start <= i && i < indexes.end;
+        return _this2.renderNode(child, isSelected);
+      });
+
+      var handlers = _eventHandlers2.default.reduce(function (obj, handler) {
+        obj[handler] = _this2[handler];
+        return obj;
+      }, {});
+
+      var style = _extends({
+        // Prevent the default outline styles.
+        outline: 'none',
+        // Preserve adjacent whitespace and new lines.
+        whiteSpace: 'pre-wrap',
+        // Allow words to break if they are too long.
+        wordWrap: 'break-word'
+      }, readOnly ? {} : { WebkitUserModify: 'read-write-plaintext-only' }, props.style);
+
+      // COMPAT: In Firefox, spellchecking can remove entire wrapping elements
+      // including inline ones like `<a>`, which is jarring for the user but also
+      // causes the DOM to get into an irreconcilable value. (2016/09/01)
+      var spellCheck = _environment.IS_FIREFOX ? false : props.spellCheck;
+
+      debug('render', { props: props });
+
+      return _react2.default.createElement(
+        Container,
+        _extends({}, handlers, {
+          'data-slate-editor': true,
+          key: this.tmp.key,
+          ref: this.ref,
+          'data-key': document.key,
+          contentEditable: readOnly ? null : true,
+          suppressContentEditableWarning: true,
+          className: className,
+          onBlur: this.onBlur,
+          onFocus: this.onFocus,
+          onCompositionEnd: this.onCompositionEnd,
+          onCompositionStart: this.onCompositionStart,
+          onCopy: this.onCopy,
+          onCut: this.onCut,
+          onDragEnd: this.onDragEnd,
+          onDragOver: this.onDragOver,
+          onDragStart: this.onDragStart,
+          onDrop: this.onDrop,
+          onInput: this.onInput,
+          onKeyDown: this.onKeyDown,
+          onKeyUp: this.onKeyUp,
+          onPaste: this.onPaste,
+          onSelect: this.onSelect,
+          autoCorrect: props.autoCorrect ? 'on' : 'off',
+          spellCheck: spellCheck,
+          style: style,
+          role: readOnly ? null : role || 'textbox',
+          tabIndex: tabIndex
+          // COMPAT: The Grammarly Chrome extension works by changing the DOM out
+          // from under `contenteditable` elements, which leads to weird behaviors
+          // so we have to disable it like this. (2017/04/24)
+          , 'data-gramm': false
+        }),
+        children,
+        this.props.children
+      );
+    }
+
+    /**
+     * Render a `child` node of the document.
+     *
+     * @param {Node} child
+     * @param {Boolean} isSelected
+     * @return {Element}
+     */
+
+  }]);
+
+  return Content;
+}(_react2.default.Component);
+
+/**
+ * Mix in handler prop types.
+ */
+
+Content.propTypes = {
+  autoCorrect: _propTypes2.default.bool.isRequired,
+  autoFocus: _propTypes2.default.bool.isRequired,
+  children: _propTypes2.default.any.isRequired,
+  className: _propTypes2.default.string,
+  editor: _propTypes2.default.object.isRequired,
+  readOnly: _propTypes2.default.bool.isRequired,
+  role: _propTypes2.default.string,
+  spellCheck: _propTypes2.default.bool.isRequired,
+  style: _propTypes2.default.object,
+  tabIndex: _propTypes2.default.number,
+  tagName: _propTypes2.default.string
+};
+Content.defaultProps = {
+  style: {},
+  tagName: 'div'
+};
+_eventHandlers2.default.forEach(function (handler) {
+  Content.propTypes[handler] = _propTypes2.default.func.isRequired;
+});
+
+/**
+ * Export.
+ *
+ * @type {Component}
+ */
+
+exports.default = Content;
+},{"../constants/environment":489,"../constants/event-handlers":490,"../utils/find-dom-range":499,"../utils/find-range":502,"../utils/scroll-to-selection":507,"./node":486,"debug":471,"get-window":40,"prop-types":477,"react":423,"slate-dev-logger":480}],484:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _debug = require('debug');
+
+var _debug2 = _interopRequireDefault(_debug);
+
+var _reactPortal = require('react-portal');
+
+var _reactPortal2 = _interopRequireDefault(_reactPortal);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _slatePropTypes = require('slate-prop-types');
+
+var _slatePropTypes2 = _interopRequireDefault(_slatePropTypes);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _slateDevLogger = require('slate-dev-logger');
+
+var _slateDevLogger2 = _interopRequireDefault(_slateDevLogger);
+
+var _slate = require('slate');
+
+var _eventHandlers = require('../constants/event-handlers');
+
+var _eventHandlers2 = _interopRequireDefault(_eventHandlers);
+
+var _pluginProps = require('../constants/plugin-props');
+
+var _pluginProps2 = _interopRequireDefault(_pluginProps);
+
+var _after = require('../plugins/after');
+
+var _after2 = _interopRequireDefault(_after);
+
+var _before = require('../plugins/before');
+
+var _before2 = _interopRequireDefault(_before);
+
+var _noop = require('../utils/noop');
+
+var _noop2 = _interopRequireDefault(_noop);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Debug.
+ *
+ * @type {Function}
+ */
+
+var debug = (0, _debug2.default)('slate:editor');
+
+/**
+ * Editor.
+ *
+ * @type {Component}
+ */
+
+var Editor = function (_React$Component) {
+  _inherits(Editor, _React$Component);
+
+  /**
+   * Constructor.
+   *
+   * @param {Object} props
+   */
+
+  /**
+   * Property types.
+   *
+   * @type {Object}
+   */
+
+  function Editor(props) {
+    _classCallCheck(this, Editor);
+
+    var _this = _possibleConstructorReturn(this, (Editor.__proto__ || Object.getPrototypeOf(Editor)).call(this, props));
+
+    _initialiseProps.call(_this);
+
+    _this.state = {};
+    _this.tmp = {};
+    _this.tmp.updates = 0;
+    _this.tmp.resolves = 0;
+
+    // Resolve the plugins and create a stack and schema from them.
+    var plugins = _this.resolvePlugins(props.plugins, props.schema);
+    var stack = _slate.Stack.create({ plugins: plugins });
+    var schema = _slate.Schema.create({ plugins: plugins });
+    _this.state.schema = schema;
+    _this.state.stack = stack;
+
+    // Run `onChange` on the passed-in value because we need to ensure that it
+    // is normalized, and queue the resulting change.
+    var change = props.value.change();
+    stack.run('onChange', change, _this);
+    _this.queueChange(change);
+    _this.state.value = change.value;
+
+    // Create a bound event handler for each event.
+    _eventHandlers2.default.forEach(function (handler) {
+      _this[handler] = function () {
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+          args[_key] = arguments[_key];
+        }
+
+        _this.onEvent.apply(_this, [handler].concat(args));
+      };
+    });
+    return _this;
+  }
+
+  /**
+   * When the `props` are updated, create a new `Stack` if necessary and run
+   * `onChange` to ensure the value is normalized.
+   *
+   * @param {Object} props
+   */
+
+  /**
+   * Default properties.
+   *
+   * @type {Object}
+   */
+
+  /**
+   * When the component first mounts, flush any temporary changes.
+   */
+
+  /**
+   * When the component updates, flush any temporary change.
+   */
+
+  /**
+   * Queue a `change` object, to be able to flush it later. This is required for
+   * when a change needs to be applied to the value, but because of the React
+   * lifecycle we can't apply that change immediately. So we cache it here and
+   * later can call `this.flushChange()` to flush it.
+   *
+   * @param {Change} change
+   */
+
+  /**
+   * Flush a temporarily stored `change` object, for when a change needed to be
+   * made but couldn't because of React's lifecycle.
+   */
+
+  /**
+   * Perform a change on the editor, passing `...args` to `change.call`.
+   *
+   * @param {Mixed} ...args
+   */
+
+  /**
+   * Programmatically blur the editor.
+   */
+
+  /**
+   * Programmatically focus the editor.
+   */
+
+  _createClass(Editor, [{
+    key: 'render',
+
+
+    /**
+     * Render the editor.
+     *
+     * @return {Element}
+     */
+
+    value: function render() {
+      debug('render', this);
+
+      var children = this.stack.map('renderPortal', this.value, this).map(function (child, i) {
+        return _react2.default.createElement(
+          _reactPortal2.default,
+          { key: i, isOpened: true },
+          child
+        );
+      });
+
+      var props = _extends({}, this.props, { children: children });
+      var tree = this.stack.render('renderEditor', props, this);
+      return tree;
+    }
+
+    /**
+     * Resolve an array of plugins from `plugins` and `schema` props.
+     *
+     * In addition to the plugins provided in props, this will initialize three
+     * other plugins:
+     *
+     * - The top-level editor plugin, which allows for top-level handlers, etc.
+     * - The two "core" plugins, one before all the other and one after.
+     *
+     * @param {Array|Void} plugins
+     * @param {Schema|Object|Void} schema
+     * @return {Array}
+     */
+
+  }, {
+    key: 'schema',
+
+
+    /**
+     * Getters for exposing public properties of the editor's state.
+     */
+
+    get: function get() {
+      return this.state.schema;
+    }
+  }, {
+    key: 'stack',
+    get: function get() {
+      return this.state.stack;
+    }
+  }, {
+    key: 'value',
+    get: function get() {
+      return this.state.value;
+    }
+
+    /**
+     * On event.
+     *
+     * @param {String} handler
+     * @param {Event} event
+     */
+
+    /**
+     * On change.
+     *
+     * @param {Change} change
+     */
+
+  }]);
+
+  return Editor;
+}(_react2.default.Component);
+
+/**
+ * Mix in the property types for the event handlers.
+ */
+
+Editor.propTypes = {
+  autoCorrect: _propTypes2.default.bool,
+  autoFocus: _propTypes2.default.bool,
+  className: _propTypes2.default.string,
+  onChange: _propTypes2.default.func,
+  placeholder: _propTypes2.default.any,
+  plugins: _propTypes2.default.array,
+  readOnly: _propTypes2.default.bool,
+  role: _propTypes2.default.string,
+  schema: _propTypes2.default.object,
+  spellCheck: _propTypes2.default.bool,
+  style: _propTypes2.default.object,
+  tabIndex: _propTypes2.default.number,
+  value: _slatePropTypes2.default.value.isRequired
+};
+Editor.defaultProps = {
+  autoFocus: false,
+  autoCorrect: true,
+  onChange: _noop2.default,
+  plugins: [],
+  readOnly: false,
+  schema: {},
+  spellCheck: true
+};
+
+var _initialiseProps = function _initialiseProps() {
+  var _this2 = this;
+
+  this.componentWillReceiveProps = function (props) {
+    var schema = _this2.schema,
+        stack = _this2.stack;
+
+    // Increment the updates counter as a baseline.
+
+    _this2.tmp.updates++;
+
+    // If the plugins or the schema have changed, we need to re-resolve the
+    // plugins, since it will result in a new stack and new validations.
+    if (props.plugins != _this2.props.plugins || props.schema != _this2.props.schema) {
+      var plugins = _this2.resolvePlugins(props.plugins, props.schema);
+      stack = _slate.Stack.create({ plugins: plugins });
+      schema = _slate.Schema.create({ plugins: plugins });
+      _this2.setState({ schema: schema, stack: stack });
+
+      // Increment the resolves counter.
+      _this2.tmp.resolves++;
+
+      // If we've resolved a few times already, and it's exactly in line with
+      // the updates, then warn the user that they may be doing something wrong.
+      if (_this2.tmp.resolves > 5 && _this2.tmp.resolves == _this2.tmp.updates) {
+        _slateDevLogger2.default.warn('A Slate <Editor> is re-resolving `props.plugins` or `props.schema` on each update, which leads to poor performance. This is often due to passing in a new `schema` or `plugins` prop with each render by declaring them inline in your render function. Do not do this!');
+      }
+    }
+
+    // Run `onChange` on the passed-in value because we need to ensure that it
+    // is normalized, and queue the resulting change.
+    var change = props.value.change();
+    stack.run('onChange', change, _this2);
+    _this2.queueChange(change);
+    _this2.setState({ value: change.value });
+  };
+
+  this.componentDidMount = function () {
+    _this2.flushChange();
+  };
+
+  this.componentDidUpdate = function () {
+    _this2.flushChange();
+  };
+
+  this.queueChange = function (change) {
+    if (change.operations.length) {
+      debug('queueChange', { change: change });
+      _this2.tmp.change = change;
+    }
+  };
+
+  this.flushChange = function () {
+    var change = _this2.tmp.change;
+
+
+    if (change && !_this2.tmp.flushTimeout) {
+      debug('flushChange', { change: change });
+      _this2.tmp.flushTimeout = setTimeout(function () {
+        delete _this2.tmp.change;
+        delete _this2.tmp.flushTimeout;
+        _this2.props.onChange(change);
+      });
+    }
+  };
+
+  this.change = function () {
+    var _value$change;
+
+    var change = (_value$change = _this2.value.change()).call.apply(_value$change, arguments);
+    _this2.onChange(change);
+  };
+
+  this.blur = function () {
+    _this2.change(function (c) {
+      return c.blur();
+    });
+  };
+
+  this.focus = function () {
+    _this2.change(function (c) {
+      return c.focus();
+    });
+  };
+
+  this.onEvent = function (handler, event) {
+    _this2.change(function (change) {
+      _this2.stack.run(handler, event, change, _this2);
+    });
+  };
+
+  this.onChange = function (change) {
+    debug('onChange', { change: change });
+
+    _this2.stack.run('onChange', change, _this2);
+    var value = change.value;
+    var onChange = _this2.props.onChange;
+
+    if (value == _this2.value) return;
+    onChange(change);
+  };
+
+  this.resolvePlugins = function (plugins, schema) {
+    var beforePlugin = (0, _before2.default)();
+    var afterPlugin = (0, _after2.default)();
+    var editorPlugin = {
+      schema: schema || {}
+    };
+
+    var _iteratorNormalCompletion2 = true;
+    var _didIteratorError2 = false;
+    var _iteratorError2 = undefined;
+
+    try {
+      var _loop = function _loop() {
+        var prop = _step2.value;
+
+        // Skip `onChange` because the editor's `onChange` is special.
+        if (prop == 'onChange') return 'continue';
+
+        // Skip `schema` because it can't be proxied easily, so it must be
+        // passed in as an argument to this function instead.
+        if (prop == 'schema') return 'continue';
+
+        // Define a function that will just proxies into `props`.
+        editorPlugin[prop] = function () {
+          var _props;
+
+          return _this2.props[prop] && (_props = _this2.props)[prop].apply(_props, arguments);
+        };
+      };
+
+      for (var _iterator2 = _pluginProps2.default[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+        var _ret = _loop();
+
+        if (_ret === 'continue') continue;
+      }
+    } catch (err) {
+      _didIteratorError2 = true;
+      _iteratorError2 = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion2 && _iterator2.return) {
+          _iterator2.return();
+        }
+      } finally {
+        if (_didIteratorError2) {
+          throw _iteratorError2;
+        }
+      }
+    }
+
+    return [beforePlugin, editorPlugin].concat(_toConsumableArray(plugins || []), [afterPlugin]);
+  };
+};
+
+var _iteratorNormalCompletion = true;
+var _didIteratorError = false;
+var _iteratorError = undefined;
+
+try {
+  for (var _iterator = _eventHandlers2.default[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+    var _prop = _step.value;
+
+    Editor.propTypes[_prop] = _propTypes2.default.func;
+  }
+
+  /**
+   * Export.
+   *
+   * @type {Component}
+   */
+} catch (err) {
+  _didIteratorError = true;
+  _iteratorError = err;
+} finally {
+  try {
+    if (!_iteratorNormalCompletion && _iterator.return) {
+      _iterator.return();
+    }
+  } finally {
+    if (_didIteratorError) {
+      throw _iteratorError;
+    }
+  }
+}
+
+exports.default = Editor;
+},{"../constants/event-handlers":490,"../constants/plugin-props":492,"../plugins/after":495,"../plugins/before":496,"../utils/noop":505,"debug":471,"prop-types":477,"react":423,"react-portal":368,"slate":519,"slate-dev-logger":480,"slate-prop-types":482}],485:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _debug = require('debug');
+
+var _debug2 = _interopRequireDefault(_debug);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _slatePropTypes = require('slate-prop-types');
+
+var _slatePropTypes2 = _interopRequireDefault(_slatePropTypes);
+
+var _offsetKey = require('../utils/offset-key');
+
+var _offsetKey2 = _interopRequireDefault(_offsetKey);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Debugger.
+ *
+ * @type {Function}
+ */
+
+var debug = (0, _debug2.default)('slate:leaves');
+
+/**
+ * Leaf.
+ *
+ * @type {Component}
+ */
+
+var Leaf = function (_React$Component) {
+  _inherits(Leaf, _React$Component);
+
+  function Leaf() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Leaf);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Leaf.__proto__ || Object.getPrototypeOf(Leaf)).call.apply(_ref, [this].concat(args))), _this), _initialiseProps.call(_this), _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  /**
+   * Property types.
+   *
+   * @type {Object}
+   */
+
+  /**
+   * Debug.
+   *
+   * @param {String} message
+   * @param {Mixed} ...args
+   */
+
+  _createClass(Leaf, [{
+    key: 'shouldComponentUpdate',
+
+
+    /**
+     * Should component update?
+     *
+     * @param {Object} props
+     * @return {Boolean}
+     */
+
+    value: function shouldComponentUpdate(props) {
+      // If any of the regular properties have changed, re-render.
+      if (props.index != this.props.index || props.marks != this.props.marks || props.text != this.props.text || props.parent != this.props.parent) {
+        return true;
+      }
+
+      // Otherwise, don't update.
+      return false;
+    }
+
+    /**
+     * Render the leaf.
+     *
+     * @return {Element}
+     */
+
+  }, {
+    key: 'render',
+    value: function render() {
+      this.debug('render', this);
+
+      var _props = this.props,
+          node = _props.node,
+          index = _props.index;
+
+      var offsetKey = _offsetKey2.default.stringify({
+        key: node.key,
+        index: index
+      });
+
+      return _react2.default.createElement(
+        'span',
+        { 'data-offset-key': offsetKey },
+        this.renderMarks()
+      );
+    }
+
+    /**
+     * Render all of the leaf's mark components.
+     *
+     * @return {Element}
+     */
+
+  }, {
+    key: 'renderMarks',
+    value: function renderMarks() {
+      var _props2 = this.props,
+          marks = _props2.marks,
+          node = _props2.node,
+          offset = _props2.offset,
+          text = _props2.text,
+          editor = _props2.editor;
+      var stack = editor.stack;
+
+      var leaf = this.renderText();
+
+      return marks.reduce(function (children, mark) {
+        var props = { editor: editor, mark: mark, marks: marks, node: node, offset: offset, text: text, children: children };
+        var element = stack.find('renderMark', props);
+        return element || children;
+      }, leaf);
+    }
+
+    /**
+     * Render the text content of the leaf, accounting for browsers.
+     *
+     * @return {Element}
+     */
+
+  }, {
+    key: 'renderText',
+    value: function renderText() {
+      var _props3 = this.props,
+          block = _props3.block,
+          node = _props3.node,
+          parent = _props3.parent,
+          text = _props3.text,
+          index = _props3.index,
+          leaves = _props3.leaves;
+
+      // COMPAT: If the text is empty and it's the only child, we need to render a
+      // line break to get the block to have the proper height.
+
+      if (text == '' && parent.kind == 'block' && parent.text == '') {
+        return _react2.default.createElement(
+          'span',
+          { 'data-slate-empty-block': true },
+          '\n'
+        );
+      }
+
+      // COMPAT: If the text is empty otherwise, it's because it's on the edge of
+      // an inline void node, so we render a zero-width space so that the
+      // selection can be inserted next to it still.
+      if (text == '') return _react2.default.createElement(
+        'span',
+        { 'data-slate-zero-width': true },
+        '\u200B'
+      );
+
+      // COMPAT: Browsers will collapse trailing new lines at the end of blocks,
+      // so we need to add an extra trailing new lines to prevent that.
+      var lastText = block.getLastText();
+      var lastChar = text.charAt(text.length - 1);
+      var isLastText = node == lastText;
+      var isLastLeaf = index == leaves.size - 1;
+      if (isLastText && isLastLeaf && lastChar == '\n') return text + '\n';
+
+      // Otherwise, just return the text.
+      return text;
+    }
+  }]);
+
+  return Leaf;
+}(_react2.default.Component);
+
+/**
+ * Export.
+ *
+ * @type {Component}
+ */
+
+Leaf.propTypes = {
+  block: _slatePropTypes2.default.block.isRequired,
+  editor: _propTypes2.default.object.isRequired,
+  index: _propTypes2.default.number.isRequired,
+  leaves: _slatePropTypes2.default.leaves.isRequired,
+  marks: _slatePropTypes2.default.marks.isRequired,
+  node: _slatePropTypes2.default.node.isRequired,
+  offset: _propTypes2.default.number.isRequired,
+  parent: _slatePropTypes2.default.node.isRequired,
+  text: _propTypes2.default.string.isRequired
+};
+
+var _initialiseProps = function _initialiseProps() {
+  var _this2 = this;
+
+  this.debug = function (message) {
+    for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+
+    debug.apply(undefined, [message, _this2.props.node.key + '-' + _this2.props.index].concat(args));
+  };
+};
+
+exports.default = Leaf;
+},{"../utils/offset-key":506,"debug":471,"prop-types":477,"react":423,"slate-prop-types":482}],486:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _debug = require('debug');
+
+var _debug2 = _interopRequireDefault(_debug);
+
+var _reactImmutableProptypes = require('react-immutable-proptypes');
+
+var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _slatePropTypes = require('slate-prop-types');
+
+var _slatePropTypes2 = _interopRequireDefault(_slatePropTypes);
+
+var _slateDevLogger = require('slate-dev-logger');
+
+var _slateDevLogger2 = _interopRequireDefault(_slateDevLogger);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _void = require('./void');
+
+var _void2 = _interopRequireDefault(_void);
+
+var _text = require('./text');
+
+var _text2 = _interopRequireDefault(_text);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Debug.
+ *
+ * @type {Function}
+ */
+
+var debug = (0, _debug2.default)('slate:node');
+
+/**
+ * Node.
+ *
+ * @type {Component}
+ */
+
+var Node = function (_React$Component) {
+  _inherits(Node, _React$Component);
+
+  function Node() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Node);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Node.__proto__ || Object.getPrototypeOf(Node)).call.apply(_ref, [this].concat(args))), _this), _initialiseProps.call(_this), _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  /**
+   * Property types.
+   *
+   * @type {Object}
+   */
+
+  /**
+   * Debug.
+   *
+   * @param {String} message
+   * @param {Mixed} ...args
+   */
+
+  /**
+   * Should the node update?
+   *
+   * @param {Object} nextProps
+   * @param {Object} value
+   * @return {Boolean}
+   */
+
+  _createClass(Node, [{
+    key: 'render',
+
+
+    /**
+     * Render.
+     *
+     * @return {Element}
+     */
+
+    value: function render() {
+      var _this2 = this;
+
+      this.debug('render', this);
+
+      var _props = this.props,
+          editor = _props.editor,
+          isSelected = _props.isSelected,
+          node = _props.node,
+          parent = _props.parent,
+          readOnly = _props.readOnly;
+      var value = editor.value;
+      var selection = value.selection;
+      var stack = editor.stack;
+
+      var indexes = node.getSelectionIndexes(selection, isSelected);
+      var children = node.nodes.toArray().map(function (child, i) {
+        var isChildSelected = !!indexes && indexes.start <= i && i < indexes.end;
+        return _this2.renderNode(child, isChildSelected);
+      });
+
+      // Attributes that the developer must to mix into the element in their
+      // custom node renderer component.
+      var attributes = { 'data-key': node.key };
+
+      // If it's a block node with inline children, add the proper `dir` attribute
+      // for text direction.
+      if (node.kind == 'block' && node.nodes.first().kind != 'block') {
+        var direction = node.getTextDirection();
+        if (direction == 'rtl') attributes.dir = 'rtl';
+      }
+
+      var props = {
+        key: node.key,
+        editor: editor,
+        isSelected: isSelected,
+        node: node,
+        parent: parent,
+        readOnly: readOnly
+      };
+
+      var placeholder = stack.find('renderPlaceholder', props);
+
+      if (placeholder) {
+        placeholder = _react2.default.cloneElement(placeholder, { key: node.key + '-placeholder' });
+        children = [placeholder].concat(_toConsumableArray(children));
+      }
+
+      var element = stack.find('renderNode', _extends({}, props, { attributes: attributes, children: children }));
+
+      return node.isVoid ? _react2.default.createElement(
+        _void2.default,
+        this.props,
+        element
+      ) : element;
+    }
+
+    /**
+     * Render a `child` node.
+     *
+     * @param {Node} child
+     * @param {Boolean} isSelected
+     * @return {Element}
+     */
+
+  }]);
+
+  return Node;
+}(_react2.default.Component);
+
+/**
+ * Export.
+ *
+ * @type {Component}
+ */
+
+Node.propTypes = {
+  block: _slatePropTypes2.default.block,
+  decorations: _reactImmutableProptypes2.default.list.isRequired,
+  editor: _propTypes2.default.object.isRequired,
+  isSelected: _propTypes2.default.bool.isRequired,
+  node: _slatePropTypes2.default.node.isRequired,
+  parent: _slatePropTypes2.default.node.isRequired,
+  readOnly: _propTypes2.default.bool.isRequired
+};
+
+var _initialiseProps = function _initialiseProps() {
+  var _this3 = this;
+
+  this.debug = function (message) {
+    for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+
+    var node = _this3.props.node;
+    var key = node.key,
+        type = node.type;
+
+    debug.apply(undefined, [message, key + ' (' + type + ')'].concat(args));
+  };
+
+  this.shouldComponentUpdate = function (nextProps) {
+    var props = _this3.props;
+    var stack = props.editor.stack;
+
+    var shouldUpdate = stack.find('shouldNodeComponentUpdate', props, nextProps);
+    var n = nextProps;
+    var p = props;
+
+    // If the `Component` has a custom logic to determine whether the component
+    // needs to be updated or not, return true if it returns true. If it returns
+    // false, we need to ignore it, because it shouldn't be allowed it.
+    if (shouldUpdate != null) {
+      if (shouldUpdate) {
+        return true;
+      }
+
+      if (shouldUpdate === false) {
+        _slateDevLogger2.default.warn('Returning false in `shouldNodeComponentUpdate` does not disable Slate\'s internal `shouldComponentUpdate` logic. If you want to prevent updates, use React\'s `shouldComponentUpdate` instead.');
+      }
+    }
+
+    // If the `readOnly` status has changed, re-render in case there is any
+    // user-land logic that depends on it, like nested editable contents.
+    if (n.readOnly != p.readOnly) return true;
+
+    // If the node has changed, update. PERF: There are cases where it will have
+    // changed, but it's properties will be exactly the same (eg. copy-paste)
+    // which this won't catch. But that's rare and not a drag on performance, so
+    // for simplicity we just let them through.
+    if (n.node != p.node) return true;
+
+    // If the selection value of the node or of some of its children has changed,
+    // re-render in case there is any user-land logic depends on it to render.
+    // if the node is selected update it, even if it was already selected: the
+    // selection value of some of its children could have been changed and they
+    // need to be rendered again.
+    if (n.isSelected || p.isSelected) return true;
+
+    // If the decorations have changed, update.
+    if (!n.decorations.equals(p.decorations)) return true;
+
+    // Otherwise, don't update.
+    return false;
+  };
+
+  this.renderNode = function (child, isSelected) {
+    var _props2 = _this3.props,
+        block = _props2.block,
+        decorations = _props2.decorations,
+        editor = _props2.editor,
+        node = _props2.node,
+        readOnly = _props2.readOnly;
+    var stack = editor.stack;
+
+    var Component = child.kind == 'text' ? _text2.default : Node;
+    var decs = decorations.concat(node.getDecorations(stack));
+    return _react2.default.createElement(Component, {
+      block: node.kind == 'block' ? node : block,
+      decorations: decs,
+      editor: editor,
+      isSelected: isSelected,
+      key: child.key,
+      node: child,
+      parent: node,
+      readOnly: readOnly
+    });
+  };
+};
+
+exports.default = Node;
+},{"./text":487,"./void":488,"debug":471,"prop-types":477,"react":423,"react-immutable-proptypes":367,"slate-dev-logger":480,"slate-prop-types":482}],487:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _debug = require('debug');
+
+var _debug2 = _interopRequireDefault(_debug);
+
+var _reactImmutableProptypes = require('react-immutable-proptypes');
+
+var _reactImmutableProptypes2 = _interopRequireDefault(_reactImmutableProptypes);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _slatePropTypes = require('slate-prop-types');
+
+var _slatePropTypes2 = _interopRequireDefault(_slatePropTypes);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _leaf = require('./leaf');
+
+var _leaf2 = _interopRequireDefault(_leaf);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Debug.
+ *
+ * @type {Function}
+ */
+
+var debug = (0, _debug2.default)('slate:node');
+
+/**
+ * Text.
+ *
+ * @type {Component}
+ */
+
+var Text = function (_React$Component) {
+  _inherits(Text, _React$Component);
+
+  function Text() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Text);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Text.__proto__ || Object.getPrototypeOf(Text)).call.apply(_ref, [this].concat(args))), _this), _initialiseProps.call(_this), _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  /**
+   * Property types.
+   *
+   * @type {Object}
+   */
+
+  /**
+   * Default prop types.
+   *
+   * @type {Object}
+   */
+
+  /**
+   * Debug.
+   *
+   * @param {String} message
+   * @param {Mixed} ...args
+   */
+
+  /**
+   * Should the node update?
+   *
+   * @param {Object} nextProps
+   * @param {Object} value
+   * @return {Boolean}
+   */
+
+  _createClass(Text, [{
+    key: 'render',
+
+
+    /**
+     * Render.
+     *
+     * @return {Element}
+     */
+
+    value: function render() {
+      var _this2 = this;
+
+      this.debug('render', this);
+
+      var _props = this.props,
+          decorations = _props.decorations,
+          editor = _props.editor,
+          node = _props.node,
+          style = _props.style;
+      var value = editor.value;
+      var document = value.document;
+      var key = node.key;
+
+
+      var decs = decorations.filter(function (d) {
+        var startKey = d.startKey,
+            endKey = d.endKey;
+
+        if (startKey == key || endKey == key) return true;
+        var startsBefore = document.areDescendantsSorted(startKey, key);
+        var endsAfter = document.areDescendantsSorted(key, endKey);
+        return startsBefore && endsAfter;
+      });
+
+      var leaves = node.getLeaves(decs);
+      var offset = 0;
+
+      var children = leaves.map(function (leaf, i) {
+        var child = _this2.renderLeaf(leaves, leaf, i, offset);
+        offset += leaf.text.length;
+        return child;
+      });
+
+      return _react2.default.createElement(
+        'span',
+        { 'data-key': key, style: style },
+        children
+      );
+    }
+
+    /**
+     * Render a single leaf given a `leaf` and `offset`.
+     *
+     * @param {List<Leaf>} leaves
+     * @param {Leaf} leaf
+     * @param {Number} index
+     * @param {Number} offset
+     * @return {Element} leaf
+     */
+
+  }]);
+
+  return Text;
+}(_react2.default.Component);
+
+/**
+ * Export.
+ *
+ * @type {Component}
+ */
+
+Text.propTypes = {
+  block: _slatePropTypes2.default.block,
+  decorations: _reactImmutableProptypes2.default.list.isRequired,
+  editor: _propTypes2.default.object.isRequired,
+  node: _slatePropTypes2.default.node.isRequired,
+  parent: _slatePropTypes2.default.node.isRequired,
+  style: _propTypes2.default.object
+};
+Text.defaultProps = {
+  style: null
+};
+
+var _initialiseProps = function _initialiseProps() {
+  var _this3 = this;
+
+  this.debug = function (message) {
+    for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+
+    var node = _this3.props.node;
+    var key = node.key;
+
+    debug.apply(undefined, [message, key + ' (text)'].concat(args));
+  };
+
+  this.shouldComponentUpdate = function (nextProps) {
+    var props = _this3.props;
+
+    var n = nextProps;
+    var p = props;
+
+    // If the node has changed, update. PERF: There are cases where it will have
+    // changed, but it's properties will be exactly the same (eg. copy-paste)
+    // which this won't catch. But that's rare and not a drag on performance, so
+    // for simplicity we just let them through.
+    if (n.node != p.node) return true;
+
+    // If the node parent is a block node, and it was the last child of the
+    // block, re-render to cleanup extra `\n`.
+    if (n.parent.kind == 'block') {
+      var pLast = p.parent.nodes.last();
+      var nLast = n.parent.nodes.last();
+      if (p.node == pLast && n.node != nLast) return true;
+    }
+
+    // Re-render if the current decorations have changed.
+    if (!n.decorations.equals(p.decorations)) return true;
+
+    // Otherwise, don't update.
+    return false;
+  };
+
+  this.renderLeaf = function (leaves, leaf, index, offset) {
+    var _props2 = _this3.props,
+        block = _props2.block,
+        node = _props2.node,
+        parent = _props2.parent,
+        editor = _props2.editor;
+    var text = leaf.text,
+        marks = leaf.marks;
+
+
+    return _react2.default.createElement(_leaf2.default, {
+      key: node.key + '-' + index,
+      block: block,
+      editor: editor,
+      index: index,
+      marks: marks,
+      node: node,
+      offset: offset,
+      parent: parent,
+      leaves: leaves,
+      text: text
+    });
+  };
+};
+
+exports.default = Text;
+},{"./leaf":485,"debug":471,"prop-types":477,"react":423,"react-immutable-proptypes":367,"slate-prop-types":482}],488:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _debug = require('debug');
+
+var _debug2 = _interopRequireDefault(_debug);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _slatePropTypes = require('slate-prop-types');
+
+var _slatePropTypes2 = _interopRequireDefault(_slatePropTypes);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _text = require('./text');
+
+var _text2 = _interopRequireDefault(_text);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Debug.
+ *
+ * @type {Function}
+ */
+
+var debug = (0, _debug2.default)('slate:void');
+
+/**
+ * Void.
+ *
+ * @type {Component}
+ */
+
+var Void = function (_React$Component) {
+  _inherits(Void, _React$Component);
+
+  function Void() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, Void);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Void.__proto__ || Object.getPrototypeOf(Void)).call.apply(_ref, [this].concat(args))), _this), _initialiseProps.call(_this), _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  /**
+   * Property types.
+   *
+   * @type {Object}
+   */
+
+  /**
+   * Debug.
+   *
+   * @param {String} message
+   * @param {Mixed} ...args
+   */
+
+  _createClass(Void, [{
+    key: 'render',
+
+
+    /**
+     * Render.
+     *
+     * @return {Element}
+     */
+
+    value: function render() {
+      var props = this.props;
+      var children = props.children,
+          node = props.node,
+          readOnly = props.readOnly;
+
+      var Tag = node.kind == 'block' ? 'div' : 'span';
+      var style = {
+        height: '0',
+        color: 'transparent',
+        outline: 'none'
+      };
+
+      var spacer = _react2.default.createElement(
+        Tag,
+        {
+          contentEditable: true,
+          'data-slate-spacer': true,
+          suppressContentEditableWarning: true,
+          style: style
+        },
+        this.renderText()
+      );
+
+      var content = _react2.default.createElement(
+        Tag,
+        { draggable: readOnly ? null : true },
+        children
+      );
+
+      this.debug('render', { props: props });
+
+      return _react2.default.createElement(
+        Tag,
+        {
+          'data-slate-void': true,
+          'data-key': node.key,
+          contentEditable: readOnly ? null : false
+        },
+        readOnly ? null : spacer,
+        content
+      );
+    }
+
+    /**
+     * Render the void node's text node, which will catch the cursor when it the
+     * void node is navigated to with the arrow keys.
+     *
+     * Having this text node there means the browser continues to manage the
+     * selection natively, so it keeps track of the right offset when moving
+     * across the block.
+     *
+     * @return {Element}
+     */
+
+  }]);
+
+  return Void;
+}(_react2.default.Component);
+
+/**
+ * Export.
+ *
+ * @type {Component}
+ */
+
+Void.propTypes = {
+  block: _slatePropTypes2.default.block,
+  children: _propTypes2.default.any.isRequired,
+  editor: _propTypes2.default.object.isRequired,
+  node: _slatePropTypes2.default.node.isRequired,
+  parent: _slatePropTypes2.default.node.isRequired,
+  readOnly: _propTypes2.default.bool.isRequired
+};
+
+var _initialiseProps = function _initialiseProps() {
+  var _this2 = this;
+
+  this.debug = function (message) {
+    for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+
+    var node = _this2.props.node;
+    var key = node.key,
+        type = node.type;
+
+    var id = key + ' (' + type + ')';
+    debug.apply(undefined, [message, '' + id].concat(args));
+  };
+
+  this.renderText = function () {
+    var _props = _this2.props,
+        block = _props.block,
+        decorations = _props.decorations,
+        isSelected = _props.isSelected,
+        node = _props.node,
+        readOnly = _props.readOnly,
+        editor = _props.editor;
+
+    var child = node.getFirstText();
+    return _react2.default.createElement(_text2.default, {
+      block: node.kind == 'block' ? node : block,
+      decorations: decorations,
+      editor: editor,
+      isSelected: isSelected,
+      key: child.key,
+      node: child,
+      parent: node,
+      readOnly: readOnly
+    });
+  };
+};
+
+exports.default = Void;
+},{"./text":487,"debug":471,"prop-types":477,"react":423,"slate-prop-types":482}],489:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SUPPORTED_EVENTS = exports.IS_WINDOWS = exports.IS_MAC = exports.IS_IOS = exports.IS_ANDROID = exports.IS_IE = exports.IS_SAFARI = exports.IS_FIREFOX = exports.IS_CHROME = undefined;
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _isInBrowser = require('is-in-browser');
+
+var _isInBrowser2 = _interopRequireDefault(_isInBrowser);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Browser matching rules.
+ *
+ * @type {Array}
+ */
+
+var BROWSER_RULES = [['edge', /Edge\/([0-9\._]+)/], ['chrome', /(?!Chrom.*OPR)Chrom(?:e|ium)\/([0-9\.]+)(:?\s|$)/], ['firefox', /Firefox\/([0-9\.]+)(?:\s|$)/], ['opera', /Opera\/([0-9\.]+)(?:\s|$)/], ['opera', /OPR\/([0-9\.]+)(:?\s|$)$/], ['ie', /Trident\/7\.0.*rv\:([0-9\.]+)\).*Gecko$/], ['ie', /MSIE\s([0-9\.]+);.*Trident\/[4-7].0/], ['ie', /MSIE\s(7\.0)/], ['android', /Android\s([0-9\.]+)/], ['safari', /Version\/([0-9\._]+).*Safari/]];
+
+/**
+ * DOM event matching rules.
+ *
+ * @type {Array}
+ */
+
+var EVENT_RULES = [['beforeinput', function (el) {
+  return 'onbeforeinput' in el;
+}]];
+
+/**
+ * Operating system matching rules.
+ *
+ * @type {Array}
+ */
+
+var OS_RULES = [['macos', /mac os x/i], ['ios', /os ([\.\_\d]+) like mac os/i], ['android', /android/i], ['firefoxos', /mozilla\/[a-z\.\_\d]+ \((?:mobile)|(?:tablet)/i], ['windows', /windows\s*(?:nt)?\s*([\.\_\d]+)/i]];
+
+/**
+ * Define variables to store the result.
+ */
+
+var BROWSER = void 0;
+var EVENTS = {};
+var OS = void 0;
+
+/**
+ * Run the matchers when in browser.
+ */
+
+if (_isInBrowser2.default) {
+  var userAgent = window.navigator.userAgent;
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+
+    for (var _iterator = BROWSER_RULES[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var _step$value = _slicedToArray(_step.value, 2),
+          name = _step$value[0],
+          regexp = _step$value[1];
+
+      if (regexp.test(userAgent)) {
+        BROWSER = name;
+        break;
+      }
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  var _iteratorNormalCompletion2 = true;
+  var _didIteratorError2 = false;
+  var _iteratorError2 = undefined;
+
+  try {
+    for (var _iterator2 = OS_RULES[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+      var _step2$value = _slicedToArray(_step2.value, 2),
+          name = _step2$value[0],
+          regexp = _step2$value[1];
+
+      if (regexp.test(userAgent)) {
+        OS = name;
+        break;
+      }
+    }
+  } catch (err) {
+    _didIteratorError2 = true;
+    _iteratorError2 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion2 && _iterator2.return) {
+        _iterator2.return();
+      }
+    } finally {
+      if (_didIteratorError2) {
+        throw _iteratorError2;
+      }
+    }
+  }
+
+  var testEl = window.document.createElement('div');
+  testEl.contentEditable = true;
+
+  var _iteratorNormalCompletion3 = true;
+  var _didIteratorError3 = false;
+  var _iteratorError3 = undefined;
+
+  try {
+    for (var _iterator3 = EVENT_RULES[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+      var _step3$value = _slicedToArray(_step3.value, 2),
+          name = _step3$value[0],
+          testFn = _step3$value[1];
+
+      EVENTS[name] = testFn(testEl);
+    }
+  } catch (err) {
+    _didIteratorError3 = true;
+    _iteratorError3 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion3 && _iterator3.return) {
+        _iterator3.return();
+      }
+    } finally {
+      if (_didIteratorError3) {
+        throw _iteratorError3;
+      }
+    }
+  }
+}
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+var IS_CHROME = exports.IS_CHROME = BROWSER === 'chrome';
+var IS_FIREFOX = exports.IS_FIREFOX = BROWSER === 'firefox';
+var IS_SAFARI = exports.IS_SAFARI = BROWSER === 'safari';
+var IS_IE = exports.IS_IE = BROWSER === 'ie';
+
+var IS_ANDROID = exports.IS_ANDROID = OS === 'android';
+var IS_IOS = exports.IS_IOS = OS === 'ios';
+var IS_MAC = exports.IS_MAC = OS === 'macos';
+var IS_WINDOWS = exports.IS_WINDOWS = OS === 'windows';
+
+var SUPPORTED_EVENTS = exports.SUPPORTED_EVENTS = EVENTS;
+},{"is-in-browser":57}],490:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+/**
+ * Event handlers used by Slate plugins.
+ *
+ * @type {Array}
+ */
+
+var EVENT_HANDLERS = ['onBeforeInput', 'onBlur', 'onClick', 'onCompositionEnd', 'onCompositionStart', 'onCopy', 'onCut', 'onDragEnd', 'onDragEnter', 'onDragExit', 'onDragLeave', 'onDragOver', 'onDragStart', 'onDrop', 'onInput', 'onFocus', 'onKeyDown', 'onKeyUp', 'onPaste', 'onSelect'];
+
+/**
+ * Export.
+ *
+ * @type {Array}
+ */
+
+exports.default = EVENT_HANDLERS;
+},{}],491:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _isHotkey = require('is-hotkey');
+
+var _environment = require('./environment');
+
+/**
+ * Hotkeys.
+ *
+ * @type {Function}
+ */
+
+var BOLD = (0, _isHotkey.isKeyHotkey)('mod+b');
+var ITALIC = (0, _isHotkey.isKeyHotkey)('mod+i');
+
+var ENTER = (0, _isHotkey.isKeyHotkey)('enter');
+var SHIFT_ENTER = (0, _isHotkey.isKeyHotkey)('shift+enter');
+var SPLIT_BLOCK = function SPLIT_BLOCK(e) {
+  return ENTER(e) || SHIFT_ENTER(e);
+};
+
+var BACKSPACE = (0, _isHotkey.isKeyHotkey)('backspace');
+var SHIFT_BACKSPACE = (0, _isHotkey.isKeyHotkey)('shift+backspace');
+var DELETE = (0, _isHotkey.isKeyHotkey)('delete');
+var SHIFT_DELETE = (0, _isHotkey.isKeyHotkey)('shift+delete');
+var DELETE_BACKWARD = function DELETE_BACKWARD(e) {
+  return BACKSPACE(e) || SHIFT_BACKSPACE(e);
+};
+var DELETE_FORWARD = function DELETE_FORWARD(e) {
+  return DELETE(e) || SHIFT_DELETE(e);
+};
+
+var DELETE_CHAR_BACKWARD_MAC = (0, _isHotkey.isKeyHotkey)('ctrl+h');
+var DELETE_CHAR_FORWARD_MAC = (0, _isHotkey.isKeyHotkey)('ctrl+d');
+var DELETE_CHAR_BACKWARD = function DELETE_CHAR_BACKWARD(e) {
+  return DELETE_BACKWARD(e) || _environment.IS_MAC && DELETE_CHAR_BACKWARD_MAC(e);
+};
+var DELETE_CHAR_FORWARD = function DELETE_CHAR_FORWARD(e) {
+  return DELETE_FORWARD(e) || _environment.IS_MAC && DELETE_CHAR_FORWARD_MAC(e);
+};
+
+var DELETE_LINE_BACKWARD_MAC = (0, _isHotkey.isKeyHotkey)('cmd+backspace');
+var DELETE_LINE_FORWARD_MAC = (0, _isHotkey.isKeyHotkey)('ctrl+k');
+var DELETE_LINE_BACKWARD = function DELETE_LINE_BACKWARD(e) {
+  return _environment.IS_MAC && DELETE_LINE_BACKWARD_MAC(e);
+};
+var DELETE_LINE_FORWARD = function DELETE_LINE_FORWARD(e) {
+  return _environment.IS_MAC && DELETE_LINE_FORWARD_MAC(e);
+};
+
+var DELETE_WORD_BACKWARD_MAC = (0, _isHotkey.isKeyHotkey)('option+backspace');
+var DELETE_WORD_BACKWARD_PC = (0, _isHotkey.isKeyHotkey)('ctrl+backspace');
+var DELETE_WORD_FORWARD_MAC = (0, _isHotkey.isKeyHotkey)('option+delete');
+var DELETE_WORD_FORWARD_PC = (0, _isHotkey.isKeyHotkey)('ctrl+delete');
+var DELETE_WORD_BACKWARD = function DELETE_WORD_BACKWARD(e) {
+  return _environment.IS_MAC ? DELETE_WORD_BACKWARD_MAC(e) : DELETE_WORD_BACKWARD_PC(e);
+};
+var DELETE_WORD_FORWARD = function DELETE_WORD_FORWARD(e) {
+  return _environment.IS_MAC ? DELETE_WORD_FORWARD_MAC(e) : DELETE_WORD_FORWARD_PC(e);
+};
+
+var COLLAPSE_CHAR_FORWARD = (0, _isHotkey.isKeyHotkey)('right');
+var COLLAPSE_CHAR_BACKWARD = (0, _isHotkey.isKeyHotkey)('left');
+
+var COLLAPSE_LINE_BACKWARD_MAC = (0, _isHotkey.isKeyHotkey)('option+up');
+var COLLAPSE_LINE_FORWARD_MAC = (0, _isHotkey.isKeyHotkey)('option+down');
+var COLLAPSE_LINE_BACKWARD = function COLLAPSE_LINE_BACKWARD(e) {
+  return _environment.IS_MAC && COLLAPSE_LINE_BACKWARD_MAC(e);
+};
+var COLLAPSE_LINE_FORWARD = function COLLAPSE_LINE_FORWARD(e) {
+  return _environment.IS_MAC && COLLAPSE_LINE_FORWARD_MAC(e);
+};
+
+var EXTEND_CHAR_FORWARD = (0, _isHotkey.isKeyHotkey)('shift+right');
+var EXTEND_CHAR_BACKWARD = (0, _isHotkey.isKeyHotkey)('shift+left');
+
+var EXTEND_LINE_BACKWARD_MAC = (0, _isHotkey.isKeyHotkey)('option+shift+up');
+var EXTEND_LINE_FORWARD_MAC = (0, _isHotkey.isKeyHotkey)('option+shift+down');
+var EXTEND_LINE_BACKWARD = function EXTEND_LINE_BACKWARD(e) {
+  return _environment.IS_MAC && EXTEND_LINE_BACKWARD_MAC(e);
+};
+var EXTEND_LINE_FORWARD = function EXTEND_LINE_FORWARD(e) {
+  return _environment.IS_MAC && EXTEND_LINE_FORWARD_MAC(e);
+};
+
+var UNDO = (0, _isHotkey.isKeyHotkey)('mod+z');
+var REDO_MAC = (0, _isHotkey.isKeyHotkey)('mod+shift+z');
+var REDO_PC = (0, _isHotkey.isKeyHotkey)('mod+y');
+var REDO = function REDO(e) {
+  return _environment.IS_MAC ? REDO_MAC(e) : REDO_PC(e);
+};
+
+var TRANSPOSE_CHARACTER_MAC = (0, _isHotkey.isKeyHotkey)('ctrl+t');
+var TRANSPOSE_CHARACTER = function TRANSPOSE_CHARACTER(e) {
+  return _environment.IS_MAC && TRANSPOSE_CHARACTER_MAC(e);
+};
+
+var CONTENTEDITABLE = function CONTENTEDITABLE(e) {
+  return BOLD(e) || DELETE_CHAR_BACKWARD(e) || DELETE_CHAR_FORWARD(e) || DELETE_LINE_BACKWARD(e) || DELETE_LINE_FORWARD(e) || DELETE_WORD_BACKWARD(e) || DELETE_WORD_FORWARD(e) || ITALIC(e) || REDO(e) || SPLIT_BLOCK(e) || TRANSPOSE_CHARACTER(e) || UNDO(e);
+};
+
+var COMPOSING = function COMPOSING(e) {
+  return e.key == 'ArrowDown' || e.key == 'ArrowLeft' || e.key == 'ArrowRight' || e.key == 'ArrowUp' || e.key == 'Backspace' || e.key == 'Enter';
+};
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = {
+  BOLD: BOLD,
+  COLLAPSE_LINE_BACKWARD: COLLAPSE_LINE_BACKWARD,
+  COLLAPSE_LINE_FORWARD: COLLAPSE_LINE_FORWARD,
+  COLLAPSE_CHAR_FORWARD: COLLAPSE_CHAR_FORWARD,
+  COLLAPSE_CHAR_BACKWARD: COLLAPSE_CHAR_BACKWARD,
+  COMPOSING: COMPOSING,
+  CONTENTEDITABLE: CONTENTEDITABLE,
+  DELETE_CHAR_BACKWARD: DELETE_CHAR_BACKWARD,
+  DELETE_CHAR_FORWARD: DELETE_CHAR_FORWARD,
+  DELETE_LINE_BACKWARD: DELETE_LINE_BACKWARD,
+  DELETE_LINE_FORWARD: DELETE_LINE_FORWARD,
+  DELETE_WORD_BACKWARD: DELETE_WORD_BACKWARD,
+  DELETE_WORD_FORWARD: DELETE_WORD_FORWARD,
+  EXTEND_LINE_BACKWARD: EXTEND_LINE_BACKWARD,
+  EXTEND_LINE_FORWARD: EXTEND_LINE_FORWARD,
+  EXTEND_CHAR_FORWARD: EXTEND_CHAR_FORWARD,
+  EXTEND_CHAR_BACKWARD: EXTEND_CHAR_BACKWARD,
+  ITALIC: ITALIC,
+  REDO: REDO,
+  SPLIT_BLOCK: SPLIT_BLOCK,
+  UNDO: UNDO
+};
+},{"./environment":489,"is-hotkey":55}],492:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _eventHandlers = require('./event-handlers');
+
+var _eventHandlers2 = _interopRequireDefault(_eventHandlers);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+/**
+ * Props that can be defined by plugins.
+ *
+ * @type {Array}
+ */
+
+var PLUGIN_PROPS = [].concat(_toConsumableArray(_eventHandlers2.default), ['decorateNode', 'onChange', 'renderMark', 'renderNode', 'renderPlaceholder', 'renderPortal', 'schema', 'validateNode']);
+
+/**
+ * Export.
+ *
+ * @type {Array}
+ */
+
+exports.default = PLUGIN_PROPS;
+},{"./event-handlers":490}],493:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+/**
+ * The transfer types that Slate recognizes.
+ *
+ * @type {Object}
+ */
+
+var TRANSFER_TYPES = {
+  FRAGMENT: 'application/x-slate-fragment',
+  HTML: 'text/html',
+  NODE: 'application/x-slate-node',
+  RICH: 'text/rtf',
+  TEXT: 'text/plain'
+};
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = TRANSFER_TYPES;
+},{}],494:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.setEventTransfer = exports.getEventTransfer = exports.getEventRange = exports.findRange = exports.findNode = exports.findDOMRange = exports.findDOMNode = exports.Editor = undefined;
+
+var _editor = require('./components/editor');
+
+var _editor2 = _interopRequireDefault(_editor);
+
+var _findDomNode = require('./utils/find-dom-node');
+
+var _findDomNode2 = _interopRequireDefault(_findDomNode);
+
+var _findDomRange = require('./utils/find-dom-range');
+
+var _findDomRange2 = _interopRequireDefault(_findDomRange);
+
+var _findNode = require('./utils/find-node');
+
+var _findNode2 = _interopRequireDefault(_findNode);
+
+var _findRange = require('./utils/find-range');
+
+var _findRange2 = _interopRequireDefault(_findRange);
+
+var _getEventRange = require('./utils/get-event-range');
+
+var _getEventRange2 = _interopRequireDefault(_getEventRange);
+
+var _getEventTransfer = require('./utils/get-event-transfer');
+
+var _getEventTransfer2 = _interopRequireDefault(_getEventTransfer);
+
+var _setEventTransfer = require('./utils/set-event-transfer');
+
+var _setEventTransfer2 = _interopRequireDefault(_setEventTransfer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.Editor = _editor2.default;
+exports.findDOMNode = _findDomNode2.default;
+exports.findDOMRange = _findDomRange2.default;
+exports.findNode = _findNode2.default;
+exports.findRange = _findRange2.default;
+exports.getEventRange = _getEventRange2.default;
+exports.getEventTransfer = _getEventTransfer2.default;
+exports.setEventTransfer = _setEventTransfer2.default;
+exports.default = {
+  Editor: _editor2.default,
+  findDOMNode: _findDomNode2.default,
+  findDOMRange: _findDomRange2.default,
+  findNode: _findNode2.default,
+  findRange: _findRange2.default,
+  getEventRange: _getEventRange2.default,
+  getEventTransfer: _getEventTransfer2.default,
+  setEventTransfer: _setEventTransfer2.default
+};
+},{"./components/editor":484,"./utils/find-dom-node":497,"./utils/find-dom-range":499,"./utils/find-node":500,"./utils/find-range":502,"./utils/get-event-range":503,"./utils/get-event-transfer":504,"./utils/set-event-transfer":508}],495:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _slateBase64Serializer = require('slate-base64-serializer');
+
+var _slateBase64Serializer2 = _interopRequireDefault(_slateBase64Serializer);
+
+var _debug = require('debug');
+
+var _debug2 = _interopRequireDefault(_debug);
+
+var _slatePlainSerializer = require('slate-plain-serializer');
+
+var _slatePlainSerializer2 = _interopRequireDefault(_slatePlainSerializer);
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _getWindow = require('get-window');
+
+var _getWindow2 = _interopRequireDefault(_getWindow);
+
+var _slate = require('slate');
+
+var _eventHandlers = require('../constants/event-handlers');
+
+var _eventHandlers2 = _interopRequireDefault(_eventHandlers);
+
+var _hotkeys = require('../constants/hotkeys');
+
+var _hotkeys2 = _interopRequireDefault(_hotkeys);
+
+var _content = require('../components/content');
+
+var _content2 = _interopRequireDefault(_content);
+
+var _findDomNode = require('../utils/find-dom-node');
+
+var _findDomNode2 = _interopRequireDefault(_findDomNode);
+
+var _findNode = require('../utils/find-node');
+
+var _findNode2 = _interopRequireDefault(_findNode);
+
+var _findPoint = require('../utils/find-point');
+
+var _findPoint2 = _interopRequireDefault(_findPoint);
+
+var _findRange = require('../utils/find-range');
+
+var _findRange2 = _interopRequireDefault(_findRange);
+
+var _getEventRange = require('../utils/get-event-range');
+
+var _getEventRange2 = _interopRequireDefault(_getEventRange);
+
+var _getEventTransfer = require('../utils/get-event-transfer');
+
+var _getEventTransfer2 = _interopRequireDefault(_getEventTransfer);
+
+var _setEventTransfer = require('../utils/set-event-transfer');
+
+var _setEventTransfer2 = _interopRequireDefault(_setEventTransfer);
+
+var _environment = require('../constants/environment');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Debug.
+ *
+ * @type {Function}
+ */
+
+var debug = (0, _debug2.default)('slate:core:after');
+
+/**
+ * The after plugin.
+ *
+ * @return {Object}
+ */
+
+function AfterPlugin() {
+  var isDraggingInternally = null;
+
+  /**
+   * On before input, correct any browser inconsistencies.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onBeforeInput(event, change, editor) {
+    debug('onBeforeInput', { event: event });
+
+    event.preventDefault();
+    change.insertText(event.data);
+  }
+
+  /**
+   * On blur.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onBlur(event, change, editor) {
+    debug('onBlur', { event: event });
+
+    change.blur();
+  }
+
+  /**
+   * On click.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onClick(event, change, editor) {
+    if (editor.props.readOnly) return true;
+
+    var value = change.value;
+    var document = value.document;
+
+    var node = (0, _findNode2.default)(event.target, value);
+    var isVoid = node && (node.isVoid || document.hasVoidParent(node.key));
+
+    if (isVoid) {
+      // COMPAT: In Chrome & Safari, selections that are at the zero offset of
+      // an inline node will be automatically replaced to be at the last offset
+      // of a previous inline node, which screws us up, so we always want to set
+      // it to the end of the node. (2016/11/29)
+      change.focus().collapseToEndOf(node);
+    }
+
+    debug('onClick', { event: event });
+  }
+
+  /**
+   * On copy.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onCopy(event, change, editor) {
+    debug('onCopy', { event: event });
+
+    onCutOrCopy(event, change);
+  }
+
+  /**
+   * On cut.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onCut(event, change, editor) {
+    debug('onCut', { event: event });
+
+    onCutOrCopy(event, change);
+    var window = (0, _getWindow2.default)(event.target);
+
+    // Once the fake cut content has successfully been added to the clipboard,
+    // delete the content in the current selection.
+    window.requestAnimationFrame(function () {
+      editor.change(function (c) {
+        return c.delete();
+      });
+    });
+  }
+
+  /**
+   * On cut or copy.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onCutOrCopy(event, change, editor) {
+    var window = (0, _getWindow2.default)(event.target);
+    var native = window.getSelection();
+    var value = change.value;
+    var startKey = value.startKey,
+        endKey = value.endKey,
+        startText = value.startText,
+        endBlock = value.endBlock,
+        endInline = value.endInline;
+
+    var isVoidBlock = endBlock && endBlock.isVoid;
+    var isVoidInline = endInline && endInline.isVoid;
+    var isVoid = isVoidBlock || isVoidInline;
+
+    // If the selection is collapsed, and it isn't inside a void node, abort.
+    if (native.isCollapsed && !isVoid) return;
+
+    // Create a fake selection so that we can add a Base64-encoded copy of the
+    // fragment to the HTML, to decode on future pastes.
+    var fragment = value.fragment;
+
+    var encoded = _slateBase64Serializer2.default.serializeNode(fragment);
+    var range = native.getRangeAt(0);
+    var contents = range.cloneContents();
+    var attach = contents.childNodes[0];
+
+    // If the end node is a void node, we need to move the end of the range from
+    // the void node's spacer span, to the end of the void node's content.
+    if (isVoid) {
+      var _r = range.cloneRange();
+      var n = isVoidBlock ? endBlock : endInline;
+      var node = (0, _findDomNode2.default)(n);
+      _r.setEndAfter(node);
+      contents = _r.cloneContents();
+      attach = contents.childNodes[contents.childNodes.length - 1].firstChild;
+    }
+
+    // COMPAT: in Safari and Chrome when selecting a single marked word,
+    // marks are not preserved when copying.
+    // If the attatched is not void, and the startKey and endKey is the same,
+    // check if there is marks involved. If so, set the range start just before the
+    // startText node
+    if ((_environment.IS_CHROME || _environment.IS_SAFARI) && !isVoid && startKey === endKey) {
+      var hasMarks = startText.characters.slice(value.selection.anchorOffset, value.selection.focusOffset).filter(function (char) {
+        return char.marks.size !== 0;
+      }).size !== 0;
+      if (hasMarks) {
+        var _r2 = range.cloneRange();
+        var _node = (0, _findDomNode2.default)(startText);
+        _r2.setStartBefore(_node);
+        contents = _r2.cloneContents();
+        attach = contents.childNodes[contents.childNodes.length - 1].firstChild;
+      }
+    }
+
+    // Remove any zero-width space spans from the cloned DOM so that they don't
+    // show up elsewhere when pasted.
+    var zws = [].slice.call(contents.querySelectorAll('[data-slate-zero-width]'));
+    zws.forEach(function (zw) {
+      return zw.parentNode.removeChild(zw);
+    });
+
+    // COMPAT: In Chrome and Safari, if the last element in the selection to
+    // copy has `contenteditable="false"` the copy will fail, and nothing will
+    // be put in the clipboard. So we remove them all. (2017/05/04)
+    if (_environment.IS_CHROME || _environment.IS_SAFARI) {
+      var els = [].slice.call(contents.querySelectorAll('[contenteditable="false"]'));
+      els.forEach(function (el) {
+        return el.removeAttribute('contenteditable');
+      });
+    }
+
+    // Set a `data-slate-fragment` attribute on a non-empty node, so it shows up
+    // in the HTML, and can be used for intra-Slate pasting. If it's a text
+    // node, wrap it in a `<span>` so we have something to set an attribute on.
+    if (attach.nodeType == 3) {
+      var span = window.document.createElement('span');
+
+      // COMPAT: In Chrome and Safari, if we don't add the `white-space` style
+      // then leading and trailing spaces will be ignored. (2017/09/21)
+      span.style.whiteSpace = 'pre';
+
+      span.appendChild(attach);
+      contents.appendChild(span);
+      attach = span;
+    }
+
+    attach.setAttribute('data-slate-fragment', encoded);
+
+    // Add the phony content to the DOM, and select it, so it will be copied.
+    var body = window.document.querySelector('body');
+    var div = window.document.createElement('div');
+    div.setAttribute('contenteditable', true);
+    div.style.position = 'absolute';
+    div.style.left = '-9999px';
+    div.appendChild(contents);
+    body.appendChild(div);
+
+    // COMPAT: In Firefox, trying to use the terser `native.selectAllChildren`
+    // throws an error, so we use the older `range` equivalent. (2016/06/21)
+    var r = window.document.createRange();
+    r.selectNodeContents(div);
+    native.removeAllRanges();
+    native.addRange(r);
+
+    // Revert to the previous selection right after copying.
+    window.requestAnimationFrame(function () {
+      body.removeChild(div);
+      native.removeAllRanges();
+      native.addRange(range);
+    });
+  }
+
+  /**
+   * On drag end.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDragEnd(event, change, editor) {
+    debug('onDragEnd', { event: event });
+
+    isDraggingInternally = null;
+  }
+
+  /**
+   * On drag over.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDragOver(event, change, editor) {
+    debug('onDragOver', { event: event });
+
+    isDraggingInternally = false;
+  }
+
+  /**
+   * On drag start.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDragStart(event, change, editor) {
+    debug('onDragStart', { event: event });
+
+    isDraggingInternally = true;
+
+    var value = change.value;
+    var document = value.document;
+
+    var node = (0, _findNode2.default)(event.target, value);
+    var isVoid = node && (node.isVoid || document.hasVoidParent(node.key));
+
+    if (isVoid) {
+      var encoded = _slateBase64Serializer2.default.serializeNode(node, { preserveKeys: true });
+      (0, _setEventTransfer2.default)(event, 'node', encoded);
+    } else {
+      var fragment = value.fragment;
+
+      var _encoded = _slateBase64Serializer2.default.serializeNode(fragment);
+      (0, _setEventTransfer2.default)(event, 'fragment', _encoded);
+    }
+  }
+
+  /**
+   * On drop.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDrop(event, change, editor) {
+    debug('onDrop', { event: event });
+
+    var value = change.value;
+    var document = value.document,
+        selection = value.selection;
+
+    var target = (0, _getEventRange2.default)(event, value);
+    if (!target) return;
+
+    var transfer = (0, _getEventTransfer2.default)(event);
+    var type = transfer.type,
+        fragment = transfer.fragment,
+        node = transfer.node,
+        text = transfer.text;
+
+
+    change.focus();
+
+    // If the drag is internal and the target is after the selection, it
+    // needs to account for the selection's content being deleted.
+    if (isDraggingInternally && selection.endKey == target.endKey && selection.endOffset < target.endOffset) {
+      target = target.move(selection.startKey == selection.endKey ? 0 - selection.endOffset + selection.startOffset : 0 - selection.endOffset);
+    }
+
+    if (isDraggingInternally) {
+      change.delete();
+    }
+
+    change.select(target);
+
+    if (type == 'text' || type == 'html') {
+      var _target = target,
+          anchorKey = _target.anchorKey;
+
+      var hasVoidParent = document.hasVoidParent(anchorKey);
+
+      if (hasVoidParent) {
+        var n = document.getNode(anchorKey);
+
+        while (hasVoidParent) {
+          n = document.getNextText(n.key);
+          if (!n) break;
+          hasVoidParent = document.hasVoidParent(n.key);
+        }
+
+        if (n) change.collapseToStartOf(n);
+      }
+
+      text.split('\n').forEach(function (line, i) {
+        if (i > 0) change.splitBlock();
+        change.insertText(line);
+      });
+    }
+
+    if (type == 'fragment') {
+      change.insertFragment(fragment);
+    }
+
+    if (type == 'node' && _slate.Block.isBlock(node)) {
+      change.insertBlock(node).removeNodeByKey(node.key);
+    }
+
+    if (type == 'node' && _slate.Inline.isInline(node)) {
+      change.insertInline(node).removeNodeByKey(node.key);
+    }
+
+    // COMPAT: React's onSelect event breaks after an onDrop event
+    // has fired in a node: https://github.com/facebook/react/issues/11379.
+    // Until this is fixed in React, we dispatch a mouseup event on that
+    // DOM node, since that will make it go back to normal.
+    var focusNode = document.getNode(target.focusKey);
+    var el = (0, _findDomNode2.default)(focusNode);
+    if (!el) return;
+
+    el.dispatchEvent(new MouseEvent('mouseup', {
+      view: window,
+      bubbles: true,
+      cancelable: true
+    }));
+  }
+
+  /**
+   * On input.
+   *
+   * @param {Event} eventvent
+   * @param {Change} change
+   */
+
+  function onInput(event, change, editor) {
+    debug('onInput', { event: event });
+
+    var window = (0, _getWindow2.default)(event.target);
+    var value = change.value;
+
+    // Get the selection point.
+
+    var native = window.getSelection();
+    var anchorNode = native.anchorNode,
+        anchorOffset = native.anchorOffset;
+
+    var point = (0, _findPoint2.default)(anchorNode, anchorOffset, value);
+    if (!point) return;
+
+    // Get the text node and leaf in question.
+    var document = value.document,
+        selection = value.selection;
+
+    var node = document.getDescendant(point.key);
+    var leaves = node.getLeaves();
+    var start = 0;
+    var end = 0;
+
+    var leaf = leaves.find(function (r) {
+      end += r.text.length;
+      if (end >= point.offset) return true;
+      start = end;
+    });
+
+    // Get the text information.
+    var text = leaf.text;
+    var textContent = anchorNode.textContent;
+
+    var block = document.getClosestBlock(node.key);
+    var lastText = block.getLastText();
+    var lastLeaf = leaves.last();
+    var lastChar = textContent.charAt(textContent.length - 1);
+    var isLastText = node == lastText;
+    var isLastLeaf = leaf == lastLeaf;
+
+    // COMPAT: If this is the last leaf, and the DOM text ends in a new line,
+    // we will have added another new line in <Leaf>'s render method to account
+    // for browsers collapsing a single trailing new lines, so remove it.
+    if (isLastText && isLastLeaf && lastChar == '\n') {
+      textContent = textContent.slice(0, -1);
+    }
+
+    // If the text is no different, abort.
+    if (textContent == text) return;
+
+    // Determine what the selection should be after changing the text.
+    var delta = textContent.length - text.length;
+    var corrected = selection.collapseToEnd().move(delta);
+    var entire = selection.moveAnchorTo(point.key, start).moveFocusTo(point.key, end);
+
+    // Change the current value to have the leaf's text replaced.
+    change.select(entire).delete().insertText(textContent, leaf.marks).select(corrected);
+  }
+
+  /**
+   * On key down.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onKeyDown(event, change, editor) {
+    debug('onKeyDown', { event: event });
+
+    var value = change.value;
+
+
+    if (_hotkeys2.default.SPLIT_BLOCK(event)) {
+      return value.isInVoid ? change.collapseToStartOfNextText() : change.splitBlock();
+    }
+
+    if (_hotkeys2.default.DELETE_CHAR_BACKWARD(event)) {
+      return change.deleteCharBackward();
+    }
+
+    if (_hotkeys2.default.DELETE_CHAR_FORWARD(event)) {
+      return change.deleteCharForward();
+    }
+
+    if (_hotkeys2.default.DELETE_LINE_BACKWARD(event)) {
+      return change.deleteLineBackward();
+    }
+
+    if (_hotkeys2.default.DELETE_LINE_FORWARD(event)) {
+      return change.deleteLineForward();
+    }
+
+    if (_hotkeys2.default.DELETE_WORD_BACKWARD(event)) {
+      return change.deleteWordBackward();
+    }
+
+    if (_hotkeys2.default.DELETE_WORD_FORWARD(event)) {
+      return change.deleteWordForward();
+    }
+
+    if (_hotkeys2.default.REDO(event)) {
+      return change.redo();
+    }
+
+    if (_hotkeys2.default.UNDO(event)) {
+      return change.undo();
+    }
+
+    // COMPAT: Certain browsers don't handle the selection updates properly. In
+    // Chrome, the selection isn't properly extended. And in Firefox, the
+    // selection isn't properly collapsed. (2017/10/17)
+    if (_hotkeys2.default.COLLAPSE_LINE_BACKWARD(event)) {
+      event.preventDefault();
+      return change.collapseLineBackward();
+    }
+
+    if (_hotkeys2.default.COLLAPSE_LINE_FORWARD(event)) {
+      event.preventDefault();
+      return change.collapseLineForward();
+    }
+
+    if (_hotkeys2.default.EXTEND_LINE_BACKWARD(event)) {
+      event.preventDefault();
+      return change.extendLineBackward();
+    }
+
+    if (_hotkeys2.default.EXTEND_LINE_FORWARD(event)) {
+      event.preventDefault();
+      return change.extendLineForward();
+    }
+
+    // COMPAT: If a void node is selected, or a zero-width text node adjacent to
+    // an inline is selected, we need to handle these hotkeys manually because
+    // browsers won't know what to do.
+    if (_hotkeys2.default.COLLAPSE_CHAR_BACKWARD(event)) {
+      var document = value.document,
+          isInVoid = value.isInVoid,
+          previousText = value.previousText,
+          startText = value.startText;
+
+      var isPreviousInVoid = previousText && document.hasVoidParent(previousText.key);
+      if (isInVoid || isPreviousInVoid || startText.text == '') {
+        event.preventDefault();
+        return change.collapseCharBackward();
+      }
+    }
+
+    if (_hotkeys2.default.COLLAPSE_CHAR_FORWARD(event)) {
+      var _document = value.document,
+          _isInVoid = value.isInVoid,
+          nextText = value.nextText,
+          _startText = value.startText;
+
+      var isNextInVoid = nextText && _document.hasVoidParent(nextText.key);
+      if (_isInVoid || isNextInVoid || _startText.text == '') {
+        event.preventDefault();
+        return change.collapseCharForward();
+      }
+    }
+
+    if (_hotkeys2.default.EXTEND_CHAR_BACKWARD(event)) {
+      var _document2 = value.document,
+          _isInVoid2 = value.isInVoid,
+          _previousText = value.previousText,
+          _startText2 = value.startText;
+
+      var _isPreviousInVoid = _previousText && _document2.hasVoidParent(_previousText.key);
+      if (_isInVoid2 || _isPreviousInVoid || _startText2.text == '') {
+        event.preventDefault();
+        return change.extendCharBackward();
+      }
+    }
+
+    if (_hotkeys2.default.EXTEND_CHAR_FORWARD(event)) {
+      var _document3 = value.document,
+          _isInVoid3 = value.isInVoid,
+          _nextText = value.nextText,
+          _startText3 = value.startText;
+
+      var _isNextInVoid = _nextText && _document3.hasVoidParent(_nextText.key);
+      if (_isInVoid3 || _isNextInVoid || _startText3.text == '') {
+        event.preventDefault();
+        return change.extendCharForward();
+      }
+    }
+  }
+
+  /**
+   * On paste.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onPaste(event, change, editor) {
+    debug('onPaste', { event: event });
+
+    var transfer = (0, _getEventTransfer2.default)(event);
+    var type = transfer.type,
+        fragment = transfer.fragment,
+        text = transfer.text;
+
+
+    if (type == 'fragment') {
+      change.insertFragment(fragment);
+    }
+
+    if (type == 'text' || type == 'html') {
+      var value = change.value;
+      var document = value.document,
+          selection = value.selection,
+          startBlock = value.startBlock;
+
+      if (startBlock.isVoid) return;
+
+      var defaultBlock = startBlock;
+      var defaultMarks = document.getMarksAtRange(selection.collapseToStart());
+      var frag = _slatePlainSerializer2.default.deserialize(text, { defaultBlock: defaultBlock, defaultMarks: defaultMarks }).document;
+      change.insertFragment(frag);
+    }
+  }
+
+  /**
+   * On select.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onSelect(event, change, editor) {
+    debug('onSelect', { event: event });
+
+    var window = (0, _getWindow2.default)(event.target);
+    var value = change.value;
+    var document = value.document;
+
+    var native = window.getSelection();
+
+    // If there are no ranges, the editor was blurred natively.
+    if (!native.rangeCount) {
+      change.blur();
+      return;
+    }
+
+    // Otherwise, determine the Slate selection from the native one.
+    var range = (0, _findRange2.default)(native, value);
+    if (!range) return;
+
+    var _range = range,
+        anchorKey = _range.anchorKey,
+        anchorOffset = _range.anchorOffset,
+        focusKey = _range.focusKey,
+        focusOffset = _range.focusOffset;
+
+    var anchorText = document.getNode(anchorKey);
+    var focusText = document.getNode(focusKey);
+    var anchorInline = document.getClosestInline(anchorKey);
+    var focusInline = document.getClosestInline(focusKey);
+    var focusBlock = document.getClosestBlock(focusKey);
+    var anchorBlock = document.getClosestBlock(anchorKey);
+
+    // COMPAT: If the anchor point is at the start of a non-void, and the
+    // focus point is inside a void node with an offset that isn't `0`, set
+    // the focus offset to `0`. This is due to void nodes <span>'s being
+    // positioned off screen, resulting in the offset always being greater
+    // than `0`. Since we can't know what it really should be, and since an
+    // offset of `0` is less destructive because it creates a hanging
+    // selection, go with `0`. (2017/09/07)
+    if (anchorBlock && !anchorBlock.isVoid && anchorOffset == 0 && focusBlock && focusBlock.isVoid && focusOffset != 0) {
+      range = range.set('focusOffset', 0);
+    }
+
+    // COMPAT: If the selection is at the end of a non-void inline node, and
+    // there is a node after it, put it in the node after instead. This
+    // standardizes the behavior, since it's indistinguishable to the user.
+    if (anchorInline && !anchorInline.isVoid && anchorOffset == anchorText.text.length) {
+      var block = document.getClosestBlock(anchorKey);
+      var next = block.getNextText(anchorKey);
+      if (next) range = range.moveAnchorTo(next.key, 0);
+    }
+
+    if (focusInline && !focusInline.isVoid && focusOffset == focusText.text.length) {
+      var _block = document.getClosestBlock(focusKey);
+      var _next = _block.getNextText(focusKey);
+      if (_next) range = range.moveFocusTo(_next.key, 0);
+    }
+
+    range = range.normalize(document);
+    change.select(range);
+  }
+
+  /**
+   * Render editor.
+   *
+   * @param {Object} props
+   * @param {Editor} editor
+   * @return {Object}
+   */
+
+  function renderEditor(props, editor) {
+    var handlers = _eventHandlers2.default.reduce(function (obj, handler) {
+      obj[handler] = editor[handler];
+      return obj;
+    }, {});
+
+    return _react2.default.createElement(_content2.default, _extends({}, handlers, {
+      autoCorrect: props.autoCorrect,
+      autoFocus: props.autoFocus,
+      className: props.className,
+      children: props.children,
+      editor: editor,
+      readOnly: props.readOnly,
+      role: props.role,
+      spellCheck: props.spellCheck,
+      style: props.style,
+      tabIndex: props.tabIndex,
+      tagName: props.tagName
+    }));
+  }
+
+  /**
+   * Render node.
+   *
+   * @param {Object} props
+   * @return {Element}
+   */
+
+  function renderNode(props) {
+    var attributes = props.attributes,
+        children = props.children,
+        node = props.node;
+
+    if (node.kind != 'block' && node.kind != 'inline') return;
+    var Tag = node.kind == 'block' ? 'div' : 'span';
+    var style = { position: 'relative' };
+    return _react2.default.createElement(
+      Tag,
+      _extends({}, attributes, { style: style }),
+      children
+    );
+  }
+
+  /**
+   * Render placeholder.
+   *
+   * @param {Object} props
+   * @return {Element}
+   */
+
+  function renderPlaceholder(props) {
+    var editor = props.editor,
+        node = props.node;
+
+    if (node.kind != 'block') return;
+    if (!_slate.Text.isTextList(node.nodes)) return;
+    if (node.text != '') return;
+    if (editor.value.document.getBlocks().size > 1) return;
+
+    var style = {
+      pointerEvents: 'none',
+      display: 'inline-block',
+      width: '0',
+      maxWidth: '100%',
+      whiteSpace: 'nowrap',
+      opacity: '0.333'
+    };
+
+    return _react2.default.createElement(
+      'span',
+      { contentEditable: false, style: style },
+      editor.props.placeholder
+    );
+  }
+
+  /**
+   * Return the plugin.
+   *
+   * @type {Object}
+   */
+
+  return {
+    onBeforeInput: onBeforeInput,
+    onBlur: onBlur,
+    onClick: onClick,
+    onCopy: onCopy,
+    onCut: onCut,
+    onDragEnd: onDragEnd,
+    onDragOver: onDragOver,
+    onDragStart: onDragStart,
+    onDrop: onDrop,
+    onInput: onInput,
+    onKeyDown: onKeyDown,
+    onPaste: onPaste,
+    onSelect: onSelect,
+    renderEditor: renderEditor,
+    renderNode: renderNode,
+    renderPlaceholder: renderPlaceholder
+  };
+}
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = AfterPlugin;
+},{"../components/content":483,"../constants/environment":489,"../constants/event-handlers":490,"../constants/hotkeys":491,"../utils/find-dom-node":497,"../utils/find-node":500,"../utils/find-point":501,"../utils/find-range":502,"../utils/get-event-range":503,"../utils/get-event-transfer":504,"../utils/set-event-transfer":508,"debug":471,"get-window":40,"react":423,"slate":519,"slate-base64-serializer":479,"slate-plain-serializer":481}],496:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _debug = require('debug');
+
+var _debug2 = _interopRequireDefault(_debug);
+
+var _getWindow = require('get-window');
+
+var _getWindow2 = _interopRequireDefault(_getWindow);
+
+var _reactDom = require('react-dom');
+
+var _hotkeys = require('../constants/hotkeys');
+
+var _hotkeys2 = _interopRequireDefault(_hotkeys);
+
+var _environment = require('../constants/environment');
+
+var _findNode = require('../utils/find-node');
+
+var _findNode2 = _interopRequireDefault(_findNode);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Debug.
+ *
+ * @type {Function}
+ */
+
+var debug = (0, _debug2.default)('slate:core:before');
+
+/**
+ * The core before plugin.
+ *
+ * @return {Object}
+ */
+
+function BeforePlugin() {
+  var compositionCount = 0;
+  var isComposing = false;
+  var isCopying = false;
+  var isDragging = false;
+
+  /**
+   * On before input.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onBeforeInput(event, change, editor) {
+    if (editor.props.readOnly) return true;
+
+    // COMPAT: React's `onBeforeInput` synthetic event is based on the native
+    // `keypress` and `textInput` events. In browsers that support the native
+    // `beforeinput` event, we instead use that event to trigger text insertion,
+    // since it provides more useful information about the range being affected
+    // and also preserves compatibility with iOS autocorrect, which would be
+    // broken if we called `preventDefault()` on React's synthetic event here.
+    // Since native `onbeforeinput` mainly benefits autocorrect and spellcheck
+    // for mobile, on desktop it brings IME issue, limit its scope for now.
+    if ((_environment.IS_IOS || _environment.IS_ANDROID) && _environment.SUPPORTED_EVENTS.beforeinput) return true;
+
+    debug('onBeforeInput', { event: event });
+  }
+
+  /**
+   * On blur.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onBlur(event, change, editor) {
+    if (isCopying) return true;
+    if (editor.props.readOnly) return true;
+
+    var value = change.value;
+
+    var focusTarget = event.relatedTarget;
+
+    // If focusTarget is null, the blur event is due to the window itself being
+    // blurred (eg. when changing tabs) so we should ignore the event, since we
+    // want to maintain focus when returning.
+    if (!focusTarget) return true;
+
+    var el = (0, _reactDom.findDOMNode)(editor);
+
+    // The event should also be ignored if the focus returns to the editor from
+    // an embedded editable element (eg. an input element inside a void node),
+    if (focusTarget == el) return true;
+
+    // when the focus moved from the editor to a void node spacer...
+    if (focusTarget.hasAttribute('data-slate-spacer')) return true;
+
+    // or to an editable element inside the editor but not into a void node
+    // (eg. a list item of the check list example).
+    if (el.contains(focusTarget) && !(0, _findNode2.default)(focusTarget, value).isVoid) {
+      return true;
+    }
+
+    debug('onBlur', { event: event });
+  }
+
+  /**
+   * On change.
+   *
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onChange(change, editor) {
+    var value = change.value;
+
+    // If the value's schema isn't the editor's schema, update it. This can
+    // happen on the initialization of the editor, or if the schema changes.
+
+    if (value.schema != editor.schema) {
+      change.setValue({ schema: editor.schema }).normalize();
+    }
+
+    debug('onChange');
+  }
+
+  /**
+   * On composition end.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onCompositionEnd(event, change, editor) {
+    var n = compositionCount;
+
+    // The `count` check here ensures that if another composition starts
+    // before the timeout has closed out this one, we will abort unsetting the
+    // `isComposing` flag, since a composition is still in affect.
+    setTimeout(function () {
+      if (compositionCount > n) return;
+      isComposing = false;
+    });
+
+    debug('onCompositionEnd', { event: event });
+  }
+
+  /**
+   * On composition start.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onCompositionStart(event, change, editor) {
+    isComposing = true;
+    compositionCount++;
+
+    debug('onCompositionStart', { event: event });
+  }
+
+  /**
+   * On copy.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onCopy(event, change, editor) {
+    var window = (0, _getWindow2.default)(event.target);
+    isCopying = true;
+    window.requestAnimationFrame(function () {
+      return isCopying = false;
+    });
+
+    debug('onCopy', { event: event });
+  }
+
+  /**
+   * On cut.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onCut(event, change, editor) {
+    if (editor.props.readOnly) return true;
+
+    var window = (0, _getWindow2.default)(event.target);
+    isCopying = true;
+    window.requestAnimationFrame(function () {
+      return isCopying = false;
+    });
+
+    debug('onCut', { event: event });
+  }
+
+  /**
+   * On drag end.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDragEnd(event, change, editor) {
+    isDragging = false;
+
+    debug('onDragEnd', { event: event });
+  }
+
+  /**
+   * On drag enter.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDragEnter(event, change, editor) {
+    debug('onDragEnter', { event: event });
+  }
+
+  /**
+   * On drag exit.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDragExit(event, change, editor) {
+    debug('onDragExit', { event: event });
+  }
+
+  /**
+   * On drag leave.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDragLeave(event, change, editor) {
+    debug('onDragLeave', { event: event });
+  }
+
+  /**
+   * On drag over.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDragOver(event, change, editor) {
+    // If a drag is already in progress, don't do this again.
+    if (isDragging) return true;
+
+    isDragging = true;
+    event.nativeEvent.dataTransfer.dropEffect = 'move';
+
+    // You must call `preventDefault` to signal that drops are allowed.
+    event.preventDefault();
+
+    debug('onDragOver', { event: event });
+  }
+
+  /**
+   * On drag start.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDragStart(event, change, editor) {
+    isDragging = true;
+
+    debug('onDragStart', { event: event });
+  }
+
+  /**
+   * On drop.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onDrop(event, change, editor) {
+    // Stop propagation so the event isn't visible to parent editors.
+    event.stopPropagation();
+
+    // Nothing happens in read-only mode.
+    if (editor.props.readOnly) return true;
+
+    // Prevent default so the DOM's value isn't corrupted.
+    event.preventDefault();
+
+    debug('onDrop', { event: event });
+  }
+
+  /**
+   * On focus.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onFocus(event, change, editor) {
+    if (isCopying) return true;
+    if (editor.props.readOnly) return true;
+
+    var el = (0, _reactDom.findDOMNode)(editor);
+
+    // COMPAT: If the editor has nested editable elements, the focus can go to
+    // those elements. In Firefox, this must be prevented because it results in
+    // issues with keyboard navigation. (2017/03/30)
+    if (_environment.IS_FIREFOX && event.target != el) {
+      el.focus();
+      return true;
+    }
+
+    debug('onFocus', { event: event });
+  }
+
+  /**
+   * On input.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onInput(event, change, editor) {
+    if (isComposing) return true;
+    if (change.value.isBlurred) return true;
+
+    debug('onInput', { event: event });
+  }
+
+  /**
+   * On key down.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onKeyDown(event, change, editor) {
+    if (editor.props.readOnly) return true;
+
+    // When composing, these characters commit the composition but also move the
+    // selection before we're able to handle it, so prevent their default,
+    // selection-moving behavior.
+    if (isComposing && _hotkeys2.default.COMPOSING(event)) {
+      event.preventDefault();
+      return true;
+    }
+
+    // Certain hotkeys have native behavior in contenteditable elements which
+    // will cause our value to be out of sync, so prevent them.
+    if (_hotkeys2.default.CONTENTEDITABLE(event)) {
+      event.preventDefault();
+    }
+
+    debug('onKeyDown', { event: event });
+  }
+
+  /**
+   * On paste.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onPaste(event, change, editor) {
+    if (editor.props.readOnly) return true;
+
+    // Prevent defaults so the DOM state isn't corrupted.
+    event.preventDefault();
+
+    debug('onPaste', { event: event });
+  }
+
+  /**
+   * On select.
+   *
+   * @param {Event} event
+   * @param {Change} change
+   * @param {Editor} editor
+   */
+
+  function onSelect(event, change, editor) {
+    if (isCopying) return true;
+    if (isComposing) return true;
+    if (editor.props.readOnly) return true;
+
+    debug('onSelect', { event: event });
+  }
+
+  /**
+   * Return the plugin.
+   *
+   * @type {Object}
+   */
+
+  return {
+    onBeforeInput: onBeforeInput,
+    onBlur: onBlur,
+    onChange: onChange,
+    onCompositionEnd: onCompositionEnd,
+    onCompositionStart: onCompositionStart,
+    onCopy: onCopy,
+    onCut: onCut,
+    onDragEnd: onDragEnd,
+    onDragEnter: onDragEnter,
+    onDragExit: onDragExit,
+    onDragLeave: onDragLeave,
+    onDragOver: onDragOver,
+    onDragStart: onDragStart,
+    onDrop: onDrop,
+    onFocus: onFocus,
+    onInput: onInput,
+    onKeyDown: onKeyDown,
+    onPaste: onPaste,
+    onSelect: onSelect
+  };
+}
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = BeforePlugin;
+},{"../constants/environment":489,"../constants/hotkeys":491,"../utils/find-node":500,"debug":471,"get-window":40,"react-dom":241}],497:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slate = require('slate');
+
+/**
+ * Find the DOM node for a `key`.
+ *
+ * @param {String|Node} key
+ * @return {Element}
+ */
+
+function findDOMNode(key) {
+  if (_slate.Node.isNode(key)) {
+    key = key.key;
+  }
+
+  var el = window.document.querySelector('[data-key="' + key + '"]');
+
+  if (!el) {
+    throw new Error('Unable to find a DOM node for "' + key + '". This is often because of forgetting to add `props.attributes` to a custom component.');
+  }
+
+  return el;
+}
+
+/**
+ * Export.
+ *
+ * @type {Function}
+ */
+
+exports.default = findDOMNode;
+},{"slate":519}],498:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _getWindow = require('get-window');
+
+var _getWindow2 = _interopRequireDefault(_getWindow);
+
+var _findDomNode = require('./find-dom-node');
+
+var _findDomNode2 = _interopRequireDefault(_findDomNode);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Find a native DOM selection point from a Slate `key` and `offset`.
+ *
+ * @param {Element} root
+ * @param {String} key
+ * @param {Number} offset
+ * @return {Object}
+ */
+
+function findDOMPoint(key, offset) {
+  var el = (0, _findDomNode2.default)(key);
+  var window = (0, _getWindow2.default)(el);
+  var start = 0;
+  var n = void 0;
+
+  // COMPAT: In IE, this method's arguments are not optional, so we have to
+  // pass in all four even though the last two are defaults. (2017/10/25)
+  var iterator = window.document.createNodeIterator(el, NodeFilter.SHOW_TEXT, function () {
+    return NodeFilter.FILTER_ACCEPT;
+  }, false);
+
+  while (n = iterator.nextNode()) {
+    var length = n.textContent.length;
+
+    var end = start + length;
+
+    if (offset <= end) {
+      var o = offset - start;
+      return { node: n, offset: o };
+    }
+
+    start = end;
+  }
+
+  // COMPAT: For empty blocks with only a single empty text node, we will have
+  // rendered a `<span>` with `\n` inside, instead of a text node.
+  if (el.childNodes.length == 1 && el.childNodes[0].childNodes.length == 1 && el.childNodes[0].childNodes[0].hasAttributes('data-slate-empty-block')) {
+    return { node: el.childNodes[0], offset: 0 };
+  }
+
+  return null;
+}
+
+/**
+ * Export.
+ *
+ * @type {Function}
+ */
+
+exports.default = findDOMPoint;
+},{"./find-dom-node":497,"get-window":40}],499:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _getWindow = require('get-window');
+
+var _getWindow2 = _interopRequireDefault(_getWindow);
+
+var _findDomPoint = require('./find-dom-point');
+
+var _findDomPoint2 = _interopRequireDefault(_findDomPoint);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Find a native DOM range Slate `range`.
+ *
+ * @param {Range} range
+ * @return {Object|Null}
+ */
+
+function findDOMRange(range) {
+  var anchorKey = range.anchorKey,
+      anchorOffset = range.anchorOffset,
+      focusKey = range.focusKey,
+      focusOffset = range.focusOffset,
+      isBackward = range.isBackward,
+      isCollapsed = range.isCollapsed;
+
+  var anchor = (0, _findDomPoint2.default)(anchorKey, anchorOffset);
+  var focus = isCollapsed ? anchor : (0, _findDomPoint2.default)(focusKey, focusOffset);
+  if (!anchor || !focus) return null;
+
+  var window = (0, _getWindow2.default)(anchor.node);
+  var r = window.document.createRange();
+  var start = isBackward ? focus : anchor;
+  var end = isBackward ? anchor : focus;
+  r.setStart(start.node, start.offset);
+  r.setEnd(end.node, end.offset);
+  return r;
+}
+
+/**
+ * Export.
+ *
+ * @type {Function}
+ */
+
+exports.default = findDOMRange;
+},{"./find-dom-point":498,"get-window":40}],500:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+/**
+ * Find a Slate node from a DOM `element`.
+ *
+ * @param {Element} element
+ * @param {Value} value
+ * @return {Node|Null}
+ */
+
+function findNode(element, value) {
+  var closest = element.closest('[data-key]');
+  if (!closest) return null;
+
+  var key = closest.getAttribute('data-key');
+  if (!key) return null;
+
+  var node = value.document.getNode(key);
+  return node || null;
+}
+
+/**
+ * Export.
+ *
+ * @type {Function}
+ */
+
+exports.default = findNode;
+},{}],501:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _getWindow = require('get-window');
+
+var _getWindow2 = _interopRequireDefault(_getWindow);
+
+var _offsetKey = require('./offset-key');
+
+var _offsetKey2 = _interopRequireDefault(_offsetKey);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Constants.
+ *
+ * @type {String}
+ */
+
+var OFFSET_KEY_ATTRIBUTE = 'data-offset-key';
+var RANGE_SELECTOR = '[' + OFFSET_KEY_ATTRIBUTE + ']';
+var TEXT_SELECTOR = '[data-key]';
+var VOID_SELECTOR = '[data-slate-void]';
+
+/**
+ * Find a Slate point from a DOM selection's `nativeNode` and `nativeOffset`.
+ *
+ * @param {Element} nativeNode
+ * @param {Number} nativeOffset
+ * @param {Value} value
+ * @return {Object}
+ */
+
+function findPoint(nativeNode, nativeOffset, value) {
+  var _normalizeNodeAndOffs = normalizeNodeAndOffset(nativeNode, nativeOffset),
+      nearestNode = _normalizeNodeAndOffs.node,
+      nearestOffset = _normalizeNodeAndOffs.offset;
+
+  var window = (0, _getWindow2.default)(nativeNode);
+  var parentNode = nearestNode.parentNode;
+
+  var rangeNode = parentNode.closest(RANGE_SELECTOR);
+  var offset = void 0;
+  var node = void 0;
+
+  // Calculate how far into the text node the `nearestNode` is, so that we can
+  // determine what the offset relative to the text node is.
+  if (rangeNode) {
+    var range = window.document.createRange();
+    var textNode = rangeNode.closest(TEXT_SELECTOR);
+    range.setStart(textNode, 0);
+    range.setEnd(nearestNode, nearestOffset);
+    node = textNode;
+    offset = range.toString().length;
+  }
+
+  // For void nodes, the element with the offset key will be a cousin, not an
+  // ancestor, so find it by going down from the nearest void parent.
+  else {
+      var voidNode = parentNode.closest(VOID_SELECTOR);
+      if (!voidNode) return null;
+      rangeNode = voidNode.querySelector(RANGE_SELECTOR);
+      node = rangeNode;
+      offset = node.textContent.length;
+    }
+
+  // COMPAT: If the parent node is a Slate zero-width space, this is because the
+  // text node has no characters, so the offset can only be zero.
+  if (offset != 0 && parentNode.getAttribute('data-slate-zero-width')) {
+    offset = 0;
+  }
+
+  // Get the string value of the offset key attribute.
+  var offsetKey = rangeNode.getAttribute(OFFSET_KEY_ATTRIBUTE);
+  if (!offsetKey) return null;
+
+  var _OffsetKey$parse = _offsetKey2.default.parse(offsetKey),
+      key = _OffsetKey$parse.key;
+
+  // COMPAT: If someone is clicking from one Slate editor into another, the
+  // select event fires twice, once for the old editor's `element` first, and
+  // then afterwards for the correct `element`. (2017/03/03)
+
+
+  if (!value.document.hasDescendant(key)) return null;
+
+  return {
+    key: key,
+    offset: offset
+  };
+}
+
+/**
+ * From a DOM selection's `node` and `offset`, normalize so that it always
+ * refers to a text node.
+ *
+ * @param {Element} node
+ * @param {Number} offset
+ * @return {Object}
+ */
+
+function normalizeNodeAndOffset(node, offset) {
+  // If it's an element node, its offset refers to the index of its children
+  // including comment nodes, so try to find the right text child node.
+  if (node.nodeType == 1 && node.childNodes.length) {
+    var isLast = offset == node.childNodes.length;
+    var direction = isLast ? 'backward' : 'forward';
+    var index = isLast ? offset - 1 : offset;
+    node = getEditableChild(node, index, direction);
+
+    // If the node has children, traverse until we have a leaf node. Leaf nodes
+    // can be either text nodes, or other void DOM nodes.
+    while (node.nodeType == 1 && node.childNodes.length) {
+      var i = isLast ? node.childNodes.length - 1 : 0;
+      node = getEditableChild(node, i, direction);
+    }
+
+    // Determine the new offset inside the text node.
+    offset = isLast ? node.textContent.length : 0;
+  }
+
+  // Return the node and offset.
+  return { node: node, offset: offset };
+}
+
+/**
+ * Get the nearest editable child at `index` in a `parent`, preferring
+ * `direction`.
+ *
+ * @param {Element} parent
+ * @param {Number} index
+ * @param {String} direction ('forward' or 'backward')
+ * @return {Element|Null}
+ */
+
+function getEditableChild(parent, index, direction) {
+  var childNodes = parent.childNodes;
+
+  var child = childNodes[index];
+  var i = index;
+  var triedForward = false;
+  var triedBackward = false;
+
+  // While the child is a comment node, or an element node with no children,
+  // keep iterating to find a sibling non-void, non-comment node.
+  while (child.nodeType == 8 || child.nodeType == 1 && child.childNodes.length == 0 || child.nodeType == 1 && child.getAttribute('contenteditable') == 'false') {
+    if (triedForward && triedBackward) break;
+
+    if (i >= childNodes.length) {
+      triedForward = true;
+      i = index - 1;
+      direction = 'backward';
+      continue;
+    }
+
+    if (i < 0) {
+      triedBackward = true;
+      i = index + 1;
+      direction = 'forward';
+      continue;
+    }
+
+    child = childNodes[i];
+    if (direction == 'forward') i++;
+    if (direction == 'backward') i--;
+  }
+
+  return child || null;
+}
+
+/**
+ * Export.
+ *
+ * @type {Function}
+ */
+
+exports.default = findPoint;
+},{"./offset-key":506,"get-window":40}],502:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _getWindow = require('get-window');
+
+var _getWindow2 = _interopRequireDefault(_getWindow);
+
+var _selectionIsBackward = require('selection-is-backward');
+
+var _selectionIsBackward2 = _interopRequireDefault(_selectionIsBackward);
+
+var _slate = require('slate');
+
+var _findPoint = require('./find-point');
+
+var _findPoint2 = _interopRequireDefault(_findPoint);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Find a Slate range from a DOM `native` selection.
+ *
+ * @param {Selection} native
+ * @param {Value} value
+ * @return {Range}
+ */
+
+function findRange(native, value) {
+  var el = native.anchorNode || native.startContainer;
+  if (!el) return null;
+
+  var window = (0, _getWindow2.default)(el);
+
+  // If the `native` object is a DOM `Range` or `StaticRange` object, change it
+  // into something that looks like a DOM `Selection` instead.
+  if (native instanceof window.Range || window.StaticRange && native instanceof window.StaticRange) {
+    native = {
+      anchorNode: native.startContainer,
+      anchorOffset: native.startOffset,
+      focusNode: native.endContainer,
+      focusOffset: native.endOffset
+    };
+  }
+
+  var _native = native,
+      anchorNode = _native.anchorNode,
+      anchorOffset = _native.anchorOffset,
+      focusNode = _native.focusNode,
+      focusOffset = _native.focusOffset,
+      isCollapsed = _native.isCollapsed;
+
+  var anchor = (0, _findPoint2.default)(anchorNode, anchorOffset, value);
+  var focus = isCollapsed ? anchor : (0, _findPoint2.default)(focusNode, focusOffset, value);
+  if (!anchor || !focus) return null;
+
+  var range = _slate.Range.create({
+    anchorKey: anchor.key,
+    anchorOffset: anchor.offset,
+    focusKey: focus.key,
+    focusOffset: focus.offset,
+    isBackward: isCollapsed ? false : (0, _selectionIsBackward2.default)(native),
+    isFocused: true
+  });
+
+  return range;
+}
+
+/**
+ * Export.
+ *
+ * @type {Function}
+ */
+
+exports.default = findRange;
+},{"./find-point":501,"get-window":40,"selection-is-backward":425,"slate":519}],503:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _getWindow = require('get-window');
+
+var _getWindow2 = _interopRequireDefault(_getWindow);
+
+var _findDomNode = require('./find-dom-node');
+
+var _findDomNode2 = _interopRequireDefault(_findDomNode);
+
+var _findRange = require('./find-range');
+
+var _findRange2 = _interopRequireDefault(_findRange);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Get the target range from a DOM `event`.
+ *
+ * @param {Event} event
+ * @param {Value} value
+ * @return {Range}
+ */
+
+function getEventRange(event, value) {
+  if (event.nativeEvent) {
+    event = event.nativeEvent;
+  }
+
+  var _event = event,
+      x = _event.x,
+      y = _event.y;
+
+  if (x == null || y == null) return null;
+
+  // Resolve a range from the caret position where the drop occured.
+  var window = (0, _getWindow2.default)(event.target);
+  var r = void 0;
+
+  // COMPAT: In Firefox, `caretRangeFromPoint` doesn't exist. (2016/07/25)
+  if (window.document.caretRangeFromPoint) {
+    r = window.document.caretRangeFromPoint(x, y);
+  } else {
+    var position = window.document.caretPositionFromPoint(x, y);
+    r = window.document.createRange();
+    r.setStart(position.offsetNode, position.offset);
+    r.setEnd(position.offsetNode, position.offset);
+  }
+
+  // Resolve a Slate range from the DOM range.
+  var range = (0, _findRange2.default)(r, value);
+  if (!range) return null;
+
+  var document = value.document;
+
+  var node = document.getNode(range.anchorKey);
+  var parent = document.getParent(node.key);
+  var el = (0, _findDomNode2.default)(parent);
+
+  // If the drop target is inside a void node, move it into either the next or
+  // previous node, depending on which side the `x` and `y` coordinates are
+  // closest to.
+  if (parent.isVoid) {
+    var rect = el.getBoundingClientRect();
+    var isPrevious = parent.kind == 'inline' ? x - rect.left < rect.left + rect.width - x : y - rect.top < rect.top + rect.height - y;
+
+    range = isPrevious ? range.moveToEndOf(document.getPreviousText(node.key)) : range.moveToStartOf(document.getNextText(node.key));
+  }
+
+  return range;
+}
+
+/**
+ * Export.
+ *
+ * @type {Function}
+ */
+
+exports.default = getEventRange;
+},{"./find-dom-node":497,"./find-range":502,"get-window":40}],504:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _slateBase64Serializer = require('slate-base64-serializer');
+
+var _slateBase64Serializer2 = _interopRequireDefault(_slateBase64Serializer);
+
+var _transferTypes = require('../constants/transfer-types');
+
+var _transferTypes2 = _interopRequireDefault(_transferTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Transfer types.
+ *
+ * @type {String}
+ */
+
+var FRAGMENT = _transferTypes2.default.FRAGMENT,
+    HTML = _transferTypes2.default.HTML,
+    NODE = _transferTypes2.default.NODE,
+    RICH = _transferTypes2.default.RICH,
+    TEXT = _transferTypes2.default.TEXT;
+
+/**
+ * Fragment matching regexp for HTML nodes.
+ *
+ * @type {RegExp}
+ */
+
+var FRAGMENT_MATCHER = / data-slate-fragment="([^\s"]+)"/;
+
+/**
+ * Get the transfer data from an `event`.
+ *
+ * @param {Event} event
+ * @return {Object}
+ */
+
+function getEventTransfer(event) {
+  if (event.nativeEvent) {
+    event = event.nativeEvent;
+  }
+
+  var transfer = event.dataTransfer || event.clipboardData;
+  var fragment = getType(transfer, FRAGMENT);
+  var node = getType(transfer, NODE);
+  var html = getType(transfer, HTML);
+  var rich = getType(transfer, RICH);
+  var text = getType(transfer, TEXT);
+  var files = void 0;
+
+  // If there isn't a fragment, but there is HTML, check to see if the HTML is
+  // actually an encoded fragment.
+  if (!fragment && html && ~html.indexOf(' data-slate-fragment="')) {
+    var matches = FRAGMENT_MATCHER.exec(html);
+
+    var _matches = _slicedToArray(matches, 2),
+        full = _matches[0],
+        encoded = _matches[1]; // eslint-disable-line no-unused-vars
+
+
+    if (encoded) fragment = encoded;
+  }
+
+  // COMPAT: Edge doesn't handle custom data types
+  // These will be embedded in text/plain in this case (2017/7/12)
+  if (text) {
+    var embeddedTypes = getEmbeddedTypes(text);
+
+    if (embeddedTypes[FRAGMENT]) fragment = embeddedTypes[FRAGMENT];
+    if (embeddedTypes[NODE]) node = embeddedTypes[NODE];
+    if (embeddedTypes[TEXT]) text = embeddedTypes[TEXT];
+  }
+
+  // Decode a fragment or node if they exist.
+  if (fragment) fragment = _slateBase64Serializer2.default.deserializeNode(fragment);
+  if (node) node = _slateBase64Serializer2.default.deserializeNode(node);
+
+  // COMPAT: Edge sometimes throws 'NotSupportedError'
+  // when accessing `transfer.items` (2017/7/12)
+  try {
+    // Get and normalize files if they exist.
+    if (transfer.items && transfer.items.length) {
+      files = Array.from(transfer.items).map(function (item) {
+        return item.kind == 'file' ? item.getAsFile() : null;
+      }).filter(function (exists) {
+        return exists;
+      });
+    } else if (transfer.files && transfer.files.length) {
+      files = Array.from(transfer.files);
+    }
+  } catch (err) {
+    if (transfer.files && transfer.files.length) {
+      files = Array.from(transfer.files);
+    }
+  }
+
+  // Determine the type of the data.
+  var data = { files: files, fragment: fragment, html: html, node: node, rich: rich, text: text };
+  data.type = getTransferType(data);
+  return data;
+}
+
+/**
+ * Takes text input, checks whether contains embedded data
+ * and returns object with original text +/- additional data
+ *
+ * @param {String} text
+ * @return {Object}
+ */
+
+function getEmbeddedTypes(text) {
+  var prefix = 'SLATE-DATA-EMBED::';
+
+  if (text.substring(0, prefix.length) != prefix) {
+    return { TEXT: text };
+  }
+
+  // Attempt to parse, if fails then just standard text/plain
+  // Otherwise, already had data embedded
+  try {
+    return JSON.parse(text.substring(prefix.length));
+  } catch (err) {
+    throw new Error('Unable to parse custom Slate drag event data.');
+  }
+}
+
+/**
+ * Get the type of a transfer from its `data`.
+ *
+ * @param {Object} data
+ * @return {String}
+ */
+
+function getTransferType(data) {
+  if (data.fragment) return 'fragment';
+  if (data.node) return 'node';
+
+  // COMPAT: Microsoft Word adds an image of the selected text to the data.
+  // Since files are preferred over HTML or text, this would cause the type to
+  // be considered `files`. But it also adds rich text data so we can check
+  // for that and properly set the type to `html` or `text`. (2016/11/21)
+  if (data.rich && data.html) return 'html';
+  if (data.rich && data.text) return 'text';
+
+  if (data.files && data.files.length) return 'files';
+  if (data.html) return 'html';
+  if (data.text) return 'text';
+  return 'unknown';
+}
+
+/**
+ * Get one of types `TYPES.FRAGMENT`, `TYPES.NODE`, `text/html`, `text/rtf` or
+ * `text/plain` from transfers's `data` if possible, otherwise return null.
+ *
+ * @param {Object} transfer
+ * @param {String} type
+ * @return {String}
+ */
+
+function getType(transfer, type) {
+  if (!transfer.types || !transfer.types.length) {
+    // COMPAT: In IE 11, there is no `types` field but `getData('Text')`
+    // is supported`. (2017/06/23)
+    return type == TEXT ? transfer.getData('Text') || null : null;
+  }
+
+  // COMPAT: In Edge, transfer.types doesn't respond to `indexOf`. (2017/10/25)
+  var types = Array.from(transfer.types);
+
+  return types.indexOf(type) !== -1 ? transfer.getData(type) || null : null;
+}
+
+/**
+ * Export.
+ *
+ * @type {Function}
+ */
+
+exports.default = getEventTransfer;
+},{"../constants/transfer-types":493,"slate-base64-serializer":479}],505:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+/**
+ * Noop.
+ *
+ * @return {Void}
+ */
+
+function noop() {}
+
+/**
+ * Export.
+ *
+ * @type {Function}
+ */
+
+exports.default = noop;
+},{}],506:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+/**
+ * Offset key parser regex.
+ *
+ * @type {RegExp}
+ */
+
+var PARSER = /^(\w+)(?::(\d+))?$/;
+
+/**
+ * Parse an offset key `string`.
+ *
+ * @param {String} string
+ * @return {Object}
+ */
+
+function parse(string) {
+  var matches = PARSER.exec(string);
+
+  if (!matches) {
+    throw new Error("Invalid offset key string \"" + string + "\".");
+  }
+
+  var _matches = _slicedToArray(matches, 3),
+      original = _matches[0],
+      key = _matches[1],
+      index = _matches[2]; // eslint-disable-line no-unused-vars
+
+
+  return {
+    key: key,
+    index: parseInt(index, 10)
+  };
+}
+
+/**
+ * Stringify an offset key `object`.
+ *
+ * @param {Object} object
+ *   @property {String} key
+ *   @property {Number} index
+ * @return {String}
+ */
+
+function stringify(object) {
+  return object.key + ":" + object.index;
+}
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = {
+  parse: parse,
+  stringify: stringify
+};
+},{}],507:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _getWindow = require('get-window');
+
+var _getWindow2 = _interopRequireDefault(_getWindow);
+
+var _selectionIsBackward = require('selection-is-backward');
+
+var _selectionIsBackward2 = _interopRequireDefault(_selectionIsBackward);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Scroll the current selection's focus point into view if needed.
+ *
+ * @param {Selection} selection
+ */
+
+function scrollToSelection(selection) {
+  if (!selection.anchorNode) return;
+
+  var window = (0, _getWindow2.default)(selection.anchorNode);
+  var backward = (0, _selectionIsBackward2.default)(selection);
+  var range = selection.getRangeAt(0);
+  var rect = range.getBoundingClientRect();
+  var innerWidth = window.innerWidth,
+      innerHeight = window.innerHeight,
+      pageYOffset = window.pageYOffset,
+      pageXOffset = window.pageXOffset;
+
+  var top = (backward ? rect.top : rect.bottom) + pageYOffset;
+  var left = (backward ? rect.left : rect.right) + pageXOffset;
+
+  var x = left < pageXOffset || innerWidth + pageXOffset < left ? left - innerWidth / 2 : pageXOffset;
+
+  var y = top < pageYOffset || innerHeight + pageYOffset < top ? top - innerHeight / 2 : pageYOffset;
+
+  window.scrollTo(x, y);
+}
+
+/**
+ * Export.
+ *
+ * @type {Function}
+ */
+
+exports.default = scrollToSelection;
+},{"get-window":40,"selection-is-backward":425}],508:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _transferTypes = require('../constants/transfer-types');
+
+var _transferTypes2 = _interopRequireDefault(_transferTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * The default plain text transfer type.
+ *
+ * @type {String}
+ */
+
+var TEXT = _transferTypes2.default.TEXT;
+
+/**
+ * Set data with `type` and `content` on an `event`.
+ *
+ * COMPAT: In Edge, custom types throw errors, so embed all non-standard
+ * types in text/plain compound object. (2017/7/12)
+ *
+ * @param {Event} event
+ * @param {String} type
+ * @param {String} content
+ */
+
+function setEventTransfer(event, type, content) {
+  var mime = _transferTypes2.default[type.toUpperCase()];
+
+  if (!mime) {
+    throw new Error('Cannot set unknown transfer type "' + mime + '".');
+  }
+
+  if (event.nativeEvent) {
+    event = event.nativeEvent;
+  }
+
+  var transfer = event.dataTransfer || event.clipboardData;
+
+  try {
+    transfer.setData(mime, content);
+  } catch (err) {
+    var prefix = 'SLATE-DATA-EMBED::';
+    var text = transfer.getData(TEXT);
+    var obj = {};
+
+    // If the existing plain text data is prefixed, it's Slate JSON data.
+    if (text.substring(0, prefix.length) === prefix) {
+      try {
+        obj = JSON.parse(text.substring(prefix.length));
+      } catch (e) {
+        throw new Error('Failed to parse Slate data from `DataTransfer` object.');
+      }
+    }
+
+    // Otherwise, it's just set it as is.
+    else {
+        obj[TEXT] = text;
+      }
+
+    obj[mime] = content;
+    var string = '' + prefix + JSON.stringify(obj);
+    transfer.setData(TEXT, string);
+  }
+}
+
+/**
+ * Export.
+ *
+ * @type {Function}
+ */
+
+exports.default = setEventTransfer;
+},{"../constants/transfer-types":493}],509:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _block = require('../models/block');
+
+var _block2 = _interopRequireDefault(_block);
+
+var _inline = require('../models/inline');
+
+var _inline2 = _interopRequireDefault(_inline);
+
+var _mark = require('../models/mark');
+
+var _mark2 = _interopRequireDefault(_mark);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Changes.
+ *
+ * @type {Object}
+ */
+
+var Changes = {};
+
+/**
+ * Mix in the changes that pass through to their at-range equivalents because
+ * they don't have any effect on the selection.
+ */
+
+var PROXY_TRANSFORMS = ['deleteBackward', 'deleteCharBackward', 'deleteLineBackward', 'deleteWordBackward', 'deleteForward', 'deleteCharForward', 'deleteWordForward', 'deleteLineForward', 'setBlock', 'setInline', 'splitInline', 'unwrapBlock', 'unwrapInline', 'wrapBlock', 'wrapInline'];
+
+PROXY_TRANSFORMS.forEach(function (method) {
+  Changes[method] = function (change) {
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    var value = change.value;
+    var selection = value.selection;
+
+    var methodAtRange = method + 'AtRange';
+    change[methodAtRange].apply(change, [selection].concat(args));
+  };
+});
+
+/**
+ * Add a `mark` to the characters in the current selection.
+ *
+ * @param {Change} change
+ * @param {Mark} mark
+ */
+
+Changes.addMark = function (change, mark) {
+  mark = _mark2.default.create(mark);
+  var value = change.value;
+  var document = value.document,
+      selection = value.selection;
+
+
+  if (selection.isExpanded) {
+    change.addMarkAtRange(selection, mark);
+  } else if (selection.marks) {
+    var marks = selection.marks.add(mark);
+    var sel = selection.set('marks', marks);
+    change.select(sel);
+  } else {
+    var _marks = document.getActiveMarksAtRange(selection).add(mark);
+    var _sel = selection.set('marks', _marks);
+    change.select(_sel);
+  }
+};
+
+/**
+ * Delete at the current selection.
+ *
+ * @param {Change} change
+ */
+
+Changes.delete = function (change) {
+  var value = change.value;
+  var selection = value.selection;
+
+  change.deleteAtRange(selection);
+
+  // Ensure that the selection is collapsed to the start, because in certain
+  // cases when deleting across inline nodes, when splitting the inline node the
+  // end point of the selection will end up after the split point.
+  change.collapseToStart();
+};
+
+/**
+ * Insert a `block` at the current selection.
+ *
+ * @param {Change} change
+ * @param {String|Object|Block} block
+ */
+
+Changes.insertBlock = function (change, block) {
+  block = _block2.default.create(block);
+  var value = change.value;
+  var selection = value.selection;
+
+  change.insertBlockAtRange(selection, block);
+
+  // If the node was successfully inserted, update the selection.
+  var node = change.value.document.getNode(block.key);
+  if (node) change.collapseToEndOf(node);
+};
+
+/**
+ * Insert a `fragment` at the current selection.
+ *
+ * @param {Change} change
+ * @param {Document} fragment
+ */
+
+Changes.insertFragment = function (change, fragment) {
+  if (!fragment.nodes.size) return;
+
+  var value = change.value;
+  var _value = value,
+      document = _value.document,
+      selection = _value.selection;
+  var _value2 = value,
+      startText = _value2.startText,
+      endText = _value2.endText,
+      startInline = _value2.startInline;
+
+  var lastText = fragment.getLastText();
+  var lastInline = fragment.getClosestInline(lastText.key);
+  var keys = document.getTexts().map(function (text) {
+    return text.key;
+  });
+  var isAppending = !startInline || selection.hasEdgeAtStartOf(startText) || selection.hasEdgeAtEndOf(endText);
+
+  change.insertFragmentAtRange(selection, fragment);
+  value = change.value;
+  document = value.document;
+
+  var newTexts = document.getTexts().filter(function (n) {
+    return !keys.includes(n.key);
+  });
+  var newText = isAppending ? newTexts.last() : newTexts.takeLast(2).first();
+
+  if (newText && lastInline) {
+    change.select(selection.collapseToEndOf(newText));
+  } else if (newText) {
+    change.select(selection.collapseToStartOf(newText).move(lastText.text.length));
+  } else {
+    change.select(selection.collapseToStart().move(lastText.text.length));
+  }
+};
+
+/**
+ * Insert an `inline` at the current selection.
+ *
+ * @param {Change} change
+ * @param {String|Object|Inline} inline
+ */
+
+Changes.insertInline = function (change, inline) {
+  inline = _inline2.default.create(inline);
+  var value = change.value;
+  var selection = value.selection;
+
+  change.insertInlineAtRange(selection, inline);
+
+  // If the node was successfully inserted, update the selection.
+  var node = change.value.document.getNode(inline.key);
+  if (node) change.collapseToEndOf(node);
+};
+
+/**
+ * Insert a string of `text` with optional `marks` at the current selection.
+ *
+ * @param {Change} change
+ * @param {String} text
+ * @param {Set<Mark>} marks (optional)
+ */
+
+Changes.insertText = function (change, text, marks) {
+  var value = change.value;
+  var document = value.document,
+      selection = value.selection;
+
+  marks = marks || selection.marks;
+  change.insertTextAtRange(selection, text, marks);
+
+  // If the text was successfully inserted, and the selection had marks on it,
+  // unset the selection's marks.
+  if (selection.marks && document != change.value.document) {
+    change.select({ marks: null });
+  }
+};
+
+/**
+ * Split the block node at the current selection, to optional `depth`.
+ *
+ * @param {Change} change
+ * @param {Number} depth (optional)
+ */
+
+Changes.splitBlock = function (change) {
+  var depth = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+  var value = change.value;
+  var selection = value.selection;
+
+  change.splitBlockAtRange(selection, depth).collapseToEnd();
+};
+
+/**
+ * Remove a `mark` from the characters in the current selection.
+ *
+ * @param {Change} change
+ * @param {Mark} mark
+ */
+
+Changes.removeMark = function (change, mark) {
+  mark = _mark2.default.create(mark);
+  var value = change.value;
+  var document = value.document,
+      selection = value.selection;
+
+
+  if (selection.isExpanded) {
+    change.removeMarkAtRange(selection, mark);
+  } else if (selection.marks) {
+    var marks = selection.marks.remove(mark);
+    var sel = selection.set('marks', marks);
+    change.select(sel);
+  } else {
+    var _marks2 = document.getActiveMarksAtRange(selection).remove(mark);
+    var _sel2 = selection.set('marks', _marks2);
+    change.select(_sel2);
+  }
+};
+
+/**
+ * Add or remove a `mark` from the characters in the current selection,
+ * depending on whether it's already there.
+ *
+ * @param {Change} change
+ * @param {Mark} mark
+ */
+
+Changes.toggleMark = function (change, mark) {
+  mark = _mark2.default.create(mark);
+  var value = change.value;
+
+  var exists = value.activeMarks.has(mark);
+
+  if (exists) {
+    change.removeMark(mark);
+  } else {
+    change.addMark(mark);
+  }
+};
+
+/**
+ * Wrap the current selection with prefix/suffix.
+ *
+ * @param {Change} change
+ * @param {String} prefix
+ * @param {String} suffix
+ */
+
+Changes.wrapText = function (change, prefix) {
+  var suffix = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : prefix;
+  var value = change.value;
+  var selection = value.selection;
+
+  change.wrapTextAtRange(selection, prefix, suffix);
+
+  // If the selection was collapsed, it will have moved the start offset too.
+  if (selection.isCollapsed) {
+    change.moveStart(0 - prefix.length);
+  }
+
+  // Adding the suffix will have pushed the end of the selection further on, so
+  // we need to move it back to account for this.
+  change.moveEnd(0 - suffix.length);
+
+  // There's a chance that the selection points moved "through" each other,
+  // resulting in a now-incorrect selection direction.
+  if (selection.isForward != change.value.selection.isForward) {
+    change.flip();
+  }
+};
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = Changes;
+},{"../models/block":520,"../models/inline":526,"../models/mark":528}],510:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _immutable = require('immutable');
+
+var _block = require('../models/block');
+
+var _block2 = _interopRequireDefault(_block);
+
+var _inline = require('../models/inline');
+
+var _inline2 = _interopRequireDefault(_inline);
+
+var _mark = require('../models/mark');
+
+var _mark2 = _interopRequireDefault(_mark);
+
+var _node = require('../models/node');
+
+var _node2 = _interopRequireDefault(_node);
+
+var _string = require('../utils/string');
+
+var _string2 = _interopRequireDefault(_string);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Changes.
+ *
+ * @type {Object}
+ */
+
+var Changes = {};
+
+/**
+ * Add a new `mark` to the characters at `range`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Mixed} mark
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.addMarkAtRange = function (change, range, mark) {
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+
+  if (range.isCollapsed) return;
+
+  var _options$normalize = options.normalize,
+      normalize = _options$normalize === undefined ? true : _options$normalize;
+  var value = change.value;
+  var document = value.document;
+  var startKey = range.startKey,
+      startOffset = range.startOffset,
+      endKey = range.endKey,
+      endOffset = range.endOffset;
+
+  var texts = document.getTextsAtRange(range);
+
+  texts.forEach(function (node) {
+    var key = node.key;
+
+    var index = 0;
+    var length = node.text.length;
+
+    if (key == startKey) index = startOffset;
+    if (key == endKey) length = endOffset;
+    if (key == startKey && key == endKey) length = endOffset - startOffset;
+
+    change.addMarkByKey(key, index, length, mark, { normalize: normalize });
+  });
+};
+
+/**
+ * Delete everything in a `range`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.deleteAtRange = function (change, range) {
+  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+  if (range.isCollapsed) return;
+
+  // Snapshot the selection, which creates an extra undo save point, so that
+  // when you undo a delete, the expanded selection will be retained.
+  change.snapshotSelection();
+
+  var _options$normalize2 = options.normalize,
+      normalize = _options$normalize2 === undefined ? true : _options$normalize2;
+  var value = change.value;
+  var startKey = range.startKey,
+      startOffset = range.startOffset,
+      endKey = range.endKey,
+      endOffset = range.endOffset;
+  var document = value.document;
+
+  var isStartVoid = document.hasVoidParent(startKey);
+  var isEndVoid = document.hasVoidParent(endKey);
+  var startBlock = document.getClosestBlock(startKey);
+  var endBlock = document.getClosestBlock(endKey);
+
+  // Check if we have a "hanging" selection case where the even though the
+  // selection extends into the start of the end node, we actually want to
+  // ignore that for UX reasons.
+  var isHanging = startOffset == 0 && endOffset == 0 && isStartVoid == false && startKey == startBlock.getFirstText().key && endKey == endBlock.getFirstText().key;
+
+  // If it's a hanging selection, nudge it back to end in the previous text.
+  if (isHanging && isEndVoid) {
+    var prevText = document.getPreviousText(endKey);
+    endKey = prevText.key;
+    endOffset = prevText.text.length;
+    isEndVoid = document.hasVoidParent(endKey);
+  }
+
+  // If the start node is inside a void node, remove the void node and update
+  // the starting point to be right after it, continuously until the start point
+  // is not a void, or until the entire range is handled.
+  while (isStartVoid) {
+    var startVoid = document.getClosestVoid(startKey);
+    var nextText = document.getNextText(startKey);
+    change.removeNodeByKey(startVoid.key, { normalize: false });
+
+    // If the start and end keys are the same, we're done.
+    if (startKey == endKey) return;
+
+    // If there is no next text node, we're done.
+    if (!nextText) return;
+
+    // Continue...
+    document = change.value.document;
+    startKey = nextText.key;
+    startOffset = 0;
+    isStartVoid = document.hasVoidParent(startKey);
+  }
+
+  // If the end node is inside a void node, do the same thing but backwards. But
+  // we don't need any aborting checks because if we've gotten this far there
+  // must be a non-void node that will exit the loop.
+  while (isEndVoid) {
+    var endVoid = document.getClosestVoid(endKey);
+    var _prevText = document.getPreviousText(endKey);
+    change.removeNodeByKey(endVoid.key, { normalize: false });
+
+    // Continue...
+    document = change.value.document;
+    endKey = _prevText.key;
+    endOffset = _prevText.text.length;
+    isEndVoid = document.hasVoidParent(endKey);
+  }
+
+  // If the start and end key are the same, and it was a hanging selection, we
+  // can just remove the entire block.
+  if (startKey == endKey && isHanging) {
+    change.removeNodeByKey(startBlock.key, { normalize: normalize });
+    return;
+  }
+
+  // Otherwise, if it wasn't hanging, we're inside a single text node, so we can
+  // simply remove the text in the range.
+  else if (startKey == endKey) {
+      var index = startOffset;
+      var length = endOffset - startOffset;
+      change.removeTextByKey(startKey, index, length, { normalize: normalize });
+      return;
+    }
+
+    // Otherwise, we need to recursively remove text and nodes inside the start
+    // block after the start offset and inside the end block before the end
+    // offset. Then remove any blocks that are in between the start and end
+    // blocks. Then finally merge the start and end nodes.
+    else {
+        startBlock = document.getClosestBlock(startKey);
+        endBlock = document.getClosestBlock(endKey);
+        var startText = document.getNode(startKey);
+        var endText = document.getNode(endKey);
+        var startLength = startText.text.length - startOffset;
+        var endLength = endOffset;
+
+        var ancestor = document.getCommonAncestor(startKey, endKey);
+        var startChild = ancestor.getFurthestAncestor(startKey);
+        var endChild = ancestor.getFurthestAncestor(endKey);
+
+        var startParent = document.getParent(startBlock.key);
+        var startParentIndex = startParent.nodes.indexOf(startBlock);
+        var endParentIndex = startParent.nodes.indexOf(endBlock);
+
+        var child = void 0;
+
+        // Iterate through all of the nodes in the tree after the start text node
+        // but inside the end child, and remove them.
+        child = startText;
+
+        while (child.key != startChild.key) {
+          var parent = document.getParent(child.key);
+          var _index = parent.nodes.indexOf(child);
+          var afters = parent.nodes.slice(_index + 1);
+
+          afters.reverse().forEach(function (node) {
+            change.removeNodeByKey(node.key, { normalize: false });
+          });
+
+          child = parent;
+        }
+
+        // Remove all of the middle children.
+        var startChildIndex = ancestor.nodes.indexOf(startChild);
+        var endChildIndex = ancestor.nodes.indexOf(endChild);
+        var middles = ancestor.nodes.slice(startChildIndex + 1, endChildIndex);
+
+        middles.reverse().forEach(function (node) {
+          change.removeNodeByKey(node.key, { normalize: false });
+        });
+
+        // Remove the nodes before the end text node in the tree.
+        child = endText;
+
+        while (child.key != endChild.key) {
+          var _parent = document.getParent(child.key);
+          var _index2 = _parent.nodes.indexOf(child);
+          var befores = _parent.nodes.slice(0, _index2);
+
+          befores.reverse().forEach(function (node) {
+            change.removeNodeByKey(node.key, { normalize: false });
+          });
+
+          child = _parent;
+        }
+
+        // Remove any overlapping text content from the leaf text nodes.
+        if (startLength != 0) {
+          change.removeTextByKey(startKey, startOffset, startLength, { normalize: false });
+        }
+
+        if (endLength != 0) {
+          change.removeTextByKey(endKey, 0, endOffset, { normalize: false });
+        }
+
+        // If the start and end blocks aren't the same, move and merge the end block
+        // into the start block.
+        if (startBlock.key != endBlock.key) {
+          document = change.value.document;
+          var lonely = document.getFurthestOnlyChildAncestor(endBlock.key);
+
+          // Move the end block to be right after the start block.
+          if (endParentIndex != startParentIndex + 1) {
+            change.moveNodeByKey(endBlock.key, startParent.key, startParentIndex + 1);
+          }
+
+          // If the selection is hanging, just remove the start block, otherwise
+          // merge the end block into it.
+          if (isHanging) {
+            change.removeNodeByKey(startBlock.key, { normalize: false });
+          } else {
+            change.mergeNodeByKey(endBlock.key, { normalize: false });
+          }
+
+          // If nested empty blocks are left over above the end block, remove them.
+          if (lonely) {
+            change.removeNodeByKey(lonely.key, { normalize: false });
+          }
+        }
+
+        // If we should normalize, do it now after everything.
+        if (normalize) {
+          change.normalizeNodeByKey(ancestor.key);
+        }
+      }
+};
+
+/**
+ * Delete backward until the character boundary at a `range`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.deleteCharBackwardAtRange = function (change, range, options) {
+  var value = change.value;
+  var document = value.document;
+  var startKey = range.startKey,
+      startOffset = range.startOffset;
+
+  var startBlock = document.getClosestBlock(startKey);
+  var offset = startBlock.getOffset(startKey);
+  var o = offset + startOffset;
+  var text = startBlock.text;
+
+  var n = _string2.default.getCharOffsetBackward(text, o);
+  change.deleteBackwardAtRange(range, n, options);
+};
+
+/**
+ * Delete backward until the line boundary at a `range`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.deleteLineBackwardAtRange = function (change, range, options) {
+  var value = change.value;
+  var document = value.document;
+  var startKey = range.startKey,
+      startOffset = range.startOffset;
+
+  var startBlock = document.getClosestBlock(startKey);
+  var offset = startBlock.getOffset(startKey);
+  var o = offset + startOffset;
+  change.deleteBackwardAtRange(range, o, options);
+};
+
+/**
+ * Delete backward until the word boundary at a `range`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.deleteWordBackwardAtRange = function (change, range, options) {
+  var value = change.value;
+  var document = value.document;
+  var startKey = range.startKey,
+      startOffset = range.startOffset;
+
+  var startBlock = document.getClosestBlock(startKey);
+  var offset = startBlock.getOffset(startKey);
+  var o = offset + startOffset;
+  var text = startBlock.text;
+
+  var n = _string2.default.getWordOffsetBackward(text, o);
+  change.deleteBackwardAtRange(range, n, options);
+};
+
+/**
+ * Delete backward `n` characters at a `range`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Number} n (optional)
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.deleteBackwardAtRange = function (change, range) {
+  var n = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+  var _options$normalize3 = options.normalize,
+      normalize = _options$normalize3 === undefined ? true : _options$normalize3;
+  var value = change.value;
+  var document = value.document;
+  var _range = range,
+      startKey = _range.startKey,
+      focusOffset = _range.focusOffset;
+
+  // If the range is expanded, perform a regular delete instead.
+
+  if (range.isExpanded) {
+    change.deleteAtRange(range, { normalize: normalize });
+    return;
+  }
+
+  var block = document.getClosestBlock(startKey);
+
+  // If the closest block is void, delete it.
+  if (block && block.isVoid) {
+    change.removeNodeByKey(block.key, { normalize: normalize });
+    return;
+  }
+
+  // If the closest is not void, but empty, remove it
+  if (block && !block.isVoid && block.isEmpty && document.nodes.size !== 1) {
+    change.removeNodeByKey(block.key, { normalize: normalize });
+    return;
+  }
+
+  // If the closest inline is void, delete it.
+  var inline = document.getClosestInline(startKey);
+  if (inline && inline.isVoid) {
+    change.removeNodeByKey(inline.key, { normalize: normalize });
+    return;
+  }
+
+  // If the range is at the start of the document, abort.
+  if (range.isAtStartOf(document)) {
+    return;
+  }
+
+  // If the range is at the start of the text node, we need to figure out what
+  // is behind it to know how to delete...
+  var text = document.getDescendant(startKey);
+  if (range.isAtStartOf(text)) {
+    var prev = document.getPreviousText(text.key);
+    var prevBlock = document.getClosestBlock(prev.key);
+    var prevInline = document.getClosestInline(prev.key);
+
+    // If the previous block is void, remove it.
+    if (prevBlock && prevBlock.isVoid) {
+      change.removeNodeByKey(prevBlock.key, { normalize: normalize });
+      return;
+    }
+
+    // If the previous inline is void, remove it.
+    if (prevInline && prevInline.isVoid) {
+      change.removeNodeByKey(prevInline.key, { normalize: normalize });
+      return;
+    }
+
+    // If we're deleting by one character and the previous text node is not
+    // inside the current block, we need to merge the two blocks together.
+    if (n == 1 && prevBlock != block) {
+      range = range.merge({
+        anchorKey: prev.key,
+        anchorOffset: prev.text.length
+      });
+
+      change.deleteAtRange(range, { normalize: normalize });
+      return;
+    }
+  }
+
+  // If the focus offset is farther than the number of characters to delete,
+  // just remove the characters backwards inside the current node.
+  if (n < focusOffset) {
+    range = range.merge({
+      focusOffset: focusOffset - n,
+      isBackward: true
+    });
+
+    change.deleteAtRange(range, { normalize: normalize });
+    return;
+  }
+
+  // Otherwise, we need to see how many nodes backwards to go.
+  var node = text;
+  var offset = 0;
+  var traversed = focusOffset;
+
+  while (n > traversed) {
+    node = document.getPreviousText(node.key);
+    var next = traversed + node.text.length;
+    if (n <= next) {
+      offset = next - n;
+      break;
+    } else {
+      traversed = next;
+    }
+  }
+
+  // If the focus node is inside a void, go up until right after it.
+  if (document.hasVoidParent(node.key)) {
+    var parent = document.getClosestVoid(node.key);
+    node = document.getNextText(parent.key);
+    offset = 0;
+  }
+
+  range = range.merge({
+    focusKey: node.key,
+    focusOffset: offset,
+    isBackward: true
+  });
+
+  change.deleteAtRange(range, { normalize: normalize });
+};
+
+/**
+ * Delete forward until the character boundary at a `range`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.deleteCharForwardAtRange = function (change, range, options) {
+  var value = change.value;
+  var document = value.document;
+  var startKey = range.startKey,
+      startOffset = range.startOffset;
+
+  var startBlock = document.getClosestBlock(startKey);
+  var offset = startBlock.getOffset(startKey);
+  var o = offset + startOffset;
+  var text = startBlock.text;
+
+  var n = _string2.default.getCharOffsetForward(text, o);
+  change.deleteForwardAtRange(range, n, options);
+};
+
+/**
+ * Delete forward until the line boundary at a `range`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.deleteLineForwardAtRange = function (change, range, options) {
+  var value = change.value;
+  var document = value.document;
+  var startKey = range.startKey,
+      startOffset = range.startOffset;
+
+  var startBlock = document.getClosestBlock(startKey);
+  var offset = startBlock.getOffset(startKey);
+  var o = offset + startOffset;
+  change.deleteForwardAtRange(range, o, options);
+};
+
+/**
+ * Delete forward until the word boundary at a `range`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.deleteWordForwardAtRange = function (change, range, options) {
+  var value = change.value;
+  var document = value.document;
+  var startKey = range.startKey,
+      startOffset = range.startOffset;
+
+  var startBlock = document.getClosestBlock(startKey);
+  var offset = startBlock.getOffset(startKey);
+  var o = offset + startOffset;
+  var text = startBlock.text;
+
+  var n = _string2.default.getWordOffsetForward(text, o);
+  change.deleteForwardAtRange(range, n, options);
+};
+
+/**
+ * Delete forward `n` characters at a `range`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Number} n (optional)
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.deleteForwardAtRange = function (change, range) {
+  var n = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+  var _options$normalize4 = options.normalize,
+      normalize = _options$normalize4 === undefined ? true : _options$normalize4;
+  var value = change.value;
+  var document = value.document;
+  var _range2 = range,
+      startKey = _range2.startKey,
+      focusOffset = _range2.focusOffset;
+
+  // If the range is expanded, perform a regular delete instead.
+
+  if (range.isExpanded) {
+    change.deleteAtRange(range, { normalize: normalize });
+    return;
+  }
+
+  var block = document.getClosestBlock(startKey);
+
+  // If the closest block is void, delete it.
+  if (block && block.isVoid) {
+    change.removeNodeByKey(block.key, { normalize: normalize });
+    return;
+  }
+
+  // If the closest is not void, but empty, remove it
+  if (block && !block.isVoid && block.isEmpty && document.nodes.size !== 1) {
+    change.removeNodeByKey(block.key, { normalize: normalize });
+    return;
+  }
+
+  // If the closest inline is void, delete it.
+  var inline = document.getClosestInline(startKey);
+  if (inline && inline.isVoid) {
+    change.removeNodeByKey(inline.key, { normalize: normalize });
+    return;
+  }
+
+  // If the range is at the start of the document, abort.
+  if (range.isAtEndOf(document)) {
+    return;
+  }
+
+  // If the range is at the start of the text node, we need to figure out what
+  // is behind it to know how to delete...
+  var text = document.getDescendant(startKey);
+  if (range.isAtEndOf(text)) {
+    var next = document.getNextText(text.key);
+    var nextBlock = document.getClosestBlock(next.key);
+    var nextInline = document.getClosestInline(next.key);
+
+    // If the previous block is void, remove it.
+    if (nextBlock && nextBlock.isVoid) {
+      change.removeNodeByKey(nextBlock.key, { normalize: normalize });
+      return;
+    }
+
+    // If the previous inline is void, remove it.
+    if (nextInline && nextInline.isVoid) {
+      change.removeNodeByKey(nextInline.key, { normalize: normalize });
+      return;
+    }
+
+    // If we're deleting by one character and the previous text node is not
+    // inside the current block, we need to merge the two blocks together.
+    if (n == 1 && nextBlock != block) {
+      range = range.merge({
+        focusKey: next.key,
+        focusOffset: 0
+      });
+
+      change.deleteAtRange(range, { normalize: normalize });
+      return;
+    }
+  }
+
+  // If the remaining characters to the end of the node is greater than or equal
+  // to the number of characters to delete, just remove the characters forwards
+  // inside the current node.
+  if (n <= text.text.length - focusOffset) {
+    range = range.merge({
+      focusOffset: focusOffset + n
+    });
+
+    change.deleteAtRange(range, { normalize: normalize });
+    return;
+  }
+
+  // Otherwise, we need to see how many nodes forwards to go.
+  var node = text;
+  var offset = focusOffset;
+  var traversed = text.text.length - focusOffset;
+
+  while (n > traversed) {
+    node = document.getNextText(node.key);
+    var _next = traversed + node.text.length;
+    if (n <= _next) {
+      offset = n - traversed;
+      break;
+    } else {
+      traversed = _next;
+    }
+  }
+
+  // If the focus node is inside a void, go up until right before it.
+  if (document.hasVoidParent(node.key)) {
+    var parent = document.getClosestVoid(node.key);
+    node = document.getPreviousText(parent.key);
+    offset = node.text.length;
+  }
+
+  range = range.merge({
+    focusKey: node.key,
+    focusOffset: offset
+  });
+
+  change.deleteAtRange(range, { normalize: normalize });
+};
+
+/**
+ * Insert a `block` node at `range`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Block|String|Object} block
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.insertBlockAtRange = function (change, range, block) {
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+
+  block = _block2.default.create(block);
+  var _options$normalize5 = options.normalize,
+      normalize = _options$normalize5 === undefined ? true : _options$normalize5;
+
+
+  if (range.isExpanded) {
+    change.deleteAtRange(range);
+    range = range.collapseToStart();
+  }
+
+  var value = change.value;
+  var document = value.document;
+  var _range3 = range,
+      startKey = _range3.startKey,
+      startOffset = _range3.startOffset;
+
+  var startBlock = document.getClosestBlock(startKey);
+  var parent = document.getParent(startBlock.key);
+  var index = parent.nodes.indexOf(startBlock);
+
+  if (startBlock.isVoid) {
+    var extra = range.isAtEndOf(startBlock) ? 1 : 0;
+    change.insertNodeByKey(parent.key, index + extra, block, { normalize: normalize });
+  } else if (startBlock.isEmpty) {
+    change.insertNodeByKey(parent.key, index + 1, block, { normalize: normalize });
+  } else if (range.isAtStartOf(startBlock)) {
+    change.insertNodeByKey(parent.key, index, block, { normalize: normalize });
+  } else if (range.isAtEndOf(startBlock)) {
+    change.insertNodeByKey(parent.key, index + 1, block, { normalize: normalize });
+  } else {
+    change.splitDescendantsByKey(startBlock.key, startKey, startOffset, { normalize: false });
+    change.insertNodeByKey(parent.key, index + 1, block, { normalize: normalize });
+  }
+
+  if (normalize) {
+    change.normalizeNodeByKey(parent.key);
+  }
+};
+
+/**
+ * Insert a `fragment` at a `range`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Document} fragment
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.insertFragmentAtRange = function (change, range, fragment) {
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+  var _options$normalize6 = options.normalize,
+      normalize = _options$normalize6 === undefined ? true : _options$normalize6;
+
+  // If the range is expanded, delete it first.
+
+  if (range.isExpanded) {
+    change.deleteAtRange(range, { normalize: false });
+    range = range.collapseToStart();
+  }
+
+  // If the fragment is empty, there's nothing to do after deleting.
+  if (!fragment.nodes.size) return;
+
+  // Regenerate the keys for all of the fragments nodes, so that they're
+  // guaranteed not to collide with the existing keys in the document. Otherwise
+  // they will be rengerated automatically and we won't have an easy way to
+  // reference them.
+  fragment = fragment.mapDescendants(function (child) {
+    return child.regenerateKey();
+  });
+
+  // Calculate a few things...
+  var _range4 = range,
+      startKey = _range4.startKey,
+      startOffset = _range4.startOffset;
+  var value = change.value;
+  var document = value.document;
+
+  var startText = document.getDescendant(startKey);
+  var startBlock = document.getClosestBlock(startText.key);
+  var startChild = startBlock.getFurthestAncestor(startText.key);
+  var isAtStart = range.isAtStartOf(startBlock);
+  var parent = document.getParent(startBlock.key);
+  var index = parent.nodes.indexOf(startBlock);
+  var blocks = fragment.getBlocks();
+  var firstBlock = blocks.first();
+  var lastBlock = blocks.last();
+
+  // If the fragment only contains a void block, use `insertBlock` instead.
+  if (firstBlock == lastBlock && firstBlock.isVoid) {
+    change.insertBlockAtRange(range, firstBlock, options);
+    return;
+  }
+
+  // If the first and last block aren't the same, we need to insert all of the
+  // nodes after the fragment's first block at the index.
+  if (firstBlock != lastBlock) {
+    var lonelyParent = fragment.getFurthest(firstBlock.key, function (p) {
+      return p.nodes.size == 1;
+    });
+    var lonelyChild = lonelyParent || firstBlock;
+    var startIndex = parent.nodes.indexOf(startBlock);
+    fragment = fragment.removeDescendant(lonelyChild.key);
+
+    fragment.nodes.forEach(function (node, i) {
+      var newIndex = startIndex + i + 1;
+      change.insertNodeByKey(parent.key, newIndex, node, { normalize: false });
+    });
+  }
+
+  // Check if we need to split the node.
+  if (startOffset != 0) {
+    change.splitDescendantsByKey(startChild.key, startKey, startOffset, { normalize: false });
+  }
+
+  // Update our variables with the new value.
+  document = change.value.document;
+  startText = document.getDescendant(startKey);
+  startBlock = document.getClosestBlock(startKey);
+  startChild = startBlock.getFurthestAncestor(startText.key);
+
+  // If the first and last block aren't the same, we need to move any of the
+  // starting block's children after the split into the last block of the
+  // fragment, which has already been inserted.
+  if (firstBlock != lastBlock) {
+    var nextChild = isAtStart ? startChild : startBlock.getNextSibling(startChild.key);
+    var nextNodes = nextChild ? startBlock.nodes.skipUntil(function (n) {
+      return n.key == nextChild.key;
+    }) : (0, _immutable.List)();
+    var lastIndex = lastBlock.nodes.size;
+
+    nextNodes.forEach(function (node, i) {
+      var newIndex = lastIndex + i;
+      change.moveNodeByKey(node.key, lastBlock.key, newIndex, { normalize: false });
+    });
+  }
+
+  // If the starting block is empty, we replace it entirely with the first block
+  // of the fragment, since this leads to a more expected behavior for the user.
+  if (startBlock.isEmpty) {
+    change.removeNodeByKey(startBlock.key, { normalize: false });
+    change.insertNodeByKey(parent.key, index, firstBlock, { normalize: false });
+  }
+
+  // Otherwise, we maintain the starting block, and insert all of the first
+  // block's inline nodes into it at the split point.
+  else {
+      var inlineChild = startBlock.getFurthestAncestor(startText.key);
+      var inlineIndex = startBlock.nodes.indexOf(inlineChild);
+
+      firstBlock.nodes.forEach(function (inline, i) {
+        var o = startOffset == 0 ? 0 : 1;
+        var newIndex = inlineIndex + i + o;
+        change.insertNodeByKey(startBlock.key, newIndex, inline, { normalize: false });
+      });
+    }
+
+  // Normalize if requested.
+  if (normalize) {
+    change.normalizeNodeByKey(parent.key);
+  }
+};
+
+/**
+ * Insert an `inline` node at `range`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Inline|String|Object} inline
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.insertInlineAtRange = function (change, range, inline) {
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+  var _options$normalize7 = options.normalize,
+      normalize = _options$normalize7 === undefined ? true : _options$normalize7;
+
+  inline = _inline2.default.create(inline);
+
+  if (range.isExpanded) {
+    change.deleteAtRange(range, { normalize: false });
+    range = range.collapseToStart();
+  }
+
+  var value = change.value;
+  var document = value.document;
+  var _range5 = range,
+      startKey = _range5.startKey,
+      startOffset = _range5.startOffset;
+
+  var parent = document.getParent(startKey);
+  var startText = document.assertDescendant(startKey);
+  var index = parent.nodes.indexOf(startText);
+
+  if (parent.isVoid) return;
+
+  change.splitNodeByKey(startKey, startOffset, { normalize: false });
+  change.insertNodeByKey(parent.key, index + 1, inline, { normalize: false });
+
+  if (normalize) {
+    change.normalizeNodeByKey(parent.key);
+  }
+};
+
+/**
+ * Insert `text` at a `range`, with optional `marks`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {String} text
+ * @param {Set<Mark>} marks (optional)
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.insertTextAtRange = function (change, range, text, marks) {
+  var options = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
+  var normalize = options.normalize;
+  var value = change.value;
+  var document = value.document;
+  var startKey = range.startKey,
+      startOffset = range.startOffset;
+
+  var parent = document.getParent(startKey);
+
+  if (parent.isVoid) return;
+
+  if (range.isExpanded) {
+    change.deleteAtRange(range, { normalize: false });
+  }
+
+  // PERF: Unless specified, don't normalize if only inserting text.
+  if (normalize !== undefined) {
+    normalize = range.isExpanded;
+  }
+
+  change.insertTextByKey(startKey, startOffset, text, marks, { normalize: normalize });
+};
+
+/**
+ * Remove an existing `mark` to the characters at `range`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Mark|String} mark (optional)
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.removeMarkAtRange = function (change, range, mark) {
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+
+  if (range.isCollapsed) return;
+
+  var _options$normalize8 = options.normalize,
+      normalize = _options$normalize8 === undefined ? true : _options$normalize8;
+  var value = change.value;
+  var document = value.document;
+
+  var texts = document.getTextsAtRange(range);
+  var startKey = range.startKey,
+      startOffset = range.startOffset,
+      endKey = range.endKey,
+      endOffset = range.endOffset;
+
+
+  texts.forEach(function (node) {
+    var key = node.key;
+
+    var index = 0;
+    var length = node.text.length;
+
+    if (key == startKey) index = startOffset;
+    if (key == endKey) length = endOffset;
+    if (key == startKey && key == endKey) length = endOffset - startOffset;
+
+    change.removeMarkByKey(key, index, length, mark, { normalize: normalize });
+  });
+};
+
+/**
+ * Set the `properties` of block nodes in a `range`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Object|String} properties
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.setBlockAtRange = function (change, range, properties) {
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+  var _options$normalize9 = options.normalize,
+      normalize = _options$normalize9 === undefined ? true : _options$normalize9;
+  var value = change.value;
+  var document = value.document;
+
+  var blocks = document.getBlocksAtRange(range);
+
+  blocks.forEach(function (block) {
+    change.setNodeByKey(block.key, properties, { normalize: normalize });
+  });
+};
+
+/**
+ * Set the `properties` of inline nodes in a `range`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Object|String} properties
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.setInlineAtRange = function (change, range, properties) {
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+  var _options$normalize10 = options.normalize,
+      normalize = _options$normalize10 === undefined ? true : _options$normalize10;
+  var value = change.value;
+  var document = value.document;
+
+  var inlines = document.getInlinesAtRange(range);
+
+  inlines.forEach(function (inline) {
+    change.setNodeByKey(inline.key, properties, { normalize: normalize });
+  });
+};
+
+/**
+ * Split the block nodes at a `range`, to optional `height`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Number} height (optional)
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.splitBlockAtRange = function (change, range) {
+  var height = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+  var _options$normalize11 = options.normalize,
+      normalize = _options$normalize11 === undefined ? true : _options$normalize11;
+
+
+  if (range.isExpanded) {
+    change.deleteAtRange(range, { normalize: normalize });
+    range = range.collapseToStart();
+  }
+
+  var _range6 = range,
+      startKey = _range6.startKey,
+      startOffset = _range6.startOffset;
+  var value = change.value;
+  var document = value.document;
+
+  var node = document.assertDescendant(startKey);
+  var parent = document.getClosestBlock(node.key);
+  var h = 0;
+
+  while (parent && parent.kind == 'block' && h < height) {
+    node = parent;
+    parent = document.getClosestBlock(parent.key);
+    h++;
+  }
+
+  change.splitDescendantsByKey(node.key, startKey, startOffset, { normalize: normalize });
+};
+
+/**
+ * Split the inline nodes at a `range`, to optional `height`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Number} height (optional)
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.splitInlineAtRange = function (change, range) {
+  var height = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : Infinity;
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+  var _options$normalize12 = options.normalize,
+      normalize = _options$normalize12 === undefined ? true : _options$normalize12;
+
+
+  if (range.isExpanded) {
+    change.deleteAtRange(range, { normalize: normalize });
+    range = range.collapseToStart();
+  }
+
+  var _range7 = range,
+      startKey = _range7.startKey,
+      startOffset = _range7.startOffset;
+  var value = change.value;
+  var document = value.document;
+
+  var node = document.assertDescendant(startKey);
+  var parent = document.getClosestInline(node.key);
+  var h = 0;
+
+  while (parent && parent.kind == 'inline' && h < height) {
+    node = parent;
+    parent = document.getClosestInline(parent.key);
+    h++;
+  }
+
+  change.splitDescendantsByKey(node.key, startKey, startOffset, { normalize: normalize });
+};
+
+/**
+ * Add or remove a `mark` from the characters at `range`, depending on whether
+ * it's already there.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Mixed} mark
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.toggleMarkAtRange = function (change, range, mark) {
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+
+  if (range.isCollapsed) return;
+
+  mark = _mark2.default.create(mark);
+
+  var _options$normalize13 = options.normalize,
+      normalize = _options$normalize13 === undefined ? true : _options$normalize13;
+  var value = change.value;
+  var document = value.document;
+
+  var marks = document.getActiveMarksAtRange(range);
+  var exists = marks.some(function (m) {
+    return m.equals(mark);
+  });
+
+  if (exists) {
+    change.removeMarkAtRange(range, mark, { normalize: normalize });
+  } else {
+    change.addMarkAtRange(range, mark, { normalize: normalize });
+  }
+};
+
+/**
+ * Unwrap all of the block nodes in a `range` from a block with `properties`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {String|Object} properties
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.unwrapBlockAtRange = function (change, range, properties) {
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+
+  properties = _node2.default.createProperties(properties);
+
+  var _options$normalize14 = options.normalize,
+      normalize = _options$normalize14 === undefined ? true : _options$normalize14;
+  var value = change.value;
+  var document = value.document;
+
+  var blocks = document.getBlocksAtRange(range);
+  var wrappers = blocks.map(function (block) {
+    return document.getClosest(block.key, function (parent) {
+      if (parent.kind != 'block') return false;
+      if (properties.type != null && parent.type != properties.type) return false;
+      if (properties.isVoid != null && parent.isVoid != properties.isVoid) return false;
+      if (properties.data != null && !parent.data.isSuperset(properties.data)) return false;
+      return true;
+    });
+  }).filter(function (exists) {
+    return exists;
+  }).toOrderedSet().toList();
+
+  wrappers.forEach(function (block) {
+    var first = block.nodes.first();
+    var last = block.nodes.last();
+    var parent = document.getParent(block.key);
+    var index = parent.nodes.indexOf(block);
+
+    var children = block.nodes.filter(function (child) {
+      return blocks.some(function (b) {
+        return child == b || child.hasDescendant(b.key);
+      });
+    });
+
+    var firstMatch = children.first();
+    var lastMatch = children.last();
+
+    if (first == firstMatch && last == lastMatch) {
+      block.nodes.forEach(function (child, i) {
+        change.moveNodeByKey(child.key, parent.key, index + i, { normalize: false });
+      });
+
+      change.removeNodeByKey(block.key, { normalize: false });
+    } else if (last == lastMatch) {
+      block.nodes.skipUntil(function (n) {
+        return n == firstMatch;
+      }).forEach(function (child, i) {
+        change.moveNodeByKey(child.key, parent.key, index + 1 + i, { normalize: false });
+      });
+    } else if (first == firstMatch) {
+      block.nodes.takeUntil(function (n) {
+        return n == lastMatch;
+      }).push(lastMatch).forEach(function (child, i) {
+        change.moveNodeByKey(child.key, parent.key, index + i, { normalize: false });
+      });
+    } else {
+      var firstText = firstMatch.getFirstText();
+      change.splitDescendantsByKey(block.key, firstText.key, 0, { normalize: false });
+      document = change.value.document;
+
+      children.forEach(function (child, i) {
+        if (i == 0) {
+          var extra = child;
+          child = document.getNextBlock(child.key);
+          change.removeNodeByKey(extra.key, { normalize: false });
+        }
+
+        change.moveNodeByKey(child.key, parent.key, index + 1 + i, { normalize: false });
+      });
+    }
+  });
+
+  // TODO: optmize to only normalize the right block
+  if (normalize) {
+    change.normalizeDocument();
+  }
+};
+
+/**
+ * Unwrap the inline nodes in a `range` from an inline with `properties`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {String|Object} properties
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.unwrapInlineAtRange = function (change, range, properties) {
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+
+  properties = _node2.default.createProperties(properties);
+
+  var _options$normalize15 = options.normalize,
+      normalize = _options$normalize15 === undefined ? true : _options$normalize15;
+  var value = change.value;
+  var document = value.document;
+
+  var texts = document.getTextsAtRange(range);
+  var inlines = texts.map(function (text) {
+    return document.getClosest(text.key, function (parent) {
+      if (parent.kind != 'inline') return false;
+      if (properties.type != null && parent.type != properties.type) return false;
+      if (properties.isVoid != null && parent.isVoid != properties.isVoid) return false;
+      if (properties.data != null && !parent.data.isSuperset(properties.data)) return false;
+      return true;
+    });
+  }).filter(function (exists) {
+    return exists;
+  }).toOrderedSet().toList();
+
+  inlines.forEach(function (inline) {
+    var parent = change.value.document.getParent(inline.key);
+    var index = parent.nodes.indexOf(inline);
+
+    inline.nodes.forEach(function (child, i) {
+      change.moveNodeByKey(child.key, parent.key, index + i, { normalize: false });
+    });
+  });
+
+  // TODO: optmize to only normalize the right block
+  if (normalize) {
+    change.normalizeDocument();
+  }
+};
+
+/**
+ * Wrap all of the blocks in a `range` in a new `block`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Block|Object|String} block
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.wrapBlockAtRange = function (change, range, block) {
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+
+  block = _block2.default.create(block);
+  block = block.set('nodes', block.nodes.clear());
+
+  var _options$normalize16 = options.normalize,
+      normalize = _options$normalize16 === undefined ? true : _options$normalize16;
+  var value = change.value;
+  var document = value.document;
+
+
+  var blocks = document.getBlocksAtRange(range);
+  var firstblock = blocks.first();
+  var lastblock = blocks.last();
+  var parent = void 0,
+      siblings = void 0,
+      index = void 0;
+
+  // If there is only one block in the selection then we know the parent and
+  // siblings.
+  if (blocks.length === 1) {
+    parent = document.getParent(firstblock.key);
+    siblings = blocks;
+  }
+
+  // Determine closest shared parent to all blocks in selection.
+  else {
+      parent = document.getClosest(firstblock.key, function (p1) {
+        return !!document.getClosest(lastblock.key, function (p2) {
+          return p1 == p2;
+        });
+      });
+    }
+
+  // If no shared parent could be found then the parent is the document.
+  if (parent == null) parent = document;
+
+  // Create a list of direct children siblings of parent that fall in the
+  // selection.
+  if (siblings == null) {
+    var indexes = parent.nodes.reduce(function (ind, node, i) {
+      if (node == firstblock || node.hasDescendant(firstblock.key)) ind[0] = i;
+      if (node == lastblock || node.hasDescendant(lastblock.key)) ind[1] = i;
+      return ind;
+    }, []);
+
+    index = indexes[0];
+    siblings = parent.nodes.slice(indexes[0], indexes[1] + 1);
+  }
+
+  // Get the index to place the new wrapped node at.
+  if (index == null) {
+    index = parent.nodes.indexOf(siblings.first());
+  }
+
+  // Inject the new block node into the parent.
+  change.insertNodeByKey(parent.key, index, block, { normalize: false });
+
+  // Move the sibling nodes into the new block node.
+  siblings.forEach(function (node, i) {
+    change.moveNodeByKey(node.key, block.key, i, { normalize: false });
+  });
+
+  if (normalize) {
+    change.normalizeNodeByKey(parent.key);
+  }
+};
+
+/**
+ * Wrap the text and inlines in a `range` in a new `inline`.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {Inline|Object|String} inline
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.wrapInlineAtRange = function (change, range, inline) {
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+  var value = change.value;
+  var document = value.document;
+  var _options$normalize17 = options.normalize,
+      normalize = _options$normalize17 === undefined ? true : _options$normalize17;
+  var startKey = range.startKey,
+      startOffset = range.startOffset,
+      endKey = range.endKey,
+      endOffset = range.endOffset;
+
+
+  if (range.isCollapsed) {
+    // Wrapping an inline void
+    var inlineParent = document.getClosestInline(startKey);
+    if (!inlineParent.isVoid) {
+      return;
+    }
+
+    return change.wrapInlineByKey(inlineParent.key, inline, options);
+  }
+
+  inline = _inline2.default.create(inline);
+  inline = inline.set('nodes', inline.nodes.clear());
+
+  var blocks = document.getBlocksAtRange(range);
+  var startBlock = document.getClosestBlock(startKey);
+  var endBlock = document.getClosestBlock(endKey);
+  var startChild = startBlock.getFurthestAncestor(startKey);
+  var endChild = endBlock.getFurthestAncestor(endKey);
+
+  change.splitDescendantsByKey(endChild.key, endKey, endOffset, { normalize: false });
+  change.splitDescendantsByKey(startChild.key, startKey, startOffset, { normalize: false });
+
+  document = change.value.document;
+  startBlock = document.getDescendant(startBlock.key);
+  endBlock = document.getDescendant(endBlock.key);
+  startChild = startBlock.getFurthestAncestor(startKey);
+  endChild = endBlock.getFurthestAncestor(endKey);
+  var startIndex = startBlock.nodes.indexOf(startChild);
+  var endIndex = endBlock.nodes.indexOf(endChild);
+
+  if (startBlock == endBlock) {
+    document = change.value.document;
+    startBlock = document.getClosestBlock(startKey);
+    startChild = startBlock.getFurthestAncestor(startKey);
+
+    var startInner = document.getNextSibling(startChild.key);
+    var startInnerIndex = startBlock.nodes.indexOf(startInner);
+    var endInner = startKey == endKey ? startInner : startBlock.getFurthestAncestor(endKey);
+    var inlines = startBlock.nodes.skipUntil(function (n) {
+      return n == startInner;
+    }).takeUntil(function (n) {
+      return n == endInner;
+    }).push(endInner);
+
+    var node = inline.regenerateKey();
+
+    change.insertNodeByKey(startBlock.key, startInnerIndex, node, { normalize: false });
+
+    inlines.forEach(function (child, i) {
+      change.moveNodeByKey(child.key, node.key, i, { normalize: false });
+    });
+
+    if (normalize) {
+      change.normalizeNodeByKey(startBlock.key);
+    }
+  } else {
+    var startInlines = startBlock.nodes.slice(startIndex + 1);
+    var endInlines = endBlock.nodes.slice(0, endIndex + 1);
+    var startNode = inline.regenerateKey();
+    var endNode = inline.regenerateKey();
+
+    change.insertNodeByKey(startBlock.key, startIndex - 1, startNode, { normalize: false });
+    change.insertNodeByKey(endBlock.key, endIndex, endNode, { normalize: false });
+
+    startInlines.forEach(function (child, i) {
+      change.moveNodeByKey(child.key, startNode.key, i, { normalize: false });
+    });
+
+    endInlines.forEach(function (child, i) {
+      change.moveNodeByKey(child.key, endNode.key, i, { normalize: false });
+    });
+
+    if (normalize) {
+      change.normalizeNodeByKey(startBlock.key).normalizeNodeByKey(endBlock.key);
+    }
+
+    blocks.slice(1, -1).forEach(function (block) {
+      var node = inline.regenerateKey();
+      change.insertNodeByKey(block.key, 0, node, { normalize: false });
+
+      block.nodes.forEach(function (child, i) {
+        change.moveNodeByKey(child.key, node.key, i, { normalize: false });
+      });
+
+      if (normalize) {
+        change.normalizeNodeByKey(block.key);
+      }
+    });
+  }
+};
+
+/**
+ * Wrap the text in a `range` in a prefix/suffix.
+ *
+ * @param {Change} change
+ * @param {Range} range
+ * @param {String} prefix
+ * @param {String} suffix (optional)
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.wrapTextAtRange = function (change, range, prefix) {
+  var suffix = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : prefix;
+  var options = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
+  var _options$normalize18 = options.normalize,
+      normalize = _options$normalize18 === undefined ? true : _options$normalize18;
+  var startKey = range.startKey,
+      endKey = range.endKey;
+
+  var start = range.collapseToStart();
+  var end = range.collapseToEnd();
+
+  if (startKey == endKey) {
+    end = end.move(prefix.length);
+  }
+
+  change.insertTextAtRange(start, prefix, [], { normalize: normalize });
+  change.insertTextAtRange(end, suffix, [], { normalize: normalize });
+};
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = Changes;
+},{"../models/block":520,"../models/inline":526,"../models/mark":528,"../models/node":529,"../utils/string":541,"immutable":51}],511:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _block = require('../models/block');
+
+var _block2 = _interopRequireDefault(_block);
+
+var _inline = require('../models/inline');
+
+var _inline2 = _interopRequireDefault(_inline);
+
+var _mark = require('../models/mark');
+
+var _mark2 = _interopRequireDefault(_mark);
+
+var _node = require('../models/node');
+
+var _node2 = _interopRequireDefault(_node);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+/**
+ * Changes.
+ *
+ * @type {Object}
+ */
+
+var Changes = {};
+
+/**
+ * Add mark to text at `offset` and `length` in node by `key`.
+ *
+ * @param {Change} change
+ * @param {String} key
+ * @param {Number} offset
+ * @param {Number} length
+ * @param {Mixed} mark
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.addMarkByKey = function (change, key, offset, length, mark) {
+  var options = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : {};
+
+  mark = _mark2.default.create(mark);
+  var _options$normalize = options.normalize,
+      normalize = _options$normalize === undefined ? true : _options$normalize;
+  var value = change.value;
+  var document = value.document;
+
+  var path = document.getPath(key);
+  var node = document.getNode(key);
+  var leaves = node.getLeaves();
+
+  var operations = [];
+  var bx = offset;
+  var by = offset + length;
+  var o = 0;
+
+  leaves.forEach(function (leaf) {
+    var ax = o;
+    var ay = ax + leaf.text.length;
+
+    o += leaf.text.length;
+
+    // If the leaf doesn't overlap with the operation, continue on.
+    if (ay < bx || by < ax) return;
+
+    // If the leaf already has the mark, continue on.
+    if (leaf.marks.has(mark)) return;
+
+    // Otherwise, determine which offset and characters overlap.
+    var start = Math.max(ax, bx);
+    var end = Math.min(ay, by);
+
+    operations.push({
+      type: 'add_mark',
+      path: path,
+      offset: start,
+      length: end - start,
+      mark: mark
+    });
+  });
+
+  change.applyOperations(operations);
+
+  if (normalize) {
+    var parent = document.getParent(key);
+    change.normalizeNodeByKey(parent.key);
+  }
+};
+
+/**
+ * Insert a `fragment` at `index` in a node by `key`.
+ *
+ * @param {Change} change
+ * @param {String} key
+ * @param {Number} index
+ * @param {Fragment} fragment
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.insertFragmentByKey = function (change, key, index, fragment) {
+  var options = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
+  var _options$normalize2 = options.normalize,
+      normalize = _options$normalize2 === undefined ? true : _options$normalize2;
+
+
+  fragment.nodes.forEach(function (node, i) {
+    change.insertNodeByKey(key, index + i, node);
+  });
+
+  if (normalize) {
+    change.normalizeNodeByKey(key);
+  }
+};
+
+/**
+ * Insert a `node` at `index` in a node by `key`.
+ *
+ * @param {Change} change
+ * @param {String} key
+ * @param {Number} index
+ * @param {Node} node
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.insertNodeByKey = function (change, key, index, node) {
+  var options = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
+  var _options$normalize3 = options.normalize,
+      normalize = _options$normalize3 === undefined ? true : _options$normalize3;
+  var value = change.value;
+  var document = value.document;
+
+  var path = document.getPath(key);
+
+  change.applyOperation({
+    type: 'insert_node',
+    path: [].concat(_toConsumableArray(path), [index]),
+    node: node
+  });
+
+  if (normalize) {
+    change.normalizeNodeByKey(key);
+  }
+};
+
+/**
+ * Insert `text` at `offset` in node by `key`.
+ *
+ * @param {Change} change
+ * @param {String} key
+ * @param {Number} offset
+ * @param {String} text
+ * @param {Set<Mark>} marks (optional)
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.insertTextByKey = function (change, key, offset, text, marks) {
+  var options = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : {};
+  var _options$normalize4 = options.normalize,
+      normalize = _options$normalize4 === undefined ? true : _options$normalize4;
+  var value = change.value;
+  var document = value.document;
+
+  var path = document.getPath(key);
+  var node = document.getNode(key);
+  marks = marks || node.getMarksAtIndex(offset);
+
+  change.applyOperation({
+    type: 'insert_text',
+    path: path,
+    offset: offset,
+    text: text,
+    marks: marks
+  });
+
+  if (normalize) {
+    var parent = document.getParent(key);
+    change.normalizeNodeByKey(parent.key);
+  }
+};
+
+/**
+ * Merge a node by `key` with the previous node.
+ *
+ * @param {Change} change
+ * @param {String} key
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.mergeNodeByKey = function (change, key) {
+  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  var _options$normalize5 = options.normalize,
+      normalize = _options$normalize5 === undefined ? true : _options$normalize5;
+  var value = change.value;
+  var document = value.document;
+
+  var path = document.getPath(key);
+  var previous = document.getPreviousSibling(key);
+
+  if (!previous) {
+    throw new Error('Unable to merge node with key "' + key + '", no previous key.');
+  }
+
+  var position = previous.kind == 'text' ? previous.text.length : previous.nodes.size;
+
+  change.applyOperation({
+    type: 'merge_node',
+    path: path,
+    position: position
+  });
+
+  if (normalize) {
+    var parent = document.getParent(key);
+    change.normalizeNodeByKey(parent.key);
+  }
+};
+
+/**
+ * Move a node by `key` to a new parent by `newKey` and `index`.
+ * `newKey` is the key of the container (it can be the document itself)
+ *
+ * @param {Change} change
+ * @param {String} key
+ * @param {String} newKey
+ * @param {Number} index
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.moveNodeByKey = function (change, key, newKey, newIndex) {
+  var options = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
+  var _options$normalize6 = options.normalize,
+      normalize = _options$normalize6 === undefined ? true : _options$normalize6;
+  var value = change.value;
+  var document = value.document;
+
+  var path = document.getPath(key);
+  var newPath = document.getPath(newKey);
+
+  change.applyOperation({
+    type: 'move_node',
+    path: path,
+    newPath: [].concat(_toConsumableArray(newPath), [newIndex])
+  });
+
+  if (normalize) {
+    var parent = document.getCommonAncestor(key, newKey);
+    change.normalizeNodeByKey(parent.key);
+  }
+};
+
+/**
+ * Remove mark from text at `offset` and `length` in node by `key`.
+ *
+ * @param {Change} change
+ * @param {String} key
+ * @param {Number} offset
+ * @param {Number} length
+ * @param {Mark} mark
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.removeMarkByKey = function (change, key, offset, length, mark) {
+  var options = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : {};
+
+  mark = _mark2.default.create(mark);
+  var _options$normalize7 = options.normalize,
+      normalize = _options$normalize7 === undefined ? true : _options$normalize7;
+  var value = change.value;
+  var document = value.document;
+
+  var path = document.getPath(key);
+  var node = document.getNode(key);
+  var leaves = node.getLeaves();
+
+  var operations = [];
+  var bx = offset;
+  var by = offset + length;
+  var o = 0;
+
+  leaves.forEach(function (leaf) {
+    var ax = o;
+    var ay = ax + leaf.text.length;
+
+    o += leaf.text.length;
+
+    // If the leaf doesn't overlap with the operation, continue on.
+    if (ay < bx || by < ax) return;
+
+    // If the leaf already has the mark, continue on.
+    if (!leaf.marks.has(mark)) return;
+
+    // Otherwise, determine which offset and characters overlap.
+    var start = Math.max(ax, bx);
+    var end = Math.min(ay, by);
+
+    operations.push({
+      type: 'remove_mark',
+      path: path,
+      offset: start,
+      length: end - start,
+      mark: mark
+    });
+  });
+
+  change.applyOperations(operations);
+
+  if (normalize) {
+    var parent = document.getParent(key);
+    change.normalizeNodeByKey(parent.key);
+  }
+};
+
+/**
+ * Remove a node by `key`.
+ *
+ * @param {Change} change
+ * @param {String} key
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.removeNodeByKey = function (change, key) {
+  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  var _options$normalize8 = options.normalize,
+      normalize = _options$normalize8 === undefined ? true : _options$normalize8;
+  var value = change.value;
+  var document = value.document;
+
+  var path = document.getPath(key);
+  var node = document.getNode(key);
+
+  change.applyOperation({
+    type: 'remove_node',
+    path: path,
+    node: node
+  });
+
+  if (normalize) {
+    var parent = document.getParent(key);
+    change.normalizeNodeByKey(parent.key);
+  }
+};
+
+/**
+ * Remove text at `offset` and `length` in node by `key`.
+ *
+ * @param {Change} change
+ * @param {String} key
+ * @param {Number} offset
+ * @param {Number} length
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.removeTextByKey = function (change, key, offset, length) {
+  var options = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
+  var _options$normalize9 = options.normalize,
+      normalize = _options$normalize9 === undefined ? true : _options$normalize9;
+  var value = change.value;
+  var document = value.document;
+
+  var path = document.getPath(key);
+  var node = document.getNode(key);
+  var leaves = node.getLeaves();
+  var text = node.text;
+
+
+  var removals = [];
+  var bx = offset;
+  var by = offset + length;
+  var o = 0;
+
+  leaves.forEach(function (leaf) {
+    var ax = o;
+    var ay = ax + leaf.text.length;
+
+    o += leaf.text.length;
+
+    // If the leaf doesn't overlap with the removal, continue on.
+    if (ay < bx || by < ax) return;
+
+    // Otherwise, determine which offset and characters overlap.
+    var start = Math.max(ax, bx);
+    var end = Math.min(ay, by);
+    var string = text.slice(start, end);
+
+    removals.push({
+      type: 'remove_text',
+      path: path,
+      offset: start,
+      text: string,
+      marks: leaf.marks
+    });
+  });
+
+  // Apply in reverse order, so subsequent removals don't impact previous ones.
+  change.applyOperations(removals.reverse());
+
+  if (normalize) {
+    var block = document.getClosestBlock(key);
+    change.normalizeNodeByKey(block.key);
+  }
+};
+
+/**
+`* Replace a `node` with another `node`
+ *
+ * @param {Change} change
+ * @param {String} key
+ * @param {Object|Node} node
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.replaceNodeByKey = function (change, key, newNode) {
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+
+  newNode = _node2.default.create(newNode);
+  var _options$normalize10 = options.normalize,
+      normalize = _options$normalize10 === undefined ? true : _options$normalize10;
+  var value = change.value;
+  var document = value.document;
+
+  var node = document.getNode(key);
+  var parent = document.getParent(key);
+  var index = parent.nodes.indexOf(node);
+  change.removeNodeByKey(key, { normalize: false });
+  change.insertNodeByKey(parent.key, index, newNode, options);
+  if (normalize) {
+    change.normalizeNodeByKey(parent.key);
+  }
+};
+
+/**
+ * Set `properties` on mark on text at `offset` and `length` in node by `key`.
+ *
+ * @param {Change} change
+ * @param {String} key
+ * @param {Number} offset
+ * @param {Number} length
+ * @param {Mark} mark
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.setMarkByKey = function (change, key, offset, length, mark, properties) {
+  var options = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : {};
+
+  mark = _mark2.default.create(mark);
+  properties = _mark2.default.createProperties(properties);
+  var _options$normalize11 = options.normalize,
+      normalize = _options$normalize11 === undefined ? true : _options$normalize11;
+  var value = change.value;
+  var document = value.document;
+
+  var path = document.getPath(key);
+
+  change.applyOperation({
+    type: 'set_mark',
+    path: path,
+    offset: offset,
+    length: length,
+    mark: mark,
+    properties: properties
+  });
+
+  if (normalize) {
+    var parent = document.getParent(key);
+    change.normalizeNodeByKey(parent.key);
+  }
+};
+
+/**
+ * Set `properties` on a node by `key`.
+ *
+ * @param {Change} change
+ * @param {String} key
+ * @param {Object|String} properties
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.setNodeByKey = function (change, key, properties) {
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+
+  properties = _node2.default.createProperties(properties);
+  var _options$normalize12 = options.normalize,
+      normalize = _options$normalize12 === undefined ? true : _options$normalize12;
+  var value = change.value;
+  var document = value.document;
+
+  var path = document.getPath(key);
+  var node = document.getNode(key);
+
+  change.applyOperation({
+    type: 'set_node',
+    path: path,
+    node: node,
+    properties: properties
+  });
+
+  if (normalize) {
+    change.normalizeNodeByKey(node.key);
+  }
+};
+
+/**
+ * Split a node by `key` at `position`.
+ *
+ * @param {Change} change
+ * @param {String} key
+ * @param {Number} position
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.splitNodeByKey = function (change, key, position) {
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+  var _options$normalize13 = options.normalize,
+      normalize = _options$normalize13 === undefined ? true : _options$normalize13,
+      _options$target = options.target,
+      target = _options$target === undefined ? null : _options$target;
+  var value = change.value;
+  var document = value.document;
+
+  var path = document.getPath(key);
+
+  change.applyOperation({
+    type: 'split_node',
+    path: path,
+    position: position,
+    target: target
+  });
+
+  if (normalize) {
+    var parent = document.getParent(key);
+    change.normalizeNodeByKey(parent.key);
+  }
+};
+
+/**
+ * Split a node deeply down the tree by `key`, `textKey` and `textOffset`.
+ *
+ * @param {Change} change
+ * @param {String} key
+ * @param {Number} position
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.splitDescendantsByKey = function (change, key, textKey, textOffset) {
+  var options = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : {};
+
+  if (key == textKey) {
+    change.splitNodeByKey(textKey, textOffset, options);
+    return;
+  }
+
+  var _options$normalize14 = options.normalize,
+      normalize = _options$normalize14 === undefined ? true : _options$normalize14;
+  var value = change.value;
+  var document = value.document;
+
+
+  var text = document.getNode(textKey);
+  var ancestors = document.getAncestors(textKey);
+  var nodes = ancestors.skipUntil(function (a) {
+    return a.key == key;
+  }).reverse().unshift(text);
+  var previous = void 0;
+  var index = void 0;
+
+  nodes.forEach(function (node) {
+    var prevIndex = index == null ? null : index;
+    index = previous ? node.nodes.indexOf(previous) + 1 : textOffset;
+    previous = node;
+    change.splitNodeByKey(node.key, index, { normalize: false, target: prevIndex });
+  });
+
+  if (normalize) {
+    var parent = document.getParent(key);
+    change.normalizeNodeByKey(parent.key);
+  }
+};
+
+/**
+ * Unwrap content from an inline parent with `properties`.
+ *
+ * @param {Change} change
+ * @param {String} key
+ * @param {Object|String} properties
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.unwrapInlineByKey = function (change, key, properties, options) {
+  var value = change.value;
+  var document = value.document,
+      selection = value.selection;
+
+  var node = document.assertDescendant(key);
+  var first = node.getFirstText();
+  var last = node.getLastText();
+  var range = selection.moveToRangeOf(first, last);
+  change.unwrapInlineAtRange(range, properties, options);
+};
+
+/**
+ * Unwrap content from a block parent with `properties`.
+ *
+ * @param {Change} change
+ * @param {String} key
+ * @param {Object|String} properties
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.unwrapBlockByKey = function (change, key, properties, options) {
+  var value = change.value;
+  var document = value.document,
+      selection = value.selection;
+
+  var node = document.assertDescendant(key);
+  var first = node.getFirstText();
+  var last = node.getLastText();
+  var range = selection.moveToRangeOf(first, last);
+  change.unwrapBlockAtRange(range, properties, options);
+};
+
+/**
+ * Unwrap a single node from its parent.
+ *
+ * If the node is surrounded with siblings, its parent will be
+ * split. If the node is the only child, the parent is removed, and
+ * simply replaced by the node itself.  Cannot unwrap a root node.
+ *
+ * @param {Change} change
+ * @param {String} key
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.unwrapNodeByKey = function (change, key) {
+  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  var _options$normalize15 = options.normalize,
+      normalize = _options$normalize15 === undefined ? true : _options$normalize15;
+  var value = change.value;
+  var document = value.document;
+
+  var parent = document.getParent(key);
+  var node = parent.getChild(key);
+
+  var index = parent.nodes.indexOf(node);
+  var isFirst = index === 0;
+  var isLast = index === parent.nodes.size - 1;
+
+  var parentParent = document.getParent(parent.key);
+  var parentIndex = parentParent.nodes.indexOf(parent);
+
+  if (parent.nodes.size === 1) {
+    change.moveNodeByKey(key, parentParent.key, parentIndex, { normalize: false });
+    change.removeNodeByKey(parent.key, options);
+  } else if (isFirst) {
+    // Just move the node before its parent.
+    change.moveNodeByKey(key, parentParent.key, parentIndex, options);
+  } else if (isLast) {
+    // Just move the node after its parent.
+    change.moveNodeByKey(key, parentParent.key, parentIndex + 1, options);
+  } else {
+    // Split the parent.
+    change.splitNodeByKey(parent.key, index, { normalize: false });
+
+    // Extract the node in between the splitted parent.
+    change.moveNodeByKey(key, parentParent.key, parentIndex + 1, { normalize: false });
+
+    if (normalize) {
+      change.normalizeNodeByKey(parentParent.key);
+    }
+  }
+};
+
+/**
+ * Wrap a node in a block with `properties`.
+ *
+ * @param {Change} change
+ * @param {String} key The node to wrap
+ * @param {Block|Object|String} block The wrapping block (its children are discarded)
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.wrapBlockByKey = function (change, key, block, options) {
+  block = _block2.default.create(block);
+  block = block.set('nodes', block.nodes.clear());
+
+  var document = change.value.document;
+
+  var node = document.assertDescendant(key);
+  var parent = document.getParent(node.key);
+  var index = parent.nodes.indexOf(node);
+
+  change.insertNodeByKey(parent.key, index, block, { normalize: false });
+  change.moveNodeByKey(node.key, block.key, 0, options);
+};
+
+/**
+ * Wrap a node in an inline with `properties`.
+ *
+ * @param {Change} change
+ * @param {String} key The node to wrap
+ * @param {Block|Object|String} inline The wrapping inline (its children are discarded)
+ * @param {Object} options
+ *   @property {Boolean} normalize
+ */
+
+Changes.wrapInlineByKey = function (change, key, inline, options) {
+  inline = _inline2.default.create(inline);
+  inline = inline.set('nodes', inline.nodes.clear());
+
+  var document = change.value.document;
+
+  var node = document.assertDescendant(key);
+  var parent = document.getParent(node.key);
+  var index = parent.nodes.indexOf(node);
+
+  change.insertNodeByKey(parent.key, index, inline, { normalize: false });
+  change.moveNodeByKey(node.key, inline.key, 0, options);
+};
+
+/**
+ * Wrap a node by `key` with `parent`.
+ *
+ * @param {Change} change
+ * @param {String} key
+ * @param {Node|Object} parent
+ * @param {Object} options
+ */
+
+Changes.wrapNodeByKey = function (change, key, parent) {
+  parent = _node2.default.create(parent);
+  parent = parent.set('nodes', parent.nodes.clear());
+
+  if (parent.kind == 'block') {
+    change.wrapBlockByKey(key, parent);
+    return;
+  }
+
+  if (parent.kind == 'inline') {
+    change.wrapInlineByKey(key, parent);
+    return;
+  }
+};
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = Changes;
+},{"../models/block":520,"../models/inline":526,"../models/mark":528,"../models/node":529}],512:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _atCurrentRange = require('./at-current-range');
+
+var _atCurrentRange2 = _interopRequireDefault(_atCurrentRange);
+
+var _atRange = require('./at-range');
+
+var _atRange2 = _interopRequireDefault(_atRange);
+
+var _byKey = require('./by-key');
+
+var _byKey2 = _interopRequireDefault(_byKey);
+
+var _onHistory = require('./on-history');
+
+var _onHistory2 = _interopRequireDefault(_onHistory);
+
+var _onSelection = require('./on-selection');
+
+var _onSelection2 = _interopRequireDefault(_onSelection);
+
+var _onValue = require('./on-value');
+
+var _onValue2 = _interopRequireDefault(_onValue);
+
+var _withSchema = require('./with-schema');
+
+var _withSchema2 = _interopRequireDefault(_withSchema);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = _extends({}, _atCurrentRange2.default, _atRange2.default, _byKey2.default, _onHistory2.default, _onSelection2.default, _onValue2.default, _withSchema2.default);
+},{"./at-current-range":509,"./at-range":510,"./by-key":511,"./on-history":513,"./on-selection":514,"./on-value":515,"./with-schema":516}],513:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _invert = require('../operations/invert');
+
+var _invert2 = _interopRequireDefault(_invert);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Changes.
+ *
+ * @type {Object}
+ */
+
+var Changes = {};
+
+/**
+ * Redo to the next value in the history.
+ *
+ * @param {Change} change
+ */
+
+Changes.redo = function (change) {
+  var value = change.value;
+  var _value = value,
+      history = _value.history;
+
+  if (!history) return;
+
+  var _history = history,
+      undos = _history.undos,
+      redos = _history.redos;
+
+  var next = redos.peek();
+  if (!next) return;
+
+  // Shift the next value into the undo stack.
+  redos = redos.pop();
+  undos = undos.push(next);
+
+  // Replay the next operations.
+  next.forEach(function (op) {
+    change.applyOperation(op, { save: false });
+  });
+
+  // Update the history.
+  value = change.value;
+  history = history.set('undos', undos).set('redos', redos);
+  value = value.set('history', history);
+  change.value = value;
+};
+
+/**
+ * Undo the previous operations in the history.
+ *
+ * @param {Change} change
+ */
+
+Changes.undo = function (change) {
+  var value = change.value;
+  var _value2 = value,
+      history = _value2.history;
+
+  if (!history) return;
+
+  var _history2 = history,
+      undos = _history2.undos,
+      redos = _history2.redos;
+
+  var previous = undos.peek();
+  if (!previous) return;
+
+  // Shift the previous operations into the redo stack.
+  undos = undos.pop();
+  redos = redos.push(previous);
+
+  // Replay the inverse of the previous operations.
+  previous.slice().reverse().map(_invert2.default).forEach(function (inverse) {
+    change.applyOperation(inverse, { save: false });
+  });
+
+  // Update the history.
+  value = change.value;
+  history = history.set('undos', undos).set('redos', redos);
+  value = value.set('history', history);
+  change.value = value;
+};
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = Changes;
+},{"../operations/invert":537}],514:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _isEmpty = require('is-empty');
+
+var _isEmpty2 = _interopRequireDefault(_isEmpty);
+
+var _pick = require('lodash/pick');
+
+var _pick2 = _interopRequireDefault(_pick);
+
+var _range = require('../models/range');
+
+var _range2 = _interopRequireDefault(_range);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Changes.
+ *
+ * @type {Object}
+ */
+
+var Changes = {};
+
+/**
+ * Set `properties` on the selection.
+ *
+ * @param {Change} change
+ * @param {Object} properties
+ */
+
+Changes.select = function (change, properties) {
+  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+  properties = _range2.default.createProperties(properties);
+
+  var _options$snapshot = options.snapshot,
+      snapshot = _options$snapshot === undefined ? false : _options$snapshot;
+  var value = change.value;
+  var document = value.document,
+      selection = value.selection;
+
+  var props = {};
+  var sel = selection.toJSON();
+  var next = selection.merge(properties).normalize(document);
+  properties = (0, _pick2.default)(next, Object.keys(properties));
+
+  // Remove any properties that are already equal to the current selection. And
+  // create a dictionary of the previous values for all of the properties that
+  // are being changed, for the inverse operation.
+  for (var k in properties) {
+    if (snapshot == false && properties[k] == sel[k]) continue;
+    props[k] = properties[k];
+  }
+
+  // Resolve the selection keys into paths.
+  sel.anchorPath = sel.anchorKey == null ? null : document.getPath(sel.anchorKey);
+  delete sel.anchorKey;
+
+  if (props.anchorKey) {
+    props.anchorPath = props.anchorKey == null ? null : document.getPath(props.anchorKey);
+    delete props.anchorKey;
+  }
+
+  sel.focusPath = sel.focusKey == null ? null : document.getPath(sel.focusKey);
+  delete sel.focusKey;
+
+  if (props.focusKey) {
+    props.focusPath = props.focusKey == null ? null : document.getPath(props.focusKey);
+    delete props.focusKey;
+  }
+
+  // If the selection moves, clear any marks, unless the new selection
+  // properties change the marks in some way.
+  var moved = ['anchorPath', 'anchorOffset', 'focusPath', 'focusOffset'].some(function (p) {
+    return props.hasOwnProperty(p);
+  });
+
+  if (sel.marks && properties.marks == sel.marks && moved) {
+    props.marks = null;
+  }
+
+  // If there are no new properties to set, abort.
+  if ((0, _isEmpty2.default)(props)) {
+    return;
+  }
+
+  // Apply the operation.
+  change.applyOperation({
+    type: 'set_selection',
+    properties: props,
+    selection: sel
+  }, snapshot ? { skip: false, merge: false } : {});
+};
+
+/**
+ * Select the whole document.
+ *
+ * @param {Change} change
+ */
+
+Changes.selectAll = function (change) {
+  var value = change.value;
+  var document = value.document,
+      selection = value.selection;
+
+  var next = selection.moveToRangeOf(document);
+  change.select(next);
+};
+
+/**
+ * Snapshot the current selection.
+ *
+ * @param {Change} change
+ */
+
+Changes.snapshotSelection = function (change) {
+  var value = change.value;
+  var selection = value.selection;
+
+  change.select(selection, { snapshot: true });
+};
+
+/**
+ * Move the anchor point backward, accounting for being at the start of a block.
+ *
+ * @param {Change} change
+ */
+
+Changes.moveAnchorCharBackward = function (change) {
+  var value = change.value;
+  var document = value.document,
+      selection = value.selection,
+      anchorText = value.anchorText,
+      anchorBlock = value.anchorBlock;
+  var anchorOffset = selection.anchorOffset;
+
+  var previousText = document.getPreviousText(anchorText.key);
+  var isInVoid = document.hasVoidParent(anchorText.key);
+  var isPreviousInVoid = previousText && document.hasVoidParent(previousText.key);
+
+  if (!isInVoid && anchorOffset > 0) {
+    change.moveAnchor(-1);
+    return;
+  }
+
+  if (!previousText) {
+    return;
+  }
+
+  change.moveAnchorToEndOf(previousText);
+
+  if (!isInVoid && !isPreviousInVoid && anchorBlock.hasNode(previousText.key)) {
+    change.moveAnchor(-1);
+  }
+};
+
+/**
+ * Move the anchor point forward, accounting for being at the end of a block.
+ *
+ * @param {Change} change
+ */
+
+Changes.moveAnchorCharForward = function (change) {
+  var value = change.value;
+  var document = value.document,
+      selection = value.selection,
+      anchorText = value.anchorText,
+      anchorBlock = value.anchorBlock;
+  var anchorOffset = selection.anchorOffset;
+
+  var nextText = document.getNextText(anchorText.key);
+  var isInVoid = document.hasVoidParent(anchorText.key);
+  var isNextInVoid = nextText && document.hasVoidParent(nextText.key);
+
+  if (!isInVoid && anchorOffset < anchorText.text.length) {
+    change.moveAnchor(1);
+    return;
+  }
+
+  if (!nextText) {
+    return;
+  }
+
+  change.moveAnchorToStartOf(nextText);
+
+  if (!isInVoid && !isNextInVoid && anchorBlock.hasNode(nextText.key)) {
+    change.moveAnchor(1);
+  }
+};
+
+/**
+ * Move the focus point backward, accounting for being at the start of a block.
+ *
+ * @param {Change} change
+ */
+
+Changes.moveFocusCharBackward = function (change) {
+  var value = change.value;
+  var document = value.document,
+      selection = value.selection,
+      focusText = value.focusText,
+      focusBlock = value.focusBlock;
+  var focusOffset = selection.focusOffset;
+
+  var previousText = document.getPreviousText(focusText.key);
+  var isInVoid = document.hasVoidParent(focusText.key);
+  var isPreviousInVoid = previousText && document.hasVoidParent(previousText.key);
+
+  if (!isInVoid && focusOffset > 0) {
+    change.moveFocus(-1);
+    return;
+  }
+
+  if (!previousText) {
+    return;
+  }
+
+  change.moveFocusToEndOf(previousText);
+
+  if (!isInVoid && !isPreviousInVoid && focusBlock.hasNode(previousText.key)) {
+    change.moveFocus(-1);
+  }
+};
+
+/**
+ * Move the focus point forward, accounting for being at the end of a block.
+ *
+ * @param {Change} change
+ */
+
+Changes.moveFocusCharForward = function (change) {
+  var value = change.value;
+  var document = value.document,
+      selection = value.selection,
+      focusText = value.focusText,
+      focusBlock = value.focusBlock;
+  var focusOffset = selection.focusOffset;
+
+  var nextText = document.getNextText(focusText.key);
+  var isInVoid = document.hasVoidParent(focusText.key);
+  var isNextInVoid = nextText && document.hasVoidParent(nextText.key);
+
+  if (!isInVoid && focusOffset < focusText.text.length) {
+    change.moveFocus(1);
+    return;
+  }
+
+  if (!nextText) {
+    return;
+  }
+
+  change.moveFocusToStartOf(nextText);
+
+  if (!isInVoid && !isNextInVoid && focusBlock.hasNode(nextText.key)) {
+    change.moveFocus(1);
+  }
+};
+
+/**
+ * Mix in move methods.
+ */
+
+var MOVE_DIRECTIONS = ['Forward', 'Backward'];
+
+MOVE_DIRECTIONS.forEach(function (direction) {
+  var anchor = 'moveAnchorChar' + direction;
+  var focus = 'moveFocusChar' + direction;
+
+  Changes['moveChar' + direction] = function (change) {
+    change[anchor]()[focus]();
+  };
+
+  Changes['moveStartChar' + direction] = function (change) {
+    if (change.value.isBackward) {
+      change[focus]();
+    } else {
+      change[anchor]();
+    }
+  };
+
+  Changes['moveEndChar' + direction] = function (change) {
+    if (change.value.isBackward) {
+      change[anchor]();
+    } else {
+      change[focus]();
+    }
+  };
+
+  Changes['extendChar' + direction] = function (change) {
+    change['moveFocusChar' + direction]();
+  };
+
+  Changes['collapseChar' + direction] = function (change) {
+    var collapse = direction == 'Forward' ? 'collapseToEnd' : 'collapseToStart';
+    change[collapse]()['moveChar' + direction]();
+  };
+});
+
+/**
+ * Mix in alias methods.
+ */
+
+var ALIAS_METHODS = [['collapseLineBackward', 'collapseToStartOfBlock'], ['collapseLineForward', 'collapseToEndOfBlock'], ['extendLineBackward', 'extendToStartOfBlock'], ['extendLineForward', 'extendToEndOfBlock']];
+
+ALIAS_METHODS.forEach(function (_ref) {
+  var _ref2 = _slicedToArray(_ref, 2),
+      alias = _ref2[0],
+      method = _ref2[1];
+
+  Changes[alias] = function (change) {
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    change[method].apply(change, [change].concat(args));
+  };
+});
+
+/**
+ * Mix in selection changes that are just a proxy for the selection method.
+ */
+
+var PROXY_TRANSFORMS = ['blur', 'collapseTo', 'collapseToAnchor', 'collapseToEnd', 'collapseToEndOf', 'collapseToFocus', 'collapseToStart', 'collapseToStartOf', 'extend', 'extendTo', 'extendToEndOf', 'extendToStartOf', 'flip', 'focus', 'move', 'moveAnchor', 'moveAnchorOffsetTo', 'moveAnchorTo', 'moveAnchorToEndOf', 'moveAnchorToStartOf', 'moveEnd', 'moveEndOffsetTo', 'moveEndTo', 'moveFocus', 'moveFocusOffsetTo', 'moveFocusTo', 'moveFocusToEndOf', 'moveFocusToStartOf', 'moveOffsetsTo', 'moveStart', 'moveStartOffsetTo', 'moveStartTo', 'moveTo', 'moveToEnd', 'moveToEndOf', 'moveToRangeOf', 'moveToStart', 'moveToStartOf', 'deselect'];
+
+PROXY_TRANSFORMS.forEach(function (method) {
+  Changes[method] = function (change) {
+    for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+
+    var normalize = method != 'deselect';
+    var value = change.value;
+    var document = value.document,
+        selection = value.selection;
+
+    var next = selection[method].apply(selection, args);
+    if (normalize) next = next.normalize(document);
+    change.select(next);
+  };
+});
+
+/**
+ * Mix in node-related changes.
+ */
+
+var PREFIXES = ['moveTo', 'moveAnchorTo', 'moveFocusTo', 'moveStartTo', 'moveEndTo', 'collapseTo', 'extendTo'];
+
+var DIRECTIONS = ['Next', 'Previous'];
+
+var KINDS = ['Block', 'Inline', 'Text'];
+
+PREFIXES.forEach(function (prefix) {
+  var edges = ['Start', 'End'];
+
+  if (prefix == 'moveTo') {
+    edges.push('Range');
+  }
+
+  edges.forEach(function (edge) {
+    var method = '' + prefix + edge + 'Of';
+
+    KINDS.forEach(function (kind) {
+      var getNode = kind == 'Text' ? 'getNode' : 'getClosest' + kind;
+
+      Changes['' + method + kind] = function (change) {
+        var value = change.value;
+        var document = value.document,
+            selection = value.selection;
+
+        var node = document[getNode](selection.startKey);
+        if (!node) return;
+        change[method](node);
+      };
+
+      DIRECTIONS.forEach(function (direction) {
+        var getDirectionNode = 'get' + direction + kind;
+        var directionKey = direction == 'Next' ? 'startKey' : 'endKey';
+
+        Changes['' + method + direction + kind] = function (change) {
+          var value = change.value;
+          var document = value.document,
+              selection = value.selection;
+
+          var node = document[getNode](selection[directionKey]);
+          if (!node) return;
+          var target = document[getDirectionNode](node.key);
+          if (!target) return;
+          change[method](target);
+        };
+      });
+    });
+  });
+});
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = Changes;
+},{"../models/range":530,"is-empty":54,"lodash/pick":225}],515:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _value = require('../models/value');
+
+var _value2 = _interopRequireDefault(_value);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Changes.
+ *
+ * @type {Object}
+ */
+
+var Changes = {};
+
+/**
+ * Set `properties` on the value.
+ *
+ * @param {Change} change
+ * @param {Object|Value} properties
+ */
+
+Changes.setValue = function (change, properties) {
+  properties = _value2.default.createProperties(properties);
+  var value = change.value;
+
+
+  change.applyOperation({
+    type: 'set_value',
+    properties: properties,
+    value: value
+  });
+};
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = Changes;
+},{"../models/value":534}],516:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _immutable = require('immutable');
+
+/**
+ * Changes.
+ *
+ * @type {Object}
+ */
+
+var Changes = {};
+
+/**
+ * Normalize the value with its schema.
+ *
+ * @param {Change} change
+ */
+
+Changes.normalize = function (change) {
+  change.normalizeDocument();
+};
+
+/**
+ * Normalize the document with the value's schema.
+ *
+ * @param {Change} change
+ */
+
+Changes.normalizeDocument = function (change) {
+  var value = change.value;
+  var document = value.document;
+
+  change.normalizeNodeByKey(document.key);
+};
+
+/**
+ * Normalize a `node` and its children with the value's schema.
+ *
+ * @param {Change} change
+ * @param {Node|String} key
+ */
+
+Changes.normalizeNodeByKey = function (change, key) {
+  var value = change.value;
+  var document = value.document,
+      schema = value.schema;
+
+  var node = document.assertNode(key);
+
+  normalizeNodeAndChildren(change, node, schema);
+
+  document = change.value.document;
+  var ancestors = document.getAncestors(key);
+  if (!ancestors) return;
+
+  ancestors.forEach(function (ancestor) {
+    normalizeNode(change, ancestor, schema);
+  });
+};
+
+/**
+ * Normalize a `node` and its children with a `schema`.
+ *
+ * @param {Change} change
+ * @param {Node} node
+ * @param {Schema} schema
+ */
+
+function normalizeNodeAndChildren(change, node, schema) {
+  if (node.kind == 'text') {
+    normalizeNode(change, node, schema);
+    return;
+  }
+
+  // We can't just loop the children and normalize them, because in the process
+  // of normalizing one child, we might end up creating another. Instead, we
+  // have to normalize one at a time, and check for new children along the way.
+  // PERF: use a mutable array here instead of an immutable stack.
+  var keys = node.nodes.toArray().map(function (n) {
+    return n.key;
+  });
+
+  // While there is still a child key that hasn't been normalized yet...
+
+  var _loop = function _loop() {
+    var ops = change.operations.length;
+    var key = void 0;
+
+    // PERF: use a mutable set here since we'll be add to it a lot.
+    var set = new _immutable.Set().asMutable();
+
+    // Unwind the stack, normalizing every child and adding it to the set.
+    while (key = keys[0]) {
+      var child = node.getChild(key);
+      normalizeNodeAndChildren(change, child, schema);
+      set.add(key);
+      keys.shift();
+    }
+
+    // Turn the set immutable to be able to compare against it.
+    set = set.asImmutable();
+
+    // PERF: Only re-find the node and re-normalize any new children if
+    // operations occured that might have changed it.
+    if (change.operations.length != ops) {
+      node = refindNode(change, node);
+
+      // Add any new children back onto the stack.
+      node.nodes.forEach(function (n) {
+        if (set.has(n.key)) return;
+        keys.unshift(n.key);
+      });
+    }
+  };
+
+  while (keys.length) {
+    _loop();
+  }
+
+  // Normalize the node itself if it still exists.
+  if (node) {
+    normalizeNode(change, node, schema);
+  }
+}
+
+/**
+ * Re-find a reference to a node that may have been modified or removed
+ * entirely by a change.
+ *
+ * @param {Change} change
+ * @param {Node} node
+ * @return {Node}
+ */
+
+function refindNode(change, node) {
+  var value = change.value;
+  var document = value.document;
+
+  return node.kind == 'document' ? document : document.getDescendant(node.key);
+}
+
+/**
+ * Normalize a `node` with a `schema`, but not its children.
+ *
+ * @param {Change} change
+ * @param {Node} node
+ * @param {Schema} schema
+ */
+
+function normalizeNode(change, node, schema) {
+  var max = schema.stack.plugins.length + 1;
+  var iterations = 0;
+
+  function iterate(c, n) {
+    var normalize = n.validate(schema);
+    if (!normalize) return;
+
+    // Run the `normalize` function to fix the node.
+    normalize(c);
+
+    // Re-find the node reference, in case it was updated. If the node no longer
+    // exists, we're done for this branch.
+    n = refindNode(c, n);
+    if (!n) return;
+
+    // Increment the iterations counter, and check to make sure that we haven't
+    // exceeded the max. Without this check, it's easy for the `validate` or
+    // `normalize` function of a schema rule to be written incorrectly and for
+    // an infinite invalid loop to occur.
+    iterations++;
+
+    if (iterations > max) {
+      throw new Error('A schema rule could not be validated after sufficient iterations. This is usually due to a `rule.validate` or `rule.normalize` function of a schema being incorrectly written, causing an infinite loop.');
+    }
+
+    // Otherwise, iterate again.
+    iterate(c, n);
+  }
+
+  iterate(change, node);
+}
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = Changes;
+},{"immutable":51}],517:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _immutable = require('immutable');
+
+var _text = require('../models/text');
+
+var _text2 = _interopRequireDefault(_text);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Define the core schema rules, order-sensitive.
+ *
+ * @type {Array}
+ */
+
+var CORE_SCHEMA_RULES = [
+
+/**
+ * Only allow block nodes in documents.
+ *
+ * @type {Object}
+ */
+
+{
+  validateNode: function validateNode(node) {
+    if (node.kind != 'document') return;
+    var invalids = node.nodes.filter(function (n) {
+      return n.kind != 'block';
+    });
+    if (!invalids.size) return;
+
+    return function (change) {
+      invalids.forEach(function (child) {
+        change.removeNodeByKey(child.key, { normalize: false });
+      });
+    };
+  }
+},
+
+/**
+ * Only allow block nodes or inline and text nodes in blocks.
+ *
+ * @type {Object}
+ */
+
+{
+  validateNode: function validateNode(node) {
+    if (node.kind != 'block') return;
+    var first = node.nodes.first();
+    if (!first) return;
+    var kinds = first.kind == 'block' ? ['block'] : ['inline', 'text'];
+    var invalids = node.nodes.filter(function (n) {
+      return !kinds.includes(n.kind);
+    });
+    if (!invalids.size) return;
+
+    return function (change) {
+      invalids.forEach(function (child) {
+        change.removeNodeByKey(child.key, { normalize: false });
+      });
+    };
+  }
+},
+
+/**
+ * Only allow inline and text nodes in inlines.
+ *
+ * @type {Object}
+ */
+
+{
+  validateNode: function validateNode(node) {
+    if (node.kind != 'inline') return;
+    var invalids = node.nodes.filter(function (n) {
+      return n.kind != 'inline' && n.kind != 'text';
+    });
+    if (!invalids.size) return;
+
+    return function (change) {
+      invalids.forEach(function (child) {
+        change.removeNodeByKey(child.key, { normalize: false });
+      });
+    };
+  }
+},
+
+/**
+ * Ensure that block and inline nodes have at least one text child.
+ *
+ * @type {Object}
+ */
+
+{
+  validateNode: function validateNode(node) {
+    if (node.kind != 'block' && node.kind != 'inline') return;
+    if (node.nodes.size > 0) return;
+
+    return function (change) {
+      var text = _text2.default.create();
+      change.insertNodeByKey(node.key, 0, text, { normalize: false });
+    };
+  }
+},
+
+/**
+ * Ensure that void nodes contain a text node with a single space of text.
+ *
+ * @type {Object}
+ */
+
+{
+  validateNode: function validateNode(node) {
+    if (!node.isVoid) return;
+    if (node.kind != 'block' && node.kind != 'inline') return;
+    if (node.text == ' ' && node.nodes.size == 1) return;
+
+    return function (change) {
+      var text = _text2.default.create(' ');
+      var index = node.nodes.size;
+
+      change.insertNodeByKey(node.key, index, text, { normalize: false });
+
+      node.nodes.forEach(function (child) {
+        change.removeNodeByKey(child.key, { normalize: false });
+      });
+    };
+  }
+},
+
+/**
+ * Ensure that inline nodes are never empty.
+ *
+ * This rule is applied to all blocks, because when they contain an empty
+ * inline, we need to remove the inline from that parent block. If `validate`
+ * was to be memoized, it should be against the parent node, not the inline
+ * themselves.
+ *
+ * @type {Object}
+ */
+
+{
+  validateNode: function validateNode(node) {
+    if (node.kind != 'block') return;
+    var invalids = node.nodes.filter(function (n) {
+      return n.kind == 'inline' && n.text == '';
+    });
+    if (!invalids.size) return;
+
+    return function (change) {
+      // If all of the block's nodes are invalid, insert an empty text node so
+      // that the selection will be preserved when they are all removed.
+      if (node.nodes.size == invalids.size) {
+        var text = _text2.default.create();
+        change.insertNodeByKey(node.key, 1, text, { normalize: false });
+      }
+
+      invalids.forEach(function (child) {
+        change.removeNodeByKey(child.key, { normalize: false });
+      });
+    };
+  }
+},
+
+/**
+ * Ensure that inline void nodes are surrounded by text nodes, by adding extra
+ * blank text nodes if necessary.
+ *
+ * @type {Object}
+ */
+
+{
+  validateNode: function validateNode(node) {
+    if (node.kind != 'block' && node.kind != 'inline') return;
+
+    var invalids = node.nodes.reduce(function (list, child, index) {
+      if (child.kind !== 'inline') return list;
+
+      var prev = index > 0 ? node.nodes.get(index - 1) : null;
+      var next = node.nodes.get(index + 1);
+      // We don't test if "prev" is inline, since it has already been processed in the loop
+      var insertBefore = !prev;
+      var insertAfter = !next || next.kind == 'inline';
+
+      if (insertAfter || insertBefore) {
+        list = list.push({ insertAfter: insertAfter, insertBefore: insertBefore, index: index });
+      }
+
+      return list;
+    }, new _immutable.List());
+
+    if (!invalids.size) return;
+
+    return function (change) {
+      // Shift for every text node inserted previously.
+      var shift = 0;
+
+      invalids.forEach(function (_ref) {
+        var index = _ref.index,
+            insertAfter = _ref.insertAfter,
+            insertBefore = _ref.insertBefore;
+
+        if (insertBefore) {
+          change.insertNodeByKey(node.key, shift + index, _text2.default.create(), { normalize: false });
+          shift++;
+        }
+
+        if (insertAfter) {
+          change.insertNodeByKey(node.key, shift + index + 1, _text2.default.create(), { normalize: false });
+          shift++;
+        }
+      });
+    };
+  }
+},
+
+/**
+ * Merge adjacent text nodes.
+ *
+ * @type {Object}
+ */
+
+{
+  validateNode: function validateNode(node) {
+    if (node.kind != 'block' && node.kind != 'inline') return;
+
+    var invalids = node.nodes.map(function (child, i) {
+      var next = node.nodes.get(i + 1);
+      if (child.kind != 'text') return;
+      if (!next || next.kind != 'text') return;
+      return next;
+    }).filter(Boolean);
+
+    if (!invalids.size) return;
+
+    return function (change) {
+      // Reverse the list to handle consecutive merges, since the earlier nodes
+      // will always exist after each merge.
+      invalids.reverse().forEach(function (n) {
+        change.mergeNodeByKey(n.key, { normalize: false });
+      });
+    };
+  }
+},
+
+/**
+ * Prevent extra empty text nodes, except when adjacent to inline void nodes.
+ *
+ * @type {Object}
+ */
+
+{
+  validateNode: function validateNode(node) {
+    if (node.kind != 'block' && node.kind != 'inline') return;
+    var nodes = node.nodes;
+
+    if (nodes.size <= 1) return;
+
+    var invalids = nodes.filter(function (desc, i) {
+      if (desc.kind != 'text') return;
+      if (desc.text.length > 0) return;
+
+      var prev = i > 0 ? nodes.get(i - 1) : null;
+      var next = nodes.get(i + 1);
+
+      // If it's the first node, and the next is a void, preserve it.
+      if (!prev && next.kind == 'inline') return;
+
+      // It it's the last node, and the previous is an inline, preserve it.
+      if (!next && prev.kind == 'inline') return;
+
+      // If it's surrounded by inlines, preserve it.
+      if (next && prev && next.kind == 'inline' && prev.kind == 'inline') return;
+
+      // Otherwise, remove it.
+      return true;
+    });
+
+    if (!invalids.size) return;
+
+    return function (change) {
+      invalids.forEach(function (text) {
+        change.removeNodeByKey(text.key, { normalize: false });
+      });
+    };
+  }
+}];
+
+/**
+ * Export.
+ *
+ * @type {Array}
+ */
+
+exports.default = CORE_SCHEMA_RULES;
+},{"../models/text":533,"immutable":51}],518:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+/**
+ * Slate-specific model types.
+ *
+ * @type {Object}
+ */
+
+var MODEL_TYPES = {
+  BLOCK: '@@__SLATE_BLOCK__@@',
+  CHANGE: '@@__SLATE_CHANGE__@@',
+  CHARACTER: '@@__SLATE_CHARACTER__@@',
+  DOCUMENT: '@@__SLATE_DOCUMENT__@@',
+  HISTORY: '@@__SLATE_HISTORY__@@',
+  INLINE: '@@__SLATE_INLINE__@@',
+  LEAF: '@@__SLATE_LEAF__@@',
+  MARK: '@@__SLATE_MARK__@@',
+  RANGE: '@@__SLATE_RANGE__@@',
+  SCHEMA: '@@__SLATE_SCHEMA__@@',
+  STACK: '@@__SLATE_STACK__@@',
+  TEXT: '@@__SLATE_TEXT__@@',
+  VALUE: '@@__SLATE_VALUE__@@'
+};
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = MODEL_TYPES;
+},{}],519:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.setKeyGenerator = exports.resetKeyGenerator = exports.Value = exports.Text = exports.Stack = exports.Schema = exports.Range = exports.Operations = exports.Node = exports.Mark = exports.Leaf = exports.Inline = exports.History = exports.Document = exports.Data = exports.Character = exports.Changes = exports.Block = undefined;
+
+var _block = require('./models/block');
+
+var _block2 = _interopRequireDefault(_block);
+
+var _changes = require('./changes');
+
+var _changes2 = _interopRequireDefault(_changes);
+
+var _character = require('./models/character');
+
+var _character2 = _interopRequireDefault(_character);
+
+var _data = require('./models/data');
+
+var _data2 = _interopRequireDefault(_data);
+
+var _document = require('./models/document');
+
+var _document2 = _interopRequireDefault(_document);
+
+var _history = require('./models/history');
+
+var _history2 = _interopRequireDefault(_history);
+
+var _inline = require('./models/inline');
+
+var _inline2 = _interopRequireDefault(_inline);
+
+var _leaf = require('./models/leaf');
+
+var _leaf2 = _interopRequireDefault(_leaf);
+
+var _mark = require('./models/mark');
+
+var _mark2 = _interopRequireDefault(_mark);
+
+var _node = require('./models/node');
+
+var _node2 = _interopRequireDefault(_node);
+
+var _operations = require('./operations');
+
+var _operations2 = _interopRequireDefault(_operations);
+
+var _range = require('./models/range');
+
+var _range2 = _interopRequireDefault(_range);
+
+var _schema = require('./models/schema');
+
+var _schema2 = _interopRequireDefault(_schema);
+
+var _stack = require('./models/stack');
+
+var _stack2 = _interopRequireDefault(_stack);
+
+var _text = require('./models/text');
+
+var _text2 = _interopRequireDefault(_text);
+
+var _value = require('./models/value');
+
+var _value2 = _interopRequireDefault(_value);
+
+var _generateKey = require('./utils/generate-key');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.Block = _block2.default;
+exports.Changes = _changes2.default;
+exports.Character = _character2.default;
+exports.Data = _data2.default;
+exports.Document = _document2.default;
+exports.History = _history2.default;
+exports.Inline = _inline2.default;
+exports.Leaf = _leaf2.default;
+exports.Mark = _mark2.default;
+exports.Node = _node2.default;
+exports.Operations = _operations2.default;
+exports.Range = _range2.default;
+exports.Schema = _schema2.default;
+exports.Stack = _stack2.default;
+exports.Text = _text2.default;
+exports.Value = _value2.default;
+exports.resetKeyGenerator = _generateKey.resetKeyGenerator;
+exports.setKeyGenerator = _generateKey.setKeyGenerator;
+exports.default = {
+  Block: _block2.default,
+  Changes: _changes2.default,
+  Character: _character2.default,
+  Data: _data2.default,
+  Document: _document2.default,
+  History: _history2.default,
+  Inline: _inline2.default,
+  Leaf: _leaf2.default,
+  Mark: _mark2.default,
+  Node: _node2.default,
+  Operations: _operations2.default,
+  Range: _range2.default,
+  Schema: _schema2.default,
+  Stack: _stack2.default,
+  Text: _text2.default,
+  Value: _value2.default,
+  resetKeyGenerator: _generateKey.resetKeyGenerator,
+  setKeyGenerator: _generateKey.setKeyGenerator
+};
+},{"./changes":512,"./models/block":520,"./models/character":522,"./models/data":523,"./models/document":524,"./models/history":525,"./models/inline":526,"./models/leaf":527,"./models/mark":528,"./models/node":529,"./models/range":530,"./models/schema":531,"./models/stack":532,"./models/text":533,"./models/value":534,"./operations":536,"./utils/generate-key":538}],520:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+require('./document');
+
+var _isPlainObject = require('is-plain-object');
+
+var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
+
+var _immutable = require('immutable');
+
+var _modelTypes = require('../constants/model-types');
+
+var _modelTypes2 = _interopRequireDefault(_modelTypes);
+
+var _node = require('./node');
+
+var _node2 = _interopRequireDefault(_node);
+
+var _generateKey = require('../utils/generate-key');
+
+var _generateKey2 = _interopRequireDefault(_generateKey);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+/**
+ * Prevent circular dependencies.
+ */
+
+/**
+ * Dependencies.
+ */
+
+/**
+ * Default properties.
+ *
+ * @type {Object}
+ */
+
+var DEFAULTS = {
+  data: new _immutable.Map(),
+  isVoid: false,
+  key: undefined,
+  nodes: new _immutable.List(),
+  type: undefined
+};
+
+/**
+ * Block.
+ *
+ * @type {Block}
+ */
+
+var Block = function (_Record) {
+  _inherits(Block, _Record);
+
+  function Block() {
+    _classCallCheck(this, Block);
+
+    return _possibleConstructorReturn(this, (Block.__proto__ || Object.getPrototypeOf(Block)).apply(this, arguments));
+  }
+
+  _createClass(Block, [{
+    key: 'toJSON',
+
+
+    /**
+     * Return a JSON representation of the block.
+     *
+     * @param {Object} options
+     * @return {Object}
+     */
+
+    value: function toJSON() {
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      var object = {
+        kind: this.kind,
+        type: this.type,
+        isVoid: this.isVoid,
+        data: this.data.toJSON(),
+        nodes: this.nodes.toArray().map(function (n) {
+          return n.toJSON(options);
+        })
+      };
+
+      if (options.preserveKeys) {
+        object.key = this.key;
+      }
+
+      return object;
+    }
+
+    /**
+     * Alias `toJS`.
+     */
+
+  }, {
+    key: 'toJS',
+    value: function toJS(options) {
+      return this.toJSON(options);
+    }
+  }, {
+    key: 'kind',
+
+
+    /**
+     * Get the node's kind.
+     *
+     * @return {String}
+     */
+
+    get: function get() {
+      return 'block';
+    }
+
+    /**
+     * Check if the block is empty.
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isEmpty',
+    get: function get() {
+      return this.text == '';
+    }
+
+    /**
+     * Get the concatenated text of all the block's children.
+     *
+     * @return {String}
+     */
+
+  }, {
+    key: 'text',
+    get: function get() {
+      return this.getText();
+    }
+  }], [{
+    key: 'create',
+
+
+    /**
+     * Create a new `Block` from `attrs`.
+     *
+     * @param {Object|String|Block} attrs
+     * @return {Block}
+     */
+
+    value: function create() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      if (Block.isBlock(attrs)) {
+        return attrs;
+      }
+
+      if (typeof attrs == 'string') {
+        attrs = { type: attrs };
+      }
+
+      if ((0, _isPlainObject2.default)(attrs)) {
+        return Block.fromJSON(attrs);
+      }
+
+      throw new Error('`Block.create` only accepts objects, strings or blocks, but you passed it: ' + attrs);
+    }
+
+    /**
+     * Create a list of `Blocks` from `attrs`.
+     *
+     * @param {Array<Block|Object>|List<Block|Object>} attrs
+     * @return {List<Block>}
+     */
+
+  }, {
+    key: 'createList',
+    value: function createList() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      if (_immutable.List.isList(attrs) || Array.isArray(attrs)) {
+        var list = new _immutable.List(attrs.map(Block.create));
+        return list;
+      }
+
+      throw new Error('`Block.createList` only accepts arrays or lists, but you passed it: ' + attrs);
+    }
+
+    /**
+     * Create a `Block` from a JSON `object`.
+     *
+     * @param {Object|Block} object
+     * @return {Block}
+     */
+
+  }, {
+    key: 'fromJSON',
+    value: function fromJSON(object) {
+      if (Block.isBlock(object)) {
+        return object;
+      }
+
+      var _object$data = object.data,
+          data = _object$data === undefined ? {} : _object$data,
+          _object$isVoid = object.isVoid,
+          isVoid = _object$isVoid === undefined ? false : _object$isVoid,
+          _object$key = object.key,
+          key = _object$key === undefined ? (0, _generateKey2.default)() : _object$key,
+          _object$nodes = object.nodes,
+          nodes = _object$nodes === undefined ? [] : _object$nodes,
+          type = object.type;
+
+
+      if (typeof type != 'string') {
+        throw new Error('`Block.fromJSON` requires a `type` string.');
+      }
+
+      var block = new Block({
+        key: key,
+        type: type,
+        isVoid: !!isVoid,
+        data: new _immutable.Map(data),
+        nodes: new _immutable.List(nodes.map(_node2.default.fromJSON))
+      });
+
+      return block;
+    }
+
+    /**
+     * Alias `fromJS`.
+     */
+
+  }, {
+    key: 'isBlock',
+
+
+    /**
+     * Check if `any` is a `Block`.
+     *
+     * @param {Any} any
+     * @return {Boolean}
+     */
+
+    value: function isBlock(any) {
+      return !!(any && any[_modelTypes2.default.BLOCK]);
+    }
+
+    /**
+     * Check if `any` is a block list.
+     *
+     * @param {Any} any
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isBlockList',
+    value: function isBlockList(any) {
+      return _immutable.List.isList(any) && any.every(function (item) {
+        return Block.isBlock(item);
+      });
+    }
+  }]);
+
+  return Block;
+}((0, _immutable.Record)(DEFAULTS));
+
+/**
+ * Attach a pseudo-symbol for type checking.
+ */
+
+Block.fromJS = Block.fromJSON;
+Block.prototype[_modelTypes2.default.BLOCK] = true;
+
+/**
+ * Mix in `Node` methods.
+ */
+
+Object.getOwnPropertyNames(_node2.default.prototype).forEach(function (method) {
+  if (method == 'constructor') return;
+  Block.prototype[method] = _node2.default.prototype[method];
+});
+
+/**
+ * Export.
+ *
+ * @type {Block}
+ */
+
+exports.default = Block;
+},{"../constants/model-types":518,"../utils/generate-key":538,"./document":524,"./node":529,"immutable":51,"is-plain-object":58}],521:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _debug = require('debug');
+
+var _debug2 = _interopRequireDefault(_debug);
+
+var _pick = require('lodash/pick');
+
+var _pick2 = _interopRequireDefault(_pick);
+
+var _modelTypes = require('../constants/model-types');
+
+var _modelTypes2 = _interopRequireDefault(_modelTypes);
+
+var _changes = require('../changes');
+
+var _changes2 = _interopRequireDefault(_changes);
+
+var _apply = require('../operations/apply');
+
+var _apply2 = _interopRequireDefault(_apply);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Debug.
+ *
+ * @type {Function}
+ */
+
+var debug = (0, _debug2.default)('slate:change');
+
+/**
+ * Change.
+ *
+ * @type {Change}
+ */
+
+var Change = function () {
+  _createClass(Change, null, [{
+    key: 'isChange',
+
+
+    /**
+     * Check if `any` is a `Change`.
+     *
+     * @param {Any} any
+     * @return {Boolean}
+     */
+
+    value: function isChange(any) {
+      return !!(any && any[_modelTypes2.default.CHANGE]);
+    }
+
+    /**
+     * Create a new `Change` with `attrs`.
+     *
+     * @param {Object} attrs
+     *   @property {Value} value
+     */
+
+  }]);
+
+  function Change(attrs) {
+    _classCallCheck(this, Change);
+
+    var value = attrs.value;
+
+    this.value = value;
+    this.operations = [];
+    this.flags = (0, _pick2.default)(attrs, ['merge', 'save']);
+  }
+
+  /**
+   * Get the kind.
+   *
+   * @return {String}
+   */
+
+  _createClass(Change, [{
+    key: 'applyOperation',
+
+
+    /**
+     * Apply an `operation` to the current value, saving the operation to the
+     * history if needed.
+     *
+     * @param {Object} operation
+     * @param {Object} options
+     * @return {Change}
+     */
+
+    value: function applyOperation(operation) {
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var operations = this.operations,
+          flags = this.flags;
+      var value = this.value;
+      var _value = value,
+          history = _value.history;
+
+      // Default options to the change-level flags, this allows for setting
+      // specific options for all of the operations of a given change.
+
+      options = _extends({}, flags, options);
+
+      // Derive the default option values.
+      var _options = options,
+          _options$merge = _options.merge,
+          merge = _options$merge === undefined ? operations.length == 0 ? null : true : _options$merge,
+          _options$save = _options.save,
+          save = _options$save === undefined ? true : _options$save,
+          _options$skip = _options.skip,
+          skip = _options$skip === undefined ? null : _options$skip;
+
+      // Apply the operation to the value.
+
+      debug('apply', { operation: operation, save: save, merge: merge });
+      value = (0, _apply2.default)(value, operation);
+
+      // If needed, save the operation to the history.
+      if (history && save) {
+        history = history.save(operation, { merge: merge, skip: skip });
+        value = value.set('history', history);
+      }
+
+      // Update the mutable change object.
+      this.value = value;
+      this.operations.push(operation);
+      return this;
+    }
+
+    /**
+     * Apply a series of `operations` to the current value.
+     *
+     * @param {Array} operations
+     * @param {Object} options
+     * @return {Change}
+     */
+
+  }, {
+    key: 'applyOperations',
+    value: function applyOperations(operations, options) {
+      var _this = this;
+
+      operations.forEach(function (op) {
+        return _this.applyOperation(op, options);
+      });
+      return this;
+    }
+
+    /**
+     * Call a change `fn` with arguments.
+     *
+     * @param {Function} fn
+     * @param {Mixed} ...args
+     * @return {Change}
+     */
+
+  }, {
+    key: 'call',
+    value: function call(fn) {
+      for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        args[_key - 1] = arguments[_key];
+      }
+
+      fn.apply(undefined, [this].concat(args));
+      return this;
+    }
+
+    /**
+     * Set an operation flag by `key` to `value`.
+     *
+     * @param {String} key
+     * @param {Any} value
+     * @return {Change}
+     */
+
+  }, {
+    key: 'setOperationFlag',
+    value: function setOperationFlag(key, value) {
+      this.flags[key] = value;
+      return this;
+    }
+
+    /**
+     * Unset an operation flag by `key`.
+     *
+     * @param {String} key
+     * @return {Change}
+     */
+
+  }, {
+    key: 'unsetOperationFlag',
+    value: function unsetOperationFlag(key) {
+      delete this.flags[key];
+      return this;
+    }
+  }, {
+    key: 'kind',
+    get: function get() {
+      return 'change';
+    }
+  }]);
+
+  return Change;
+}();
+
+/**
+ * Attach a pseudo-symbol for type checking.
+ */
+
+Change.prototype[_modelTypes2.default.CHANGE] = true;
+
+/**
+ * Add a change method for each of the changes.
+ */
+
+Object.keys(_changes2.default).forEach(function (type) {
+  Change.prototype[type] = function () {
+    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    debug(type, { args: args });
+    this.call.apply(this, [_changes2.default[type]].concat(args));
+    return this;
+  };
+});
+
+/**
+ * Export.
+ *
+ * @type {Change}
+ */
+
+exports.default = Change;
+},{"../changes":512,"../constants/model-types":518,"../operations/apply":535,"debug":471,"lodash/pick":225}],522:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _isPlainObject = require('is-plain-object');
+
+var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
+
+var _immutable = require('immutable');
+
+var _modelTypes = require('../constants/model-types');
+
+var _modelTypes2 = _interopRequireDefault(_modelTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Default properties.
+ *
+ * @type {Object}
+ */
+
+var DEFAULTS = {
+  marks: new _immutable.Set(),
+  text: ''
+};
+
+/**
+ * Character.
+ *
+ * @type {Character}
+ */
+
+var Character = function (_Record) {
+  _inherits(Character, _Record);
+
+  function Character() {
+    _classCallCheck(this, Character);
+
+    return _possibleConstructorReturn(this, (Character.__proto__ || Object.getPrototypeOf(Character)).apply(this, arguments));
+  }
+
+  _createClass(Character, [{
+    key: 'toJSON',
+
+
+    /**
+     * Return a JSON representation of the character.
+     *
+     * @return {Object}
+     */
+
+    value: function toJSON() {
+      var object = {
+        kind: this.kind,
+        text: this.text,
+        marks: this.marks.toArray().map(function (m) {
+          return m.toJSON();
+        })
+      };
+
+      return object;
+    }
+
+    /**
+     * Alias `toJS`.
+     */
+
+  }, {
+    key: 'toJS',
+    value: function toJS() {
+      return this.toJSON();
+    }
+  }, {
+    key: 'kind',
+
+
+    /**
+     * Get the kind.
+     *
+     * @return {String}
+     */
+
+    get: function get() {
+      return 'character';
+    }
+  }], [{
+    key: 'create',
+
+
+    /**
+     * Create a `Character` with `attrs`.
+     *
+     * @param {Object|String|Character} attrs
+     * @return {Character}
+     */
+
+    value: function create() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      if (Character.isCharacter(attrs)) {
+        return attrs;
+      }
+
+      if (typeof attrs == 'string') {
+        attrs = { text: attrs };
+      }
+
+      if ((0, _isPlainObject2.default)(attrs)) {
+        return Character.fromJSON(attrs);
+      }
+
+      throw new Error('`Character.create` only accepts objects, strings or characters, but you passed it: ' + attrs);
+    }
+
+    /**
+     * Create a list of `Characters` from `elements`.
+     *
+     * @param {String|Array<Object|Character|String>|List<Object|Character|String>} elements
+     * @return {List<Character>}
+     */
+
+  }, {
+    key: 'createList',
+    value: function createList() {
+      var elements = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      if (typeof elements == 'string') {
+        elements = elements.split('');
+      }
+
+      if (_immutable.List.isList(elements) || Array.isArray(elements)) {
+        var list = new _immutable.List(elements.map(Character.create));
+        return list;
+      }
+
+      throw new Error('`Block.createList` only accepts strings, arrays or lists, but you passed it: ' + elements);
+    }
+
+    /**
+     * Create a `Character` from a JSON `object`.
+     *
+     * @param {Object} object
+     * @return {Character}
+     */
+
+  }, {
+    key: 'fromJSON',
+    value: function fromJSON(object) {
+      var text = object.text,
+          _object$marks = object.marks,
+          marks = _object$marks === undefined ? [] : _object$marks;
+
+
+      if (typeof text != 'string') {
+        throw new Error('`Character.fromJSON` requires a block `text` string.');
+      }
+
+      var character = new Character({
+        text: text,
+        marks: new _immutable.Set(marks)
+      });
+
+      return character;
+    }
+
+    /**
+     * Alias `fromJS`.
+     */
+
+  }, {
+    key: 'isCharacter',
+
+
+    /**
+     * Check if `any` is a `Character`.
+     *
+     * @param {Any} any
+     * @return {Boolean}
+     */
+
+    value: function isCharacter(any) {
+      return !!(any && any[_modelTypes2.default.CHARACTER]);
+    }
+
+    /**
+     * Check if `any` is a character list.
+     *
+     * @param {Any} any
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isCharacterList',
+    value: function isCharacterList(any) {
+      return _immutable.List.isList(any) && any.every(function (item) {
+        return Character.isCharacter(item);
+      });
+    }
+  }]);
+
+  return Character;
+}((0, _immutable.Record)(DEFAULTS));
+
+/**
+ * Attach a pseudo-symbol for type checking.
+ */
+
+Character.fromJS = Character.fromJSON;
+Character.prototype[_modelTypes2.default.CHARACTER] = true;
+
+/**
+ * Export.
+ *
+ * @type {Character}
+ */
+
+exports.default = Character;
+},{"../constants/model-types":518,"immutable":51,"is-plain-object":58}],523:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _isPlainObject = require('is-plain-object');
+
+var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
+
+var _immutable = require('immutable');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Data.
+ *
+ * This isn't an immutable record, it's just a thin wrapper around `Map` so that
+ * we can allow for more convenient creation.
+ *
+ * @type {Object}
+ */
+
+var Data = function () {
+  function Data() {
+    _classCallCheck(this, Data);
+  }
+
+  _createClass(Data, null, [{
+    key: 'create',
+
+
+    /**
+     * Create a new `Data` with `attrs`.
+     *
+     * @param {Object|Data|Map} attrs
+     * @return {Data} data
+     */
+
+    value: function create() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      if (_immutable.Map.isMap(attrs)) {
+        return attrs;
+      }
+
+      if ((0, _isPlainObject2.default)(attrs)) {
+        return Data.fromJSON(attrs);
+      }
+
+      throw new Error('`Data.create` only accepts objects or maps, but you passed it: ' + attrs);
+    }
+
+    /**
+     * Create a `Data` from a JSON `object`.
+     *
+     * @param {Object} object
+     * @return {Data}
+     */
+
+  }, {
+    key: 'fromJSON',
+    value: function fromJSON(object) {
+      return new _immutable.Map(object);
+    }
+
+    /**
+     * Alias `fromJS`.
+     */
+
+  }]);
+
+  return Data;
+}();
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+Data.fromJS = Data.fromJSON;
+exports.default = Data;
+},{"immutable":51,"is-plain-object":58}],524:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+require('./block');
+
+require('./inline');
+
+var _isPlainObject = require('is-plain-object');
+
+var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
+
+var _immutable = require('immutable');
+
+var _node = require('./node');
+
+var _node2 = _interopRequireDefault(_node);
+
+var _modelTypes = require('../constants/model-types');
+
+var _modelTypes2 = _interopRequireDefault(_modelTypes);
+
+var _generateKey = require('../utils/generate-key');
+
+var _generateKey2 = _interopRequireDefault(_generateKey);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+/**
+ * Prevent circular dependencies.
+ */
+
+/**
+ * Dependencies.
+ */
+
+/**
+ * Default properties.
+ *
+ * @type {Object}
+ */
+
+var DEFAULTS = {
+  data: new _immutable.Map(),
+  key: undefined,
+  nodes: new _immutable.List()
+};
+
+/**
+ * Document.
+ *
+ * @type {Document}
+ */
+
+var Document = function (_Record) {
+  _inherits(Document, _Record);
+
+  function Document() {
+    _classCallCheck(this, Document);
+
+    return _possibleConstructorReturn(this, (Document.__proto__ || Object.getPrototypeOf(Document)).apply(this, arguments));
+  }
+
+  _createClass(Document, [{
+    key: 'toJSON',
+
+
+    /**
+     * Return a JSON representation of the document.
+     *
+     * @param {Object} options
+     * @return {Object}
+     */
+
+    value: function toJSON() {
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      var object = {
+        kind: this.kind,
+        data: this.data.toJSON(),
+        nodes: this.nodes.toArray().map(function (n) {
+          return n.toJSON(options);
+        })
+      };
+
+      if (options.preserveKeys) {
+        object.key = this.key;
+      }
+
+      return object;
+    }
+
+    /**
+     * Alias `toJS`.
+     */
+
+  }, {
+    key: 'toJS',
+    value: function toJS(options) {
+      return this.toJSON(options);
+    }
+  }, {
+    key: 'kind',
+
+
+    /**
+     * Get the node's kind.
+     *
+     * @return {String}
+     */
+
+    get: function get() {
+      return 'document';
+    }
+
+    /**
+     * Check if the document is empty.
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isEmpty',
+    get: function get() {
+      return this.text == '';
+    }
+
+    /**
+     * Get the concatenated text of all the document's children.
+     *
+     * @return {String}
+     */
+
+  }, {
+    key: 'text',
+    get: function get() {
+      return this.getText();
+    }
+  }], [{
+    key: 'create',
+
+
+    /**
+     * Create a new `Document` with `attrs`.
+     *
+     * @param {Object|Array|List|Text} attrs
+     * @return {Document}
+     */
+
+    value: function create() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      if (Document.isDocument(attrs)) {
+        return attrs;
+      }
+
+      if (_immutable.List.isList(attrs) || Array.isArray(attrs)) {
+        attrs = { nodes: attrs };
+      }
+
+      if ((0, _isPlainObject2.default)(attrs)) {
+        return Document.fromJSON(attrs);
+      }
+
+      throw new Error('`Document.create` only accepts objects, arrays, lists or documents, but you passed it: ' + attrs);
+    }
+
+    /**
+     * Create a `Document` from a JSON `object`.
+     *
+     * @param {Object|Document} object
+     * @return {Document}
+     */
+
+  }, {
+    key: 'fromJSON',
+    value: function fromJSON(object) {
+      if (Document.isDocument(object)) {
+        return object;
+      }
+
+      var _object$data = object.data,
+          data = _object$data === undefined ? {} : _object$data,
+          _object$key = object.key,
+          key = _object$key === undefined ? (0, _generateKey2.default)() : _object$key,
+          _object$nodes = object.nodes,
+          nodes = _object$nodes === undefined ? [] : _object$nodes;
+
+
+      var document = new Document({
+        key: key,
+        data: new _immutable.Map(data),
+        nodes: new _immutable.List(nodes.map(_node2.default.fromJSON))
+      });
+
+      return document;
+    }
+
+    /**
+     * Alias `fromJS`.
+     */
+
+  }, {
+    key: 'isDocument',
+
+
+    /**
+     * Check if `any` is a `Document`.
+     *
+     * @param {Any} any
+     * @return {Boolean}
+     */
+
+    value: function isDocument(any) {
+      return !!(any && any[_modelTypes2.default.DOCUMENT]);
+    }
+  }]);
+
+  return Document;
+}((0, _immutable.Record)(DEFAULTS));
+
+/**
+ * Attach a pseudo-symbol for type checking.
+ */
+
+Document.fromJS = Document.fromJSON;
+Document.prototype[_modelTypes2.default.DOCUMENT] = true;
+
+/**
+ * Mix in `Node` methods.
+ */
+
+Object.getOwnPropertyNames(_node2.default.prototype).forEach(function (method) {
+  if (method == 'constructor') return;
+  Document.prototype[method] = _node2.default.prototype[method];
+});
+
+/**
+ * Export.
+ *
+ * @type {Document}
+ */
+
+exports.default = Document;
+},{"../constants/model-types":518,"../utils/generate-key":538,"./block":520,"./inline":526,"./node":529,"immutable":51,"is-plain-object":58}],525:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _debug = require('debug');
+
+var _debug2 = _interopRequireDefault(_debug);
+
+var _isEqual = require('lodash/isEqual');
+
+var _isEqual2 = _interopRequireDefault(_isEqual);
+
+var _isPlainObject = require('is-plain-object');
+
+var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
+
+var _immutable = require('immutable');
+
+var _modelTypes = require('../constants/model-types');
+
+var _modelTypes2 = _interopRequireDefault(_modelTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Debug.
+ *
+ * @type {Function}
+ */
+
+var debug = (0, _debug2.default)('slate:history');
+
+/**
+ * Default properties.
+ *
+ * @type {Object}
+ */
+
+var DEFAULTS = {
+  redos: new _immutable.Stack(),
+  undos: new _immutable.Stack()
+};
+
+/**
+ * History.
+ *
+ * @type {History}
+ */
+
+var History = function (_Record) {
+  _inherits(History, _Record);
+
+  function History() {
+    _classCallCheck(this, History);
+
+    return _possibleConstructorReturn(this, (History.__proto__ || Object.getPrototypeOf(History)).apply(this, arguments));
+  }
+
+  _createClass(History, [{
+    key: 'save',
+
+
+    /**
+     * Save an `operation` into the history.
+     *
+     * @param {Object} operation
+     * @param {Object} options
+     * @return {History}
+     */
+
+    value: function save(operation) {
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+      var history = this;
+      var _history = history,
+          undos = _history.undos,
+          redos = _history.redos;
+      var merge = options.merge,
+          skip = options.skip;
+
+      var prevBatch = undos.peek();
+      var prevOperation = prevBatch && prevBatch[prevBatch.length - 1];
+
+      if (skip == null) {
+        skip = shouldSkip(operation, prevOperation);
+      }
+
+      if (skip) {
+        return history;
+      }
+
+      if (merge == null) {
+        merge = shouldMerge(operation, prevOperation);
+      }
+
+      debug('save', { operation: operation, merge: merge });
+
+      // If the `merge` flag is true, add the operation to the previous batch.
+      if (merge) {
+        var batch = prevBatch.slice();
+        batch.push(operation);
+        undos = undos.pop();
+        undos = undos.push(batch);
+      }
+
+      // Otherwise, create a new batch with the operation.
+      else {
+          var _batch = [operation];
+          undos = undos.push(_batch);
+        }
+
+      // Constrain the history to 100 entries for memory's sake.
+      if (undos.length > 100) {
+        undos = undos.take(100);
+      }
+
+      // Clear the redos and update the history.
+      redos = redos.clear();
+      history = history.set('undos', undos).set('redos', redos);
+      return history;
+    }
+
+    /**
+     * Return a JSON representation of the history.
+     *
+     * @return {Object}
+     */
+
+  }, {
+    key: 'toJSON',
+    value: function toJSON() {
+      var object = {
+        kind: this.kind,
+        redos: this.redos.toJSON(),
+        undos: this.undos.toJSON()
+      };
+
+      return object;
+    }
+
+    /**
+     * Alias `toJS`.
+     */
+
+  }, {
+    key: 'toJS',
+    value: function toJS() {
+      return this.toJSON();
+    }
+  }, {
+    key: 'kind',
+
+
+    /**
+     * Get the kind.
+     *
+     * @return {String}
+     */
+
+    get: function get() {
+      return 'history';
+    }
+  }], [{
+    key: 'create',
+
+
+    /**
+     * Create a new `History` with `attrs`.
+     *
+     * @param {Object|History} attrs
+     * @return {History}
+     */
+
+    value: function create() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      if (History.isHistory(attrs)) {
+        return attrs;
+      }
+
+      if ((0, _isPlainObject2.default)(attrs)) {
+        return History.fromJSON(attrs);
+      }
+
+      throw new Error('`History.create` only accepts objects or histories, but you passed it: ' + attrs);
+    }
+
+    /**
+     * Create a `History` from a JSON `object`.
+     *
+     * @param {Object} object
+     * @return {History}
+     */
+
+  }, {
+    key: 'fromJSON',
+    value: function fromJSON(object) {
+      var _object$redos = object.redos,
+          redos = _object$redos === undefined ? [] : _object$redos,
+          _object$undos = object.undos,
+          undos = _object$undos === undefined ? [] : _object$undos;
+
+
+      var history = new History({
+        redos: new _immutable.Stack(redos),
+        undos: new _immutable.Stack(undos)
+      });
+
+      return history;
+    }
+
+    /**
+     * Alias `fromJS`.
+     */
+
+  }, {
+    key: 'isHistory',
+
+
+    /**
+     * Check if `any` is a `History`.
+     *
+     * @param {Any} any
+     * @return {Boolean}
+     */
+
+    value: function isHistory(any) {
+      return !!(any && any[_modelTypes2.default.HISTORY]);
+    }
+  }]);
+
+  return History;
+}((0, _immutable.Record)(DEFAULTS));
+
+/**
+ * Attach a pseudo-symbol for type checking.
+ */
+
+History.fromJS = History.fromJSON;
+History.prototype[_modelTypes2.default.HISTORY] = true;
+
+/**
+ * Check whether to merge a new operation `o` into the previous operation `p`.
+ *
+ * @param {Object} o
+ * @param {Object} p
+ * @return {Boolean}
+ */
+
+function shouldMerge(o, p) {
+  if (!p) return false;
+
+  var merge = o.type == 'set_selection' && p.type == 'set_selection' || o.type == 'insert_text' && p.type == 'insert_text' && o.offset == p.offset + p.text.length && (0, _isEqual2.default)(o.path, p.path) || o.type == 'remove_text' && p.type == 'remove_text' && o.offset + o.text.length == p.offset && (0, _isEqual2.default)(o.path, p.path);
+
+  return merge;
+}
+
+/**
+ * Check whether to skip a new operation `o`, given previous operation `p`.
+ *
+ * @param {Object} o
+ * @param {Object} p
+ * @return {Boolean}
+ */
+
+function shouldSkip(o, p) {
+  if (!p) return false;
+
+  var skip = o.type == 'set_selection' && p.type == 'set_selection';
+
+  return skip;
+}
+
+/**
+ * Export.
+ *
+ * @type {History}
+ */
+
+exports.default = History;
+},{"../constants/model-types":518,"debug":471,"immutable":51,"is-plain-object":58,"lodash/isEqual":211}],526:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+require('./document');
+
+var _isPlainObject = require('is-plain-object');
+
+var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
+
+var _immutable = require('immutable');
+
+var _node = require('./node');
+
+var _node2 = _interopRequireDefault(_node);
+
+var _modelTypes = require('../constants/model-types');
+
+var _modelTypes2 = _interopRequireDefault(_modelTypes);
+
+var _generateKey = require('../utils/generate-key');
+
+var _generateKey2 = _interopRequireDefault(_generateKey);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+/**
+ * Prevent circular dependencies.
+ */
+
+/**
+ * Dependencies.
+ */
+
+/**
+ * Default properties.
+ *
+ * @type {Object}
+ */
+
+var DEFAULTS = {
+  data: new _immutable.Map(),
+  isVoid: false,
+  key: undefined,
+  nodes: new _immutable.List(),
+  type: undefined
+};
+
+/**
+ * Inline.
+ *
+ * @type {Inline}
+ */
+
+var Inline = function (_Record) {
+  _inherits(Inline, _Record);
+
+  function Inline() {
+    _classCallCheck(this, Inline);
+
+    return _possibleConstructorReturn(this, (Inline.__proto__ || Object.getPrototypeOf(Inline)).apply(this, arguments));
+  }
+
+  _createClass(Inline, [{
+    key: 'toJSON',
+
+
+    /**
+     * Return a JSON representation of the inline.
+     *
+     * @param {Object} options
+     * @return {Object}
+     */
+
+    value: function toJSON() {
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      var object = {
+        kind: this.kind,
+        type: this.type,
+        isVoid: this.isVoid,
+        data: this.data.toJSON(),
+        nodes: this.nodes.toArray().map(function (n) {
+          return n.toJSON(options);
+        })
+      };
+
+      if (options.preserveKeys) {
+        object.key = this.key;
+      }
+
+      return object;
+    }
+
+    /**
+     * Alias `toJS`.
+     */
+
+  }, {
+    key: 'toJS',
+    value: function toJS(options) {
+      return this.toJSON(options);
+    }
+  }, {
+    key: 'kind',
+
+
+    /**
+     * Get the node's kind.
+     *
+     * @return {String}
+     */
+
+    get: function get() {
+      return 'inline';
+    }
+
+    /**
+     * Check if the inline is empty.
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isEmpty',
+    get: function get() {
+      return this.text == '';
+    }
+
+    /**
+     * Get the concatenated text of all the inline's children.
+     *
+     * @return {String}
+     */
+
+  }, {
+    key: 'text',
+    get: function get() {
+      return this.getText();
+    }
+  }], [{
+    key: 'create',
+
+
+    /**
+     * Create a new `Inline` with `attrs`.
+     *
+     * @param {Object|String|Inline} attrs
+     * @return {Inline}
+     */
+
+    value: function create() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      if (Inline.isInline(attrs)) {
+        return attrs;
+      }
+
+      if (typeof attrs == 'string') {
+        attrs = { type: attrs };
+      }
+
+      if ((0, _isPlainObject2.default)(attrs)) {
+        return Inline.fromJSON(attrs);
+      }
+
+      throw new Error('`Inline.create` only accepts objects, strings or inlines, but you passed it: ' + attrs);
+    }
+
+    /**
+     * Create a list of `Inlines` from an array.
+     *
+     * @param {Array<Inline|Object>|List<Inline|Object>} elements
+     * @return {List<Inline>}
+     */
+
+  }, {
+    key: 'createList',
+    value: function createList() {
+      var elements = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      if (_immutable.List.isList(elements) || Array.isArray(elements)) {
+        var list = new _immutable.List(elements.map(Inline.create));
+        return list;
+      }
+
+      throw new Error('`Inline.createList` only accepts arrays or lists, but you passed it: ' + elements);
+    }
+
+    /**
+     * Create a `Inline` from a JSON `object`.
+     *
+     * @param {Object|Inline} object
+     * @return {Inline}
+     */
+
+  }, {
+    key: 'fromJSON',
+    value: function fromJSON(object) {
+      if (Inline.isInline(object)) {
+        return object;
+      }
+
+      var _object$data = object.data,
+          data = _object$data === undefined ? {} : _object$data,
+          _object$isVoid = object.isVoid,
+          isVoid = _object$isVoid === undefined ? false : _object$isVoid,
+          _object$key = object.key,
+          key = _object$key === undefined ? (0, _generateKey2.default)() : _object$key,
+          _object$nodes = object.nodes,
+          nodes = _object$nodes === undefined ? [] : _object$nodes,
+          type = object.type;
+
+
+      if (typeof type != 'string') {
+        throw new Error('`Inline.fromJS` requires a `type` string.');
+      }
+
+      var inline = new Inline({
+        key: key,
+        type: type,
+        isVoid: !!isVoid,
+        data: new _immutable.Map(data),
+        nodes: new _immutable.List(nodes.map(_node2.default.fromJSON))
+      });
+
+      return inline;
+    }
+
+    /**
+     * Alias `fromJS`.
+     */
+
+  }, {
+    key: 'isInline',
+
+
+    /**
+     * Check if `any` is a `Inline`.
+     *
+     * @param {Any} any
+     * @return {Boolean}
+     */
+
+    value: function isInline(any) {
+      return !!(any && any[_modelTypes2.default.INLINE]);
+    }
+
+    /**
+     * Check if `any` is a list of inlines.
+     *
+     * @param {Any} any
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isInlineList',
+    value: function isInlineList(any) {
+      return _immutable.List.isList(any) && any.every(function (item) {
+        return Inline.isInline(item);
+      });
+    }
+  }]);
+
+  return Inline;
+}((0, _immutable.Record)(DEFAULTS));
+
+/**
+ * Attach a pseudo-symbol for type checking.
+ */
+
+Inline.fromJS = Inline.fromJSON;
+Inline.prototype[_modelTypes2.default.INLINE] = true;
+
+/**
+ * Mix in `Node` methods.
+ */
+
+Object.getOwnPropertyNames(_node2.default.prototype).forEach(function (method) {
+  if (method == 'constructor') return;
+  Inline.prototype[method] = _node2.default.prototype[method];
+});
+
+/**
+ * Export.
+ *
+ * @type {Inline}
+ */
+
+exports.default = Inline;
+},{"../constants/model-types":518,"../utils/generate-key":538,"./document":524,"./node":529,"immutable":51,"is-plain-object":58}],527:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _isPlainObject = require('is-plain-object');
+
+var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
+
+var _immutable = require('immutable');
+
+var _modelTypes = require('../constants/model-types');
+
+var _modelTypes2 = _interopRequireDefault(_modelTypes);
+
+var _character = require('./character');
+
+var _character2 = _interopRequireDefault(_character);
+
+var _mark = require('./mark');
+
+var _mark2 = _interopRequireDefault(_mark);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Default properties.
+ *
+ * @type {Object}
+ */
+
+var DEFAULTS = {
+  marks: new _immutable.Set(),
+  text: ''
+};
+
+/**
+ * Leaf.
+ *
+ * @type {Leaf}
+ */
+
+var Leaf = function (_Record) {
+  _inherits(Leaf, _Record);
+
+  function Leaf() {
+    _classCallCheck(this, Leaf);
+
+    return _possibleConstructorReturn(this, (Leaf.__proto__ || Object.getPrototypeOf(Leaf)).apply(this, arguments));
+  }
+
+  _createClass(Leaf, [{
+    key: 'getCharacters',
+
+
+    /**
+     * Return leaf as a list of characters
+     *
+     * @return {List<Character>}
+     */
+
+    value: function getCharacters() {
+      var marks = this.marks;
+
+      var characters = _character2.default.createList(this.text.split('').map(function (char) {
+        return _character2.default.create({
+          text: char,
+          marks: marks
+        });
+      }));
+
+      return characters;
+    }
+
+    /**
+     * Return a JSON representation of the leaf.
+     *
+     * @return {Object}
+     */
+
+  }, {
+    key: 'toJSON',
+    value: function toJSON() {
+      var object = {
+        kind: this.kind,
+        text: this.text,
+        marks: this.marks.toArray().map(function (m) {
+          return m.toJSON();
+        })
+      };
+
+      return object;
+    }
+
+    /**
+     * Alias `toJS`.
+     */
+
+  }, {
+    key: 'toJS',
+    value: function toJS() {
+      return this.toJSON();
+    }
+  }, {
+    key: 'kind',
+
+
+    /**
+     * Get the node's kind.
+     *
+     * @return {String}
+     */
+
+    get: function get() {
+      return 'leaf';
+    }
+  }], [{
+    key: 'create',
+
+
+    /**
+     * Create a new `Leaf` with `attrs`.
+     *
+     * @param {Object|Leaf} attrs
+     * @return {Leaf}
+     */
+
+    value: function create() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      if (Leaf.isLeaf(attrs)) {
+        return attrs;
+      }
+
+      if (typeof attrs == 'string') {
+        attrs = { text: attrs };
+      }
+
+      if ((0, _isPlainObject2.default)(attrs)) {
+        return Leaf.fromJSON(attrs);
+      }
+
+      throw new Error('`Leaf.create` only accepts objects, strings or leaves, but you passed it: ' + attrs);
+    }
+
+    /**
+     * Create a `Leaf` list from `attrs`.
+     *
+     * @param {Array<Leaf|Object>|List<Leaf|Object>} attrs
+     * @return {List<Leaf>}
+     */
+
+  }, {
+    key: 'createList',
+    value: function createList() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      if (_immutable.List.isList(attrs) || Array.isArray(attrs)) {
+        var list = new _immutable.List(attrs.map(Leaf.create));
+        return list;
+      }
+
+      throw new Error('`Leaf.createList` only accepts arrays or lists, but you passed it: ' + attrs);
+    }
+
+    /**
+     * Create a `Leaf` from a JSON `object`.
+     *
+     * @param {Object} object
+     * @return {Leaf}
+     */
+
+  }, {
+    key: 'fromJSON',
+    value: function fromJSON(object) {
+      var _object$text = object.text,
+          text = _object$text === undefined ? '' : _object$text,
+          _object$marks = object.marks,
+          marks = _object$marks === undefined ? [] : _object$marks;
+
+
+      var leaf = new Leaf({
+        text: text,
+        marks: new _immutable.Set(marks.map(_mark2.default.fromJSON))
+      });
+
+      return leaf;
+    }
+
+    /**
+     * Alias `fromJS`.
+     */
+
+  }, {
+    key: 'isLeaf',
+
+
+    /**
+     * Check if `any` is a `Leaf`.
+     *
+     * @param {Any} any
+     * @return {Boolean}
+     */
+
+    value: function isLeaf(any) {
+      return !!(any && any[_modelTypes2.default.LEAF]);
+    }
+
+    /**
+     * Check if `any` is a list of leaves.
+     *
+     * @param {Any} any
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isLeafList',
+    value: function isLeafList(any) {
+      return _immutable.List.isList(any) && any.every(function (item) {
+        return Leaf.isLeaf(item);
+      });
+    }
+  }]);
+
+  return Leaf;
+}((0, _immutable.Record)(DEFAULTS));
+
+/**
+ * Attach a pseudo-symbol for type checking.
+ */
+
+Leaf.fromJS = Leaf.fromJSON;
+Leaf.prototype[_modelTypes2.default.LEAF] = true;
+
+/**
+ * Export.
+ *
+ * @type {Leaf}
+ */
+
+exports.default = Leaf;
+},{"../constants/model-types":518,"./character":522,"./mark":528,"immutable":51,"is-plain-object":58}],528:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _isPlainObject = require('is-plain-object');
+
+var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
+
+var _immutable = require('immutable');
+
+var _modelTypes = require('../constants/model-types');
+
+var _modelTypes2 = _interopRequireDefault(_modelTypes);
+
+var _data = require('./data');
+
+var _data2 = _interopRequireDefault(_data);
+
+var _memoize = require('../utils/memoize');
+
+var _memoize2 = _interopRequireDefault(_memoize);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Default properties.
+ *
+ * @type {Object}
+ */
+
+var DEFAULTS = {
+  data: new _immutable.Map(),
+  type: undefined
+};
+
+/**
+ * Mark.
+ *
+ * @type {Mark}
+ */
+
+var Mark = function (_Record) {
+  _inherits(Mark, _Record);
+
+  function Mark() {
+    _classCallCheck(this, Mark);
+
+    return _possibleConstructorReturn(this, (Mark.__proto__ || Object.getPrototypeOf(Mark)).apply(this, arguments));
+  }
+
+  _createClass(Mark, [{
+    key: 'getComponent',
+
+
+    /**
+     * Get the component for the node from a `schema`.
+     *
+     * @param {Schema} schema
+     * @return {Component|Void}
+     */
+
+    value: function getComponent(schema) {
+      return schema.__getComponent(this);
+    }
+
+    /**
+     * Return a JSON representation of the mark.
+     *
+     * @return {Object}
+     */
+
+  }, {
+    key: 'toJSON',
+    value: function toJSON() {
+      var object = {
+        kind: this.kind,
+        type: this.type,
+        data: this.data.toJSON()
+      };
+
+      return object;
+    }
+
+    /**
+     * Alias `toJS`.
+     */
+
+  }, {
+    key: 'toJS',
+    value: function toJS() {
+      return this.toJSON();
+    }
+  }, {
+    key: 'kind',
+
+
+    /**
+     * Get the kind.
+     */
+
+    get: function get() {
+      return 'mark';
+    }
+  }], [{
+    key: 'create',
+
+
+    /**
+     * Create a new `Mark` with `attrs`.
+     *
+     * @param {Object|Mark} attrs
+     * @return {Mark}
+     */
+
+    value: function create() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      if (Mark.isMark(attrs)) {
+        return attrs;
+      }
+
+      if (typeof attrs == 'string') {
+        attrs = { type: attrs };
+      }
+
+      if ((0, _isPlainObject2.default)(attrs)) {
+        return Mark.fromJSON(attrs);
+      }
+
+      throw new Error('`Mark.create` only accepts objects, strings or marks, but you passed it: ' + attrs);
+    }
+
+    /**
+     * Create a set of marks.
+     *
+     * @param {Array<Object|Mark>} elements
+     * @return {Set<Mark>}
+     */
+
+  }, {
+    key: 'createSet',
+    value: function createSet(elements) {
+      if (_immutable.Set.isSet(elements) || Array.isArray(elements)) {
+        var marks = new _immutable.Set(elements.map(Mark.create));
+        return marks;
+      }
+
+      if (elements == null) {
+        return new _immutable.Set();
+      }
+
+      throw new Error('`Mark.createSet` only accepts sets, arrays or null, but you passed it: ' + elements);
+    }
+
+    /**
+     * Create a dictionary of settable mark properties from `attrs`.
+     *
+     * @param {Object|String|Mark} attrs
+     * @return {Object}
+     */
+
+  }, {
+    key: 'createProperties',
+    value: function createProperties() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      if (Mark.isMark(attrs)) {
+        return {
+          data: attrs.data,
+          type: attrs.type
+        };
+      }
+
+      if (typeof attrs == 'string') {
+        return { type: attrs };
+      }
+
+      if ((0, _isPlainObject2.default)(attrs)) {
+        var props = {};
+        if ('type' in attrs) props.type = attrs.type;
+        if ('data' in attrs) props.data = _data2.default.create(attrs.data);
+        return props;
+      }
+
+      throw new Error('`Mark.createProperties` only accepts objects, strings or marks, but you passed it: ' + attrs);
+    }
+
+    /**
+     * Create a `Mark` from a JSON `object`.
+     *
+     * @param {Object} object
+     * @return {Mark}
+     */
+
+  }, {
+    key: 'fromJSON',
+    value: function fromJSON(object) {
+      var _object$data = object.data,
+          data = _object$data === undefined ? {} : _object$data,
+          type = object.type;
+
+
+      if (typeof type != 'string') {
+        throw new Error('`Mark.fromJS` requires a `type` string.');
+      }
+
+      var mark = new Mark({
+        type: type,
+        data: new _immutable.Map(data)
+      });
+
+      return mark;
+    }
+
+    /**
+     * Alias `fromJS`.
+     */
+
+  }, {
+    key: 'isMark',
+
+
+    /**
+     * Check if `any` is a `Mark`.
+     *
+     * @param {Any} any
+     * @return {Boolean}
+     */
+
+    value: function isMark(any) {
+      return !!(any && any[_modelTypes2.default.MARK]);
+    }
+
+    /**
+     * Check if `any` is a set of marks.
+     *
+     * @param {Any} any
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isMarkSet',
+    value: function isMarkSet(any) {
+      return _immutable.Set.isSet(any) && any.every(function (item) {
+        return Mark.isMark(item);
+      });
+    }
+  }]);
+
+  return Mark;
+}((0, _immutable.Record)(DEFAULTS));
+
+/**
+ * Attach a pseudo-symbol for type checking.
+ */
+
+Mark.fromJS = Mark.fromJSON;
+Mark.prototype[_modelTypes2.default.MARK] = true;
+
+/**
+ * Memoize read methods.
+ */
+
+(0, _memoize2.default)(Mark.prototype, ['getComponent'], {
+  takesArguments: true
+});
+
+/**
+ * Export.
+ *
+ * @type {Mark}
+ */
+
+exports.default = Mark;
+},{"../constants/model-types":518,"../utils/memoize":540,"./data":523,"immutable":51,"is-plain-object":58}],529:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _direction = require('direction');
+
+var _direction2 = _interopRequireDefault(_direction);
+
+var _isPlainObject = require('is-plain-object');
+
+var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
+
+var _immutable = require('immutable');
+
+var _block = require('./block');
+
+var _block2 = _interopRequireDefault(_block);
+
+var _data = require('./data');
+
+var _data2 = _interopRequireDefault(_data);
+
+var _document = require('./document');
+
+var _document2 = _interopRequireDefault(_document);
+
+var _inline = require('./inline');
+
+var _inline2 = _interopRequireDefault(_inline);
+
+var _range8 = require('./range');
+
+var _range9 = _interopRequireDefault(_range8);
+
+var _text = require('./text');
+
+var _text2 = _interopRequireDefault(_text);
+
+var _generateKey = require('../utils/generate-key');
+
+var _generateKey2 = _interopRequireDefault(_generateKey);
+
+var _isIndexInRange = require('../utils/is-index-in-range');
+
+var _isIndexInRange2 = _interopRequireDefault(_isIndexInRange);
+
+var _memoize = require('../utils/memoize');
+
+var _memoize2 = _interopRequireDefault(_memoize);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Node.
+ *
+ * And interface that `Document`, `Block` and `Inline` all implement, to make
+ * working with the recursive node tree easier.
+ *
+ * @type {Node}
+ */
+
+var Node = function () {
+  function Node() {
+    _classCallCheck(this, Node);
+  }
+
+  _createClass(Node, [{
+    key: 'areDescendantsSorted',
+
+
+    /**
+     * True if the node has both descendants in that order, false otherwise. The
+     * order is depth-first, post-order.
+     *
+     * @param {String} first
+     * @param {String} second
+     * @return {Boolean}
+     */
+
+    value: function areDescendantsSorted(first, second) {
+      first = assertKey(first);
+      second = assertKey(second);
+
+      var keys = this.getKeysAsArray();
+      var firstIndex = keys.indexOf(first);
+      var secondIndex = keys.indexOf(second);
+      if (firstIndex == -1 || secondIndex == -1) return null;
+
+      return firstIndex < secondIndex;
+    }
+
+    /**
+     * Assert that a node has a child by `key` and return it.
+     *
+     * @param {String} key
+     * @return {Node}
+     */
+
+  }, {
+    key: 'assertChild',
+    value: function assertChild(key) {
+      var child = this.getChild(key);
+
+      if (!child) {
+        key = assertKey(key);
+        throw new Error('Could not find a child node with key "' + key + '".');
+      }
+
+      return child;
+    }
+
+    /**
+     * Assert that a node has a descendant by `key` and return it.
+     *
+     * @param {String} key
+     * @return {Node}
+     */
+
+  }, {
+    key: 'assertDescendant',
+    value: function assertDescendant(key) {
+      var descendant = this.getDescendant(key);
+
+      if (!descendant) {
+        key = assertKey(key);
+        throw new Error('Could not find a descendant node with key "' + key + '".');
+      }
+
+      return descendant;
+    }
+
+    /**
+     * Assert that a node's tree has a node by `key` and return it.
+     *
+     * @param {String} key
+     * @return {Node}
+     */
+
+  }, {
+    key: 'assertNode',
+    value: function assertNode(key) {
+      var node = this.getNode(key);
+
+      if (!node) {
+        key = assertKey(key);
+        throw new Error('Could not find a node with key "' + key + '".');
+      }
+
+      return node;
+    }
+
+    /**
+     * Assert that a node exists at `path` and return it.
+     *
+     * @param {Array} path
+     * @return {Node}
+     */
+
+  }, {
+    key: 'assertPath',
+    value: function assertPath(path) {
+      var descendant = this.getDescendantAtPath(path);
+
+      if (!descendant) {
+        throw new Error('Could not find a descendant at path "' + path + '".');
+      }
+
+      return descendant;
+    }
+
+    /**
+     * Recursively filter all descendant nodes with `iterator`.
+     *
+     * @param {Function} iterator
+     * @return {List<Node>}
+     */
+
+  }, {
+    key: 'filterDescendants',
+    value: function filterDescendants(iterator) {
+      var matches = [];
+
+      this.forEachDescendant(function (node, i, nodes) {
+        if (iterator(node, i, nodes)) matches.push(node);
+      });
+
+      return (0, _immutable.List)(matches);
+    }
+
+    /**
+     * Recursively find all descendant nodes by `iterator`.
+     *
+     * @param {Function} iterator
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'findDescendant',
+    value: function findDescendant(iterator) {
+      var found = null;
+
+      this.forEachDescendant(function (node, i, nodes) {
+        if (iterator(node, i, nodes)) {
+          found = node;
+          return false;
+        }
+      });
+
+      return found;
+    }
+
+    /**
+     * Recursively iterate over all descendant nodes with `iterator`. If the
+     * iterator returns false it will break the loop.
+     *
+     * @param {Function} iterator
+     */
+
+  }, {
+    key: 'forEachDescendant',
+    value: function forEachDescendant(iterator) {
+      var ret = void 0;
+
+      this.nodes.forEach(function (child, i, nodes) {
+        if (iterator(child, i, nodes) === false) {
+          ret = false;
+          return false;
+        }
+
+        if (child.kind != 'text') {
+          ret = child.forEachDescendant(iterator);
+          return ret;
+        }
+      });
+
+      return ret;
+    }
+
+    /**
+     * Get the path of ancestors of a descendant node by `key`.
+     *
+     * @param {String|Node} key
+     * @return {List<Node>|Null}
+     */
+
+  }, {
+    key: 'getAncestors',
+    value: function getAncestors(key) {
+      key = assertKey(key);
+
+      if (key == this.key) return (0, _immutable.List)();
+      if (this.hasChild(key)) return (0, _immutable.List)([this]);
+
+      var ancestors = void 0;
+      this.nodes.find(function (node) {
+        if (node.kind == 'text') return false;
+        ancestors = node.getAncestors(key);
+        return ancestors;
+      });
+
+      if (ancestors) {
+        return ancestors.unshift(this);
+      } else {
+        return null;
+      }
+    }
+
+    /**
+     * Get the leaf block descendants of the node.
+     *
+     * @return {List<Node>}
+     */
+
+  }, {
+    key: 'getBlocks',
+    value: function getBlocks() {
+      var array = this.getBlocksAsArray();
+      return new _immutable.List(array);
+    }
+
+    /**
+     * Get the leaf block descendants of the node.
+     *
+     * @return {List<Node>}
+     */
+
+  }, {
+    key: 'getBlocksAsArray',
+    value: function getBlocksAsArray() {
+      return this.nodes.reduce(function (array, child) {
+        if (child.kind != 'block') return array;
+        if (!child.isLeafBlock()) return array.concat(child.getBlocksAsArray());
+        array.push(child);
+        return array;
+      }, []);
+    }
+
+    /**
+     * Get the leaf block descendants in a `range`.
+     *
+     * @param {Range} range
+     * @return {List<Node>}
+     */
+
+  }, {
+    key: 'getBlocksAtRange',
+    value: function getBlocksAtRange(range) {
+      var array = this.getBlocksAtRangeAsArray(range);
+      // Eliminate duplicates by converting to an `OrderedSet` first.
+      return new _immutable.List(new _immutable.OrderedSet(array));
+    }
+
+    /**
+     * Get the leaf block descendants in a `range` as an array
+     *
+     * @param {Range} range
+     * @return {Array}
+     */
+
+  }, {
+    key: 'getBlocksAtRangeAsArray',
+    value: function getBlocksAtRangeAsArray(range) {
+      range = range.normalize(this);
+      if (range.isUnset) return [];
+
+      var _range = range,
+          startKey = _range.startKey,
+          endKey = _range.endKey;
+
+      var startBlock = this.getClosestBlock(startKey);
+
+      // PERF: the most common case is when the range is in a single block node,
+      // where we can avoid a lot of iterating of the tree.
+      if (startKey == endKey) return [startBlock];
+
+      var endBlock = this.getClosestBlock(endKey);
+      var blocks = this.getBlocksAsArray();
+      var start = blocks.indexOf(startBlock);
+      var end = blocks.indexOf(endBlock);
+      return blocks.slice(start, end + 1);
+    }
+
+    /**
+     * Get all of the leaf blocks that match a `type`.
+     *
+     * @param {String} type
+     * @return {List<Node>}
+     */
+
+  }, {
+    key: 'getBlocksByType',
+    value: function getBlocksByType(type) {
+      var array = this.getBlocksByTypeAsArray(type);
+      return new _immutable.List(array);
+    }
+
+    /**
+     * Get all of the leaf blocks that match a `type` as an array
+     *
+     * @param {String} type
+     * @return {Array}
+     */
+
+  }, {
+    key: 'getBlocksByTypeAsArray',
+    value: function getBlocksByTypeAsArray(type) {
+      return this.nodes.reduce(function (array, node) {
+        if (node.kind != 'block') {
+          return array;
+        } else if (node.isLeafBlock() && node.type == type) {
+          array.push(node);
+          return array;
+        } else {
+          return array.concat(node.getBlocksByTypeAsArray(type));
+        }
+      }, []);
+    }
+
+    /**
+     * Get all of the characters for every text node.
+     *
+     * @return {List<Character>}
+     */
+
+  }, {
+    key: 'getCharacters',
+    value: function getCharacters() {
+      var array = this.getCharactersAsArray();
+      return new _immutable.List(array);
+    }
+
+    /**
+     * Get all of the characters for every text node as an array
+     *
+     * @return {Array}
+     */
+
+  }, {
+    key: 'getCharactersAsArray',
+    value: function getCharactersAsArray() {
+      return this.nodes.reduce(function (arr, node) {
+        return node.kind == 'text' ? arr.concat(node.characters.toArray()) : arr.concat(node.getCharactersAsArray());
+      }, []);
+    }
+
+    /**
+     * Get a list of the characters in a `range`.
+     *
+     * @param {Range} range
+     * @return {List<Character>}
+     */
+
+  }, {
+    key: 'getCharactersAtRange',
+    value: function getCharactersAtRange(range) {
+      var array = this.getCharactersAtRangeAsArray(range);
+      return new _immutable.List(array);
+    }
+
+    /**
+     * Get a list of the characters in a `range` as an array.
+     *
+     * @param {Range} range
+     * @return {Array}
+     */
+
+  }, {
+    key: 'getCharactersAtRangeAsArray',
+    value: function getCharactersAtRangeAsArray(range) {
+      range = range.normalize(this);
+      if (range.isUnset) return [];
+
+      return this.getTextsAtRange(range).reduce(function (arr, text) {
+        var chars = text.characters.filter(function (char, i) {
+          return (0, _isIndexInRange2.default)(i, text, range);
+        }).toArray();
+
+        return arr.concat(chars);
+      }, []);
+    }
+
+    /**
+     * Get a child node by `key`.
+     *
+     * @param {String} key
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getChild',
+    value: function getChild(key) {
+      key = assertKey(key);
+      return this.nodes.find(function (node) {
+        return node.key == key;
+      });
+    }
+
+    /**
+     * Get closest parent of node by `key` that matches `iterator`.
+     *
+     * @param {String} key
+     * @param {Function} iterator
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getClosest',
+    value: function getClosest(key, iterator) {
+      key = assertKey(key);
+      var ancestors = this.getAncestors(key);
+      if (!ancestors) {
+        throw new Error('Could not find a descendant node with key "' + key + '".');
+      }
+
+      // Exclude this node itself.
+      return ancestors.rest().findLast(iterator);
+    }
+
+    /**
+     * Get the closest block parent of a `node`.
+     *
+     * @param {String} key
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getClosestBlock',
+    value: function getClosestBlock(key) {
+      return this.getClosest(key, function (parent) {
+        return parent.kind == 'block';
+      });
+    }
+
+    /**
+     * Get the closest inline parent of a `node`.
+     *
+     * @param {String} key
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getClosestInline',
+    value: function getClosestInline(key) {
+      return this.getClosest(key, function (parent) {
+        return parent.kind == 'inline';
+      });
+    }
+
+    /**
+     * Get the closest void parent of a `node`.
+     *
+     * @param {String} key
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getClosestVoid',
+    value: function getClosestVoid(key) {
+      return this.getClosest(key, function (parent) {
+        return parent.isVoid;
+      });
+    }
+
+    /**
+     * Get the common ancestor of nodes `one` and `two` by keys.
+     *
+     * @param {String} one
+     * @param {String} two
+     * @return {Node}
+     */
+
+  }, {
+    key: 'getCommonAncestor',
+    value: function getCommonAncestor(one, two) {
+      one = assertKey(one);
+      two = assertKey(two);
+
+      if (one == this.key) return this;
+      if (two == this.key) return this;
+
+      this.assertDescendant(one);
+      this.assertDescendant(two);
+      var ancestors = new _immutable.List();
+      var oneParent = this.getParent(one);
+      var twoParent = this.getParent(two);
+
+      while (oneParent) {
+        ancestors = ancestors.push(oneParent);
+        oneParent = this.getParent(oneParent.key);
+      }
+
+      while (twoParent) {
+        if (ancestors.includes(twoParent)) return twoParent;
+        twoParent = this.getParent(twoParent.key);
+      }
+    }
+
+    /**
+     * Get the decorations for the node from a `stack`.
+     *
+     * @param {Stack} stack
+     * @return {List}
+     */
+
+  }, {
+    key: 'getDecorations',
+    value: function getDecorations(stack) {
+      var decorations = stack.find('decorateNode', this);
+      var list = _range9.default.createList(decorations || []);
+      return list;
+    }
+
+    /**
+     * Get the depth of a child node by `key`, with optional `startAt`.
+     *
+     * @param {String} key
+     * @param {Number} startAt (optional)
+     * @return {Number} depth
+     */
+
+  }, {
+    key: 'getDepth',
+    value: function getDepth(key) {
+      var startAt = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
+      this.assertDescendant(key);
+      if (this.hasChild(key)) return startAt;
+      return this.getFurthestAncestor(key).getDepth(key, startAt + 1);
+    }
+
+    /**
+     * Get a descendant node by `key`.
+     *
+     * @param {String} key
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getDescendant',
+    value: function getDescendant(key) {
+      key = assertKey(key);
+      var descendantFound = null;
+
+      var found = this.nodes.find(function (node) {
+        if (node.key === key) {
+          return node;
+        } else if (node.kind !== 'text') {
+          descendantFound = node.getDescendant(key);
+          return descendantFound;
+        } else {
+          return false;
+        }
+      });
+
+      return descendantFound || found;
+    }
+
+    /**
+     * Get a descendant by `path`.
+     *
+     * @param {Array} path
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getDescendantAtPath',
+    value: function getDescendantAtPath(path) {
+      var descendant = this;
+
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = path[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var index = _step.value;
+
+          if (!descendant) return;
+          if (!descendant.nodes) return;
+          descendant = descendant.nodes.get(index);
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+
+      return descendant;
+    }
+
+    /**
+     * Get the first child text node.
+     *
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getFirstText',
+    value: function getFirstText() {
+      var descendantFound = null;
+
+      var found = this.nodes.find(function (node) {
+        if (node.kind == 'text') return true;
+        descendantFound = node.getFirstText();
+        return descendantFound;
+      });
+
+      return descendantFound || found;
+    }
+
+    /**
+     * Get a fragment of the node at a `range`.
+     *
+     * @param {Range} range
+     * @return {Document}
+     */
+
+  }, {
+    key: 'getFragmentAtRange',
+    value: function getFragmentAtRange(range) {
+      range = range.normalize(this);
+      if (range.isUnset) return _document2.default.create();
+
+      var node = this;
+
+      // Make sure the children exist.
+      var _range2 = range,
+          startKey = _range2.startKey,
+          startOffset = _range2.startOffset,
+          endKey = _range2.endKey,
+          endOffset = _range2.endOffset;
+
+      var startText = node.assertDescendant(startKey);
+      var endText = node.assertDescendant(endKey);
+
+      // Split at the start and end.
+      var child = startText;
+      var previous = void 0;
+      var parent = void 0;
+
+      while (parent = node.getParent(child.key)) {
+        var index = parent.nodes.indexOf(child);
+        var position = child.kind == 'text' ? startOffset : child.nodes.indexOf(previous);
+
+        parent = parent.splitNode(index, position);
+        node = node.updateNode(parent);
+        previous = parent.nodes.get(index + 1);
+        child = parent;
+      }
+
+      child = startKey == endKey ? node.getNextText(startKey) : endText;
+
+      while (parent = node.getParent(child.key)) {
+        var _index = parent.nodes.indexOf(child);
+        var _position = child.kind == 'text' ? startKey == endKey ? endOffset - startOffset : endOffset : child.nodes.indexOf(previous);
+
+        parent = parent.splitNode(_index, _position);
+        node = node.updateNode(parent);
+        previous = parent.nodes.get(_index + 1);
+        child = parent;
+      }
+
+      // Get the start and end nodes.
+      var startNode = node.getNextSibling(node.getFurthestAncestor(startKey).key);
+      var endNode = startKey == endKey ? node.getNextSibling(node.getNextSibling(node.getFurthestAncestor(endKey).key).key) : node.getNextSibling(node.getFurthestAncestor(endKey).key);
+
+      // Get children range of nodes from start to end nodes
+      var startIndex = node.nodes.indexOf(startNode);
+      var endIndex = node.nodes.indexOf(endNode);
+      var nodes = node.nodes.slice(startIndex, endIndex);
+
+      // Return a new document fragment.
+      return _document2.default.create({ nodes: nodes });
+    }
+
+    /**
+     * Get the furthest parent of a node by `key` that matches an `iterator`.
+     *
+     * @param {String} key
+     * @param {Function} iterator
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getFurthest',
+    value: function getFurthest(key, iterator) {
+      var ancestors = this.getAncestors(key);
+      if (!ancestors) {
+        key = assertKey(key);
+        throw new Error('Could not find a descendant node with key "' + key + '".');
+      }
+
+      // Exclude this node itself
+      return ancestors.rest().find(iterator);
+    }
+
+    /**
+     * Get the furthest block parent of a node by `key`.
+     *
+     * @param {String} key
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getFurthestBlock',
+    value: function getFurthestBlock(key) {
+      return this.getFurthest(key, function (node) {
+        return node.kind == 'block';
+      });
+    }
+
+    /**
+     * Get the furthest inline parent of a node by `key`.
+     *
+     * @param {String} key
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getFurthestInline',
+    value: function getFurthestInline(key) {
+      return this.getFurthest(key, function (node) {
+        return node.kind == 'inline';
+      });
+    }
+
+    /**
+     * Get the furthest ancestor of a node by `key`.
+     *
+     * @param {String} key
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getFurthestAncestor',
+    value: function getFurthestAncestor(key) {
+      key = assertKey(key);
+      return this.nodes.find(function (node) {
+        if (node.key == key) return true;
+        if (node.kind == 'text') return false;
+        return node.hasDescendant(key);
+      });
+    }
+
+    /**
+     * Get the furthest ancestor of a node by `key` that has only one child.
+     *
+     * @param {String} key
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getFurthestOnlyChildAncestor',
+    value: function getFurthestOnlyChildAncestor(key) {
+      var ancestors = this.getAncestors(key);
+
+      if (!ancestors) {
+        key = assertKey(key);
+        throw new Error('Could not find a descendant node with key "' + key + '".');
+      }
+
+      return ancestors
+      // Skip this node...
+      .skipLast()
+      // Take parents until there are more than one child...
+      .reverse().takeUntil(function (p) {
+        return p.nodes.size > 1;
+      })
+      // And pick the highest.
+      .last();
+    }
+
+    /**
+     * Get the closest inline nodes for each text node in the node.
+     *
+     * @return {List<Node>}
+     */
+
+  }, {
+    key: 'getInlines',
+    value: function getInlines() {
+      var array = this.getInlinesAsArray();
+      return new _immutable.List(array);
+    }
+
+    /**
+     * Get the closest inline nodes for each text node in the node, as an array.
+     *
+     * @return {List<Node>}
+     */
+
+  }, {
+    key: 'getInlinesAsArray',
+    value: function getInlinesAsArray() {
+      var array = [];
+
+      this.nodes.forEach(function (child) {
+        if (child.kind == 'text') return;
+        if (child.isLeafInline()) {
+          array.push(child);
+        } else {
+          array = array.concat(child.getInlinesAsArray());
+        }
+      });
+
+      return array;
+    }
+
+    /**
+     * Get the closest inline nodes for each text node in a `range`.
+     *
+     * @param {Range} range
+     * @return {List<Node>}
+     */
+
+  }, {
+    key: 'getInlinesAtRange',
+    value: function getInlinesAtRange(range) {
+      var array = this.getInlinesAtRangeAsArray(range);
+      // Remove duplicates by converting it to an `OrderedSet` first.
+      return new _immutable.List(new _immutable.OrderedSet(array));
+    }
+
+    /**
+     * Get the closest inline nodes for each text node in a `range` as an array.
+     *
+     * @param {Range} range
+     * @return {Array}
+     */
+
+  }, {
+    key: 'getInlinesAtRangeAsArray',
+    value: function getInlinesAtRangeAsArray(range) {
+      var _this = this;
+
+      range = range.normalize(this);
+      if (range.isUnset) return [];
+
+      return this.getTextsAtRangeAsArray(range).map(function (text) {
+        return _this.getClosestInline(text.key);
+      }).filter(function (exists) {
+        return exists;
+      });
+    }
+
+    /**
+     * Get all of the leaf inline nodes that match a `type`.
+     *
+     * @param {String} type
+     * @return {List<Node>}
+     */
+
+  }, {
+    key: 'getInlinesByType',
+    value: function getInlinesByType(type) {
+      var array = this.getInlinesByTypeAsArray(type);
+      return new _immutable.List(array);
+    }
+
+    /**
+     * Get all of the leaf inline nodes that match a `type` as an array.
+     *
+     * @param {String} type
+     * @return {Array}
+     */
+
+  }, {
+    key: 'getInlinesByTypeAsArray',
+    value: function getInlinesByTypeAsArray(type) {
+      return this.nodes.reduce(function (inlines, node) {
+        if (node.kind == 'text') {
+          return inlines;
+        } else if (node.isLeafInline() && node.type == type) {
+          inlines.push(node);
+          return inlines;
+        } else {
+          return inlines.concat(node.getInlinesByTypeAsArray(type));
+        }
+      }, []);
+    }
+
+    /**
+     * Return a set of all keys in the node as an array.
+     *
+     * @return {Array<String>}
+     */
+
+  }, {
+    key: 'getKeysAsArray',
+    value: function getKeysAsArray() {
+      var keys = [];
+
+      this.forEachDescendant(function (desc) {
+        keys.push(desc.key);
+      });
+
+      return keys;
+    }
+
+    /**
+     * Return a set of all keys in the node.
+     *
+     * @return {Set<String>}
+     */
+
+  }, {
+    key: 'getKeys',
+    value: function getKeys() {
+      var keys = this.getKeysAsArray();
+      return new _immutable.Set(keys);
+    }
+
+    /**
+     * Get the last child text node.
+     *
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getLastText',
+    value: function getLastText() {
+      var descendantFound = null;
+
+      var found = this.nodes.findLast(function (node) {
+        if (node.kind == 'text') return true;
+        descendantFound = node.getLastText();
+        return descendantFound;
+      });
+
+      return descendantFound || found;
+    }
+
+    /**
+     * Get all of the marks for all of the characters of every text node.
+     *
+     * @return {Set<Mark>}
+     */
+
+  }, {
+    key: 'getMarks',
+    value: function getMarks() {
+      var array = this.getMarksAsArray();
+      return new _immutable.Set(array);
+    }
+
+    /**
+     * Get all of the marks for all of the characters of every text node.
+     *
+     * @return {OrderedSet<Mark>}
+     */
+
+  }, {
+    key: 'getOrderedMarks',
+    value: function getOrderedMarks() {
+      var array = this.getMarksAsArray();
+      return new _immutable.OrderedSet(array);
+    }
+
+    /**
+     * Get all of the marks as an array.
+     *
+     * @return {Array}
+     */
+
+  }, {
+    key: 'getMarksAsArray',
+    value: function getMarksAsArray() {
+      return this.nodes.reduce(function (marks, node) {
+        return marks.concat(node.getMarksAsArray());
+      }, []);
+    }
+
+    /**
+     * Get a set of the marks in a `range`.
+     *
+     * @param {Range} range
+     * @return {Set<Mark>}
+     */
+
+  }, {
+    key: 'getMarksAtRange',
+    value: function getMarksAtRange(range) {
+      var array = this.getMarksAtRangeAsArray(range);
+      return new _immutable.Set(array);
+    }
+
+    /**
+     * Get a set of the marks in a `range`.
+     *
+     * @param {Range} range
+     * @return {OrderedSet<Mark>}
+     */
+
+  }, {
+    key: 'getOrderedMarksAtRange',
+    value: function getOrderedMarksAtRange(range) {
+      var array = this.getMarksAtRangeAsArray(range);
+      return new _immutable.OrderedSet(array);
+    }
+
+    /**
+     * Get a set of the active marks in a `range`.
+     *
+     * @param {Range} range
+     * @return {Set<Mark>}
+     */
+
+  }, {
+    key: 'getActiveMarksAtRange',
+    value: function getActiveMarksAtRange(range) {
+      var array = this.getActiveMarksAtRangeAsArray(range);
+      return new _immutable.Set(array);
+    }
+
+    /**
+     * Get a set of the marks in a `range`, by unioning.
+     *
+     * @param {Range} range
+     * @return {Array}
+     */
+
+  }, {
+    key: 'getMarksAtRangeAsArray',
+    value: function getMarksAtRangeAsArray(range) {
+      range = range.normalize(this);
+      if (range.isUnset) return [];
+
+      var _range3 = range,
+          startKey = _range3.startKey,
+          startOffset = _range3.startOffset;
+
+      // If the range is collapsed at the start of the node, check the previous.
+
+      if (range.isCollapsed && startOffset == 0) {
+        var previous = this.getPreviousText(startKey);
+        if (!previous || previous.text.length == 0) return [];
+        var char = previous.characters.get(previous.text.length - 1);
+        return char.marks.toArray();
+      }
+
+      // If the range is collapsed, check the character before the start.
+      if (range.isCollapsed) {
+        var text = this.getDescendant(startKey);
+        var _char = text.characters.get(range.startOffset - 1);
+        return _char.marks.toArray();
+      }
+
+      // Otherwise, get a set of the marks for each character in the range.
+      return this.getCharactersAtRange(range).reduce(function (memo, char) {
+        char.marks.toArray().forEach(function (c) {
+          return memo.push(c);
+        });
+        return memo;
+      }, []);
+    }
+
+    /**
+     * Get a set of marks in a `range`, by intersecting.
+     *
+     * @param {Range} range
+     * @return {Array}
+     */
+
+  }, {
+    key: 'getActiveMarksAtRangeAsArray',
+    value: function getActiveMarksAtRangeAsArray(range) {
+      range = range.normalize(this);
+      if (range.isUnset) return [];
+
+      var _range4 = range,
+          startKey = _range4.startKey,
+          startOffset = _range4.startOffset;
+
+      // If the range is collapsed at the start of the node, check the previous.
+
+      if (range.isCollapsed && startOffset == 0) {
+        var previous = this.getPreviousText(startKey);
+        if (!previous || !previous.length) return [];
+        var char = previous.characters.get(previous.length - 1);
+        return char.marks.toArray();
+      }
+
+      // If the range is collapsed, check the character before the start.
+      if (range.isCollapsed) {
+        var text = this.getDescendant(startKey);
+        var _char2 = text.characters.get(range.startOffset - 1);
+        return _char2.marks.toArray();
+      }
+
+      // Otherwise, get a set of the marks for each character in the range.
+      var chars = this.getCharactersAtRange(range);
+      var first = chars.first();
+      if (!first) return [];
+
+      var memo = first.marks;
+
+      chars.slice(1).forEach(function (char) {
+        memo = memo.intersect(char.marks);
+        return memo.size != 0;
+      });
+
+      return memo.toArray();
+    }
+
+    /**
+     * Get all of the marks that match a `type`.
+     *
+     * @param {String} type
+     * @return {Set<Mark>}
+     */
+
+  }, {
+    key: 'getMarksByType',
+    value: function getMarksByType(type) {
+      var array = this.getMarksByTypeAsArray(type);
+      return new _immutable.Set(array);
+    }
+
+    /**
+     * Get all of the marks that match a `type`.
+     *
+     * @param {String} type
+     * @return {OrderedSet<Mark>}
+     */
+
+  }, {
+    key: 'getOrderedMarksByType',
+    value: function getOrderedMarksByType(type) {
+      var array = this.getMarksByTypeAsArray(type);
+      return new _immutable.OrderedSet(array);
+    }
+
+    /**
+     * Get all of the marks that match a `type` as an array.
+     *
+     * @param {String} type
+     * @return {Array}
+     */
+
+  }, {
+    key: 'getMarksByTypeAsArray',
+    value: function getMarksByTypeAsArray(type) {
+      return this.nodes.reduce(function (array, node) {
+        return node.kind == 'text' ? array.concat(node.getMarksAsArray().filter(function (m) {
+          return m.type == type;
+        })) : array.concat(node.getMarksByTypeAsArray(type));
+      }, []);
+    }
+
+    /**
+     * Get the block node before a descendant text node by `key`.
+     *
+     * @param {String} key
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getNextBlock',
+    value: function getNextBlock(key) {
+      var child = this.assertDescendant(key);
+      var last = void 0;
+
+      if (child.kind == 'block') {
+        last = child.getLastText();
+      } else {
+        var block = this.getClosestBlock(key);
+        last = block.getLastText();
+      }
+
+      var next = this.getNextText(last.key);
+      if (!next) return null;
+
+      return this.getClosestBlock(next.key);
+    }
+
+    /**
+     * Get the node after a descendant by `key`.
+     *
+     * @param {String} key
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getNextSibling',
+    value: function getNextSibling(key) {
+      key = assertKey(key);
+
+      var parent = this.getParent(key);
+      var after = parent.nodes.skipUntil(function (child) {
+        return child.key == key;
+      });
+
+      if (after.size == 0) {
+        throw new Error('Could not find a child node with key "' + key + '".');
+      }
+      return after.get(1);
+    }
+
+    /**
+     * Get the text node after a descendant text node by `key`.
+     *
+     * @param {String} key
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getNextText',
+    value: function getNextText(key) {
+      key = assertKey(key);
+      return this.getTexts().skipUntil(function (text) {
+        return text.key == key;
+      }).get(1);
+    }
+
+    /**
+     * Get a node in the tree by `key`.
+     *
+     * @param {String} key
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getNode',
+    value: function getNode(key) {
+      key = assertKey(key);
+      return this.key == key ? this : this.getDescendant(key);
+    }
+
+    /**
+     * Get a node in the tree by `path`.
+     *
+     * @param {Array} path
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getNodeAtPath',
+    value: function getNodeAtPath(path) {
+      return path.length ? this.getDescendantAtPath(path) : this;
+    }
+
+    /**
+     * Get the offset for a descendant text node by `key`.
+     *
+     * @param {String} key
+     * @return {Number}
+     */
+
+  }, {
+    key: 'getOffset',
+    value: function getOffset(key) {
+      this.assertDescendant(key);
+
+      // Calculate the offset of the nodes before the highest child.
+      var child = this.getFurthestAncestor(key);
+      var offset = this.nodes.takeUntil(function (n) {
+        return n == child;
+      }).reduce(function (memo, n) {
+        return memo + n.text.length;
+      }, 0);
+
+      // Recurse if need be.
+      return this.hasChild(key) ? offset : offset + child.getOffset(key);
+    }
+
+    /**
+     * Get the offset from a `range`.
+     *
+     * @param {Range} range
+     * @return {Number}
+     */
+
+  }, {
+    key: 'getOffsetAtRange',
+    value: function getOffsetAtRange(range) {
+      range = range.normalize(this);
+
+      if (range.isUnset) {
+        throw new Error('The range cannot be unset to calculcate its offset.');
+      }
+
+      if (range.isExpanded) {
+        throw new Error('The range must be collapsed to calculcate its offset.');
+      }
+
+      var _range5 = range,
+          startKey = _range5.startKey,
+          startOffset = _range5.startOffset;
+
+      return this.getOffset(startKey) + startOffset;
+    }
+
+    /**
+     * Get the parent of a child node by `key`.
+     *
+     * @param {String} key
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getParent',
+    value: function getParent(key) {
+      if (this.hasChild(key)) return this;
+
+      var node = null;
+
+      this.nodes.find(function (child) {
+        if (child.kind == 'text') {
+          return false;
+        } else {
+          node = child.getParent(key);
+          return node;
+        }
+      });
+
+      return node;
+    }
+
+    /**
+     * Get the path of a descendant node by `key`.
+     *
+     * @param {String|Node} key
+     * @return {Array}
+     */
+
+  }, {
+    key: 'getPath',
+    value: function getPath(key) {
+      var child = this.assertNode(key);
+      var ancestors = this.getAncestors(key);
+      var path = [];
+
+      ancestors.reverse().forEach(function (ancestor) {
+        var index = ancestor.nodes.indexOf(child);
+        path.unshift(index);
+        child = ancestor;
+      });
+
+      return path;
+    }
+
+    /**
+     * Get the placeholder for the node from a `schema`.
+     *
+     * @param {Schema} schema
+     * @return {Component|Void}
+     */
+
+  }, {
+    key: 'getPlaceholder',
+    value: function getPlaceholder(schema) {
+      return schema.__getPlaceholder(this);
+    }
+
+    /**
+     * Get the block node before a descendant text node by `key`.
+     *
+     * @param {String} key
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getPreviousBlock',
+    value: function getPreviousBlock(key) {
+      var child = this.assertDescendant(key);
+      var first = void 0;
+
+      if (child.kind == 'block') {
+        first = child.getFirstText();
+      } else {
+        var block = this.getClosestBlock(key);
+        first = block.getFirstText();
+      }
+
+      var previous = this.getPreviousText(first.key);
+      if (!previous) return null;
+
+      return this.getClosestBlock(previous.key);
+    }
+
+    /**
+     * Get the node before a descendant node by `key`.
+     *
+     * @param {String} key
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getPreviousSibling',
+    value: function getPreviousSibling(key) {
+      key = assertKey(key);
+      var parent = this.getParent(key);
+      var before = parent.nodes.takeUntil(function (child) {
+        return child.key == key;
+      });
+
+      if (before.size == parent.nodes.size) {
+        throw new Error('Could not find a child node with key "' + key + '".');
+      }
+
+      return before.last();
+    }
+
+    /**
+     * Get the text node before a descendant text node by `key`.
+     *
+     * @param {String} key
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getPreviousText',
+    value: function getPreviousText(key) {
+      key = assertKey(key);
+      return this.getTexts().takeUntil(function (text) {
+        return text.key == key;
+      }).last();
+    }
+
+    /**
+     * Get the indexes of the selection for a `range`, given an extra flag for
+     * whether the node `isSelected`, to determine whether not finding matches
+     * means everything is selected or nothing is.
+     *
+     * @param {Range} range
+     * @param {Boolean} isSelected
+     * @return {Object|Null}
+     */
+
+  }, {
+    key: 'getSelectionIndexes',
+    value: function getSelectionIndexes(range) {
+      var isSelected = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      var startKey = range.startKey,
+          endKey = range.endKey;
+
+      // PERF: if we're not selected, or the range is blurred, we can exit early.
+
+      if (!isSelected || range.isBlurred) {
+        return null;
+      }
+
+      // PERF: if the start and end keys are the same, just check for the child
+      // that contains that single key.
+      if (startKey == endKey) {
+        var child = this.getFurthestAncestor(startKey);
+        var index = child ? this.nodes.indexOf(child) : null;
+        return { start: index, end: index + 1 };
+      }
+
+      // Otherwise, check all of the children...
+      var start = null;
+      var end = null;
+
+      this.nodes.forEach(function (child, i) {
+        if (child.kind == 'text') {
+          if (start == null && child.key == startKey) start = i;
+          if (end == null && child.key == endKey) end = i + 1;
+        } else {
+          if (start == null && child.hasDescendant(startKey)) start = i;
+          if (end == null && child.hasDescendant(endKey)) end = i + 1;
+        }
+
+        // PERF: exit early if both start and end have been found.
+        return start == null || end == null;
+      });
+
+      if (isSelected && start == null) start = 0;
+      if (isSelected && end == null) end = this.nodes.size;
+      return start == null ? null : { start: start, end: end };
+    }
+
+    /**
+     * Get the concatenated text string of all child nodes.
+     *
+     * @return {String}
+     */
+
+  }, {
+    key: 'getText',
+    value: function getText() {
+      return this.nodes.reduce(function (string, node) {
+        return string + node.text;
+      }, '');
+    }
+
+    /**
+     * Get the descendent text node at an `offset`.
+     *
+     * @param {String} offset
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getTextAtOffset',
+    value: function getTextAtOffset(offset) {
+      // PERF: Add a few shortcuts for the obvious cases.
+      if (offset == 0) return this.getFirstText();
+      if (offset == this.text.length) return this.getLastText();
+      if (offset < 0 || offset > this.text.length) return null;
+
+      var length = 0;
+
+      return this.getTexts().find(function (node, i, nodes) {
+        length += node.text.length;
+        return length > offset;
+      });
+    }
+
+    /**
+     * Get the direction of the node's text.
+     *
+     * @return {String}
+     */
+
+  }, {
+    key: 'getTextDirection',
+    value: function getTextDirection() {
+      var dir = (0, _direction2.default)(this.text);
+      return dir == 'neutral' ? undefined : dir;
+    }
+
+    /**
+     * Recursively get all of the child text nodes in order of appearance.
+     *
+     * @return {List<Node>}
+     */
+
+  }, {
+    key: 'getTexts',
+    value: function getTexts() {
+      var array = this.getTextsAsArray();
+      return new _immutable.List(array);
+    }
+
+    /**
+     * Recursively get all the leaf text nodes in order of appearance, as array.
+     *
+     * @return {List<Node>}
+     */
+
+  }, {
+    key: 'getTextsAsArray',
+    value: function getTextsAsArray() {
+      var array = [];
+
+      this.nodes.forEach(function (node) {
+        if (node.kind == 'text') {
+          array.push(node);
+        } else {
+          array = array.concat(node.getTextsAsArray());
+        }
+      });
+
+      return array;
+    }
+
+    /**
+     * Get all of the text nodes in a `range`.
+     *
+     * @param {Range} range
+     * @return {List<Node>}
+     */
+
+  }, {
+    key: 'getTextsAtRange',
+    value: function getTextsAtRange(range) {
+      var array = this.getTextsAtRangeAsArray(range);
+      return new _immutable.List(array);
+    }
+
+    /**
+     * Get all of the text nodes in a `range` as an array.
+     *
+     * @param {Range} range
+     * @return {Array}
+     */
+
+  }, {
+    key: 'getTextsAtRangeAsArray',
+    value: function getTextsAtRangeAsArray(range) {
+      range = range.normalize(this);
+      if (range.isUnset) return [];
+
+      var _range6 = range,
+          startKey = _range6.startKey,
+          endKey = _range6.endKey;
+
+      var startText = this.getDescendant(startKey);
+
+      // PERF: the most common case is when the range is in a single text node,
+      // where we can avoid a lot of iterating of the tree.
+      if (startKey == endKey) return [startText];
+
+      var endText = this.getDescendant(endKey);
+      var texts = this.getTextsAsArray();
+      var start = texts.indexOf(startText);
+      var end = texts.indexOf(endText);
+      return texts.slice(start, end + 1);
+    }
+
+    /**
+     * Check if a child node exists by `key`.
+     *
+     * @param {String} key
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'hasChild',
+    value: function hasChild(key) {
+      return !!this.getChild(key);
+    }
+
+    /**
+     * Recursively check if a child node exists by `key`.
+     *
+     * @param {String} key
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'hasDescendant',
+    value: function hasDescendant(key) {
+      return !!this.getDescendant(key);
+    }
+
+    /**
+     * Recursively check if a node exists by `key`.
+     *
+     * @param {String} key
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'hasNode',
+    value: function hasNode(key) {
+      return !!this.getNode(key);
+    }
+
+    /**
+     * Check if a node has a void parent by `key`.
+     *
+     * @param {String} key
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'hasVoidParent',
+    value: function hasVoidParent(key) {
+      return !!this.getClosest(key, function (parent) {
+        return parent.isVoid;
+      });
+    }
+
+    /**
+     * Insert a `node` at `index`.
+     *
+     * @param {Number} index
+     * @param {Node} node
+     * @return {Node}
+     */
+
+  }, {
+    key: 'insertNode',
+    value: function insertNode(index, node) {
+      var keys = this.getKeys();
+
+      if (keys.contains(node.key)) {
+        node = node.regenerateKey();
+      }
+
+      if (node.kind != 'text') {
+        node = node.mapDescendants(function (desc) {
+          return keys.contains(desc.key) ? desc.regenerateKey() : desc;
+        });
+      }
+
+      var nodes = this.nodes.insert(index, node);
+      return this.set('nodes', nodes);
+    }
+
+    /**
+     * Check whether the node is in a `range`.
+     *
+     * @param {Range} range
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isInRange',
+    value: function isInRange(range) {
+      range = range.normalize(this);
+
+      var node = this;
+      var _range7 = range,
+          startKey = _range7.startKey,
+          endKey = _range7.endKey,
+          isCollapsed = _range7.isCollapsed;
+
+      // PERF: solve the most common cast where the start or end key are inside
+      // the node, for collapsed selections.
+
+      if (node.key == startKey || node.key == endKey || node.hasDescendant(startKey) || node.hasDescendant(endKey)) {
+        return true;
+      }
+
+      // PERF: if the selection is collapsed and the previous check didn't return
+      // true, then it must be false.
+      if (isCollapsed) {
+        return false;
+      }
+
+      // Otherwise, look through all of the leaf text nodes in the range, to see
+      // if any of them are inside the node.
+      var texts = node.getTextsAtRange(range);
+      var memo = false;
+
+      texts.forEach(function (text) {
+        if (node.hasDescendant(text.key)) memo = true;
+        return memo;
+      });
+
+      return memo;
+    }
+
+    /**
+     * Check whether the node is a leaf block.
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isLeafBlock',
+    value: function isLeafBlock() {
+      return this.kind == 'block' && this.nodes.every(function (n) {
+        return n.kind != 'block';
+      });
+    }
+
+    /**
+     * Check whether the node is a leaf inline.
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isLeafInline',
+    value: function isLeafInline() {
+      return this.kind == 'inline' && this.nodes.every(function (n) {
+        return n.kind != 'inline';
+      });
+    }
+
+    /**
+     * Merge a children node `first` with another children node `second`.
+     * `first` and `second` will be concatenated in that order.
+     * `first` and `second` must be two Nodes or two Text.
+     *
+     * @param {Node} first
+     * @param {Node} second
+     * @return {Node}
+     */
+
+  }, {
+    key: 'mergeNode',
+    value: function mergeNode(withIndex, index) {
+      var node = this;
+      var one = node.nodes.get(withIndex);
+      var two = node.nodes.get(index);
+
+      if (one.kind != two.kind) {
+        throw new Error('Tried to merge two nodes of different kinds: "' + one.kind + '" and "' + two.kind + '".');
+      }
+
+      // If the nodes are text nodes, concatenate their characters together.
+      if (one.kind == 'text') {
+        var characters = one.characters.concat(two.characters);
+        one = one.set('characters', characters);
+      }
+
+      // Otherwise, concatenate their child nodes together.
+      else {
+          var nodes = one.nodes.concat(two.nodes);
+          one = one.set('nodes', nodes);
+        }
+
+      node = node.removeNode(index);
+      node = node.removeNode(withIndex);
+      node = node.insertNode(withIndex, one);
+      return node;
+    }
+
+    /**
+     * Map all child nodes, updating them in their parents. This method is
+     * optimized to not return a new node if no changes are made.
+     *
+     * @param {Function} iterator
+     * @return {Node}
+     */
+
+  }, {
+    key: 'mapChildren',
+    value: function mapChildren(iterator) {
+      var _this2 = this;
+
+      var nodes = this.nodes;
+
+
+      nodes.forEach(function (node, i) {
+        var ret = iterator(node, i, _this2.nodes);
+        if (ret != node) nodes = nodes.set(ret.key, ret);
+      });
+
+      return this.set('nodes', nodes);
+    }
+
+    /**
+     * Map all descendant nodes, updating them in their parents. This method is
+     * optimized to not return a new node if no changes are made.
+     *
+     * @param {Function} iterator
+     * @return {Node}
+     */
+
+  }, {
+    key: 'mapDescendants',
+    value: function mapDescendants(iterator) {
+      var _this3 = this;
+
+      var nodes = this.nodes;
+
+
+      nodes.forEach(function (node, i) {
+        var ret = node;
+        if (ret.kind != 'text') ret = ret.mapDescendants(iterator);
+        ret = iterator(ret, i, _this3.nodes);
+        if (ret == node) return;
+
+        var index = nodes.indexOf(node);
+        nodes = nodes.set(index, ret);
+      });
+
+      return this.set('nodes', nodes);
+    }
+
+    /**
+     * Regenerate the node's key.
+     *
+     * @return {Node}
+     */
+
+  }, {
+    key: 'regenerateKey',
+    value: function regenerateKey() {
+      var key = (0, _generateKey2.default)();
+      return this.set('key', key);
+    }
+
+    /**
+     * Remove a `node` from the children node map.
+     *
+     * @param {String} key
+     * @return {Node}
+     */
+
+  }, {
+    key: 'removeDescendant',
+    value: function removeDescendant(key) {
+      key = assertKey(key);
+
+      var node = this;
+      var parent = node.getParent(key);
+      if (!parent) throw new Error('Could not find a descendant node with key "' + key + '".');
+
+      var index = parent.nodes.findIndex(function (n) {
+        return n.key === key;
+      });
+      var nodes = parent.nodes.splice(index, 1);
+
+      parent = parent.set('nodes', nodes);
+      node = node.updateNode(parent);
+      return node;
+    }
+
+    /**
+     * Remove a node at `index`.
+     *
+     * @param {Number} index
+     * @return {Node}
+     */
+
+  }, {
+    key: 'removeNode',
+    value: function removeNode(index) {
+      var nodes = this.nodes.splice(index, 1);
+      return this.set('nodes', nodes);
+    }
+
+    /**
+     * Split a child node by `index` at `position`.
+     *
+     * @param {Number} index
+     * @param {Number} position
+     * @return {Node}
+     */
+
+  }, {
+    key: 'splitNode',
+    value: function splitNode(index, position) {
+      var node = this;
+      var child = node.nodes.get(index);
+      var one = void 0;
+      var two = void 0;
+
+      // If the child is a text node, the `position` refers to the text offset at
+      // which to split it.
+      if (child.kind == 'text') {
+        var befores = child.characters.take(position);
+        var afters = child.characters.skip(position);
+        one = child.set('characters', befores);
+        two = child.set('characters', afters).regenerateKey();
+      }
+
+      // Otherwise, if the child is not a text node, the `position` refers to the
+      // index at which to split its children.
+      else {
+          var _befores = child.nodes.take(position);
+          var _afters = child.nodes.skip(position);
+          one = child.set('nodes', _befores);
+          two = child.set('nodes', _afters).regenerateKey();
+        }
+
+      // Remove the old node and insert the newly split children.
+      node = node.removeNode(index);
+      node = node.insertNode(index, two);
+      node = node.insertNode(index, one);
+      return node;
+    }
+
+    /**
+     * Set a new value for a child node by `key`.
+     *
+     * @param {Node} node
+     * @return {Node}
+     */
+
+  }, {
+    key: 'updateNode',
+    value: function updateNode(node) {
+      if (node.key == this.key) {
+        return node;
+      }
+
+      var child = this.assertDescendant(node.key);
+      var ancestors = this.getAncestors(node.key);
+
+      ancestors.reverse().forEach(function (parent) {
+        var _parent = parent,
+            nodes = _parent.nodes;
+
+        var index = nodes.indexOf(child);
+        child = parent;
+        nodes = nodes.set(index, node);
+        parent = parent.set('nodes', nodes);
+        node = parent;
+      });
+
+      return node;
+    }
+
+    /**
+     * Validate the node against a `schema`.
+     *
+     * @param {Schema} schema
+     * @return {Function|Null}
+     */
+
+  }, {
+    key: 'validate',
+    value: function validate(schema) {
+      return schema.validateNode(this);
+    }
+  }], [{
+    key: 'create',
+
+
+    /**
+     * Create a new `Node` with `attrs`.
+     *
+     * @param {Object|Node} attrs
+     * @return {Node}
+     */
+
+    value: function create() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      if (Node.isNode(attrs)) {
+        return attrs;
+      }
+
+      if ((0, _isPlainObject2.default)(attrs)) {
+        switch (attrs.kind) {
+          case 'block':
+            return _block2.default.create(attrs);
+          case 'document':
+            return _document2.default.create(attrs);
+          case 'inline':
+            return _inline2.default.create(attrs);
+          case 'text':
+            return _text2.default.create(attrs);
+          default:
+            {
+              throw new Error('`Node.create` requires a `kind` string.');
+            }
+        }
+      }
+
+      throw new Error('`Node.create` only accepts objects or nodes but you passed it: ' + attrs);
+    }
+
+    /**
+     * Create a list of `Nodes` from an array.
+     *
+     * @param {Array<Object|Node>} elements
+     * @return {List<Node>}
+     */
+
+  }, {
+    key: 'createList',
+    value: function createList() {
+      var elements = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      if (_immutable.List.isList(elements) || Array.isArray(elements)) {
+        var list = new _immutable.List(elements.map(Node.create));
+        return list;
+      }
+
+      throw new Error('`Node.createList` only accepts lists or arrays, but you passed it: ' + elements);
+    }
+
+    /**
+     * Create a dictionary of settable node properties from `attrs`.
+     *
+     * @param {Object|String|Node} attrs
+     * @return {Object}
+     */
+
+  }, {
+    key: 'createProperties',
+    value: function createProperties() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      if (_block2.default.isBlock(attrs) || _inline2.default.isInline(attrs)) {
+        return {
+          data: attrs.data,
+          isVoid: attrs.isVoid,
+          type: attrs.type
+        };
+      }
+
+      if (typeof attrs == 'string') {
+        return { type: attrs };
+      }
+
+      if ((0, _isPlainObject2.default)(attrs)) {
+        var props = {};
+        if ('type' in attrs) props.type = attrs.type;
+        if ('data' in attrs) props.data = _data2.default.create(attrs.data);
+        if ('isVoid' in attrs) props.isVoid = attrs.isVoid;
+        return props;
+      }
+
+      throw new Error('`Node.createProperties` only accepts objects, strings, blocks or inlines, but you passed it: ' + attrs);
+    }
+
+    /**
+     * Create a `Node` from a JSON `object`.
+     *
+     * @param {Object} object
+     * @return {Node}
+     */
+
+  }, {
+    key: 'fromJSON',
+    value: function fromJSON(object) {
+      var kind = object.kind;
+
+
+      switch (kind) {
+        case 'block':
+          return _block2.default.fromJSON(object);
+        case 'document':
+          return _document2.default.fromJSON(object);
+        case 'inline':
+          return _inline2.default.fromJSON(object);
+        case 'text':
+          return _text2.default.fromJSON(object);
+        default:
+          {
+            throw new Error('`Node.fromJSON` requires a `kind` of either \'block\', \'document\', \'inline\' or \'text\', but you passed: ' + kind);
+          }
+      }
+    }
+
+    /**
+     * Alias `fromJS`.
+     */
+
+  }, {
+    key: 'isNode',
+
+
+    /**
+     * Check if `any` is a `Node`.
+     *
+     * @param {Any} any
+     * @return {Boolean}
+     */
+
+    value: function isNode(any) {
+      return _block2.default.isBlock(any) || _document2.default.isDocument(any) || _inline2.default.isInline(any) || _text2.default.isText(any);
+    }
+
+    /**
+     * Check if `any` is a list of nodes.
+     *
+     * @param {Any} any
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isNodeList',
+    value: function isNodeList(any) {
+      return _immutable.List.isList(any) && any.every(function (item) {
+        return Node.isNode(item);
+      });
+    }
+  }]);
+
+  return Node;
+}();
+
+/**
+ * Assert a key `arg`.
+ *
+ * @param {String} arg
+ * @return {String}
+ */
+
+Node.fromJS = Node.fromJSON;
+function assertKey(arg) {
+  if (typeof arg == 'string') return arg;
+  throw new Error('Invalid `key` argument! It must be a key string, but you passed: ' + arg);
+}
+
+/**
+ * Memoize read methods.
+ */
+
+(0, _memoize2.default)(Node.prototype, ['getBlocks', 'getBlocksAsArray', 'getCharacters', 'getCharactersAsArray', 'getFirstText', 'getInlines', 'getInlinesAsArray', 'getKeys', 'getKeysAsArray', 'getLastText', 'getMarks', 'getOrderedMarks', 'getMarksAsArray', 'getText', 'getTextDirection', 'getTexts', 'getTextsAsArray', 'isLeafBlock', 'isLeafInline'], {
+  takesArguments: false
+});
+
+(0, _memoize2.default)(Node.prototype, ['areDescendantsSorted', 'getActiveMarksAtRange', 'getActiveMarksAtRangeAsArray', 'getAncestors', 'getBlocksAtRange', 'getBlocksAtRangeAsArray', 'getBlocksByType', 'getBlocksByTypeAsArray', 'getCharactersAtRange', 'getCharactersAtRangeAsArray', 'getChild', 'getClosestBlock', 'getClosestInline', 'getClosestVoid', 'getCommonAncestor', 'getDecorations', 'getDepth', 'getDescendant', 'getDescendantAtPath', 'getFragmentAtRange', 'getFurthestBlock', 'getFurthestInline', 'getFurthestAncestor', 'getFurthestOnlyChildAncestor', 'getInlinesAtRange', 'getInlinesAtRangeAsArray', 'getInlinesByType', 'getInlinesByTypeAsArray', 'getMarksAtRange', 'getOrderedMarksAtRange', 'getMarksAtRangeAsArray', 'getMarksByType', 'getOrderedMarksByType', 'getMarksByTypeAsArray', 'getNextBlock', 'getNextSibling', 'getNextText', 'getNode', 'getNodeAtPath', 'getOffset', 'getOffsetAtRange', 'getParent', 'getPath', 'getPlaceholder', 'getPreviousBlock', 'getPreviousSibling', 'getPreviousText', 'getTextAtOffset', 'getTextsAtRange', 'getTextsAtRangeAsArray', 'hasChild', 'hasDescendant', 'hasNode', 'hasVoidParent', 'validate'], {
+  takesArguments: true
+});
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = Node;
+},{"../utils/generate-key":538,"../utils/is-index-in-range":539,"../utils/memoize":540,"./block":520,"./data":523,"./document":524,"./inline":526,"./range":530,"./text":533,"direction":13,"immutable":51,"is-plain-object":58}],530:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _isPlainObject = require('is-plain-object');
+
+var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
+
+var _slateDevLogger = require('slate-dev-logger');
+
+var _slateDevLogger2 = _interopRequireDefault(_slateDevLogger);
+
+var _immutable = require('immutable');
+
+var _modelTypes = require('../constants/model-types');
+
+var _modelTypes2 = _interopRequireDefault(_modelTypes);
+
+var _mark = require('./mark');
+
+var _mark2 = _interopRequireDefault(_mark);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Default properties.
+ *
+ * @type {Object}
+ */
+
+var DEFAULTS = {
+  anchorKey: null,
+  anchorOffset: 0,
+  focusKey: null,
+  focusOffset: 0,
+  isBackward: null,
+  isFocused: false,
+  marks: null
+};
+
+/**
+ * Range.
+ *
+ * @type {Range}
+ */
+
+var Range = function (_Record) {
+  _inherits(Range, _Record);
+
+  function Range() {
+    _classCallCheck(this, Range);
+
+    return _possibleConstructorReturn(this, (Range.__proto__ || Object.getPrototypeOf(Range)).apply(this, arguments));
+  }
+
+  _createClass(Range, [{
+    key: 'hasAnchorAtStartOf',
+
+
+    /**
+     * Check whether anchor point of the range is at the start of a `node`.
+     *
+     * @param {Node} node
+     * @return {Boolean}
+     */
+
+    value: function hasAnchorAtStartOf(node) {
+      // PERF: Do a check for a `0` offset first since it's quickest.
+      if (this.anchorOffset != 0) return false;
+      var first = getFirst(node);
+      return this.anchorKey == first.key;
+    }
+
+    /**
+     * Check whether anchor point of the range is at the end of a `node`.
+     *
+     * @param {Node} node
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'hasAnchorAtEndOf',
+    value: function hasAnchorAtEndOf(node) {
+      var last = getLast(node);
+      return this.anchorKey == last.key && this.anchorOffset == last.text.length;
+    }
+
+    /**
+     * Check whether the anchor edge of a range is in a `node` and at an
+     * offset between `start` and `end`.
+     *
+     * @param {Node} node
+     * @param {Number} start
+     * @param {Number} end
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'hasAnchorBetween',
+    value: function hasAnchorBetween(node, start, end) {
+      return this.anchorOffset <= end && start <= this.anchorOffset && this.hasAnchorIn(node);
+    }
+
+    /**
+     * Check whether the anchor edge of a range is in a `node`.
+     *
+     * @param {Node} node
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'hasAnchorIn',
+    value: function hasAnchorIn(node) {
+      return node.kind == 'text' ? node.key == this.anchorKey : this.anchorKey != null && node.hasDescendant(this.anchorKey);
+    }
+
+    /**
+     * Check whether focus point of the range is at the end of a `node`.
+     *
+     * @param {Node} node
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'hasFocusAtEndOf',
+    value: function hasFocusAtEndOf(node) {
+      var last = getLast(node);
+      return this.focusKey == last.key && this.focusOffset == last.text.length;
+    }
+
+    /**
+     * Check whether focus point of the range is at the start of a `node`.
+     *
+     * @param {Node} node
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'hasFocusAtStartOf',
+    value: function hasFocusAtStartOf(node) {
+      if (this.focusOffset != 0) return false;
+      var first = getFirst(node);
+      return this.focusKey == first.key;
+    }
+
+    /**
+     * Check whether the focus edge of a range is in a `node` and at an
+     * offset between `start` and `end`.
+     *
+     * @param {Node} node
+     * @param {Number} start
+     * @param {Number} end
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'hasFocusBetween',
+    value: function hasFocusBetween(node, start, end) {
+      return start <= this.focusOffset && this.focusOffset <= end && this.hasFocusIn(node);
+    }
+
+    /**
+     * Check whether the focus edge of a range is in a `node`.
+     *
+     * @param {Node} node
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'hasFocusIn',
+    value: function hasFocusIn(node) {
+      return node.kind == 'text' ? node.key == this.focusKey : this.focusKey != null && node.hasDescendant(this.focusKey);
+    }
+
+    /**
+     * Check whether the range is at the start of a `node`.
+     *
+     * @param {Node} node
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isAtStartOf',
+    value: function isAtStartOf(node) {
+      return this.isCollapsed && this.hasAnchorAtStartOf(node);
+    }
+
+    /**
+     * Check whether the range is at the end of a `node`.
+     *
+     * @param {Node} node
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isAtEndOf',
+    value: function isAtEndOf(node) {
+      return this.isCollapsed && this.hasAnchorAtEndOf(node);
+    }
+
+    /**
+     * Focus the range.
+     *
+     * @return {Range}
+     */
+
+  }, {
+    key: 'focus',
+    value: function focus() {
+      return this.merge({
+        isFocused: true
+      });
+    }
+
+    /**
+     * Blur the range.
+     *
+     * @return {Range}
+     */
+
+  }, {
+    key: 'blur',
+    value: function blur() {
+      return this.merge({
+        isFocused: false
+      });
+    }
+
+    /**
+     * Unset the range.
+     *
+     * @return {Range}
+     */
+
+  }, {
+    key: 'deselect',
+    value: function deselect() {
+      return this.merge({
+        anchorKey: null,
+        anchorOffset: 0,
+        focusKey: null,
+        focusOffset: 0,
+        isFocused: false,
+        isBackward: false
+      });
+    }
+
+    /**
+     * Flip the range.
+     *
+     * @return {Range}
+     */
+
+  }, {
+    key: 'flip',
+    value: function flip() {
+      return this.merge({
+        anchorKey: this.focusKey,
+        anchorOffset: this.focusOffset,
+        focusKey: this.anchorKey,
+        focusOffset: this.anchorOffset,
+        isBackward: this.isBackward == null ? null : !this.isBackward
+      });
+    }
+
+    /**
+     * Move the anchor offset `n` characters.
+     *
+     * @param {Number} n (optional)
+     * @return {Range}
+     */
+
+  }, {
+    key: 'moveAnchor',
+    value: function moveAnchor() {
+      var n = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      var anchorKey = this.anchorKey,
+          focusKey = this.focusKey,
+          focusOffset = this.focusOffset,
+          isBackward = this.isBackward;
+
+      var anchorOffset = this.anchorOffset + n;
+      return this.merge({
+        anchorOffset: anchorOffset,
+        isBackward: anchorKey == focusKey ? anchorOffset > focusOffset : isBackward
+      });
+    }
+
+    /**
+     * Move the anchor offset `n` characters.
+     *
+     * @param {Number} n (optional)
+     * @return {Range}
+     */
+
+  }, {
+    key: 'moveFocus',
+    value: function moveFocus() {
+      var n = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      var anchorKey = this.anchorKey,
+          anchorOffset = this.anchorOffset,
+          focusKey = this.focusKey,
+          isBackward = this.isBackward;
+
+      var focusOffset = this.focusOffset + n;
+      return this.merge({
+        focusOffset: focusOffset,
+        isBackward: focusKey == anchorKey ? anchorOffset > focusOffset : isBackward
+      });
+    }
+
+    /**
+     * Move the range's anchor point to a `key` and `offset`.
+     *
+     * @param {String} key
+     * @param {Number} offset
+     * @return {Range}
+     */
+
+  }, {
+    key: 'moveAnchorTo',
+    value: function moveAnchorTo(key, offset) {
+      var anchorKey = this.anchorKey,
+          focusKey = this.focusKey,
+          focusOffset = this.focusOffset,
+          isBackward = this.isBackward;
+
+      return this.merge({
+        anchorKey: key,
+        anchorOffset: offset,
+        isBackward: key == focusKey ? offset > focusOffset : key == anchorKey ? isBackward : null
+      });
+    }
+
+    /**
+     * Move the range's focus point to a `key` and `offset`.
+     *
+     * @param {String} key
+     * @param {Number} offset
+     * @return {Range}
+     */
+
+  }, {
+    key: 'moveFocusTo',
+    value: function moveFocusTo(key, offset) {
+      var focusKey = this.focusKey,
+          anchorKey = this.anchorKey,
+          anchorOffset = this.anchorOffset,
+          isBackward = this.isBackward;
+
+      return this.merge({
+        focusKey: key,
+        focusOffset: offset,
+        isBackward: key == anchorKey ? anchorOffset > offset : key == focusKey ? isBackward : null
+      });
+    }
+
+    /**
+     * Move the range to `anchorOffset`.
+     *
+     * @param {Number} anchorOffset
+     * @return {Range}
+     */
+
+  }, {
+    key: 'moveAnchorOffsetTo',
+    value: function moveAnchorOffsetTo(anchorOffset) {
+      return this.merge({
+        anchorOffset: anchorOffset,
+        isBackward: this.anchorKey == this.focusKey ? anchorOffset > this.focusOffset : this.isBackward
+      });
+    }
+
+    /**
+     * Move the range to `focusOffset`.
+     *
+     * @param {Number} focusOffset
+     * @return {Range}
+     */
+
+  }, {
+    key: 'moveFocusOffsetTo',
+    value: function moveFocusOffsetTo(focusOffset) {
+      return this.merge({
+        focusOffset: focusOffset,
+        isBackward: this.anchorKey == this.focusKey ? this.anchorOffset > focusOffset : this.isBackward
+      });
+    }
+
+    /**
+     * Move the range to `anchorOffset` and `focusOffset`.
+     *
+     * @param {Number} anchorOffset
+     * @param {Number} focusOffset (optional)
+     * @return {Range}
+     */
+
+  }, {
+    key: 'moveOffsetsTo',
+    value: function moveOffsetsTo(anchorOffset) {
+      var focusOffset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : anchorOffset;
+
+      return this.moveAnchorOffsetTo(anchorOffset).moveFocusOffsetTo(focusOffset);
+    }
+
+    /**
+     * Move the focus point to the anchor point.
+     *
+     * @return {Range}
+     */
+
+  }, {
+    key: 'moveToAnchor',
+    value: function moveToAnchor() {
+      return this.moveFocusTo(this.anchorKey, this.anchorOffset);
+    }
+
+    /**
+     * Move the anchor point to the focus point.
+     *
+     * @return {Range}
+     */
+
+  }, {
+    key: 'moveToFocus',
+    value: function moveToFocus() {
+      return this.moveAnchorTo(this.focusKey, this.focusOffset);
+    }
+
+    /**
+     * Move the range's anchor point to the start of a `node`.
+     *
+     * @param {Node} node
+     * @return {Range}
+     */
+
+  }, {
+    key: 'moveAnchorToStartOf',
+    value: function moveAnchorToStartOf(node) {
+      node = getFirst(node);
+      return this.moveAnchorTo(node.key, 0);
+    }
+
+    /**
+     * Move the range's anchor point to the end of a `node`.
+     *
+     * @param {Node} node
+     * @return {Range}
+     */
+
+  }, {
+    key: 'moveAnchorToEndOf',
+    value: function moveAnchorToEndOf(node) {
+      node = getLast(node);
+      return this.moveAnchorTo(node.key, node.text.length);
+    }
+
+    /**
+     * Move the range's focus point to the start of a `node`.
+     *
+     * @param {Node} node
+     * @return {Range}
+     */
+
+  }, {
+    key: 'moveFocusToStartOf',
+    value: function moveFocusToStartOf(node) {
+      node = getFirst(node);
+      return this.moveFocusTo(node.key, 0);
+    }
+
+    /**
+     * Move the range's focus point to the end of a `node`.
+     *
+     * @param {Node} node
+     * @return {Range}
+     */
+
+  }, {
+    key: 'moveFocusToEndOf',
+    value: function moveFocusToEndOf(node) {
+      node = getLast(node);
+      return this.moveFocusTo(node.key, node.text.length);
+    }
+
+    /**
+     * Move to the entire range of `start` and `end` nodes.
+     *
+     * @param {Node} start
+     * @param {Node} end (optional)
+     * @return {Range}
+     */
+
+  }, {
+    key: 'moveToRangeOf',
+    value: function moveToRangeOf(start) {
+      var end = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : start;
+
+      return this.moveAnchorToStartOf(start).moveFocusToEndOf(end);
+    }
+
+    /**
+     * Normalize the range, relative to a `node`, ensuring that the anchor
+     * and focus nodes of the range always refer to leaf text nodes.
+     *
+     * @param {Node} node
+     * @return {Range}
+     */
+
+  }, {
+    key: 'normalize',
+    value: function normalize(node) {
+      var range = this;
+      var anchorKey = range.anchorKey,
+          anchorOffset = range.anchorOffset,
+          focusKey = range.focusKey,
+          focusOffset = range.focusOffset,
+          isBackward = range.isBackward;
+
+      // If the range is unset, make sure it is properly zeroed out.
+
+      if (anchorKey == null || focusKey == null) {
+        return range.merge({
+          anchorKey: null,
+          anchorOffset: 0,
+          focusKey: null,
+          focusOffset: 0,
+          isBackward: false
+        });
+      }
+
+      // Get the anchor and focus nodes.
+      var anchorNode = node.getDescendant(anchorKey);
+      var focusNode = node.getDescendant(focusKey);
+
+      // If the range is malformed, warn and zero it out.
+      if (!anchorNode || !focusNode) {
+        _slateDevLogger2.default.warn('The range was invalid and was reset. The range in question was:', range);
+        var first = node.getFirstText();
+        return range.merge({
+          anchorKey: first ? first.key : null,
+          anchorOffset: 0,
+          focusKey: first ? first.key : null,
+          focusOffset: 0,
+          isBackward: false
+        });
+      }
+
+      // If the anchor node isn't a text node, match it to one.
+      if (anchorNode.kind != 'text') {
+        _slateDevLogger2.default.warn('The range anchor was set to a Node that is not a Text node. This should not happen and can degrade performance. The node in question was:', anchorNode);
+        var anchorText = anchorNode.getTextAtOffset(anchorOffset);
+        var offset = anchorNode.getOffset(anchorText.key);
+        anchorOffset = anchorOffset - offset;
+        anchorNode = anchorText;
+      }
+
+      // If the focus node isn't a text node, match it to one.
+      if (focusNode.kind != 'text') {
+        _slateDevLogger2.default.warn('The range focus was set to a Node that is not a Text node. This should not happen and can degrade performance. The node in question was:', focusNode);
+        var focusText = focusNode.getTextAtOffset(focusOffset);
+        var _offset = focusNode.getOffset(focusText.key);
+        focusOffset = focusOffset - _offset;
+        focusNode = focusText;
+      }
+
+      // If `isBackward` is not set, derive it.
+      if (isBackward == null) {
+        if (anchorNode.key === focusNode.key) {
+          isBackward = anchorOffset > focusOffset;
+        } else {
+          isBackward = !node.areDescendantsSorted(anchorNode.key, focusNode.key);
+        }
+      }
+
+      // Merge in any updated properties.
+      return range.merge({
+        anchorKey: anchorNode.key,
+        anchorOffset: anchorOffset,
+        focusKey: focusNode.key,
+        focusOffset: focusOffset,
+        isBackward: isBackward
+      });
+    }
+
+    /**
+     * Return a JSON representation of the range.
+     *
+     * @return {Object}
+     */
+
+  }, {
+    key: 'toJSON',
+    value: function toJSON() {
+      var object = {
+        kind: this.kind,
+        anchorKey: this.anchorKey,
+        anchorOffset: this.anchorOffset,
+        focusKey: this.focusKey,
+        focusOffset: this.focusOffset,
+        isBackward: this.isBackward,
+        isFocused: this.isFocused,
+        marks: this.marks == null ? null : this.marks.toArray().map(function (m) {
+          return m.toJSON();
+        })
+      };
+
+      return object;
+    }
+
+    /**
+     * Alias `toJS`.
+     */
+
+  }, {
+    key: 'toJS',
+    value: function toJS() {
+      return this.toJSON();
+    }
+  }, {
+    key: 'kind',
+
+
+    /**
+     * Get the kind.
+     *
+     * @return {String}
+     */
+
+    get: function get() {
+      return 'range';
+    }
+
+    /**
+     * Check whether the range is blurred.
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isBlurred',
+    get: function get() {
+      return !this.isFocused;
+    }
+
+    /**
+     * Check whether the range is collapsed.
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isCollapsed',
+    get: function get() {
+      return this.anchorKey == this.focusKey && this.anchorOffset == this.focusOffset;
+    }
+
+    /**
+     * Check whether the range is expanded.
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isExpanded',
+    get: function get() {
+      return !this.isCollapsed;
+    }
+
+    /**
+     * Check whether the range is forward.
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isForward',
+    get: function get() {
+      return this.isBackward == null ? null : !this.isBackward;
+    }
+
+    /**
+     * Check whether the range's keys are set.
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isSet',
+    get: function get() {
+      return this.anchorKey != null && this.focusKey != null;
+    }
+
+    /**
+     * Check whether the range's keys are not set.
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isUnset',
+    get: function get() {
+      return !this.isSet;
+    }
+
+    /**
+     * Get the start key.
+     *
+     * @return {String}
+     */
+
+  }, {
+    key: 'startKey',
+    get: function get() {
+      return this.isBackward ? this.focusKey : this.anchorKey;
+    }
+
+    /**
+     * Get the start offset.
+     *
+     * @return {String}
+     */
+
+  }, {
+    key: 'startOffset',
+    get: function get() {
+      return this.isBackward ? this.focusOffset : this.anchorOffset;
+    }
+
+    /**
+     * Get the end key.
+     *
+     * @return {String}
+     */
+
+  }, {
+    key: 'endKey',
+    get: function get() {
+      return this.isBackward ? this.anchorKey : this.focusKey;
+    }
+
+    /**
+     * Get the end offset.
+     *
+     * @return {String}
+     */
+
+  }, {
+    key: 'endOffset',
+    get: function get() {
+      return this.isBackward ? this.anchorOffset : this.focusOffset;
+    }
+  }], [{
+    key: 'create',
+
+
+    /**
+     * Create a new `Range` with `attrs`.
+     *
+     * @param {Object|Range} attrs
+     * @return {Range}
+     */
+
+    value: function create() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      if (Range.isRange(attrs)) {
+        return attrs;
+      }
+
+      if ((0, _isPlainObject2.default)(attrs)) {
+        return Range.fromJSON(attrs);
+      }
+
+      throw new Error('`Range.create` only accepts objects or ranges, but you passed it: ' + attrs);
+    }
+
+    /**
+     * Create a list of `Ranges` from `elements`.
+     *
+     * @param {Array<Range|Object>|List<Range|Object>} elements
+     * @return {List<Range>}
+     */
+
+  }, {
+    key: 'createList',
+    value: function createList() {
+      var elements = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      if (_immutable.List.isList(elements) || Array.isArray(elements)) {
+        var list = new _immutable.List(elements.map(Range.create));
+        return list;
+      }
+
+      throw new Error('`Range.createList` only accepts arrays or lists, but you passed it: ' + elements);
+    }
+
+    /**
+     * Create a dictionary of settable range properties from `attrs`.
+     *
+     * @param {Object|String|Range} attrs
+     * @return {Object}
+     */
+
+  }, {
+    key: 'createProperties',
+    value: function createProperties() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      if (Range.isRange(attrs)) {
+        return {
+          anchorKey: attrs.anchorKey,
+          anchorOffset: attrs.anchorOffset,
+          focusKey: attrs.focusKey,
+          focusOffset: attrs.focusOffset,
+          isBackward: attrs.isBackward,
+          isFocused: attrs.isFocused,
+          marks: attrs.marks
+        };
+      }
+
+      if ((0, _isPlainObject2.default)(attrs)) {
+        var props = {};
+        if ('anchorKey' in attrs) props.anchorKey = attrs.anchorKey;
+        if ('anchorOffset' in attrs) props.anchorOffset = attrs.anchorOffset;
+        if ('focusKey' in attrs) props.focusKey = attrs.focusKey;
+        if ('focusOffset' in attrs) props.focusOffset = attrs.focusOffset;
+        if ('isBackward' in attrs) props.isBackward = attrs.isBackward;
+        if ('isFocused' in attrs) props.isFocused = attrs.isFocused;
+        if ('marks' in attrs) props.marks = attrs.marks;
+        return props;
+      }
+
+      throw new Error('`Range.createProperties` only accepts objects or ranges, but you passed it: ' + attrs);
+    }
+
+    /**
+     * Create a `Range` from a JSON `object`.
+     *
+     * @param {Object} object
+     * @return {Range}
+     */
+
+  }, {
+    key: 'fromJSON',
+    value: function fromJSON(object) {
+      var _object$anchorKey = object.anchorKey,
+          anchorKey = _object$anchorKey === undefined ? null : _object$anchorKey,
+          _object$anchorOffset = object.anchorOffset,
+          anchorOffset = _object$anchorOffset === undefined ? 0 : _object$anchorOffset,
+          _object$focusKey = object.focusKey,
+          focusKey = _object$focusKey === undefined ? null : _object$focusKey,
+          _object$focusOffset = object.focusOffset,
+          focusOffset = _object$focusOffset === undefined ? 0 : _object$focusOffset,
+          _object$isBackward = object.isBackward,
+          isBackward = _object$isBackward === undefined ? null : _object$isBackward,
+          _object$isFocused = object.isFocused,
+          isFocused = _object$isFocused === undefined ? false : _object$isFocused,
+          _object$marks = object.marks,
+          marks = _object$marks === undefined ? null : _object$marks;
+
+
+      var range = new Range({
+        anchorKey: anchorKey,
+        anchorOffset: anchorOffset,
+        focusKey: focusKey,
+        focusOffset: focusOffset,
+        isBackward: isBackward,
+        isFocused: isFocused,
+        marks: marks == null ? null : new _immutable.Set(marks.map(_mark2.default.fromJSON))
+      });
+
+      return range;
+    }
+
+    /**
+     * Alias `fromJS`.
+     */
+
+  }, {
+    key: 'isRange',
+
+
+    /**
+     * Check if an `obj` is a `Range`.
+     *
+     * @param {Any} obj
+     * @return {Boolean}
+     */
+
+    value: function isRange(obj) {
+      return !!(obj && obj[_modelTypes2.default.RANGE]);
+    }
+  }]);
+
+  return Range;
+}((0, _immutable.Record)(DEFAULTS));
+
+/**
+ * Attach a pseudo-symbol for type checking.
+ */
+
+Range.fromJS = Range.fromJSON;
+Range.prototype[_modelTypes2.default.RANGE] = true;
+
+/**
+ * Mix in some "move" convenience methods.
+ */
+
+var MOVE_METHODS = [['move', ''], ['move', 'To'], ['move', 'ToStartOf'], ['move', 'ToEndOf']];
+
+MOVE_METHODS.forEach(function (_ref) {
+  var _ref2 = _slicedToArray(_ref, 2),
+      p = _ref2[0],
+      s = _ref2[1];
+
+  Range.prototype['' + p + s] = function () {
+    var _ref3;
+
+    return (_ref3 = this[p + 'Anchor' + s].apply(this, arguments))[p + 'Focus' + s].apply(_ref3, arguments);
+  };
+});
+
+/**
+ * Mix in the "start", "end" and "edge" convenience methods.
+ */
+
+var EDGE_METHODS = [['has', 'AtStartOf', true], ['has', 'AtEndOf', true], ['has', 'Between', true], ['has', 'In', true], ['collapseTo', ''], ['move', ''], ['moveTo', ''], ['move', 'To'], ['move', 'OffsetTo']];
+
+EDGE_METHODS.forEach(function (_ref4) {
+  var _ref5 = _slicedToArray(_ref4, 3),
+      p = _ref5[0],
+      s = _ref5[1],
+      hasEdge = _ref5[2];
+
+  var anchor = p + 'Anchor' + s;
+  var focus = p + 'Focus' + s;
+
+  Range.prototype[p + 'Start' + s] = function () {
+    return this.isBackward ? this[focus].apply(this, arguments) : this[anchor].apply(this, arguments);
+  };
+
+  Range.prototype[p + 'End' + s] = function () {
+    return this.isBackward ? this[anchor].apply(this, arguments) : this[focus].apply(this, arguments);
+  };
+
+  if (hasEdge) {
+    Range.prototype[p + 'Edge' + s] = function () {
+      return this[anchor].apply(this, arguments) || this[focus].apply(this, arguments);
+    };
+  }
+});
+
+/**
+ * Mix in some aliases for convenience / parallelism with the browser APIs.
+ */
+
+var ALIAS_METHODS = [['collapseTo', 'moveTo'], ['collapseToAnchor', 'moveToAnchor'], ['collapseToFocus', 'moveToFocus'], ['collapseToStart', 'moveToStart'], ['collapseToEnd', 'moveToEnd'], ['collapseToStartOf', 'moveToStartOf'], ['collapseToEndOf', 'moveToEndOf'], ['extend', 'moveFocus'], ['extendTo', 'moveFocusTo'], ['extendToStartOf', 'moveFocusToStartOf'], ['extendToEndOf', 'moveFocusToEndOf']];
+
+ALIAS_METHODS.forEach(function (_ref6) {
+  var _ref7 = _slicedToArray(_ref6, 2),
+      alias = _ref7[0],
+      method = _ref7[1];
+
+  Range.prototype[alias] = function () {
+    return this[method].apply(this, arguments);
+  };
+});
+
+/**
+ * Get the first text of a `node`.
+ *
+ * @param {Node} node
+ * @return {Text}
+ */
+
+function getFirst(node) {
+  return node.kind == 'text' ? node : node.getFirstText();
+}
+
+/**
+ * Get the last text of a `node`.
+ *
+ * @param {Node} node
+ * @return {Text}
+ */
+
+function getLast(node) {
+  return node.kind == 'text' ? node : node.getLastText();
+}
+
+/**
+ * Export.
+ *
+ * @type {Range}
+ */
+
+exports.default = Range;
+},{"../constants/model-types":518,"./mark":528,"immutable":51,"is-plain-object":58,"slate-dev-logger":480}],531:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _debug = require('debug');
+
+var _debug2 = _interopRequireDefault(_debug);
+
+var _isPlainObject = require('is-plain-object');
+
+var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
+
+var _mergeWith = require('lodash/mergeWith');
+
+var _mergeWith2 = _interopRequireDefault(_mergeWith);
+
+var _immutable = require('immutable');
+
+var _coreSchemaRules = require('../constants/core-schema-rules');
+
+var _coreSchemaRules2 = _interopRequireDefault(_coreSchemaRules);
+
+var _modelTypes = require('../constants/model-types');
+
+var _modelTypes2 = _interopRequireDefault(_modelTypes);
+
+var _stack = require('./stack');
+
+var _stack2 = _interopRequireDefault(_stack);
+
+var _memoize = require('../utils/memoize');
+
+var _memoize2 = _interopRequireDefault(_memoize);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Validation failure reasons.
+ *
+ * @type {Object}
+ */
+
+var CHILD_KIND_INVALID = 'child_kind_invalid';
+var CHILD_REQUIRED = 'child_required';
+var CHILD_TYPE_INVALID = 'child_type_invalid';
+var CHILD_UNKNOWN = 'child_unknown';
+var NODE_DATA_INVALID = 'node_data_invalid';
+var NODE_IS_VOID_INVALID = 'node_is_void_invalid';
+var NODE_MARK_INVALID = 'node_mark_invalid';
+var NODE_TEXT_INVALID = 'node_text_invalid';
+var PARENT_KIND_INVALID = 'parent_kind_invalid';
+var PARENT_TYPE_INVALID = 'parent_type_invalid';
+
+/**
+ * Debug.
+ *
+ * @type {Function}
+ */
+
+var debug = (0, _debug2.default)('slate:schema');
+
+/**
+ * Default properties.
+ *
+ * @type {Object}
+ */
+
+var DEFAULTS = {
+  stack: _stack2.default.create(),
+  document: {},
+  blocks: {},
+  inlines: {}
+};
+
+/**
+ * Schema.
+ *
+ * @type {Schema}
+ */
+
+var Schema = function (_Record) {
+  _inherits(Schema, _Record);
+
+  function Schema() {
+    _classCallCheck(this, Schema);
+
+    return _possibleConstructorReturn(this, (Schema.__proto__ || Object.getPrototypeOf(Schema)).apply(this, arguments));
+  }
+
+  _createClass(Schema, [{
+    key: 'getRule',
+
+
+    /**
+     * Get the rule for an `object`.
+     *
+     * @param {Mixed} object
+     * @return {Object}
+     */
+
+    value: function getRule(object) {
+      switch (object.kind) {
+        case 'document':
+          return this.document;
+        case 'block':
+          return this.blocks[object.type];
+        case 'inline':
+          return this.inlines[object.type];
+      }
+    }
+
+    /**
+     * Get a dictionary of the parent rule validations by child type.
+     *
+     * @return {Object|Null}
+     */
+
+  }, {
+    key: 'getParentRules',
+    value: function getParentRules() {
+      var blocks = this.blocks,
+          inlines = this.inlines;
+
+      var parents = {};
+
+      for (var key in blocks) {
+        var rule = blocks[key];
+        if (rule.parent == null) continue;
+        parents[key] = rule;
+      }
+
+      for (var _key in inlines) {
+        var _rule = inlines[_key];
+        if (_rule.parent == null) continue;
+        parents[_key] = _rule;
+      }
+
+      return Object.keys(parents).length == 0 ? null : parents;
+    }
+
+    /**
+     * Fail validation by returning a normalizing change function.
+     *
+     * @param {String} reason
+     * @param {Object} context
+     * @return {Function}
+     */
+
+  }, {
+    key: 'fail',
+    value: function fail(reason, context) {
+      var _this2 = this;
+
+      return function (change) {
+        debug('normalizing', { reason: reason, context: context });
+        var rule = context.rule;
+
+        var count = change.operations.length;
+        if (rule.normalize) rule.normalize(change, reason, context);
+        if (change.operations.length > count) return;
+        _this2.normalize(change, reason, context);
+      };
+    }
+
+    /**
+     * Normalize an invalid value with `reason` and `context`.
+     *
+     * @param {Change} change
+     * @param {String} reason
+     * @param {Mixed} context
+     */
+
+  }, {
+    key: 'normalize',
+    value: function normalize(change, reason, context) {
+      switch (reason) {
+        case CHILD_KIND_INVALID:
+        case CHILD_TYPE_INVALID:
+        case CHILD_UNKNOWN:
+          {
+            var child = context.child,
+                node = context.node;
+
+            return child.kind == 'text' && node.kind == 'block' && node.nodes.size == 1 ? change.removeNodeByKey(node.key) : change.removeNodeByKey(child.key);
+          }
+
+        case CHILD_REQUIRED:
+        case NODE_TEXT_INVALID:
+        case PARENT_KIND_INVALID:
+        case PARENT_TYPE_INVALID:
+          {
+            var _node = context.node;
+
+            return _node.kind == 'document' ? _node.nodes.forEach(function (child) {
+              return change.removeNodeByKey(child.key);
+            }) : change.removeNodeByKey(_node.key);
+          }
+
+        case NODE_DATA_INVALID:
+          {
+            var _node2 = context.node,
+                key = context.key;
+
+            return _node2.data.get(key) === undefined && _node2.kind != 'document' ? change.removeNodeByKey(_node2.key) : change.setNodeByKey(_node2.key, { data: _node2.data.delete(key) });
+          }
+
+        case NODE_IS_VOID_INVALID:
+          {
+            var _node3 = context.node;
+
+            return change.setNodeByKey(_node3.key, { isVoid: !_node3.isVoid });
+          }
+
+        case NODE_MARK_INVALID:
+          {
+            var _node4 = context.node,
+                mark = context.mark;
+
+            return _node4.getTexts().forEach(function (t) {
+              return change.removeMarkByKey(t.key, 0, t.text.length, mark);
+            });
+          }
+      }
+    }
+
+    /**
+     * Validate a `node` with the schema, returning a function that will fix the
+     * invalid node, or void if the node is valid.
+     *
+     * @param {Node} node
+     * @return {Function|Void}
+     */
+
+  }, {
+    key: 'validateNode',
+    value: function validateNode(node) {
+      var ret = this.stack.find('validateNode', node);
+      if (ret) return ret;
+
+      if (node.kind == 'text') return;
+
+      var rule = this.getRule(node) || {};
+      var parents = this.getParentRules();
+      var ctx = { node: node, rule: rule };
+
+      if (rule.isVoid != null) {
+        if (node.isVoid != rule.isVoid) {
+          return this.fail(NODE_IS_VOID_INVALID, ctx);
+        }
+      }
+
+      if (rule.data != null) {
+        for (var key in rule.data) {
+          var fn = rule.data[key];
+          var value = node.data.get(key);
+
+          if (!fn(value)) {
+            return this.fail(NODE_DATA_INVALID, _extends({}, ctx, { key: key, value: value }));
+          }
+        }
+      }
+
+      if (rule.marks != null) {
+        var marks = node.getMarks().toArray();
+
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = marks[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var mark = _step.value;
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+            var _iteratorError2 = undefined;
+
+            try {
+              for (var _iterator2 = rule.marks[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                var def = _step2.value;
+
+                if (def.type != mark.type) {
+                  return this.fail(NODE_MARK_INVALID, _extends({}, ctx, { mark: mark }));
+                }
+              }
+            } catch (err) {
+              _didIteratorError2 = true;
+              _iteratorError2 = err;
+            } finally {
+              try {
+                if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                  _iterator2.return();
+                }
+              } finally {
+                if (_didIteratorError2) {
+                  throw _iteratorError2;
+                }
+              }
+            }
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+      }
+
+      if (rule.text != null) {
+        var text = node.text;
+
+
+        if (!rule.text.test(text)) {
+          return this.fail(NODE_TEXT_INVALID, _extends({}, ctx, { text: text }));
+        }
+      }
+
+      if (rule.nodes != null || parents != null) {
+        var nextDef = function nextDef() {
+          offset = offset == null ? null : 0;
+          _def = defs.shift();
+          min = _def && (_def.min == null ? 0 : _def.min);
+          max = _def && (_def.max == null ? Infinity : _def.max);
+          return !!_def;
+        };
+
+        var nextChild = function nextChild() {
+          index = index == null ? 0 : index + 1;
+          offset = offset == null ? 0 : offset + 1;
+          child = children[index];
+          if (max != null && offset == max) nextDef();
+          return !!child;
+        };
+
+        var children = node.nodes.toArray();
+        var defs = rule.nodes != null ? rule.nodes.slice() : [];
+
+        var offset = void 0;
+        var min = void 0;
+        var index = void 0;
+        var _def = void 0;
+        var max = void 0;
+        var child = void 0;
+
+        if (rule.nodes != null) {
+          nextDef();
+        }
+
+        while (nextChild()) {
+          if (parents != null && child.kind != 'text' && child.type in parents) {
+            var r = parents[child.type];
+
+            if (r.parent.kinds != null && !r.parent.kinds.includes(node.kind)) {
+              return this.fail(PARENT_KIND_INVALID, { node: child, parent: node, rule: r });
+            }
+
+            if (r.parent.types != null && !r.parent.types.includes(node.type)) {
+              return this.fail(PARENT_TYPE_INVALID, { node: child, parent: node, rule: r });
+            }
+          }
+
+          if (rule.nodes != null) {
+            if (!_def) {
+              return this.fail(CHILD_UNKNOWN, _extends({}, ctx, { child: child, index: index }));
+            }
+
+            if (_def.kinds != null && !_def.kinds.includes(child.kind)) {
+              if (offset >= min && nextDef()) continue;
+              return this.fail(CHILD_KIND_INVALID, _extends({}, ctx, { child: child, index: index }));
+            }
+
+            if (_def.types != null && !_def.types.includes(child.type)) {
+              if (offset >= min && nextDef()) continue;
+              return this.fail(CHILD_TYPE_INVALID, _extends({}, ctx, { child: child, index: index }));
+            }
+          }
+        }
+
+        if (rule.nodes != null) {
+          while (min != null) {
+            if (offset < min) {
+              return this.fail(CHILD_REQUIRED, _extends({}, ctx, { index: index }));
+            }
+
+            nextDef();
+          }
+        }
+      }
+    }
+
+    /**
+     * Return a JSON representation of the schema.
+     *
+     * @return {Object}
+     */
+
+  }, {
+    key: 'toJSON',
+    value: function toJSON() {
+      var object = {
+        kind: this.kind,
+        document: this.document,
+        blocks: this.blocks,
+        inlines: this.inlines
+      };
+
+      return object;
+    }
+
+    /**
+     * Alias `toJS`.
+     */
+
+  }, {
+    key: 'toJS',
+    value: function toJS() {
+      return this.toJSON();
+    }
+  }, {
+    key: 'kind',
+
+
+    /**
+     * Get the kind.
+     *
+     * @return {String}
+     */
+
+    get: function get() {
+      return 'schema';
+    }
+  }], [{
+    key: 'create',
+
+
+    /**
+     * Create a new `Schema` with `attrs`.
+     *
+     * @param {Object|Schema} attrs
+     * @return {Schema}
+     */
+
+    value: function create() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      if (Schema.isSchema(attrs)) {
+        return attrs;
+      }
+
+      if ((0, _isPlainObject2.default)(attrs)) {
+        return Schema.fromJSON(attrs);
+      }
+
+      throw new Error('`Schema.create` only accepts objects or schemas, but you passed it: ' + attrs);
+    }
+
+    /**
+     * Create a `Schema` from a JSON `object`.
+     *
+     * @param {Object} object
+     * @return {Schema}
+     */
+
+  }, {
+    key: 'fromJSON',
+    value: function fromJSON(object) {
+      if (Schema.isSchema(object)) {
+        return object;
+      }
+
+      var plugins = object.plugins;
+
+
+      if (object.rules) {
+        throw new Error('Schemas in Slate have changed! They are no longer accept a `rules` property.');
+      }
+
+      if (object.nodes) {
+        throw new Error('Schemas in Slate have changed! They are no longer accept a `nodes` property.');
+      }
+
+      if (!plugins) {
+        plugins = [{ schema: object }];
+      }
+
+      var schema = resolveSchema(plugins);
+      var stack = _stack2.default.create({ plugins: [].concat(_toConsumableArray(_coreSchemaRules2.default), _toConsumableArray(plugins)) });
+      var ret = new Schema(_extends({}, schema, { stack: stack }));
+      return ret;
+    }
+
+    /**
+     * Alias `fromJS`.
+     */
+
+  }, {
+    key: 'isSchema',
+
+
+    /**
+     * Check if `any` is a `Schema`.
+     *
+     * @param {Any} any
+     * @return {Boolean}
+     */
+
+    value: function isSchema(any) {
+      return !!(any && any[_modelTypes2.default.SCHEMA]);
+    }
+  }]);
+
+  return Schema;
+}((0, _immutable.Record)(DEFAULTS));
+
+/**
+ * Resolve a set of schema rules from an array of `plugins`.
+ *
+ * @param {Array} plugins
+ * @return {Object}
+ */
+
+Schema.fromJS = Schema.fromJSON;
+function resolveSchema() {
+  var plugins = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+  var schema = {
+    document: {},
+    blocks: {},
+    inlines: {}
+  };
+
+  plugins.slice().reverse().forEach(function (plugin) {
+    if (!plugin.schema) return;
+
+    if (plugin.schema.rules) {
+      throw new Error('Schemas in Slate have changed! They are no longer accept a `rules` property.');
+    }
+
+    if (plugin.schema.nodes) {
+      throw new Error('Schemas in Slate have changed! They are no longer accept a `nodes` property.');
+    }
+
+    var _plugin$schema = plugin.schema,
+        _plugin$schema$docume = _plugin$schema.document,
+        document = _plugin$schema$docume === undefined ? {} : _plugin$schema$docume,
+        _plugin$schema$blocks = _plugin$schema.blocks,
+        blocks = _plugin$schema$blocks === undefined ? {} : _plugin$schema$blocks,
+        _plugin$schema$inline = _plugin$schema.inlines,
+        inlines = _plugin$schema$inline === undefined ? {} : _plugin$schema$inline;
+
+    var d = resolveDocumentRule(document);
+    var bs = {};
+    var is = {};
+
+    for (var key in blocks) {
+      bs[key] = resolveNodeRule('block', key, blocks[key]);
+    }
+
+    for (var _key2 in inlines) {
+      is[_key2] = resolveNodeRule('inline', _key2, inlines[_key2]);
+    }
+
+    (0, _mergeWith2.default)(schema.document, d, customizer);
+    (0, _mergeWith2.default)(schema.blocks, bs, customizer);
+    (0, _mergeWith2.default)(schema.inlines, is, customizer);
+  });
+
+  return schema;
+}
+
+/**
+ * Resolve a document rule `obj`.
+ *
+ * @param {Object} obj
+ * @return {Object}
+ */
+
+function resolveDocumentRule(obj) {
+  return _extends({
+    data: {},
+    nodes: null
+  }, obj);
+}
+
+/**
+ * Resolve a node rule with `type` from `obj`.
+ *
+ * @param {String} kind
+ * @param {String} type
+ * @param {Object} obj
+ * @return {Object}
+ */
+
+function resolveNodeRule(kind, type, obj) {
+  return _extends({
+    data: {},
+    isVoid: null,
+    nodes: null,
+    parent: null,
+    text: null
+  }, obj);
+}
+
+/**
+ * A Lodash customizer for merging `kinds` and `types` arrays.
+ *
+ * @param {Mixed} target
+ * @param {Mixed} source
+ * @return {Array|Void}
+ */
+
+function customizer(target, source, key) {
+  if (key == 'kinds' || key == 'types') {
+    return target == null ? source : target.concat(source);
+  }
+}
+
+/**
+ * Attach a pseudo-symbol for type checking.
+ */
+
+Schema.prototype[_modelTypes2.default.SCHEMA] = true;
+
+/**
+ * Memoize read methods.
+ */
+
+(0, _memoize2.default)(Schema.prototype, ['getParentRules'], {
+  takesArguments: true
+});
+
+/**
+ * Export.
+ *
+ * @type {Schema}
+ */
+
+exports.default = Schema;
+},{"../constants/core-schema-rules":517,"../constants/model-types":518,"../utils/memoize":540,"./stack":532,"debug":471,"immutable":51,"is-plain-object":58,"lodash/mergeWith":223}],532:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _immutable = require('immutable');
+
+var _modelTypes = require('../constants/model-types');
+
+var _modelTypes2 = _interopRequireDefault(_modelTypes);
+
+var _memoize = require('../utils/memoize');
+
+var _memoize2 = _interopRequireDefault(_memoize);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Default properties.
+ *
+ * @type {Object}
+ */
+
+var DEFAULTS = {
+  plugins: []
+};
+
+/**
+ * Stack.
+ *
+ * @type {Stack}
+ */
+
+var Stack = function (_Record) {
+  _inherits(Stack, _Record);
+
+  function Stack() {
+    _classCallCheck(this, Stack);
+
+    return _possibleConstructorReturn(this, (Stack.__proto__ || Object.getPrototypeOf(Stack)).apply(this, arguments));
+  }
+
+  _createClass(Stack, [{
+    key: 'getPluginsWith',
+
+
+    /**
+     * Get all plugins with `property`.
+     *
+     * @param {String} property
+     * @return {Array}
+     */
+
+    value: function getPluginsWith(property) {
+      return this.plugins.filter(function (plugin) {
+        return plugin[property] != null;
+      });
+    }
+
+    /**
+     * Iterate the plugins with `property`, returning the first non-null value.
+     *
+     * @param {String} property
+     * @param {Any} ...args
+     */
+
+  }, {
+    key: 'find',
+    value: function find(property) {
+      var plugins = this.getPluginsWith(property);
+
+      for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        args[_key - 1] = arguments[_key];
+      }
+
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = plugins[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var plugin = _step.value;
+
+          var ret = plugin[property].apply(plugin, args);
+          if (ret != null) return ret;
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
+    }
+
+    /**
+     * Iterate the plugins with `property`, returning all the non-null values.
+     *
+     * @param {String} property
+     * @param {Any} ...args
+     * @return {Array}
+     */
+
+  }, {
+    key: 'map',
+    value: function map(property) {
+      var plugins = this.getPluginsWith(property);
+      var array = [];
+
+      for (var _len2 = arguments.length, args = Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+        args[_key2 - 1] = arguments[_key2];
+      }
+
+      var _iteratorNormalCompletion2 = true;
+      var _didIteratorError2 = false;
+      var _iteratorError2 = undefined;
+
+      try {
+        for (var _iterator2 = plugins[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+          var plugin = _step2.value;
+
+          var ret = plugin[property].apply(plugin, args);
+          if (ret != null) array.push(ret);
+        }
+      } catch (err) {
+        _didIteratorError2 = true;
+        _iteratorError2 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion2 && _iterator2.return) {
+            _iterator2.return();
+          }
+        } finally {
+          if (_didIteratorError2) {
+            throw _iteratorError2;
+          }
+        }
+      }
+
+      return array;
+    }
+
+    /**
+     * Iterate the plugins with `property`, breaking on any a non-null values.
+     *
+     * @param {String} property
+     * @param {Any} ...args
+     */
+
+  }, {
+    key: 'run',
+    value: function run(property) {
+      var plugins = this.getPluginsWith(property);
+
+      for (var _len3 = arguments.length, args = Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+        args[_key3 - 1] = arguments[_key3];
+      }
+
+      var _iteratorNormalCompletion3 = true;
+      var _didIteratorError3 = false;
+      var _iteratorError3 = undefined;
+
+      try {
+        for (var _iterator3 = plugins[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+          var plugin = _step3.value;
+
+          var ret = plugin[property].apply(plugin, args);
+          if (ret != null) return;
+        }
+      } catch (err) {
+        _didIteratorError3 = true;
+        _iteratorError3 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion3 && _iterator3.return) {
+            _iterator3.return();
+          }
+        } finally {
+          if (_didIteratorError3) {
+            throw _iteratorError3;
+          }
+        }
+      }
+    }
+
+    /**
+     * Iterate the plugins with `property`, reducing to a set of React children.
+     *
+     * @param {String} property
+     * @param {Object} props
+     * @param {Any} ...args
+     */
+
+  }, {
+    key: 'render',
+    value: function render(property, props) {
+      var plugins = this.getPluginsWith(property).slice().reverse();
+      var _props$children = props.children,
+          children = _props$children === undefined ? null : _props$children;
+
+      for (var _len4 = arguments.length, args = Array(_len4 > 2 ? _len4 - 2 : 0), _key4 = 2; _key4 < _len4; _key4++) {
+        args[_key4 - 2] = arguments[_key4];
+      }
+
+      var _iteratorNormalCompletion4 = true;
+      var _didIteratorError4 = false;
+      var _iteratorError4 = undefined;
+
+      try {
+
+        for (var _iterator4 = plugins[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+          var plugin = _step4.value;
+
+          var ret = plugin[property].apply(plugin, [props].concat(args));
+          if (ret == null) continue;
+          props.children = children = ret;
+        }
+      } catch (err) {
+        _didIteratorError4 = true;
+        _iteratorError4 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion4 && _iterator4.return) {
+            _iterator4.return();
+          }
+        } finally {
+          if (_didIteratorError4) {
+            throw _iteratorError4;
+          }
+        }
+      }
+
+      return children;
+    }
+  }, {
+    key: 'kind',
+
+
+    /**
+     * Get the kind.
+     *
+     * @return {String}
+     */
+
+    get: function get() {
+      return 'stack';
+    }
+  }], [{
+    key: 'create',
+
+
+    /**
+     * Constructor.
+     *
+     * @param {Object} attrs
+     */
+
+    value: function create() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var _attrs$plugins = attrs.plugins,
+          plugins = _attrs$plugins === undefined ? [] : _attrs$plugins;
+
+      var stack = new Stack({ plugins: plugins });
+      return stack;
+    }
+
+    /**
+     * Check if `any` is a `Stack`.
+     *
+     * @param {Any} any
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isStack',
+    value: function isStack(any) {
+      return !!(any && any[_modelTypes2.default.STACK]);
+    }
+  }]);
+
+  return Stack;
+}((0, _immutable.Record)(DEFAULTS));
+
+/**
+ * Attach a pseudo-symbol for type checking.
+ */
+
+Stack.prototype[_modelTypes2.default.STACK] = true;
+
+/**
+ * Memoize read methods.
+ */
+
+(0, _memoize2.default)(Stack.prototype, ['getPluginsWith'], {
+  takesArguments: true
+});
+
+/**
+ * Export.
+ *
+ * @type {Stack}
+ */
+
+exports.default = Stack;
+},{"../constants/model-types":518,"../utils/memoize":540,"immutable":51}],533:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _isPlainObject = require('is-plain-object');
+
+var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
+
+var _immutable = require('immutable');
+
+var _character = require('./character');
+
+var _character2 = _interopRequireDefault(_character);
+
+var _mark = require('./mark');
+
+var _mark2 = _interopRequireDefault(_mark);
+
+var _leaf = require('./leaf');
+
+var _leaf2 = _interopRequireDefault(_leaf);
+
+var _modelTypes = require('../constants/model-types');
+
+var _modelTypes2 = _interopRequireDefault(_modelTypes);
+
+var _generateKey = require('../utils/generate-key');
+
+var _generateKey2 = _interopRequireDefault(_generateKey);
+
+var _memoize = require('../utils/memoize');
+
+var _memoize2 = _interopRequireDefault(_memoize);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Default properties.
+ *
+ * @type {Object}
+ */
+
+var DEFAULTS = {
+  characters: new _immutable.List(),
+  key: undefined
+};
+
+/**
+ * Text.
+ *
+ * @type {Text}
+ */
+
+var Text = function (_Record) {
+  _inherits(Text, _Record);
+
+  function Text() {
+    _classCallCheck(this, Text);
+
+    return _possibleConstructorReturn(this, (Text.__proto__ || Object.getPrototypeOf(Text)).apply(this, arguments));
+  }
+
+  _createClass(Text, [{
+    key: 'addMark',
+
+
+    /**
+     * Add a `mark` at `index` and `length`.
+     *
+     * @param {Number} index
+     * @param {Number} length
+     * @param {Mark} mark
+     * @return {Text}
+     */
+
+    value: function addMark(index, length, mark) {
+      var marks = new _immutable.Set([mark]);
+      return this.addMarks(index, length, marks);
+    }
+
+    /**
+     * Add a `set` of marks at `index` and `length`.
+     *
+     * @param {Number} index
+     * @param {Number} length
+     * @param {Set<Mark>} set
+     * @return {Text}
+     */
+
+  }, {
+    key: 'addMarks',
+    value: function addMarks(index, length, set) {
+      var characters = this.characters.map(function (char, i) {
+        if (i < index) return char;
+        if (i >= index + length) return char;
+        var _char = char,
+            marks = _char.marks;
+
+        marks = marks.union(set);
+        char = char.set('marks', marks);
+        return char;
+      });
+
+      return this.set('characters', characters);
+    }
+
+    /**
+     * Derive a set of decorated characters with `decorations`.
+     *
+     * @param {List<Decoration>} decorations
+     * @return {List<Character>}
+     */
+
+  }, {
+    key: 'getDecoratedCharacters',
+    value: function getDecoratedCharacters(decorations) {
+      var node = this;
+      var _node = node,
+          key = _node.key,
+          characters = _node.characters;
+
+      // PERF: Exit early if there are no characters to be decorated.
+
+      if (characters.size == 0) return characters;
+
+      decorations.forEach(function (range) {
+        var startKey = range.startKey,
+            endKey = range.endKey,
+            startOffset = range.startOffset,
+            endOffset = range.endOffset,
+            marks = range.marks;
+
+        var hasStart = startKey == key;
+        var hasEnd = endKey == key;
+        var index = hasStart ? startOffset : 0;
+        var length = hasEnd ? endOffset - index : characters.size;
+        node = node.addMarks(index, length, marks);
+      });
+
+      return node.characters;
+    }
+
+    /**
+     * Get the decorations for the node from a `schema`.
+     *
+     * @param {Schema} schema
+     * @return {Array}
+     */
+
+  }, {
+    key: 'getDecorations',
+    value: function getDecorations(schema) {
+      return schema.__getDecorations(this);
+    }
+
+    /**
+     * Derive the leaves for a list of `characters`.
+     *
+     * @param {Array|Void} decorations (optional)
+     * @return {List<Leaf>}
+     */
+
+  }, {
+    key: 'getLeaves',
+    value: function getLeaves() {
+      var decorations = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      var characters = this.getDecoratedCharacters(decorations);
+      var leaves = [];
+
+      // PERF: cache previous values for faster lookup.
+      var prevChar = void 0;
+      var prevLeaf = void 0;
+
+      // If there are no characters, return one empty range.
+      if (characters.size == 0) {
+        leaves.push({});
+      }
+
+      // Otherwise, loop the characters and build the leaves...
+      else {
+          characters.forEach(function (char, i) {
+            var marks = char.marks,
+                text = char.text;
+
+            // The first one can always just be created.
+
+            if (i == 0) {
+              prevChar = char;
+              prevLeaf = { text: text, marks: marks };
+              leaves.push(prevLeaf);
+              return;
+            }
+
+            // Otherwise, compare the current and previous marks.
+            var prevMarks = prevChar.marks;
+            var isSame = (0, _immutable.is)(marks, prevMarks);
+
+            // If the marks are the same, add the text to the previous range.
+            if (isSame) {
+              prevChar = char;
+              prevLeaf.text += text;
+              return;
+            }
+
+            // Otherwise, create a new range.
+            prevChar = char;
+            prevLeaf = { text: text, marks: marks };
+            leaves.push(prevLeaf);
+          }, []);
+        }
+
+      // PERF: convert the leaves to immutable objects after iterating.
+      leaves = new _immutable.List(leaves.map(function (object) {
+        return new _leaf2.default(object);
+      }));
+
+      // Return the leaves.
+      return leaves;
+    }
+
+    /**
+     * Get all of the marks on the text.
+     *
+     * @return {OrderedSet<Mark>}
+     */
+
+  }, {
+    key: 'getMarks',
+    value: function getMarks() {
+      var array = this.getMarksAsArray();
+      return new _immutable.OrderedSet(array);
+    }
+
+    /**
+     * Get all of the marks on the text as an array
+     *
+     * @return {Array}
+     */
+
+  }, {
+    key: 'getMarksAsArray',
+    value: function getMarksAsArray() {
+      return this.characters.reduce(function (array, char) {
+        return array.concat(char.marks.toArray());
+      }, []);
+    }
+
+    /**
+     * Get the marks on the text at `index`.
+     *
+     * @param {Number} index
+     * @return {Set<Mark>}
+     */
+
+  }, {
+    key: 'getMarksAtIndex',
+    value: function getMarksAtIndex(index) {
+      if (index == 0) return _mark2.default.createSet();
+      var characters = this.characters;
+
+      var char = characters.get(index - 1);
+      if (!char) return _mark2.default.createSet();
+      return char.marks;
+    }
+
+    /**
+     * Get a node by `key`, to parallel other nodes.
+     *
+     * @param {String} key
+     * @return {Node|Null}
+     */
+
+  }, {
+    key: 'getNode',
+    value: function getNode(key) {
+      return this.key == key ? this : null;
+    }
+
+    /**
+     * Check if the node has a node by `key`, to parallel other nodes.
+     *
+     * @param {String} key
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'hasNode',
+    value: function hasNode(key) {
+      return !!this.getNode(key);
+    }
+
+    /**
+     * Insert `text` at `index`.
+     *
+     * @param {Numbder} index
+     * @param {String} text
+     * @param {String} marks (optional)
+     * @return {Text}
+     */
+
+  }, {
+    key: 'insertText',
+    value: function insertText(index, text, marks) {
+      var characters = this.characters;
+
+      var chars = _character2.default.createList(text.split('').map(function (char) {
+        return { text: char, marks: marks };
+      }));
+
+      characters = characters.slice(0, index).concat(chars).concat(characters.slice(index));
+
+      return this.set('characters', characters);
+    }
+
+    /**
+     * Regenerate the node's key.
+     *
+     * @return {Text}
+     */
+
+  }, {
+    key: 'regenerateKey',
+    value: function regenerateKey() {
+      var key = (0, _generateKey2.default)();
+      return this.set('key', key);
+    }
+
+    /**
+     * Remove a `mark` at `index` and `length`.
+     *
+     * @param {Number} index
+     * @param {Number} length
+     * @param {Mark} mark
+     * @return {Text}
+     */
+
+  }, {
+    key: 'removeMark',
+    value: function removeMark(index, length, mark) {
+      var characters = this.characters.map(function (char, i) {
+        if (i < index) return char;
+        if (i >= index + length) return char;
+        var _char2 = char,
+            marks = _char2.marks;
+
+        marks = marks.remove(mark);
+        char = char.set('marks', marks);
+        return char;
+      });
+
+      return this.set('characters', characters);
+    }
+
+    /**
+     * Remove text from the text node at `index` for `length`.
+     *
+     * @param {Number} index
+     * @param {Number} length
+     * @return {Text}
+     */
+
+  }, {
+    key: 'removeText',
+    value: function removeText(index, length) {
+      var characters = this.characters;
+
+      var start = index;
+      var end = index + length;
+      characters = characters.filterNot(function (char, i) {
+        return start <= i && i < end;
+      });
+      return this.set('characters', characters);
+    }
+
+    /**
+     * Return a JSON representation of the text.
+     *
+     * @param {Object} options
+     * @return {Object}
+     */
+
+  }, {
+    key: 'toJSON',
+    value: function toJSON() {
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      var object = {
+        kind: this.kind,
+        leaves: this.getLeaves().toArray().map(function (r) {
+          return r.toJSON();
+        })
+      };
+
+      if (options.preserveKeys) {
+        object.key = this.key;
+      }
+
+      return object;
+    }
+
+    /**
+     * Alias `toJS`.
+     */
+
+  }, {
+    key: 'toJS',
+    value: function toJS(options) {
+      return this.toJSON(options);
+    }
+
+    /**
+     * Update a `mark` at `index` and `length` with `properties`.
+     *
+     * @param {Number} index
+     * @param {Number} length
+     * @param {Mark} mark
+     * @param {Object} properties
+     * @return {Text}
+     */
+
+  }, {
+    key: 'updateMark',
+    value: function updateMark(index, length, mark, properties) {
+      var newMark = mark.merge(properties);
+
+      var characters = this.characters.map(function (char, i) {
+        if (i < index) return char;
+        if (i >= index + length) return char;
+        var _char3 = char,
+            marks = _char3.marks;
+
+        if (!marks.has(mark)) return char;
+        marks = marks.remove(mark);
+        marks = marks.add(newMark);
+        char = char.set('marks', marks);
+        return char;
+      });
+
+      return this.set('characters', characters);
+    }
+
+    /**
+     * Validate the text node against a `schema`.
+     *
+     * @param {Schema} schema
+     * @return {Object|Void}
+     */
+
+  }, {
+    key: 'validate',
+    value: function validate(schema) {
+      return schema.validateNode(this);
+    }
+  }, {
+    key: 'kind',
+
+
+    /**
+     * Get the node's kind.
+     *
+     * @return {String}
+     */
+
+    get: function get() {
+      return 'text';
+    }
+
+    /**
+     * Is the node empty?
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isEmpty',
+    get: function get() {
+      return this.text == '';
+    }
+
+    /**
+     * Get the concatenated text of the node.
+     *
+     * @return {String}
+     */
+
+  }, {
+    key: 'text',
+    get: function get() {
+      return this.characters.reduce(function (string, char) {
+        return string + char.text;
+      }, '');
+    }
+  }], [{
+    key: 'create',
+
+
+    /**
+     * Create a new `Text` with `attrs`.
+     *
+     * @param {Object|Array|List|String|Text} attrs
+     * @return {Text}
+     */
+
+    value: function create() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+      if (Text.isText(attrs)) {
+        return attrs;
+      }
+
+      if (typeof attrs == 'string') {
+        attrs = { leaves: [{ text: attrs }] };
+      }
+
+      if ((0, _isPlainObject2.default)(attrs)) {
+        if (attrs.text) {
+          var _attrs = attrs,
+              text = _attrs.text,
+              marks = _attrs.marks,
+              key = _attrs.key;
+
+          attrs = { key: key, leaves: [{ text: text, marks: marks }] };
+        }
+
+        return Text.fromJSON(attrs);
+      }
+
+      throw new Error('`Text.create` only accepts objects, arrays, strings or texts, but you passed it: ' + attrs);
+    }
+
+    /**
+     * Create a list of `Texts` from `elements`.
+     *
+     * @param {Array<Text|Object>|List<Text|Object>} elements
+     * @return {List<Text>}
+     */
+
+  }, {
+    key: 'createList',
+    value: function createList() {
+      var elements = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      if (_immutable.List.isList(elements) || Array.isArray(elements)) {
+        var list = new _immutable.List(elements.map(Text.create));
+        return list;
+      }
+
+      throw new Error('`Text.createList` only accepts arrays or lists, but you passed it: ' + elements);
+    }
+
+    /**
+     * Create a `Text` from a JSON `object`.
+     *
+     * @param {Object|Text} object
+     * @return {Text}
+     */
+
+  }, {
+    key: 'fromJSON',
+    value: function fromJSON(object) {
+      if (Text.isText(object)) {
+        return object;
+      }
+
+      var _object$leaves = object.leaves,
+          leaves = _object$leaves === undefined ? [] : _object$leaves,
+          _object$key = object.key,
+          key = _object$key === undefined ? (0, _generateKey2.default)() : _object$key;
+
+
+      var characters = leaves.map(_leaf2.default.fromJSON).reduce(function (l, r) {
+        return l.concat(r.getCharacters());
+      }, new _immutable.List());
+
+      var node = new Text({
+        characters: characters,
+        key: key
+      });
+
+      return node;
+    }
+
+    /**
+     * Alias `fromJS`.
+     */
+
+  }, {
+    key: 'isText',
+
+
+    /**
+     * Check if `any` is a `Text`.
+     *
+     * @param {Any} any
+     * @return {Boolean}
+     */
+
+    value: function isText(any) {
+      return !!(any && any[_modelTypes2.default.TEXT]);
+    }
+
+    /**
+     * Check if `any` is a list of texts.
+     *
+     * @param {Any} any
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isTextList',
+    value: function isTextList(any) {
+      return _immutable.List.isList(any) && any.every(function (item) {
+        return Text.isText(item);
+      });
+    }
+  }]);
+
+  return Text;
+}((0, _immutable.Record)(DEFAULTS));
+
+/**
+ * Attach a pseudo-symbol for type checking.
+ */
+
+Text.fromJS = Text.fromJSON;
+Text.prototype[_modelTypes2.default.TEXT] = true;
+
+/**
+ * Memoize read methods.
+ */
+
+(0, _memoize2.default)(Text.prototype, ['getMarks', 'getMarksAsArray'], {
+  takesArguments: false
+});
+
+(0, _memoize2.default)(Text.prototype, ['getDecoratedCharacters', 'getDecorations', 'getLeaves', 'getMarksAtIndex', 'validate'], {
+  takesArguments: true
+});
+
+/**
+ * Export.
+ *
+ * @type {Text}
+ */
+
+exports.default = Text;
+},{"../constants/model-types":518,"../utils/generate-key":538,"../utils/memoize":540,"./character":522,"./leaf":527,"./mark":528,"immutable":51,"is-plain-object":58}],534:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _isPlainObject = require('is-plain-object');
+
+var _isPlainObject2 = _interopRequireDefault(_isPlainObject);
+
+var _immutable = require('immutable');
+
+var _modelTypes = require('../constants/model-types');
+
+var _modelTypes2 = _interopRequireDefault(_modelTypes);
+
+var _data = require('./data');
+
+var _data2 = _interopRequireDefault(_data);
+
+var _document = require('./document');
+
+var _document2 = _interopRequireDefault(_document);
+
+var _history = require('./history');
+
+var _history2 = _interopRequireDefault(_history);
+
+var _range = require('./range');
+
+var _range2 = _interopRequireDefault(_range);
+
+var _schema = require('./schema');
+
+var _schema2 = _interopRequireDefault(_schema);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+/**
+ * Default properties.
+ *
+ * @type {Object}
+ */
+
+var DEFAULTS = {
+  data: new _immutable.Map(),
+  decorations: null,
+  document: _document2.default.create(),
+  history: _history2.default.create(),
+  schema: _schema2.default.create(),
+  selection: _range2.default.create()
+};
+
+/**
+ * Value.
+ *
+ * @type {Value}
+ */
+
+var Value = function (_Record) {
+  _inherits(Value, _Record);
+
+  function Value() {
+    _classCallCheck(this, Value);
+
+    return _possibleConstructorReturn(this, (Value.__proto__ || Object.getPrototypeOf(Value)).apply(this, arguments));
+  }
+
+  _createClass(Value, [{
+    key: 'change',
+
+
+    /**
+     * Create a new `Change` with the current value as a starting point.
+     *
+     * @param {Object} attrs
+     * @return {Change}
+     */
+
+    value: function change() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      var Change = require('./change').default;
+      return new Change(_extends({}, attrs, { value: this }));
+    }
+
+    /**
+     * Return a JSON representation of the value.
+     *
+     * @param {Object} options
+     * @return {Object}
+     */
+
+  }, {
+    key: 'toJSON',
+    value: function toJSON() {
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      var object = {
+        kind: this.kind,
+        document: this.document.toJSON(options)
+      };
+
+      if (options.preserveData) {
+        object.data = this.data.toJSON();
+      }
+
+      if (options.preserveDecorations) {
+        object.decorations = this.decorations ? this.decorations.toArray().map(function (d) {
+          return d.toJSON();
+        }) : null;
+      }
+
+      if (options.preserveHistory) {
+        object.history = this.history.toJSON();
+      }
+
+      if (options.preserveSelection) {
+        object.selection = this.selection.toJSON();
+      }
+
+      if (options.preserveSchema) {
+        object.schema = this.schema.toJSON();
+      }
+
+      if (options.preserveSelection && !options.preserveKeys) {
+        var document = this.document,
+            selection = this.selection;
+
+        object.selection.anchorPath = selection.isSet ? document.getPath(selection.anchorKey) : null;
+        object.selection.focusPath = selection.isSet ? document.getPath(selection.focusKey) : null;
+        delete object.selection.anchorKey;
+        delete object.selection.focusKey;
+      }
+
+      return object;
+    }
+
+    /**
+     * Alias `toJS`.
+     */
+
+  }, {
+    key: 'toJS',
+    value: function toJS(options) {
+      return this.toJSON(options);
+    }
+  }, {
+    key: 'kind',
+
+
+    /**
+     * Get the kind.
+     *
+     * @return {String}
+     */
+
+    get: function get() {
+      return 'value';
+    }
+
+    /**
+     * Are there undoable events?
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'hasUndos',
+    get: function get() {
+      return this.history.undos.size > 0;
+    }
+
+    /**
+     * Are there redoable events?
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'hasRedos',
+    get: function get() {
+      return this.history.redos.size > 0;
+    }
+
+    /**
+     * Is the current selection blurred?
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isBlurred',
+    get: function get() {
+      return this.selection.isBlurred;
+    }
+
+    /**
+     * Is the current selection focused?
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isFocused',
+    get: function get() {
+      return this.selection.isFocused;
+    }
+
+    /**
+     * Is the current selection collapsed?
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isCollapsed',
+    get: function get() {
+      return this.selection.isCollapsed;
+    }
+
+    /**
+     * Is the current selection expanded?
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isExpanded',
+    get: function get() {
+      return this.selection.isExpanded;
+    }
+
+    /**
+     * Is the current selection backward?
+     *
+     * @return {Boolean} isBackward
+     */
+
+  }, {
+    key: 'isBackward',
+    get: function get() {
+      return this.selection.isBackward;
+    }
+
+    /**
+     * Is the current selection forward?
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isForward',
+    get: function get() {
+      return this.selection.isForward;
+    }
+
+    /**
+     * Get the current start key.
+     *
+     * @return {String}
+     */
+
+  }, {
+    key: 'startKey',
+    get: function get() {
+      return this.selection.startKey;
+    }
+
+    /**
+     * Get the current end key.
+     *
+     * @return {String}
+     */
+
+  }, {
+    key: 'endKey',
+    get: function get() {
+      return this.selection.endKey;
+    }
+
+    /**
+     * Get the current start offset.
+     *
+     * @return {String}
+     */
+
+  }, {
+    key: 'startOffset',
+    get: function get() {
+      return this.selection.startOffset;
+    }
+
+    /**
+     * Get the current end offset.
+     *
+     * @return {String}
+     */
+
+  }, {
+    key: 'endOffset',
+    get: function get() {
+      return this.selection.endOffset;
+    }
+
+    /**
+     * Get the current anchor key.
+     *
+     * @return {String}
+     */
+
+  }, {
+    key: 'anchorKey',
+    get: function get() {
+      return this.selection.anchorKey;
+    }
+
+    /**
+     * Get the current focus key.
+     *
+     * @return {String}
+     */
+
+  }, {
+    key: 'focusKey',
+    get: function get() {
+      return this.selection.focusKey;
+    }
+
+    /**
+     * Get the current anchor offset.
+     *
+     * @return {String}
+     */
+
+  }, {
+    key: 'anchorOffset',
+    get: function get() {
+      return this.selection.anchorOffset;
+    }
+
+    /**
+     * Get the current focus offset.
+     *
+     * @return {String}
+     */
+
+  }, {
+    key: 'focusOffset',
+    get: function get() {
+      return this.selection.focusOffset;
+    }
+
+    /**
+     * Get the current start text node's closest block parent.
+     *
+     * @return {Block}
+     */
+
+  }, {
+    key: 'startBlock',
+    get: function get() {
+      return this.startKey && this.document.getClosestBlock(this.startKey);
+    }
+
+    /**
+     * Get the current end text node's closest block parent.
+     *
+     * @return {Block}
+     */
+
+  }, {
+    key: 'endBlock',
+    get: function get() {
+      return this.endKey && this.document.getClosestBlock(this.endKey);
+    }
+
+    /**
+     * Get the current anchor text node's closest block parent.
+     *
+     * @return {Block}
+     */
+
+  }, {
+    key: 'anchorBlock',
+    get: function get() {
+      return this.anchorKey && this.document.getClosestBlock(this.anchorKey);
+    }
+
+    /**
+     * Get the current focus text node's closest block parent.
+     *
+     * @return {Block}
+     */
+
+  }, {
+    key: 'focusBlock',
+    get: function get() {
+      return this.focusKey && this.document.getClosestBlock(this.focusKey);
+    }
+
+    /**
+     * Get the current start text node's closest inline parent.
+     *
+     * @return {Inline}
+     */
+
+  }, {
+    key: 'startInline',
+    get: function get() {
+      return this.startKey && this.document.getClosestInline(this.startKey);
+    }
+
+    /**
+     * Get the current end text node's closest inline parent.
+     *
+     * @return {Inline}
+     */
+
+  }, {
+    key: 'endInline',
+    get: function get() {
+      return this.endKey && this.document.getClosestInline(this.endKey);
+    }
+
+    /**
+     * Get the current anchor text node's closest inline parent.
+     *
+     * @return {Inline}
+     */
+
+  }, {
+    key: 'anchorInline',
+    get: function get() {
+      return this.anchorKey && this.document.getClosestInline(this.anchorKey);
+    }
+
+    /**
+     * Get the current focus text node's closest inline parent.
+     *
+     * @return {Inline}
+     */
+
+  }, {
+    key: 'focusInline',
+    get: function get() {
+      return this.focusKey && this.document.getClosestInline(this.focusKey);
+    }
+
+    /**
+     * Get the current start text node.
+     *
+     * @return {Text}
+     */
+
+  }, {
+    key: 'startText',
+    get: function get() {
+      return this.startKey && this.document.getDescendant(this.startKey);
+    }
+
+    /**
+     * Get the current end node.
+     *
+     * @return {Text}
+     */
+
+  }, {
+    key: 'endText',
+    get: function get() {
+      return this.endKey && this.document.getDescendant(this.endKey);
+    }
+
+    /**
+     * Get the current anchor node.
+     *
+     * @return {Text}
+     */
+
+  }, {
+    key: 'anchorText',
+    get: function get() {
+      return this.anchorKey && this.document.getDescendant(this.anchorKey);
+    }
+
+    /**
+     * Get the current focus node.
+     *
+     * @return {Text}
+     */
+
+  }, {
+    key: 'focusText',
+    get: function get() {
+      return this.focusKey && this.document.getDescendant(this.focusKey);
+    }
+
+    /**
+     * Get the next block node.
+     *
+     * @return {Block}
+     */
+
+  }, {
+    key: 'nextBlock',
+    get: function get() {
+      return this.endKey && this.document.getNextBlock(this.endKey);
+    }
+
+    /**
+     * Get the previous block node.
+     *
+     * @return {Block}
+     */
+
+  }, {
+    key: 'previousBlock',
+    get: function get() {
+      return this.startKey && this.document.getPreviousBlock(this.startKey);
+    }
+
+    /**
+     * Get the next inline node.
+     *
+     * @return {Inline}
+     */
+
+  }, {
+    key: 'nextInline',
+    get: function get() {
+      return this.endKey && this.document.getNextInline(this.endKey);
+    }
+
+    /**
+     * Get the previous inline node.
+     *
+     * @return {Inline}
+     */
+
+  }, {
+    key: 'previousInline',
+    get: function get() {
+      return this.startKey && this.document.getPreviousInline(this.startKey);
+    }
+
+    /**
+     * Get the next text node.
+     *
+     * @return {Text}
+     */
+
+  }, {
+    key: 'nextText',
+    get: function get() {
+      return this.endKey && this.document.getNextText(this.endKey);
+    }
+
+    /**
+     * Get the previous text node.
+     *
+     * @return {Text}
+     */
+
+  }, {
+    key: 'previousText',
+    get: function get() {
+      return this.startKey && this.document.getPreviousText(this.startKey);
+    }
+
+    /**
+     * Get the characters in the current selection.
+     *
+     * @return {List<Character>}
+     */
+
+  }, {
+    key: 'characters',
+    get: function get() {
+      return this.selection.isUnset ? new _immutable.List() : this.document.getCharactersAtRange(this.selection);
+    }
+
+    /**
+     * Get the marks of the current selection.
+     *
+     * @return {Set<Mark>}
+     */
+
+  }, {
+    key: 'marks',
+    get: function get() {
+      return this.selection.isUnset ? new _immutable.Set() : this.selection.marks || this.document.getMarksAtRange(this.selection);
+    }
+
+    /**
+     * Get the active marks of the current selection.
+     *
+     * @return {Set<Mark>}
+     */
+
+  }, {
+    key: 'activeMarks',
+    get: function get() {
+      return this.selection.isUnset ? new _immutable.Set() : this.selection.marks || this.document.getActiveMarksAtRange(this.selection);
+    }
+
+    /**
+     * Get the block nodes in the current selection.
+     *
+     * @return {List<Block>}
+     */
+
+  }, {
+    key: 'blocks',
+    get: function get() {
+      return this.selection.isUnset ? new _immutable.List() : this.document.getBlocksAtRange(this.selection);
+    }
+
+    /**
+     * Get the fragment of the current selection.
+     *
+     * @return {Document}
+     */
+
+  }, {
+    key: 'fragment',
+    get: function get() {
+      return this.selection.isUnset ? _document2.default.create() : this.document.getFragmentAtRange(this.selection);
+    }
+
+    /**
+     * Get the inline nodes in the current selection.
+     *
+     * @return {List<Inline>}
+     */
+
+  }, {
+    key: 'inlines',
+    get: function get() {
+      return this.selection.isUnset ? new _immutable.List() : this.document.getInlinesAtRange(this.selection);
+    }
+
+    /**
+     * Get the text nodes in the current selection.
+     *
+     * @return {List<Text>}
+     */
+
+  }, {
+    key: 'texts',
+    get: function get() {
+      return this.selection.isUnset ? new _immutable.List() : this.document.getTextsAtRange(this.selection);
+    }
+
+    /**
+     * Check whether the selection is empty.
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isEmpty',
+    get: function get() {
+      if (this.isCollapsed) return true;
+      if (this.endOffset != 0 && this.startOffset != 0) return false;
+      return this.fragment.text.length == 0;
+    }
+
+    /**
+     * Check whether the selection is collapsed in a void node.
+     *
+     * @return {Boolean}
+     */
+
+  }, {
+    key: 'isInVoid',
+    get: function get() {
+      if (this.isExpanded) return false;
+      return this.document.hasVoidParent(this.startKey);
+    }
+  }], [{
+    key: 'create',
+
+
+    /**
+     * Create a new `Value` with `attrs`.
+     *
+     * @param {Object|Value} attrs
+     * @param {Object} options
+     * @return {Value}
+     */
+
+    value: function create() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+      if (Value.isValue(attrs)) {
+        return attrs;
+      }
+
+      if ((0, _isPlainObject2.default)(attrs)) {
+        return Value.fromJSON(attrs);
+      }
+
+      throw new Error('`Value.create` only accepts objects or values, but you passed it: ' + attrs);
+    }
+
+    /**
+     * Create a dictionary of settable value properties from `attrs`.
+     *
+     * @param {Object|Value} attrs
+     * @return {Object}
+     */
+
+  }, {
+    key: 'createProperties',
+    value: function createProperties() {
+      var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      if (Value.isValue(attrs)) {
+        return {
+          data: attrs.data,
+          decorations: attrs.decorations,
+          schema: attrs.schema
+        };
+      }
+
+      if ((0, _isPlainObject2.default)(attrs)) {
+        var props = {};
+        if ('data' in attrs) props.data = _data2.default.create(attrs.data);
+        if ('decorations' in attrs) props.decorations = _range2.default.createList(attrs.decorations);
+        if ('schema' in attrs) props.schema = _schema2.default.create(attrs.schema);
+        return props;
+      }
+
+      throw new Error('`Value.createProperties` only accepts objects or values, but you passed it: ' + attrs);
+    }
+
+    /**
+     * Create a `Value` from a JSON `object`.
+     *
+     * @param {Object} object
+     * @param {Object} options
+     *   @property {Boolean} normalize
+     *   @property {Array} plugins
+     * @return {Value}
+     */
+
+  }, {
+    key: 'fromJSON',
+    value: function fromJSON(object) {
+      var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var _object$document = object.document,
+          document = _object$document === undefined ? {} : _object$document,
+          _object$selection = object.selection,
+          selection = _object$selection === undefined ? {} : _object$selection,
+          _object$schema = object.schema,
+          schema = _object$schema === undefined ? {} : _object$schema;
+
+
+      var data = new _immutable.Map();
+
+      document = _document2.default.fromJSON(document);
+      selection = _range2.default.fromJSON(selection);
+      schema = _schema2.default.fromJSON(schema);
+
+      // Allow plugins to set a default value for `data`.
+      if (options.plugins) {
+        var _iteratorNormalCompletion = true;
+        var _didIteratorError = false;
+        var _iteratorError = undefined;
+
+        try {
+          for (var _iterator = options.plugins[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+            var plugin = _step.value;
+
+            if (plugin.data) data = data.merge(plugin.data);
+          }
+        } catch (err) {
+          _didIteratorError = true;
+          _iteratorError = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion && _iterator.return) {
+              _iterator.return();
+            }
+          } finally {
+            if (_didIteratorError) {
+              throw _iteratorError;
+            }
+          }
+        }
+      }
+
+      // Then merge in the `data` provided.
+      if ('data' in object) {
+        data = data.merge(object.data);
+      }
+
+      if (selection.isUnset) {
+        var text = document.getFirstText();
+        if (text) selection = selection.collapseToStartOf(text);
+      }
+
+      var value = new Value({
+        data: data,
+        document: document,
+        selection: selection,
+        schema: schema
+      });
+
+      if (options.normalize !== false) {
+        value = value.change({ save: false }).normalize().value;
+      }
+
+      return value;
+    }
+
+    /**
+     * Alias `fromJS`.
+     */
+
+  }, {
+    key: 'isValue',
+
+
+    /**
+     * Check if a `value` is a `Value`.
+     *
+     * @param {Any} value
+     * @return {Boolean}
+     */
+
+    value: function isValue(value) {
+      return !!(value && value[_modelTypes2.default.VALUE]);
+    }
+  }]);
+
+  return Value;
+}((0, _immutable.Record)(DEFAULTS));
+
+/**
+ * Attach a pseudo-symbol for type checking.
+ */
+
+Value.fromJS = Value.fromJSON;
+Value.prototype[_modelTypes2.default.VALUE] = true;
+
+/**
+ * Export.
+ */
+
+exports.default = Value;
+},{"../constants/model-types":518,"./change":521,"./data":523,"./document":524,"./history":525,"./range":530,"./schema":531,"immutable":51,"is-plain-object":58}],535:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _debug = require('debug');
+
+var _debug2 = _interopRequireDefault(_debug);
+
+var _node = require('../models/node');
+
+var _node2 = _interopRequireDefault(_node);
+
+var _mark = require('../models/mark');
+
+var _mark2 = _interopRequireDefault(_mark);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Debug.
+ *
+ * @type {Function}
+ */
+
+var debug = (0, _debug2.default)('slate:operation:apply');
+
+/**
+ * Applying functions.
+ *
+ * @type {Object}
+ */
+
+var APPLIERS = {
+
+  /**
+   * Add mark to text at `offset` and `length` in node by `path`.
+   *
+   * @param {Value} value
+   * @param {Object} operation
+   * @return {Value}
+   */
+
+  add_mark: function add_mark(value, operation) {
+    var path = operation.path,
+        offset = operation.offset,
+        length = operation.length;
+
+    var mark = _mark2.default.create(operation.mark);
+    var _value = value,
+        document = _value.document;
+
+    var node = document.assertPath(path);
+    node = node.addMark(offset, length, mark);
+    document = document.updateNode(node);
+    value = value.set('document', document);
+    return value;
+  },
+
+
+  /**
+   * Insert a `node` at `index` in a node by `path`.
+   *
+   * @param {Value} value
+   * @param {Object} operation
+   * @return {Value}
+   */
+
+  insert_node: function insert_node(value, operation) {
+    var path = operation.path;
+
+    var node = _node2.default.create(operation.node);
+    var index = path[path.length - 1];
+    var rest = path.slice(0, -1);
+    var _value2 = value,
+        document = _value2.document;
+
+    var parent = document.assertPath(rest);
+    parent = parent.insertNode(index, node);
+    document = document.updateNode(parent);
+    value = value.set('document', document);
+    return value;
+  },
+
+
+  /**
+   * Insert `text` at `offset` in node by `path`.
+   *
+   * @param {Value} value
+   * @param {Object} operation
+   * @return {Value}
+   */
+
+  insert_text: function insert_text(value, operation) {
+    var path = operation.path,
+        offset = operation.offset,
+        text = operation.text;
+    var marks = operation.marks;
+
+    if (Array.isArray(marks)) marks = _mark2.default.createSet(marks);
+
+    var _value3 = value,
+        document = _value3.document,
+        selection = _value3.selection;
+    var _selection = selection,
+        anchorKey = _selection.anchorKey,
+        focusKey = _selection.focusKey,
+        anchorOffset = _selection.anchorOffset,
+        focusOffset = _selection.focusOffset;
+
+    var node = document.assertPath(path);
+
+    // Update the document
+    node = node.insertText(offset, text, marks);
+    document = document.updateNode(node);
+
+    // Update the selection
+    if (anchorKey == node.key && anchorOffset >= offset) {
+      selection = selection.moveAnchor(text.length);
+    }
+    if (focusKey == node.key && focusOffset >= offset) {
+      selection = selection.moveFocus(text.length);
+    }
+
+    value = value.set('document', document).set('selection', selection);
+    return value;
+  },
+
+
+  /**
+   * Merge a node at `path` with the previous node.
+   *
+   * @param {Value} value
+   * @param {Object} operation
+   * @return {Value}
+   */
+
+  merge_node: function merge_node(value, operation) {
+    var path = operation.path;
+
+    var withPath = path.slice(0, path.length - 1).concat([path[path.length - 1] - 1]);
+    var _value4 = value,
+        document = _value4.document,
+        selection = _value4.selection;
+
+    var one = document.assertPath(withPath);
+    var two = document.assertPath(path);
+    var parent = document.getParent(one.key);
+    var oneIndex = parent.nodes.indexOf(one);
+    var twoIndex = parent.nodes.indexOf(two);
+
+    // Perform the merge in the document.
+    parent = parent.mergeNode(oneIndex, twoIndex);
+    document = document.updateNode(parent);
+
+    // If the nodes are text nodes and the selection is inside the second node
+    // update it to refer to the first node instead.
+    if (one.kind == 'text') {
+      var _selection2 = selection,
+          anchorKey = _selection2.anchorKey,
+          anchorOffset = _selection2.anchorOffset,
+          focusKey = _selection2.focusKey,
+          focusOffset = _selection2.focusOffset;
+
+      var normalize = false;
+
+      if (anchorKey == two.key) {
+        selection = selection.moveAnchorTo(one.key, one.text.length + anchorOffset);
+        normalize = true;
+      }
+
+      if (focusKey == two.key) {
+        selection = selection.moveFocusTo(one.key, one.text.length + focusOffset);
+        normalize = true;
+      }
+
+      if (normalize) {
+        selection = selection.normalize(document);
+      }
+    }
+
+    // Update the document and selection.
+    value = value.set('document', document).set('selection', selection);
+    return value;
+  },
+
+
+  /**
+   * Move a node by `path` to `newPath`.
+   *
+   * @param {Value} value
+   * @param {Object} operation
+   * @return {Value}
+   */
+
+  move_node: function move_node(value, operation) {
+    var path = operation.path,
+        newPath = operation.newPath;
+
+    var newIndex = newPath[newPath.length - 1];
+    var newParentPath = newPath.slice(0, -1);
+    var oldParentPath = path.slice(0, -1);
+    var oldIndex = path[path.length - 1];
+    var _value5 = value,
+        document = _value5.document;
+
+    var node = document.assertPath(path);
+
+    // Remove the node from its current parent.
+    var parent = document.getParent(node.key);
+    parent = parent.removeNode(oldIndex);
+    document = document.updateNode(parent);
+
+    // Find the new target...
+    var target = void 0;
+
+    // If the old path and the rest of the new path are the same, then the new
+    // target is the old parent.
+    if (oldParentPath.every(function (x, i) {
+      return x === newParentPath[i];
+    }) && oldParentPath.length === newParentPath.length) {
+      target = parent;
+    }
+
+    // Otherwise, if the old path removal resulted in the new path being no longer
+    // correct, we need to decrement the new path at the old path's last index.
+    else if (oldParentPath.every(function (x, i) {
+        return x === newParentPath[i];
+      }) && oldIndex < newParentPath[oldParentPath.length]) {
+        newParentPath[oldParentPath.length]--;
+        target = document.assertPath(newParentPath);
+      }
+
+      // Otherwise, we can just grab the target normally...
+      else {
+          target = document.assertPath(newParentPath);
+        }
+
+    // Insert the new node to its new parent.
+    target = target.insertNode(newIndex, node);
+    document = document.updateNode(target);
+    value = value.set('document', document);
+    return value;
+  },
+
+
+  /**
+   * Remove mark from text at `offset` and `length` in node by `path`.
+   *
+   * @param {Value} value
+   * @param {Object} operation
+   * @return {Value}
+   */
+
+  remove_mark: function remove_mark(value, operation) {
+    var path = operation.path,
+        offset = operation.offset,
+        length = operation.length;
+
+    var mark = _mark2.default.create(operation.mark);
+    var _value6 = value,
+        document = _value6.document;
+
+    var node = document.assertPath(path);
+    node = node.removeMark(offset, length, mark);
+    document = document.updateNode(node);
+    value = value.set('document', document);
+    return value;
+  },
+
+
+  /**
+   * Remove a node by `path`.
+   *
+   * @param {Value} value
+   * @param {Object} operation
+   * @return {Value}
+   */
+
+  remove_node: function remove_node(value, operation) {
+    var path = operation.path;
+    var _value7 = value,
+        document = _value7.document,
+        selection = _value7.selection;
+    var _selection3 = selection,
+        startKey = _selection3.startKey,
+        endKey = _selection3.endKey;
+
+    var node = document.assertPath(path);
+    // If the selection is set, check to see if it needs to be updated.
+    if (selection.isSet) {
+      var hasStartNode = node.hasNode(startKey);
+      var hasEndNode = node.hasNode(endKey);
+      var first = node.kind == 'text' ? node : node.getFirstText() || node;
+      var last = node.kind == 'text' ? node : node.getLastText() || node;
+      var prev = document.getPreviousText(first.key);
+      var next = document.getNextText(last.key);
+
+      // If the start point was in this node, update it to be just before/after.
+      if (hasStartNode) {
+        if (prev) {
+          selection = selection.moveStartTo(prev.key, prev.text.length);
+        } else if (next) {
+          selection = selection.moveStartTo(next.key, 0);
+        } else {
+          selection = selection.deselect();
+        }
+      }
+
+      // If the end point was in this node, update it to be just before/after.
+      if (selection.isSet && hasEndNode) {
+        if (prev) {
+          selection = selection.moveEndTo(prev.key, prev.text.length);
+        } else if (next) {
+          selection = selection.moveEndTo(next.key, 0);
+        } else {
+          selection = selection.deselect();
+        }
+      }
+
+      // If the selection wasn't deselected, normalize it.
+      if (selection.isSet) {
+        selection = selection.normalize(document);
+      }
+    }
+
+    // Remove the node from the document.
+    var parent = document.getParent(node.key);
+    var index = parent.nodes.indexOf(node);
+    parent = parent.removeNode(index);
+    document = document.updateNode(parent);
+
+    // Update the document and selection.
+    value = value.set('document', document).set('selection', selection);
+    return value;
+  },
+
+
+  /**
+   * Remove `text` at `offset` in node by `path`.
+   *
+   * @param {Value} value
+   * @param {Object} operation
+   * @return {Value}
+   */
+
+  remove_text: function remove_text(value, operation) {
+    var path = operation.path,
+        offset = operation.offset,
+        text = operation.text;
+    var length = text.length;
+
+    var rangeOffset = offset + length;
+    var _value8 = value,
+        document = _value8.document,
+        selection = _value8.selection;
+    var _selection4 = selection,
+        anchorKey = _selection4.anchorKey,
+        focusKey = _selection4.focusKey,
+        anchorOffset = _selection4.anchorOffset,
+        focusOffset = _selection4.focusOffset;
+
+    var node = document.assertPath(path);
+
+    // Update the selection.
+    if (anchorKey == node.key && anchorOffset >= rangeOffset) {
+      selection = selection.moveAnchor(-length);
+    }
+
+    if (focusKey == node.key && focusOffset >= rangeOffset) {
+      selection = selection.moveFocus(-length);
+    }
+
+    node = node.removeText(offset, length);
+    document = document.updateNode(node);
+    value = value.set('document', document).set('selection', selection);
+    return value;
+  },
+
+
+  /**
+   * Set `properties` on mark on text at `offset` and `length` in node by `path`.
+   *
+   * @param {Value} value
+   * @param {Object} operation
+   * @return {Value}
+   */
+
+  set_mark: function set_mark(value, operation) {
+    var path = operation.path,
+        offset = operation.offset,
+        length = operation.length,
+        properties = operation.properties;
+
+    var mark = _mark2.default.create(operation.mark);
+    var _value9 = value,
+        document = _value9.document;
+
+    var node = document.assertPath(path);
+    node = node.updateMark(offset, length, mark, properties);
+    document = document.updateNode(node);
+    value = value.set('document', document);
+    return value;
+  },
+
+
+  /**
+   * Set `properties` on a node by `path`.
+   *
+   * @param {Value} value
+   * @param {Object} operation
+   * @return {Value}
+   */
+
+  set_node: function set_node(value, operation) {
+    var path = operation.path,
+        properties = operation.properties;
+    var _value10 = value,
+        document = _value10.document;
+
+    var node = document.assertPath(path);
+
+    // Delete properties that are not allowed to be updated.
+    delete properties.nodes;
+    delete properties.key;
+
+    node = node.merge(properties);
+    document = document.updateNode(node);
+    value = value.set('document', document);
+    return value;
+  },
+
+
+  /**
+   * Set `properties` on the selection.
+   *
+   * @param {Value} value
+   * @param {Object} operation
+   * @return {Value}
+   */
+
+  set_selection: function set_selection(value, operation) {
+    var properties = _extends({}, operation.properties);
+    var _value11 = value,
+        document = _value11.document,
+        selection = _value11.selection;
+
+
+    if (properties.marks != null) {
+      properties.marks = _mark2.default.createSet(properties.marks);
+    }
+
+    if (properties.anchorPath !== undefined) {
+      properties.anchorKey = properties.anchorPath === null ? null : document.assertPath(properties.anchorPath).key;
+      delete properties.anchorPath;
+    }
+
+    if (properties.focusPath !== undefined) {
+      properties.focusKey = properties.focusPath === null ? null : document.assertPath(properties.focusPath).key;
+      delete properties.focusPath;
+    }
+
+    selection = selection.merge(properties);
+    selection = selection.normalize(document);
+    value = value.set('selection', selection);
+    return value;
+  },
+
+
+  /**
+   * Set `properties` on `value`.
+   *
+   * @param {Value} value
+   * @param {Object} operation
+   * @return {Value}
+   */
+
+  set_value: function set_value(value, operation) {
+    var properties = operation.properties;
+
+    // Delete properties that are not allowed to be updated.
+
+    delete properties.document;
+    delete properties.selection;
+    delete properties.history;
+
+    value = value.merge(properties);
+    return value;
+  },
+
+
+  /**
+   * Split a node by `path` at `offset`.
+   *
+   * @param {Value} value
+   * @param {Object} operation
+   * @return {Value}
+   */
+
+  split_node: function split_node(value, operation) {
+    var path = operation.path,
+        position = operation.position;
+    var _value12 = value,
+        document = _value12.document,
+        selection = _value12.selection;
+
+    // Calculate a few things...
+
+    var node = document.assertPath(path);
+    var parent = document.getParent(node.key);
+    var index = parent.nodes.indexOf(node);
+
+    // Split the node by its parent.
+    parent = parent.splitNode(index, position);
+    document = document.updateNode(parent);
+
+    // Determine whether we need to update the selection...
+    var _selection5 = selection,
+        startKey = _selection5.startKey,
+        endKey = _selection5.endKey,
+        startOffset = _selection5.startOffset,
+        endOffset = _selection5.endOffset;
+
+    var next = document.getNextText(node.key);
+    var normalize = false;
+
+    // If the start point is after or equal to the split, update it.
+    if (node.key == startKey && position <= startOffset) {
+      selection = selection.moveStartTo(next.key, startOffset - position);
+      normalize = true;
+    }
+
+    // If the end point is after or equal to the split, update it.
+    if (node.key == endKey && position <= endOffset) {
+      selection = selection.moveEndTo(next.key, endOffset - position);
+      normalize = true;
+    }
+
+    // Normalize the selection if we changed it, since the methods we use might
+    // leave it in a non-normalized value.
+    if (normalize) {
+      selection = selection.normalize(document);
+    }
+
+    // Return the updated value.
+    value = value.set('document', document).set('selection', selection);
+    return value;
+  }
+};
+
+/**
+ * Apply an `operation` to a `value`.
+ *
+ * @param {Value} value
+ * @param {Object} operation
+ * @return {Value} value
+ */
+
+function applyOperation(value, operation) {
+  var type = operation.type;
+
+  var apply = APPLIERS[type];
+
+  if (!apply) {
+    throw new Error('Unknown operation type: "' + type + '".');
+  }
+
+  debug(type, operation);
+  value = apply(value, operation);
+  return value;
+}
+
+/**
+ * Export.
+ *
+ * @type {Function}
+ */
+
+exports.default = applyOperation;
+},{"../models/mark":528,"../models/node":529,"debug":471}],536:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _apply = require('./apply');
+
+var _apply2 = _interopRequireDefault(_apply);
+
+var _invert = require('./invert');
+
+var _invert2 = _interopRequireDefault(_invert);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = {
+  apply: _apply2.default,
+  invert: _invert2.default
+};
+},{"./apply":535,"./invert":537}],537:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _debug = require('debug');
+
+var _debug2 = _interopRequireDefault(_debug);
+
+var _pick = require('lodash/pick');
+
+var _pick2 = _interopRequireDefault(_pick);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Debug.
+ *
+ * @type {Function}
+ */
+
+var debug = (0, _debug2.default)('slate:operation:invert');
+
+/**
+ * Invert an `op`.
+ *
+ * @param {Object} op
+ * @return {Object}
+ */
+
+function invertOperation(op) {
+  var type = op.type;
+
+  debug(type, op);
+
+  /**
+   * Insert node.
+   */
+
+  if (type == 'insert_node') {
+    return _extends({}, op, {
+      type: 'remove_node'
+    });
+  }
+
+  /**
+   * Remove node.
+   */
+
+  if (type == 'remove_node') {
+    return _extends({}, op, {
+      type: 'insert_node'
+    });
+  }
+
+  /**
+   * Move node.
+   */
+
+  if (type == 'move_node') {
+    return _extends({}, op, {
+      path: op.newPath,
+      newPath: op.path
+    });
+  }
+
+  /**
+   * Merge node.
+   */
+
+  if (type == 'merge_node') {
+    var path = op.path;
+    var length = path.length;
+
+    var last = length - 1;
+    return _extends({}, op, {
+      type: 'split_node',
+      path: path.slice(0, last).concat([path[last] - 1])
+    });
+  }
+
+  /**
+   * Split node.
+   */
+
+  if (type == 'split_node') {
+    var _path = op.path;
+    var _length = _path.length;
+
+    var _last = _length - 1;
+    return _extends({}, op, {
+      type: 'merge_node',
+      path: _path.slice(0, _last).concat([_path[_last] + 1])
+    });
+  }
+
+  /**
+   * Set node.
+   */
+
+  if (type == 'set_node') {
+    var properties = op.properties,
+        node = op.node;
+
+    return _extends({}, op, {
+      node: node.merge(properties),
+      properties: (0, _pick2.default)(node, Object.keys(properties))
+    });
+  }
+
+  /**
+   * Insert text.
+   */
+
+  if (type == 'insert_text') {
+    return _extends({}, op, {
+      type: 'remove_text'
+    });
+  }
+
+  /**
+   * Remove text.
+   */
+
+  if (type == 'remove_text') {
+    return _extends({}, op, {
+      type: 'insert_text'
+    });
+  }
+
+  /**
+   * Add mark.
+   */
+
+  if (type == 'add_mark') {
+    return _extends({}, op, {
+      type: 'remove_mark'
+    });
+  }
+
+  /**
+   * Remove mark.
+   */
+
+  if (type == 'remove_mark') {
+    return _extends({}, op, {
+      type: 'add_mark'
+    });
+  }
+
+  /**
+   * Set mark.
+   */
+
+  if (type == 'set_mark') {
+    var _properties = op.properties,
+        mark = op.mark;
+
+    return _extends({}, op, {
+      mark: mark.merge(_properties),
+      properties: (0, _pick2.default)(mark, Object.keys(_properties))
+    });
+  }
+
+  /**
+   * Set selection.
+   */
+
+  if (type == 'set_selection') {
+    var _properties2 = op.properties,
+        selection = op.selection;
+
+    var inverse = _extends({}, op, {
+      selection: _extends({}, selection, _properties2),
+      properties: (0, _pick2.default)(selection, Object.keys(_properties2))
+    });
+
+    return inverse;
+  }
+
+  /**
+   * Set value.
+   */
+
+  if (type == 'set_value') {
+    var _properties3 = op.properties,
+        value = op.value;
+
+    return _extends({}, op, {
+      value: value.merge(_properties3),
+      properties: (0, _pick2.default)(value, Object.keys(_properties3))
+    });
+  }
+
+  /**
+   * Unknown.
+   */
+
+  throw new Error('Unknown op type: "' + type + '".');
+}
+
+/**
+ * Export.
+ *
+ * @type {Function}
+ */
+
+exports.default = invertOperation;
+},{"debug":471,"lodash/pick":225}],538:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+/**
+ * An auto-incrementing index for generating keys.
+ *
+ * @type {Number}
+ */
+
+var n = void 0;
+
+/**
+ * The global key generating function.
+ *
+ * @type {Function}
+ */
+
+var generate = void 0;
+
+/**
+ * Generate a key.
+ *
+ * @return {String}
+ */
+
+function generateKey() {
+  return generate();
+}
+
+/**
+ * Set a different unique ID generating `function`.
+ *
+ * @param {Function} func
+ */
+
+function setKeyGenerator(func) {
+  generate = func;
+}
+
+/**
+ * Reset the key generating function to its initial state.
+ */
+
+function resetKeyGenerator() {
+  n = 0;
+  generate = function generate() {
+    return "" + n++;
+  };
+}
+
+/**
+ * Set the initial state.
+ */
+
+resetKeyGenerator();
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = generateKey;
+exports.setKeyGenerator = setKeyGenerator;
+exports.resetKeyGenerator = resetKeyGenerator;
+},{}],539:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+/**
+ * Check if an `index` of a `text` node is in a `range`.
+ *
+ * @param {Number} index
+ * @param {Text} text
+ * @param {Range} range
+ * @return {Boolean}
+ */
+
+function isIndexInRange(index, text, range) {
+  var startKey = range.startKey,
+      startOffset = range.startOffset,
+      endKey = range.endKey,
+      endOffset = range.endOffset;
+
+
+  if (text.key == startKey && text.key == endKey) {
+    return startOffset <= index && index < endOffset;
+  } else if (text.key == startKey) {
+    return startOffset <= index;
+  } else if (text.key == endKey) {
+    return index < endOffset;
+  } else {
+    return true;
+  }
+}
+
+/**
+ * Export.
+ *
+ * @type {Function}
+ */
+
+exports.default = isIndexInRange;
+},{}],540:[function(require,module,exports){
+(function (process){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+/**
+ * Is in development?
+ *
+ * @type {Boolean}
+ */
+
+var IS_DEV = typeof process !== 'undefined' && process.env && process.env.NODE_ENV !== 'production';
+
+/**
+ * GLOBAL: True if memoization should is enabled. Only effective when `IS_DEV`.
+ *
+ * @type {Boolean}
+ */
+
+var ENABLED = true;
+
+/**
+ * GLOBAL: Changing this cache key will clear all previous cached results.
+ * Only effective when `IS_DEV`.
+ *
+ * @type {Number}
+ */
+
+var CACHE_KEY = 0;
+
+/**
+ * The leaf node of a cache tree. Used to support variable argument length. A
+ * unique object, so that native Maps will key it by reference.
+ *
+ * @type {Object}
+ */
+
+var LEAF = {};
+
+/**
+ * A value to represent a memoized undefined value. Allows efficient value
+ * retrieval using Map.get only.
+ *
+ * @type {Object}
+ */
+
+var UNDEFINED = {};
+
+/**
+ * Default value for unset keys in native Maps
+ *
+ * @type {Undefined}
+ */
+
+var UNSET = undefined;
+
+/**
+ * Memoize all of the `properties` on a `object`.
+ *
+ * @param {Object} object
+ * @param {Array} properties
+ * @return {Record}
+ */
+
+function memoize(object, properties) {
+  var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  var _options$takesArgumen = options.takesArguments,
+      takesArguments = _options$takesArgumen === undefined ? true : _options$takesArgumen;
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    var _loop = function _loop() {
+      var property = _step.value;
+
+      var original = object[property];
+
+      if (!original) {
+        throw new Error('Object does not have a property named "' + property + '".');
+      }
+
+      object[property] = function () {
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+          args[_key] = arguments[_key];
+        }
+
+        if (IS_DEV) {
+          // If memoization is disabled, call into the original method.
+          if (!ENABLED) return original.apply(this, args);
+
+          // If the cache key is different, previous caches must be cleared.
+          if (CACHE_KEY !== this.__cache_key) {
+            this.__cache_key = CACHE_KEY;
+            this.__cache = new Map(); // eslint-disable-line no-undef,no-restricted-globals
+          }
+        }
+
+        if (!this.__cache) {
+          this.__cache = new Map(); // eslint-disable-line no-undef,no-restricted-globals
+        }
+
+        var cachedValue = void 0;
+        var keys = void 0;
+
+        if (takesArguments) {
+          keys = [property].concat(args);
+          cachedValue = getIn(this.__cache, keys);
+        } else {
+          cachedValue = this.__cache.get(property);
+        }
+
+        // If we've got a result already, return it.
+        if (cachedValue !== UNSET) {
+          return cachedValue === UNDEFINED ? undefined : cachedValue;
+        }
+
+        // Otherwise calculate what it should be once and cache it.
+        var value = original.apply(this, args);
+        var v = value === undefined ? UNDEFINED : value;
+
+        if (takesArguments) {
+          this.__cache = setIn(this.__cache, keys, v);
+        } else {
+          this.__cache.set(property, v);
+        }
+
+        return value;
+      };
+    };
+
+    for (var _iterator = properties[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      _loop();
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+}
+
+/**
+ * Get a value at a key path in a tree of Map.
+ *
+ * If not set, returns UNSET.
+ * If the set value is undefined, returns UNDEFINED.
+ *
+ * @param {Map} map
+ * @param {Array} keys
+ * @return {Any|UNSET|UNDEFINED}
+ */
+
+function getIn(map, keys) {
+  var _iteratorNormalCompletion2 = true;
+  var _didIteratorError2 = false;
+  var _iteratorError2 = undefined;
+
+  try {
+    for (var _iterator2 = keys[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+      var key = _step2.value;
+
+      map = map.get(key);
+      if (map === UNSET) return UNSET;
+    }
+  } catch (err) {
+    _didIteratorError2 = true;
+    _iteratorError2 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion2 && _iterator2.return) {
+        _iterator2.return();
+      }
+    } finally {
+      if (_didIteratorError2) {
+        throw _iteratorError2;
+      }
+    }
+  }
+
+  return map.get(LEAF);
+}
+
+/**
+ * Set a value at a key path in a tree of Map, creating Maps on the go.
+ *
+ * @param {Map} map
+ * @param {Array} keys
+ * @param {Any} value
+ * @return {Map}
+ */
+
+function setIn(map, keys, value) {
+  var parent = map;
+  var child = void 0;
+
+  var _iteratorNormalCompletion3 = true;
+  var _didIteratorError3 = false;
+  var _iteratorError3 = undefined;
+
+  try {
+    for (var _iterator3 = keys[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+      var key = _step3.value;
+
+      child = parent.get(key);
+
+      // If the path was not created yet...
+      if (child === UNSET) {
+        child = new Map(); // eslint-disable-line no-undef,no-restricted-globals
+        parent.set(key, child);
+      }
+
+      parent = child;
+    }
+
+    // The whole path has been created, so set the value to the bottom most map.
+  } catch (err) {
+    _didIteratorError3 = true;
+    _iteratorError3 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion3 && _iterator3.return) {
+        _iterator3.return();
+      }
+    } finally {
+      if (_didIteratorError3) {
+        throw _iteratorError3;
+      }
+    }
+  }
+
+  child.set(LEAF, value);
+  return map;
+}
+
+/**
+ * In DEV mode, clears the previously memoized values, globally.
+ *
+ * @return {Void}
+ */
+
+function __clear() {
+  CACHE_KEY++;
+
+  if (CACHE_KEY >= Number.MAX_SAFE_INTEGER) {
+    CACHE_KEY = 0;
+  }
+}
+
+/**
+ * In DEV mode, enable or disable the use of memoize values, globally.
+ *
+ * @param {Boolean} enabled
+ * @return {Void}
+ */
+
+function __enable(enabled) {
+  ENABLED = enabled;
+}
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = memoize;
+exports.__clear = __clear;
+exports.__enable = __enable;
+}).call(this,require('_process'))
+},{"_process":234}],541:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _esrever = require('esrever');
+
+/**
+ * Surrogate pair start and end points.
+ *
+ * @type {Number}
+ */
+
+var SURROGATE_START = 0xD800;
+var SURROGATE_END = 0xDFFF;
+
+/**
+ * A regex to match space characters.
+ *
+ * @type {RegExp}
+ */
+
+var SPACE = /\s/;
+
+/**
+ * A regex to match chameleon characters, that count as word characters as long
+ * as they are inside of a word.
+ *
+ * @type {RegExp}
+ */
+
+var CHAMELEON = /['\u2018\u2019]/;
+
+/**
+ * A regex that matches punctuation.
+ *
+ * @type {RegExp}
+ */
+
+var PUNCTUATION = /[\u0021-\u0023\u0025-\u002A\u002C-\u002F\u003A\u003B\u003F\u0040\u005B-\u005D\u005F\u007B\u007D\u00A1\u00A7\u00AB\u00B6\u00B7\u00BB\u00BF\u037E\u0387\u055A-\u055F\u0589\u058A\u05BE\u05C0\u05C3\u05C6\u05F3\u05F4\u0609\u060A\u060C\u060D\u061B\u061E\u061F\u066A-\u066D\u06D4\u0700-\u070D\u07F7-\u07F9\u0830-\u083E\u085E\u0964\u0965\u0970\u0AF0\u0DF4\u0E4F\u0E5A\u0E5B\u0F04-\u0F12\u0F14\u0F3A-\u0F3D\u0F85\u0FD0-\u0FD4\u0FD9\u0FDA\u104A-\u104F\u10FB\u1360-\u1368\u1400\u166D\u166E\u169B\u169C\u16EB-\u16ED\u1735\u1736\u17D4-\u17D6\u17D8-\u17DA\u1800-\u180A\u1944\u1945\u1A1E\u1A1F\u1AA0-\u1AA6\u1AA8-\u1AAD\u1B5A-\u1B60\u1BFC-\u1BFF\u1C3B-\u1C3F\u1C7E\u1C7F\u1CC0-\u1CC7\u1CD3\u2010-\u2027\u2030-\u2043\u2045-\u2051\u2053-\u205E\u207D\u207E\u208D\u208E\u2329\u232A\u2768-\u2775\u27C5\u27C6\u27E6-\u27EF\u2983-\u2998\u29D8-\u29DB\u29FC\u29FD\u2CF9-\u2CFC\u2CFE\u2CFF\u2D70\u2E00-\u2E2E\u2E30-\u2E3B\u3001-\u3003\u3008-\u3011\u3014-\u301F\u3030\u303D\u30A0\u30FB\uA4FE\uA4FF\uA60D-\uA60F\uA673\uA67E\uA6F2-\uA6F7\uA874-\uA877\uA8CE\uA8CF\uA8F8-\uA8FA\uA92E\uA92F\uA95F\uA9C1-\uA9CD\uA9DE\uA9DF\uAA5C-\uAA5F\uAADE\uAADF\uAAF0\uAAF1\uABEB\uFD3E\uFD3F\uFE10-\uFE19\uFE30-\uFE52\uFE54-\uFE61\uFE63\uFE68\uFE6A\uFE6B\uFF01-\uFF03\uFF05-\uFF0A\uFF0C-\uFF0F\uFF1A\uFF1B\uFF1F\uFF20\uFF3B-\uFF3D\uFF3F\uFF5B\uFF5D\uFF5F-\uFF65]/;
+
+/**
+ * Is a character `code` in a surrogate character.
+ *
+ * @param {Number} code
+ * @return {Boolean}
+ */
+
+function isSurrogate(code) {
+  return SURROGATE_START <= code && code <= SURROGATE_END;
+}
+
+/**
+ * Is a character a word character? Needs the `remaining` characters too.
+ *
+ * @param {String} char
+ * @param {String|Void} remaining
+ * @return {Boolean}
+ */
+
+function isWord(char, remaining) {
+  if (SPACE.test(char)) return false;
+
+  // If it's a chameleon character, recurse to see if the next one is or not.
+  if (CHAMELEON.test(char)) {
+    var next = remaining.charAt(0);
+    var length = getCharLength(next);
+    next = remaining.slice(0, length);
+    var rest = remaining.slice(length);
+    if (isWord(next, rest)) return true;
+  }
+
+  if (PUNCTUATION.test(char)) return false;
+  return true;
+}
+
+/**
+ * Get the length of a `character`.
+ *
+ * @param {String} char
+ * @return {Number}
+ */
+
+function getCharLength(char) {
+  return isSurrogate(char.charCodeAt(0)) ? 2 : 1;
+}
+
+/**
+ * Get the offset to the end of the first character in `text`.
+ *
+ * @param {String} text
+ * @return {Number}
+ */
+
+function getCharOffset(text) {
+  var char = text.charAt(0);
+  return getCharLength(char);
+}
+
+/**
+ * Get the offset to the end of the character before an `offset` in `text`.
+ *
+ * @param {String} text
+ * @param {Number} offset
+ * @return {Number}
+ */
+
+function getCharOffsetBackward(text, offset) {
+  text = text.slice(0, offset);
+  text = (0, _esrever.reverse)(text);
+  return getCharOffset(text);
+}
+
+/**
+ * Get the offset to the end of the character after an `offset` in `text`.
+ *
+ * @param {String} text
+ * @param {Number} offset
+ * @return {Number}
+ */
+
+function getCharOffsetForward(text, offset) {
+  text = text.slice(offset);
+  return getCharOffset(text);
+}
+
+/**
+ * Get the offset to the end of the first word in `text`.
+ *
+ * @param {String} text
+ * @return {Number}
+ */
+
+function getWordOffset(text) {
+  var length = 0;
+  var i = 0;
+  var started = false;
+  var char = void 0;
+
+  while (char = text.charAt(i)) {
+    var l = getCharLength(char);
+    char = text.slice(i, i + l);
+    var rest = text.slice(i + l);
+
+    if (isWord(char, rest)) {
+      started = true;
+      length += l;
+    } else if (!started) {
+      length += l;
+    } else {
+      break;
+    }
+
+    i += l;
+  }
+
+  return length;
+}
+
+/**
+ * Get the offset to the end of the word before an `offset` in `text`.
+ *
+ * @param {String} text
+ * @param {Number} offset
+ * @return {Number}
+ */
+
+function getWordOffsetBackward(text, offset) {
+  text = text.slice(0, offset);
+  text = (0, _esrever.reverse)(text);
+  var o = getWordOffset(text);
+  return o;
+}
+
+/**
+ * Get the offset to the end of the word after an `offset` in `text`.
+ *
+ * @param {String} text
+ * @param {Number} offset
+ * @return {Number}
+ */
+
+function getWordOffsetForward(text, offset) {
+  text = text.slice(offset);
+  var o = getWordOffset(text);
+  return o;
+}
+
+/**
+ * Export.
+ *
+ * @type {Object}
+ */
+
+exports.default = {
+  getCharOffsetForward: getCharOffsetForward,
+  getCharOffsetBackward: getCharOffsetBackward,
+  getWordOffsetBackward: getWordOffsetBackward,
+  getWordOffsetForward: getWordOffsetForward
+};
+},{"esrever":15}],542:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
