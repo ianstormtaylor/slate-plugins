@@ -12,10 +12,8 @@ function SoftBreak(options = {}) {
   return {
     onKeyDown(event, change) {
       const { value } = change
-      if (event.key != 'Enter') return
-      if (options.shift && event.shiftKey == false) return
-      const { startBlock } = value
-      const { type } = startBlock
+      if (event.key !== 'Enter') return
+      if (options.shift && event.shiftKey === false) return
       return change.insertText('\n')
     }
   }

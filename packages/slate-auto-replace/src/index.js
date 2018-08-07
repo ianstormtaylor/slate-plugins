@@ -48,7 +48,6 @@ function AutoReplace(opts = {}) {
     const { startBlock } = value
     if (!startBlock) return
 
-    const type = startBlock.type
     const matches = getMatches(value)
     if (!matches) return
 
