@@ -57858,15 +57858,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function AutoReplace() {
   var opts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-  if (!opts.change) throw new Error('You must provide a `options.change` option.');
-  if (!opts.trigger) throw new Error('You must provide a `options.trigger` option.');
+  if (!opts.change) throw new Error('You must provide a `change` option.');
+  if (!opts.trigger) throw new Error('You must provide a `trigger` option.');
 
   var trigger = normalizeTrigger(opts.trigger);
-  var ignoreIn = void 0;
-  var onlyIn = void 0;
-
-  if (opts.ignoreIn) ignoreIn = normalizeMatcher(opts.ignoreIn);
-  if (opts.onlyIn) onlyIn = normalizeMatcher(opts.onlyIn);
 
   /**
    * On key down.
@@ -57901,10 +57896,6 @@ function AutoReplace() {
     var startBlock = value.startBlock;
 
     if (!startBlock) return;
-
-    var type = startBlock.type;
-    if (onlyIn && !onlyIn(type)) return;
-    if (ignoreIn && ignoreIn(type)) return;
 
     var matches = getMatches(value);
     if (!matches) return;
@@ -58055,28 +58046,6 @@ function normalizeTrigger(trigger) {
       };
     case 'string':
       return (0, _isHotkey2.default)(trigger);
-  }
-}
-
-/**
- * Normalize a node matching plugin option.
- *
- * @param {Function|Array|String} matchIn
- * @return {Function}
- */
-
-function normalizeMatcher(matcher) {
-  switch ((0, _typeOf2.default)(matcher)) {
-    case 'function':
-      return matcher;
-    case 'array':
-      return function (node) {
-        return matcher.includes(node);
-      };
-    case 'string':
-      return function (node) {
-        return node == matcher;
-      };
   }
 }
 
@@ -77276,17 +77245,8 @@ function SoftBreak() {
 
   return {
     onKeyDown: function onKeyDown(event, change) {
-      var value = change.value;
-
-      if (event.key != 'Enter') return;
-      if (options.shift && event.shiftKey == false) return;
-
-      var startBlock = value.startBlock;
-      var type = startBlock.type;
-
-      if (options.onlyIn && !options.onlyIn.includes(type)) return;
-      if (options.ignoreIn && options.ignoreIn.includes(type)) return;
-
+      if (event.key !== 'Enter') return;
+      if (options.shift && event.shiftKey === false) return;
       return change.insertText('\n');
     }
   };
