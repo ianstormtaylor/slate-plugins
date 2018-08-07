@@ -11,7 +11,7 @@ import typeOf from 'type-of'
  */
 
 function AutoReplace(opts = {}) {
-  const { transform } = opts
+  const { change } = opts
   const trigger = normalizeTrigger(opts.trigger)
   let ignoreIn
   let onlyIn
@@ -19,7 +19,7 @@ function AutoReplace(opts = {}) {
   if (opts.ignoreIn) ignoreIn = normalizeMatcher(opts.ignoreIn)
   if (opts.onlyIn) onlyIn = normalizeMatcher(opts.onlyIn)
 
-  if (!transform) throw new Error('You must provide a `transform` option.')
+  if (!change) throw new Error('You must provide a `change` option.')
   if (!trigger) throw new Error('You must provide a `trigger` option.')
 
   /**
@@ -77,7 +77,7 @@ function AutoReplace(opts = {}) {
     startOffset -= totalRemoved
     change.moveTo(startOffset)
 
-    return change.call(transform, event, matches, editor)
+    return change.call(change, event, matches, editor)
   }
 
   /**
