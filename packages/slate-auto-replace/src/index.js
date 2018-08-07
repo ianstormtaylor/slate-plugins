@@ -11,16 +11,15 @@ import typeOf from 'type-of'
  */
 
 function AutoReplace(opts = {}) {
-  const { change } = opts
+  if (!opts.change) throw new Error('You must provide a `options.change` option.')
+  if (!opts.trigger) throw new Error('You must provide a `options.trigger` option.')
+
   const trigger = normalizeTrigger(opts.trigger)
   let ignoreIn
   let onlyIn
 
   if (opts.ignoreIn) ignoreIn = normalizeMatcher(opts.ignoreIn)
   if (opts.onlyIn) onlyIn = normalizeMatcher(opts.onlyIn)
-
-  if (!change) throw new Error('You must provide a `change` option.')
-  if (!trigger) throw new Error('You must provide a `trigger` option.')
 
   /**
    * On key down.
@@ -77,7 +76,7 @@ function AutoReplace(opts = {}) {
     startOffset -= totalRemoved
     change.moveTo(startOffset)
 
-    return change.call(change, event, matches, editor)
+    return change.call(opts.change, event, matches, editor)
   }
 
   /**
