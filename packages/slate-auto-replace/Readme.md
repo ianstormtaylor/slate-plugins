@@ -33,5 +33,3 @@ Option | Type | Description
 **`transform`** | `Function` | A function to apply the desired transform. It will be called with `transform, e, matches, editor` from the event handler. The matching (`before` and `after`) text is deleted but are accessible inside `matches.before` and `matches.after`.
 **`after`** | `RegExp` | An optional regexp that must match the text after the trigger for the replacement to occur. Any capturing groups in the regexp will be deleted from the text content, but is accessible in `matches` parameter in the `transform` function.
 **`before`** | `RegExp` | An optional regexp that must match the text before the trigger for the replacement to occur. Any capturing groups in the regexp will be deleted from the text content, but is accessible in `matches` parameter in the `transform` function.
-**`ignoreIn`** | `Function` `Array` `String` | An optional block matcher to ignore triggers inside. If passed an array or string it will match by `node.type`.
-**`onlyIn`** | `Function` `Array` `String` | An optional block matcher to only replace triggers inside. If passed an array or string it will match by `node.type`.

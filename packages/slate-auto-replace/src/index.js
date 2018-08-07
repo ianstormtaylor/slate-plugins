@@ -11,15 +11,10 @@ import typeOf from 'type-of'
  */
 
 function AutoReplace(opts = {}) {
-  if (!opts.change) throw new Error('You must provide a `options.change` option.')
-  if (!opts.trigger) throw new Error('You must provide a `options.trigger` option.')
+  if (!opts.change) throw new Error('You must provide a `change` option.')
+  if (!opts.trigger) throw new Error('You must provide a `trigger` option.')
 
   const trigger = normalizeTrigger(opts.trigger)
-  let ignoreIn
-  let onlyIn
-
-  if (opts.ignoreIn) ignoreIn = normalizeMatcher(opts.ignoreIn)
-  if (opts.onlyIn) onlyIn = normalizeMatcher(opts.onlyIn)
 
   /**
    * On key down.
@@ -54,9 +49,6 @@ function AutoReplace(opts = {}) {
     if (!startBlock) return
 
     const type = startBlock.type
-    if (onlyIn && !onlyIn(type)) return
-    if (ignoreIn && ignoreIn(type)) return
-
     const matches = getMatches(value)
     if (!matches) return
 
@@ -202,24 +194,6 @@ function normalizeTrigger(trigger) {
       return event => !!(event.key && event.key.match(trigger))
     case 'string':
       return isHotkey(trigger)
-  }
-}
-
-/**
- * Normalize a node matching plugin option.
- *
- * @param {Function|Array|String} matchIn
- * @return {Function}
- */
-
-function normalizeMatcher(matcher) {
-  switch (typeOf(matcher)) {
-    case 'function':
-      return matcher
-    case 'array':
-      return node => matcher.includes(node)
-    case 'string':
-      return node => node == matcher
   }
 }
 

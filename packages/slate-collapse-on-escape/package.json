@@ -3,7 +3,7 @@
   "description": "A Slate plugin that simply collapses the selection on escape.",
   "version": "0.7.0",
   "license": "MIT",
-  "repository": "git://github.com/ianstormtaylor/slate-collapse-on-escape.git",
+  "repository": "git://github.com/ianstormtaylor/slate-plugins.git",
   "main": "./lib/index.js",
   "dependencies": {
     "to-pascal-case": "^1.0.0"
