@@ -9,8 +9,8 @@
     "to-pascal-case": "^1.0.0"
   },
   "peerDependencies": {
-    "slate": ">=0.29.0",
-    "slate-react": ">=0.9.0"
+    "slate": ">=0.37.0",
+    "slate-react": ">=0.15.0"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",

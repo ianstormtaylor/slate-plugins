@@ -38,23 +38,31 @@ function PasteLinkify(options = {}) {
     onPaste(event, change) {
       const transfer = getEventTransfer(event)
       const { value } = change
+      const { selection } = value
       const { text } = transfer
-      if (transfer.type !== 'text' && transfer.type !== 'html') return
-      if (!isUrl(text)) return
 
-      if (value.isCollapsed) {
-        const { startOffset } = value
-        change.insertText(text).moveOffsetsTo(startOffset, startOffset + text.length)
+      if (transfer.type !== 'text' && transfer.type !== 'html') {
+        return
       }
 
-      else if (hasLinks(value)) {
+      if (!isUrl(text)) {
+        return
+      }
+
+      if (selection.isCollapsed) {
+        const { startOffset } = selection
+        change
+          .insertText(text)
+          .moveAnchorTo(startOffset)
+          .moveFocusTo(startOffset + text.length)
+      } else if (hasLinks(value)) {
         change.call(unwrapLink)
       }
 
       change.call(wrapLink, text)
 
       if (options.collapseTo) {
-        change[`collapseTo${toPascal(options.collapseTo)}`]()
+        change[`moveTo${toPascal(options.collapseTo)}`]()
       }
 
       return change

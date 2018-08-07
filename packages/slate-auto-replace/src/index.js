@@ -48,7 +48,8 @@ function AutoReplace(opts = {}) {
 
   function replace(event, change, editor) {
     const { value } = change
-    if (value.isExpanded) return
+    const { selection } = value
+    if (selection.isExpanded) return
 
     const { startBlock } = value
     if (!startBlock) return
@@ -62,7 +63,7 @@ function AutoReplace(opts = {}) {
 
     event.preventDefault()
 
-    let startOffset = value.startOffset
+    let { startOffset } = selection
     let totalRemoved = 0
     const offsets = getOffsets(matches, startOffset)
 
@@ -74,7 +75,7 @@ function AutoReplace(opts = {}) {
     })
 
     startOffset -= totalRemoved
-    change.moveOffsetsTo(startOffset, startOffset)
+    change.moveTo(startOffset)
 
     return change.call(transform, event, matches, editor)
   }
@@ -88,7 +89,9 @@ function AutoReplace(opts = {}) {
    */
 
   function getMatches(value) {
-    const { startText, startOffset } = value
+    const { startText } = value
+    const { selection } = value
+    const { startOffset } = selection
     const { text } = startText
     let after = null
     let before = null
