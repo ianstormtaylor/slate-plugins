@@ -57899,8 +57899,9 @@ function AutoReplace() {
 
     event.preventDefault();
 
-    var startOffset = selection.startOffset;
+    var start = selection.start;
 
+    var startOffset = start.offset;
     var totalRemoved = 0;
     var offsets = getOffsets(matches, startOffset);
 
@@ -57926,19 +57927,19 @@ function AutoReplace() {
   function getMatches(value) {
     var startText = value.startText;
     var selection = value.selection;
-    var startOffset = selection.startOffset;
+    var start = selection.start;
     var text = startText.text;
 
     var after = null;
     var before = null;
 
     if (opts.after) {
-      var string = text.slice(startOffset);
+      var string = text.slice(start.offset);
       after = string.match(opts.after);
     }
 
     if (opts.before) {
-      var _string = text.slice(0, startOffset);
+      var _string = text.slice(0, start.offset);
       before = _string.match(opts.before);
     }
 
