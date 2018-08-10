@@ -53,7 +53,8 @@ function AutoReplace(opts = {}) {
 
     event.preventDefault()
 
-    let { startOffset } = selection
+    const { start } = selection
+    let startOffset = start.offset
     let totalRemoved = 0
     const offsets = getOffsets(matches, startOffset)
 
@@ -81,18 +82,18 @@ function AutoReplace(opts = {}) {
   function getMatches(value) {
     const { startText } = value
     const { selection } = value
-    const { startOffset } = selection
+    const { start } = selection
     const { text } = startText
     let after = null
     let before = null
 
     if (opts.after) {
-      const string = text.slice(startOffset)
+      const string = text.slice(start.offset)
       after = string.match(opts.after)
     }
 
     if (opts.before) {
-      const string = text.slice(0, startOffset)
+      const string = text.slice(0, start.offset)
       before = string.match(opts.before)
     }
 
