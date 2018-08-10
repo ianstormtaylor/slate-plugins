@@ -205,30 +205,30 @@ var Example = function (_React$Component) {
     return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Example.__proto__ || Object.getPrototypeOf(Example)).call.apply(_ref, [this].concat(args))), _this), _this.plugins = [(0, _slateAutoReplace2.default)({
       trigger: ')',
       before: /(\(c)$/i,
-      transform: function transform(_transform) {
-        return _transform.insertText('©');
+      change: function change(_change) {
+        return _change.insertText('©');
       }
     }), (0, _slateAutoReplace2.default)({
       trigger: 'space',
       before: /^(>)$/,
-      transform: function transform(_transform2) {
-        return _transform2.setBlock('blockquote');
+      change: function change(_change2) {
+        return _change2.setBlock('blockquote');
       }
     }), (0, _slateAutoReplace2.default)({
       trigger: 'space',
       before: /^(-)$/,
-      transform: function transform(_transform3) {
-        return _transform3.setBlock('li').wrapBlock('ul');
+      change: function change(_change3) {
+        return _change3.setBlock('li').wrapBlock('ul');
       }
     }), (0, _slateAutoReplace2.default)({
       trigger: 'space',
       before: /^(#{1,6})$/,
-      transform: function transform(_transform4, event, matches) {
+      change: function change(_change4, event, matches) {
         var _matches$before = _slicedToArray(matches.before, 1),
             hashes = _matches$before[0];
 
         var level = hashes.length;
-        return _transform4.setBlock({
+        return _change4.setBlock({
           type: 'h',
           data: { level: level }
         });
@@ -236,11 +236,8 @@ var Example = function (_React$Component) {
     }), (0, _slateAutoReplace2.default)({
       trigger: 'enter',
       before: /^(-{3})$/,
-      transform: function transform(_transform5) {
-        return _transform5.setBlock({
-          type: 'hr',
-          isVoid: true
-        });
+      change: function change(_change5) {
+        return _change5.setBlock({ type: 'hr', isVoid: true });
       }
     })], _this.state = {
       value: _slate.Value.fromJSON(_value2.default)

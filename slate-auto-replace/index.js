@@ -17,25 +17,25 @@ class Example extends React.Component {
     AutoReplace({
       trigger: ')',
       before: /(\(c)$/i,
-      transform: transform => transform.insertText('©')
+      change: change => change.insertText('©'),
     }),
     AutoReplace({
       trigger: 'space',
       before: /^(>)$/,
-      transform: transform => transform.setBlock('blockquote')
+      change: change => change.setBlock('blockquote'),
     }),
     AutoReplace({
       trigger: 'space',
       before: /^(-)$/,
-      transform: transform => transform.setBlock('li').wrapBlock('ul')
+      change: change => change.setBlock('li').wrapBlock('ul'),
     }),
     AutoReplace({
       trigger: 'space',
       before: /^(#{1,6})$/,
-      transform: (transform, event, matches) => {
+      change: (change, event, matches) => {
         const [ hashes ] = matches.before
         const level = hashes.length
-        return transform.setBlock({
+        return change.setBlock({
           type: 'h',
           data: { level }
         })
@@ -44,12 +44,7 @@ class Example extends React.Component {
     AutoReplace({
       trigger: 'enter',
       before: /^(-{3})$/,
-      transform: (transform) => {
-        return transform.setBlock({
-          type: 'hr',
-          isVoid: true
-        })
-      }
+      change: change => change.setBlock({ type: 'hr', isVoid: true }),
     })
   ]
 
