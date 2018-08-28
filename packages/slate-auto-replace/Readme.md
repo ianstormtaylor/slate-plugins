@@ -14,8 +14,8 @@ const plugins = [
   AutoReplace({
     trigger: 'space',
     before: /^(>)$/,
-    transform: (transform, e, matches) => {
-      return transform.setBlock({ type: 'quote' })
+    change: (change, e, matches) => {
+      return change.setBlocks({ type: 'quote' })
     }
   })
 ]
@@ -30,6 +30,6 @@ const plugins = [
 Option | Type | Description
 --- | --- | ---
 **`trigger`** | `String` `RegExp` `Function` | The trigger to match the inputed character against—either a character like `a` or a key name like `enter` or `tab`.
-**`transform`** | `Function` | A function to apply the desired transform. It will be called with `transform, e, matches, editor` from the event handler. The matching (`before` and `after`) text is deleted but are accessible inside `matches.before` and `matches.after`.
-**`after`** | `RegExp` | An optional regexp that must match the text after the trigger for the replacement to occur. Any capturing groups in the regexp will be deleted from the text content, but is accessible in `matches` parameter in the `transform` function.
-**`before`** | `RegExp` | An optional regexp that must match the text before the trigger for the replacement to occur. Any capturing groups in the regexp will be deleted from the text content, but is accessible in `matches` parameter in the `transform` function.
+**`change`** | `Function` | A function to apply the desired change. It will be called with `change, e, matches, editor` from the event handler. The matching (`before` and `after`) text is deleted but are accessible inside `matches.before` and `matches.after`.
+**`after`** | `RegExp` | An optional regexp that must match the text after the trigger for the replacement to occur. Any capturing groups in the regexp will be deleted from the text content, but is accessible in `matches` parameter in the `change` function.
+**`before`** | `RegExp` | An optional regexp that must match the text before the trigger for the replacement to occur. Any capturing groups in the regexp will be deleted from the text content, but is accessible in `matches` parameter in the `change` function.
