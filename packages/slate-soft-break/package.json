@@ -4,29 +4,17 @@
   "version": "0.8.0",
   "license": "MIT",
   "repository": "git://github.com/ianstormtaylor/slate-plugins.git",
-  "main": "./lib/index.js",
+  "main": "lib/slate-soft-break.js",
+  "module": "lib/slate-soft-break.es.js",
+  "umd": "dist/slate-soft-break.js",
+  "umdMin": "dist/slate-soft-break.min.js",
+  "umdGlobals": {
+    "slate": "Slate",
+    "slate-react": "SlateReact"
+  },
   "peerDependencies": {
     "slate": ">=0.29.0",
     "slate-react": ">=0.9.0"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.10.1",
-    "browserify": "^13.0.1",
-    "slate": "^0.30.1",
-    "slate-react": "^0.10.1",
-    "uglify-js": "^2.7.0"
-  },
-  "scripts": {
-    "build": "babel --out-dir ./lib ./src",
-    "build:max": "mkdir -p ./dist && NODE_ENV=production browserify ./src/index.js --transform babelify --transform envify --transform [ browserify-global-shim --global ] --standalone SlateSoftBreak > ./dist/slate-soft-break.js",
-    "build:min": "mkdir -p ./dist && NODE_ENV=production browserify ./src/index.js --transform babelify --transform envify --transform [ browserify-global-shim --global ] --transform uglifyify --standalone SlateSoftBreak | uglifyjs > ./dist/slate-soft-break.min.js",
-    "clean": "rm -rf ./dist ./lib ./node_modules",
-    "prepublish": "yarn run build:max && yarn run build:min",
-    "watch": "babel --watch --out-dir ./lib ./src --source-maps inline"
-  },
-  "browserify-global-shim": {
-    "slate": "Slate",
-    "slate-react": "SlateReact"
   },
   "keywords": [
     "slate"

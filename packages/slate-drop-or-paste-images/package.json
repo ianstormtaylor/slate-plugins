@@ -4,7 +4,14 @@
   "version": "0.8.3",
   "license": "MIT",
   "repository": "git://github.com/ianstormtaylor/slate-plugins.git",
-  "main": "./lib/index.js",
+  "main": "lib/slate-drop-or-paste-images.js",
+  "module": "lib/slate-drop-or-paste-images.es.js",
+  "umd": "dist/slate-drop-or-paste-images.js",
+  "umdMin": "dist/slate-drop-or-paste-images.min.js",
+  "umdGlobals": {
+    "slate": "Slate",
+    "slate-react": "SlateReact"
+  },
   "dependencies": {
     "es6-promise": "^4.0.5",
     "image-to-data-uri": "^1.0.0",
@@ -16,25 +23,6 @@
   "peerDependencies": {
     "slate": ">=0.29.0",
     "slate-react": ">=0.9.0"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.10.1",
-    "browserify": "^13.0.1",
-    "slate": "^0.30.1",
-    "slate-react": "^0.10.1",
-    "uglify-js": "^2.7.0"
-  },
-  "scripts": {
-    "build": "babel --out-dir ./lib ./src",
-    "build:max": "mkdir -p ./dist && NODE_ENV=production browserify ./src/index.js --transform babelify --transform envify --transform [ browserify-global-shim --global ] --standalone SlateDropOrPasteImages > ./dist/slate-drop-or-paste-images.js",
-    "build:min": "mkdir -p ./dist && NODE_ENV=production browserify ./src/index.js --transform babelify --transform envify --transform [ browserify-global-shim --global ] --transform uglifyify --standalone SlateDropOrPasteImages | uglifyjs > ./dist/slate-drop-or-paste-images.min.js",
-    "clean": "rm -rf ./dist ./lib ./node_modules",
-    "prepublish": "yarn run build:max && yarn run build:min",
-    "watch": "babel --watch --out-dir ./lib ./src --source-maps inline"
-  },
-  "browserify-global-shim": {
-    "slate": "Slate",
-    "slate-react": "SlateReact"
   },
   "keywords": [
     "slate"

@@ -35,10 +35,7 @@ class Example extends React.Component {
       change: (change, event, matches) => {
         const [ hashes ] = matches.before
         const level = hashes.length
-        return change.setBlocks({
-          type: 'h',
-          data: { level }
-        })
+        change.setBlocks({ type: 'h', data: { level }})
       }
     }),
     AutoReplace({

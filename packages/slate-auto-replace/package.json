@@ -4,7 +4,15 @@
   "version": "0.11.1",
   "license": "MIT",
   "repository": "git://github.com/ianstormtaylor/slate-plugins.git",
-  "main": "./lib/index.js",
+  "main": "lib/slate-auto-replace.js",
+  "module": "lib/slate-auto-replace.es.js",
+  "umd": "dist/slate-auto-replace.js",
+  "umd:main": "dist/slate-auto-replace.js",
+  "umdMin": "dist/slate-auto-replace.min.js",
+  "umdGlobals": {
+    "slate": "Slate",
+    "slate-react": "SlateReact"
+  },
   "dependencies": {
     "is-hotkey": "^0.0.3",
     "type-of": "^2.0.1"
@@ -14,23 +22,7 @@
     "slate-react": ">=0.15.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.10.1",
-    "browserify": "^13.0.1",
-    "slate": "^0.30.1",
-    "slate-react": "^0.10.1",
-    "uglify-js": "^2.7.0"
-  },
-  "scripts": {
-    "build": "babel --out-dir ./lib ./src",
-    "build:max": "mkdir -p ./dist && NODE_ENV=production browserify ./src/index.js --transform babelify --transform envify --transform [ browserify-global-shim --global ] --standalone SlateAutoReplace > ./dist/slate-auto-replace.js",
-    "build:min": "mkdir -p ./dist && NODE_ENV=production browserify ./src/index.js --transform babelify --transform envify --transform [ browserify-global-shim --global ] --transform uglifyify --standalone SlateAutoReplace | uglifyjs > ./dist/slate-auto-replace.min.js",
-    "clean": "rm -rf ./dist ./lib ./node_modules",
-    "prepublish": "yarn run build:max && yarn run build:min",
-    "watch": "babel --watch --out-dir ./lib ./src --source-maps inline"
-  },
-  "browserify-global-shim": {
-    "slate": "Slate",
-    "slate-react": "SlateReact"
+    "microbundle": "^0.6.0"
   },
   "keywords": [
     "slate"

@@ -1,4 +1,3 @@
-
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter, NavLink, Route, Redirect, Switch } from 'react-router-dom'
@@ -18,7 +17,11 @@ import SoftBreak from './slate-soft-break'
 const EXAMPLES = [
   ['slate-auto-replace', AutoReplace, '/slate-auto-replace'],
   ['slate-collapse-on-escape', CollapseOnEscape, '/slate-collapse-on-escape'],
-  ['slate-drop-or-paste-images', DropOrPasteImages, '/slate-drop-or-paste-images'],
+  [
+    'slate-drop-or-paste-images',
+    DropOrPasteImages,
+    '/slate-drop-or-paste-images',
+  ],
   ['slate-paste-linkify', PasteLinkify, '/slate-paste-linkify'],
   ['slate-soft-break', SoftBreak, '/slate-soft-break'],
 ]
@@ -30,26 +33,37 @@ const EXAMPLES = [
  */
 
 class App extends React.Component {
-
   render() {
     return (
       <div className="app">
         <div className="nav">
-          <span className="nav-title">@ianstormtaylor's Slate Plugins Examples</span>
+          <span className="nav-title">
+            @ianstormtaylor's Slate Plugins Examples
+          </span>
           <div className="nav-links">
-            <a className="nav-link" href="https://github.com/ianstormtaylor/slate-plugins">GitHub</a>
+            <a
+              className="nav-link"
+              href="https://github.com/ianstormtaylor/slate-plugins"
+            >
+              GitHub
+            </a>
           </div>
         </div>
         <div className="tabs">
-          {EXAMPLES.map(([ name, Component, path ]) => (
-            <NavLink key={path} to={path} className="tab"activeClassName="active">
+          {EXAMPLES.map(([name, Component, path]) => (
+            <NavLink
+              key={path}
+              to={path}
+              className="tab"
+              activeClassName="active"
+            >
               {name}
             </NavLink>
           ))}
         </div>
         <div className="example">
           <Switch>
-            {EXAMPLES.map(([ name, Component, path ]) => (
+            {EXAMPLES.map(([name, Component, path]) => (
               <Route key={path} path={path} component={Component} />
             ))}
             <Redirect from="/" to={EXAMPLES[0][2]} />
@@ -58,7 +72,6 @@ class App extends React.Component {
       </div>
     )
   }
-
 }
 
 /**
@@ -67,11 +80,17 @@ class App extends React.Component {
  * @type {Element} router
  */
 
-const router = <HashRouter><App /></HashRouter>
+const router = (
+  <HashRouter>
+    <App />
+  </HashRouter>
+)
 
 /**
  * Mount the router.
  */
 
-const root = document.body.querySelector('main')
+const root = window.document.createElement('div')
+root.id = 'root'
+window.document.body.appendChild(root)
 ReactDOM.render(router, root)

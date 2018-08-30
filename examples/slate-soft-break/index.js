@@ -1,5 +1,6 @@
 
 import SoftBreak from 'slate-soft-break'
+import When from 'slate-when'
 import React from 'react'
 import initialValue from './value.json'
 import { Editor } from 'slate-react'
@@ -14,12 +15,13 @@ import { Value } from 'slate'
 class Example extends React.Component {
 
   plugins = [
-    SoftBreak({
-      onlyIn: ['code'],
+    When({
+      when: value => value.blocks.every(b => b.type === 'code'),
+      plugin: SoftBreak()
     }),
-    SoftBreak({
-      ignoreIn: ['code'],
-      shift: true,
+    When({
+      when: value => !value.blocks.some(b => b.type === 'code'),
+      plugin: SoftBreak({ shift: true }),
     })
   ]
 

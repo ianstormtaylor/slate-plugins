@@ -46,12 +46,6 @@ class Image extends React.Component {
 
 class Example extends React.Component {
 
-  schema = {
-    nodes: {
-      image: Image
-    }
-  }
-
   plugins = [
     DropOrPasteImages({
       insertImage: (transform, file) => {

@@ -60,7 +60,8 @@ function AutoReplace(opts = {}) {
 
     offsets.forEach((offset) => {
       change
-        .moveFocusTo(offset.start, offset.end)
+        .moveAnchorTo(offset.start)
+        .moveFocusTo(offset.end)
         .delete()
       totalRemoved += offset.total
     })
@@ -80,8 +81,7 @@ function AutoReplace(opts = {}) {
    */
 
   function getMatches(value) {
-    const { startText } = value
-    const { selection } = value
+    const { selection, startText } = value
     const { start } = selection
     const { text } = startText
     let after = null
