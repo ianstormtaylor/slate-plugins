@@ -1,4 +1,3 @@
-
 import PasteLinkify from 'slate-paste-linkify'
 import React from 'react'
 import initialValue from './value.json'
@@ -12,17 +11,16 @@ import { Value } from 'slate'
  */
 
 class Example extends React.Component {
-
   plugins = [
     PasteLinkify({
       type: 'link',
       hrefProperty: 'url',
-      collapseTo: 'end'
-    })
+      collapseTo: 'end',
+    }),
   ]
 
   state = {
-    value: Value.fromJSON(initialValue)
+    value: Value.fromJSON(initialValue),
   }
 
   onChange = ({ value }) => {
@@ -40,14 +38,17 @@ class Example extends React.Component {
     )
   }
 
-  renderNode = (props) => {
+  renderNode = props => {
     const { node, attributes, children } = props
     switch (node.type) {
       case 'link':
-        return <a {...attributes} href={node.data.get('url')}>{children}</a>
+        return (
+          <a {...attributes} href={node.data.get('url')}>
+            {children}
+          </a>
+        )
     }
   }
-
 }
 
 /**

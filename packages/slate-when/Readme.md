@@ -1,4 +1,3 @@
-
 ### `slate-when`
 
 A Slate plugin that wraps another plugin to make it only trigger when the `value` of the editor is in a certain state.
@@ -23,7 +22,7 @@ const plugins = [
 />
 ```
 
-Option | Type | Description
---- | --- | ---
-**`when`** | `Function` `when(value: Value) => Boolean` | The constraint to check.
-**`plugin`** | `Object` | An instance of the plugin to contrain.
+| Option       | Type                                       | Description                            |
+| ------------ | ------------------------------------------ | -------------------------------------- |
+| **`when`**   | `Function` `when(value: Value) => Boolean` | The constraint to check.               |
+| **`plugin`** | `Object`                                   | An instance of the plugin to contrain. |

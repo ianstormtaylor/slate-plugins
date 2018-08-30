@@ -1,4 +1,3 @@
-
 /**
  * A Slate plugin to add soft breaks on return.
  *
@@ -14,7 +13,7 @@ function SoftBreak(options = {}) {
       if (event.key !== 'Enter') return
       if (options.shift && event.shiftKey === false) return
       return change.insertText('\n')
-    }
+    },
   }
 }
 

@@ -1,4 +1,3 @@
-
 /**
  * Return a `Blob` for the given data `uri`.
  *

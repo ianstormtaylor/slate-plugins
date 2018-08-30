@@ -1,4 +1,3 @@
-
 # Contributing
 
 Want to contribute to these plugins? That would be awesome!
@@ -7,7 +6,6 @@ Want to contribute to these plugins? That would be awesome!
 - [Running Examples](#running-examples)
 - [Running Tests](#running-tests)
 - [Publishing Releases](#publishing-releases)
-
 
 ## Reporting Bugs
 
@@ -22,7 +20,6 @@ Any issue you open must include:
 Here's a [JSFiddle template with the plugins](https://jsfiddle.net/wphujnwf/7/) to get you started:
 
 [![](./docs/images/jsfiddle.png)](https://jsfiddle.net/wphujnwf/7/)
-
 
 ## Running Examples
 
@@ -40,7 +37,6 @@ yarn run watch
 ```
 
 Now you can open up `http://localhost:8080/dev.html` in your browser and you'll see the examples site. Any changes you make to the source code will be immediately reflected when you refresh the page.
-
 
 ## Running Tests
 
@@ -63,17 +59,16 @@ To keep the source rebuilding on every file change, you need to run an additiona
 yarn run watch
 ```
 
-If you need to debug something, you can add a `debugger` line to the source, and then run `yarn run test debug`. 
+If you need to debug something, you can add a `debugger` line to the source, and then run `yarn run test debug`.
 
 If you only want to run a specific test or tests, you can run `yarn run test --fgrep="slate-react rendering"` flag which will filter the tests being run by grepping for the string in each test.
-
 
 ## Publishing Releases
 
 Since we use [Lerna](https://lernajs.io) to manage the Slate packages this is fairly easy, **but** you must make sure you are using `npm` to run the release script, because using `yarn` results in failures. So just run:
 
 ```js
-npm run release 
+npm run release
 ```
 
 And follow the prompts Lerna gives you.

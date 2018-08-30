@@ -1,4 +1,3 @@
-
 ### `slate-paste-linkify`
 
 A Slate plugin that wraps a selection in an inline link element when a URL is pasted from the clipboard.
@@ -23,8 +22,8 @@ const plugins = [
 />
 ```
 
-Option | Type | Description
---- | --- | ---
-**`type`** (required) | `String` | The type of the inline element to create.
-**`hrefProperty`** | `String` | The key of the data property to store the link's `href` in. Defaults to `'href'`.
-**`collapseTo`** | `String` | The edge to collapse the selection to after pasting the link, either: `'start'`, `'end'`, `'anchor'`, `'focus'`. If this option is not passed, the selection will stay expanded.
+| Option                | Type     | Description                                                                                                                                                                      |
+| --------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`type`** (required) | `String` | The type of the inline element to create.                                                                                                                                        |
+| **`hrefProperty`**    | `String` | The key of the data property to store the link's `href` in. Defaults to `'href'`.                                                                                                |
+| **`collapseTo`**      | `String` | The edge to collapse the selection to after pasting the link, either: `'start'`, `'end'`, `'anchor'`, `'focus'`. If this option is not passed, the selection will stay expanded. |

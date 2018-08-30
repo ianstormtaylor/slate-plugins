@@ -1,4 +1,3 @@
-
 import isHotkey from 'is-hotkey'
 import typeOf from 'type-of'
 
@@ -58,7 +57,7 @@ function AutoReplace(opts = {}) {
     let totalRemoved = 0
     const offsets = getOffsets(matches, startOffset)
 
-    offsets.forEach((offset) => {
+    offsets.forEach(offset => {
       change
         .moveAnchorTo(offset.start)
         .moveFocusTo(offset.end)
@@ -128,7 +127,7 @@ function AutoReplace(opts = {}) {
       let startOffset = 0
       let matchIndex = 0
 
-      before.slice(1, before.length).forEach((current) => {
+      before.slice(1, before.length).forEach(current => {
         if (current === undefined) return
 
         matchIndex = match.indexOf(current, matchIndex)
@@ -137,7 +136,7 @@ function AutoReplace(opts = {}) {
         offsets.push({
           start: startOffset,
           end: startOffset + current.length,
-          total: current.length
+          total: current.length,
         })
 
         totalRemoved += current.length
@@ -150,7 +149,7 @@ function AutoReplace(opts = {}) {
       let startOffset = 0
       let matchIndex = 0
 
-      after.slice(1, after.length).forEach((current) => {
+      after.slice(1, after.length).forEach(current => {
         if (current === undefined) return
 
         matchIndex = match.indexOf(current, matchIndex)
@@ -159,7 +158,7 @@ function AutoReplace(opts = {}) {
         offsets.push({
           start: startOffset,
           end: startOffset + current.length,
-          total: 0
+          total: 0,
         })
 
         totalRemoved += current.length

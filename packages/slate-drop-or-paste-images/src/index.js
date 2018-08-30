@@ -1,4 +1,3 @@
-
 import Promise from 'es6-promise'
 import isImage from 'is-image'
 import isUrl from 'is-url'
@@ -17,13 +16,13 @@ import { getEventTransfer, getEventRange } from 'slate-react'
  */
 
 function DropOrPasteImages(options = {}) {
-  let {
-    insertImage,
-    extensions,
-  } = options
+  let { insertImage, extensions } = options
 
   if (options.applyTransform) {
-    logger.deprecate('0.6.0', 'The `applyTransform` argument to `slate-drop-or-paste-images` has been renamed to `insertImage` instead.')
+    logger.deprecate(
+      '0.6.0',
+      'The `applyTransform` argument to `slate-drop-or-paste-images` has been renamed to `insertImage` instead.'
+    )
     insertImage = options.applyTransform
   }
 
@@ -46,7 +45,6 @@ function DropOrPasteImages(options = {}) {
     return accepted
   }
 
-
   /**
    * Apply the change for a given file and update the editor with the result.
    *
@@ -57,13 +55,10 @@ function DropOrPasteImages(options = {}) {
    */
 
   function asyncApplyChange(change, editor, file) {
-    return Promise
-      .resolve(insertImage(change, file, editor))
-      .then(() => {
-        editor.onChange(change)
-      })
+    return Promise.resolve(insertImage(change, file, editor)).then(() => {
+      editor.onChange(change)
+    })
   }
-
 
   /**
    * On drop or paste.
@@ -78,9 +73,12 @@ function DropOrPasteImages(options = {}) {
     const transfer = getEventTransfer(event)
     const range = getEventRange(event, change.value)
     switch (transfer.type) {
-      case 'files': return onInsertFiles(event, change, editor, transfer, range)
-      case 'html': return onInsertHtml(event, change, editor, transfer, range)
-      case 'text': return onInsertText(event, change, editor, transfer, range)
+      case 'files':
+        return onInsertFiles(event, change, editor, transfer, range)
+      case 'html':
+        return onInsertHtml(event, change, editor, transfer, range)
+      case 'text':
+        return onInsertText(event, change, editor, transfer, range)
     }
   }
 
@@ -101,7 +99,7 @@ function DropOrPasteImages(options = {}) {
     for (const file of files) {
       if (extensions) {
         const type = file.type
-        const [ , ext ] = type.split('/')
+        const [, ext] = type.split('/')
         if (!matchExt(ext)) continue
       }
 

@@ -1,4 +1,3 @@
-
 import DropOrPasteImages from 'slate-drop-or-paste-images'
 import React from 'react'
 import initialValue from './value.json'
@@ -12,7 +11,6 @@ import { Value } from 'slate'
  */
 
 class Image extends React.Component {
-
   state = {}
 
   componentDidMount() {
@@ -31,11 +29,8 @@ class Image extends React.Component {
   render() {
     const { attributes } = this.props
     const { src } = this.state
-    return src
-      ? <img {...attributes} src={src} />
-      : <span>Loading...</span>
+    return src ? <img {...attributes} src={src} /> : <span>Loading...</span>
   }
-
 }
 
 /**
@@ -45,7 +40,6 @@ class Image extends React.Component {
  */
 
 class Example extends React.Component {
-
   plugins = [
     DropOrPasteImages({
       insertImage: (transform, file) => {
@@ -54,12 +48,12 @@ class Example extends React.Component {
           isVoid: true,
           data: { file },
         })
-      }
-    })
+      },
+    }),
   ]
 
   state = {
-    value: Value.fromJSON(initialValue)
+    value: Value.fromJSON(initialValue),
   }
 
   onChange = ({ value }) => {
@@ -77,12 +71,12 @@ class Example extends React.Component {
     )
   }
 
-  renderNode = (props) => {
+  renderNode = props => {
     switch (props.node.type) {
-      case 'image': return <Image {...props} />
+      case 'image':
+        return <Image {...props} />
     }
   }
-
 }
 
 /**

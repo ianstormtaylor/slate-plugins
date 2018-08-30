@@ -1,4 +1,3 @@
-
 ### `slate-collapse-on-escape`
 
 A Slate plugin that simply collapses the selection on escape.
@@ -21,6 +20,6 @@ const plugins = [
 />
 ```
 
-Option | Type | Description
---- | --- | ---
-**`toEdge`** | `String` | The edge to collapse to, either: `'start'`, `'end'`, `'anchor'` or `'focus'`. Defaults to `'start'`.
+| Option       | Type     | Description                                                                                          |
+| ------------ | -------- | ---------------------------------------------------------------------------------------------------- |
+| **`toEdge`** | `String` | The edge to collapse to, either: `'start'`, `'end'`, `'anchor'` or `'focus'`. Defaults to `'start'`. |

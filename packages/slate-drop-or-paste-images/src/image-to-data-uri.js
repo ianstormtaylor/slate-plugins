@@ -1,4 +1,3 @@
-
 /**
  * Convert an <img> source `url` to a data URI and `callback(err, uri)`.
  *
@@ -7,8 +6,8 @@
  */
 
 function srcToDataUri(url, callback) {
-  const canvas = document.createElement('canvas')
-  const img = document.createElement('img')
+  const canvas = window.document.createElement('canvas')
+  const img = window.document.createElement('img')
 
   if (!canvas.getContext) {
     return setTimeout(callback, 0, new Error('Canvas is not supported.'))

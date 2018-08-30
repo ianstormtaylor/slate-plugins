@@ -1,4 +1,3 @@
-
 import AutoReplace from 'slate-auto-replace'
 import React from 'react'
 import initialValue from './value.json'
@@ -12,7 +11,6 @@ import { Value } from 'slate'
  */
 
 class Example extends React.Component {
-
   plugins = [
     AutoReplace({
       trigger: ')',
@@ -33,16 +31,16 @@ class Example extends React.Component {
       trigger: 'space',
       before: /^(#{1,6})$/,
       change: (change, event, matches) => {
-        const [ hashes ] = matches.before
+        const [hashes] = matches.before
         const level = hashes.length
-        change.setBlocks({ type: 'h', data: { level }})
-      }
+        change.setBlocks({ type: 'h', data: { level } })
+      },
     }),
     AutoReplace({
       trigger: 'enter',
       before: /^(-{3})$/,
       change: change => change.setBlocks({ type: 'hr', isVoid: true }),
-    })
+    }),
   ]
 
   state = {
@@ -64,11 +62,15 @@ class Example extends React.Component {
     )
   }
 
-  renderNode = (props) => {
+  renderNode = props => {
     const { node, attributes, children } = props
     switch (node.type) {
       case 'blockquote':
-        return <blockquote {...attributes}><p>{children}</p></blockquote>
+        return (
+          <blockquote {...attributes}>
+            <p>{children}</p>
+          </blockquote>
+        )
       case 'hr':
         return <hr />
       case 'ul':
@@ -81,7 +83,6 @@ class Example extends React.Component {
         return <Tag {...attributes}>{children}</Tag>
     }
   }
-
 }
 
 /**

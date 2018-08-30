@@ -1,4 +1,3 @@
-
 import isUrl from 'is-url'
 import toPascal from 'to-pascal-case'
 import { getEventTransfer } from 'slate-react'
@@ -14,10 +13,7 @@ import { getEventTransfer } from 'slate-react'
  */
 
 function PasteLinkify(options = {}) {
-  const {
-    type = 'link',
-    hrefProperty = 'href',
-  } = options
+  const { type = 'link', hrefProperty = 'href' } = options
 
   function hasLinks(value) {
     return value.inlines.some(inline => inline.type == type)
@@ -66,7 +62,7 @@ function PasteLinkify(options = {}) {
       }
 
       return change
-    }
+    },
   }
 }
 

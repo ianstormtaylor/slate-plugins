@@ -1,6 +1,4 @@
-
 This repository contains a few of [my](https://github.com/ianstormtaylor) Slate plugins in a single monorepo to keep them easier to develop.
-
 
 <br/>
 
@@ -14,13 +12,11 @@ This repository contains a few of [my](https://github.com/ianstormtaylor) Slate 
 
 _Note: this is not an "official" set of plugins, just ones that I've happened to need and have made. If you have an idea for a plugin, don't pull request it here, you should keep them in your own repos. (Feel free to use this monorepo as a template for your own!)_
 
-
 <br/>
 
 ### Demo
 
 Check out the [**live demo**](https://ianstormtaylor.github.io/slate-plugins) of each of the plugins!
-
 
 <br/>
 
