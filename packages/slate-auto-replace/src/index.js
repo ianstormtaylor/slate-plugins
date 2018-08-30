@@ -60,7 +60,7 @@ function AutoReplace(opts = {}) {
 
     offsets.forEach((offset) => {
       change
-        .moveOffsetsTo(offset.start, offset.end)
+        .moveFocusTo(offset.start, offset.end)
         .delete()
       totalRemoved += offset.total
     })
