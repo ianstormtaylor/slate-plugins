@@ -127,7 +127,7 @@ function AutoReplace(opts = {}) {
       let startOffset = 0
       let matchIndex = 0
 
-      before.slice(1, before.length).forEach(current => {
+      before.slice(0, before.length).forEach(current => {
         if (current === undefined) return
 
         matchIndex = match.indexOf(current, matchIndex)
