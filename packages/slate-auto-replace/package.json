@@ -1,7 +1,7 @@
 {
   "name": "slate-auto-replace-carubbi",
   "description": "A Slate plugin to automatically transform certain input.",
-  "version": "0.11.8",
+  "version": "0.11.9",
   "license": "MIT",
   "repository": "git://github.com/rcarubbi/slate-plugins.git",
   "main": "lib/slate-auto-replace.js",
@@ -23,6 +23,10 @@
   },
   "devDependencies": {
     "microbundle": "^0.6.0"
+  },
+  "scripts": {
+    "build": "microbundle",
+    "dev": "microbundle watch"
   },
   "keywords": [
     "slate"
