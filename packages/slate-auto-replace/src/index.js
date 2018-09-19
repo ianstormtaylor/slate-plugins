@@ -14,7 +14,7 @@ function AutoReplace(opts = {}) {
   if (!opts.trigger) throw new Error('You must provide a `trigger` option.')
 
   const trigger = normalizeTrigger(opts.trigger)
-
+  const triggerOnPaste = opts.triggerOnPaste || false;
   /**
    * On key down.
    *
@@ -24,8 +24,14 @@ function AutoReplace(opts = {}) {
    * @return {Value}
    */
 
-  function onKeyDown(event, change, editor) {
+  function onKeyUp(event, change, editor) {
     if (trigger(event, change, editor)) {
+      return replace(event, change, editor)
+    }
+  }
+
+  function onPaste(event, change, editor) {
+    if (triggerOnPaste) {
       return replace(event, change, editor)
     }
   }
@@ -127,7 +133,7 @@ function AutoReplace(opts = {}) {
       let startOffset = 0
       let matchIndex = 0
 
-      before.slice(1, before.length).forEach(current => {
+      before.slice(0, before.length).forEach(current => {
         if (current === undefined) return
 
         matchIndex = match.indexOf(current, matchIndex)
@@ -175,7 +181,7 @@ function AutoReplace(opts = {}) {
    * @type {Object}
    */
 
-  return { onKeyDown }
+  return { onKeyUp, onPaste }
 }
 
 /**
