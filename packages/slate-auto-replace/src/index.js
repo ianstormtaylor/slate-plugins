@@ -31,7 +31,7 @@ function AutoReplace(opts = {}) {
   }
 
   function onPaste(event, change, editor) {
-    if (triggerOnPaste && trigger(event, change, editor)) {
+    if (triggerOnPaste) {
       return replace(event, change, editor)
     }
   }
