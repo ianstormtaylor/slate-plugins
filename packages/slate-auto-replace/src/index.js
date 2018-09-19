@@ -24,14 +24,14 @@ function AutoReplace(opts = {}) {
    * @return {Value}
    */
 
-  function onKeyDown(event, change, editor) {
+  function onKeyUp(event, change, editor) {
     if (trigger(event, change, editor)) {
       return replace(event, change, editor)
     }
   }
 
   function onPaste(event, change, editor) {
-    if (triggerOnPaste) {
+    if (triggerOnPaste && trigger(event, change, editor)) {
       return replace(event, change, editor)
     }
   }
@@ -181,7 +181,7 @@ function AutoReplace(opts = {}) {
    * @type {Object}
    */
 
-  return { onKeyDown, onPaste }
+  return { onKeyUp, onPaste }
 }
 
 /**
