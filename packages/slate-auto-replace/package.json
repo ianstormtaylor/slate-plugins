@@ -1,9 +1,9 @@
 {
-  "name": "slate-auto-replace",
+  "name": "slate-auto-replace-carubbi",
   "description": "A Slate plugin to automatically transform certain input.",
-  "version": "0.11.2",
+  "version": "0.11.4",
   "license": "MIT",
-  "repository": "git://github.com/ianstormtaylor/slate-plugins.git",
+  "repository": "git://github.com/rcarubbi/slate-plugins.git",
   "main": "lib/slate-auto-replace.js",
   "module": "lib/slate-auto-replace.es.js",
   "umd": "dist/slate-auto-replace.js",

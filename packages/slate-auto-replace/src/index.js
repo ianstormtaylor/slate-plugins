@@ -14,7 +14,7 @@ function AutoReplace(opts = {}) {
   if (!opts.trigger) throw new Error('You must provide a `trigger` option.')
 
   const trigger = normalizeTrigger(opts.trigger)
-
+  const triggerOnPaste = opts.triggerOnPaste || false;
   /**
    * On key down.
    *
@@ -26,6 +26,12 @@ function AutoReplace(opts = {}) {
 
   function onKeyDown(event, change, editor) {
     if (trigger(event, change, editor)) {
+      return replace(event, change, editor)
+    }
+  }
+
+  function onPaste(event, change, editor) {
+    if (triggerOnPaste) {
       return replace(event, change, editor)
     }
   }
@@ -175,7 +181,7 @@ function AutoReplace(opts = {}) {
    * @type {Object}
    */
 
-  return { onKeyDown }
+  return { onKeyDown, onPaste }
 }
 
 /**
