@@ -1,0 +1,48 @@
+{
+  "document": {
+    "nodes": [
+      {
+        "object": "block",
+        "type": "paragraph",
+        "nodes": [
+          {
+            "object": "text",
+            "leaves": [
+              {
+                "text": "Hitting return here should not be soft."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "object": "block",
+        "type": "code",
+        "nodes": [
+          {
+            "object": "text",
+            "leaves": [
+              {
+                "text": "Hitting return here should be soft!"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "object": "block",
+        "type": "paragraph",
+        "nodes": [
+          {
+            "object": "text",
+            "leaves": [
+              {
+                "text": "Hitting shift+return here should be soft."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

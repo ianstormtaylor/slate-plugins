@@ -1,0 +1,22 @@
+{
+  "name": "slate-list-behavior",
+  "description": "A Slate plugin to restrict another plugin to a condition.",
+  "version": "0.0.0",
+  "license": "MIT",
+  "repository": "git://github.com/ianstormtaylor/slate-plugins.git",
+  "main": "lib/slate-list-behavior.js",
+  "module": "lib/slate-list-behavior.es.js",
+  "umd": "dist/slate-list-behavior.js",
+  "umdMin": "dist/slate-list-behavior.min.js",
+  "umdGlobals": {
+    "slate": "Slate",
+    "slate-react": "SlateReact"
+  },
+  "peerDependencies": {
+    "slate": ">=0.37.0",
+    "slate-react": ">=0.15.0"
+  },
+  "keywords": [
+    "slate"
+  ]
+}
