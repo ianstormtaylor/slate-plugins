@@ -4,13 +4,7 @@ import initialValue from './value.json'
 import { Editor } from 'slate-react'
 import { Value } from 'slate'
 
-/**
- * Example.
- *
- * @type {Component}
- */
-
-class Example extends React.Component {
+export default class Example extends React.Component {
   plugins = [
     AutoReplace({
       trigger: ')',
@@ -51,7 +45,7 @@ class Example extends React.Component {
     this.setState({ value })
   }
 
-  render = () => {
+  render() {
     return (
       <Editor
         value={this.state.value}
@@ -62,7 +56,7 @@ class Example extends React.Component {
     )
   }
 
-  renderNode = props => {
+  renderNode(props, next) {
     const { node, attributes, children } = props
     switch (node.type) {
       case 'blockquote':
@@ -81,14 +75,8 @@ class Example extends React.Component {
         const level = node.data.get('level')
         const Tag = `h${level}`
         return <Tag {...attributes}>{children}</Tag>
+      default:
+        return next()
     }
   }
 }
-
-/**
- * Export.
- *
- * @type {Component}
- */
-
-export default Example

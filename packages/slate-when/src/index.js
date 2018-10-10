@@ -34,9 +34,9 @@ function SlateWhen(options = {}) {
 
   for (const handler of PLUGIN_HANDLERS) {
     if (plugin[handler]) {
-      wrapped[handler] = (event, change, editor) => {
-        if (!when(change.value)) return
-        return plugin[handler](event, change, editor)
+      wrapped[handler] = (event, change, next) => {
+        if (!when(change.value)) return next()
+        return plugin[handler](event, change, next)
       }
     }
   }

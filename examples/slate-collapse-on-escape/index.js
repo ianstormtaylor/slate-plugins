@@ -4,13 +4,7 @@ import initialValue from './value.json'
 import { Editor } from 'slate-react'
 import { Value } from 'slate'
 
-/**
- * Example.
- *
- * @type {Component}
- */
-
-class Example extends React.Component {
+export default class Example extends React.Component {
   plugins = [CollapseOnEscape()]
 
   state = {
@@ -21,7 +15,7 @@ class Example extends React.Component {
     this.setState({ value })
   }
 
-  render = () => {
+  render() {
     return (
       <Editor
         value={this.state.value}
@@ -31,11 +25,3 @@ class Example extends React.Component {
     )
   }
 }
-
-/**
- * Export.
- *
- * @type {Component}
- */
-
-export default Example

@@ -29,7 +29,11 @@ class Image extends React.Component {
   render() {
     const { attributes } = this.props
     const { src } = this.state
-    return src ? <img {...attributes} src={src} /> : <span>Loading...</span>
+    return src ? (
+      <img {...attributes} src={src} />
+    ) : (
+      <div {...attributes}>Loading...</div>
+    )
   }
 }
 
@@ -71,10 +75,12 @@ class Example extends React.Component {
     )
   }
 
-  renderNode = props => {
+  renderNode(props, next) {
     switch (props.node.type) {
       case 'image':
         return <Image {...props} />
+      default:
+        return next()
     }
   }
 }

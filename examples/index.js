@@ -5,9 +5,7 @@ import { HashRouter, NavLink, Route, Redirect, Switch } from 'react-router-dom'
 import AutoReplace from './slate-auto-replace'
 import CollapseOnEscape from './slate-collapse-on-escape'
 import DropOrPasteImages from './slate-drop-or-paste-images'
-import ListBehavior from './slate-list-behavior'
 import PasteLinkify from './slate-paste-linkify'
-import QuoteBehavior from './slate-quote-behavior'
 import SoftBreak from './slate-soft-break'
 
 /**
@@ -17,17 +15,11 @@ import SoftBreak from './slate-soft-break'
  */
 
 const EXAMPLES = [
-  ['slate-auto-replace', AutoReplace, '/slate-auto-replace'],
-  ['slate-collapse-on-escape', CollapseOnEscape, '/slate-collapse-on-escape'],
-  [
-    'slate-drop-or-paste-images',
-    DropOrPasteImages,
-    '/slate-drop-or-paste-images',
-  ],
-  ['slate-list-behavior', ListBehavior, '/slate-list-behavior'],
-  ['slate-paste-linkify', PasteLinkify, '/slate-paste-linkify'],
-  ['slate-quote-behavior', QuoteBehavior, '/slate-quote-behavior'],
-  ['slate-soft-break', SoftBreak, '/slate-soft-break'],
+  ['Auto Replace', AutoReplace, '/slate-auto-replace'],
+  ['Collapse on Escape', CollapseOnEscape, '/slate-collapse-on-escape'],
+  ['Drop/Paste Images', DropOrPasteImages, '/slate-drop-or-paste-images'],
+  ['Paste Linkify', PasteLinkify, '/slate-paste-linkify'],
+  ['Soft Break', SoftBreak, '/slate-soft-break'],
 ]
 
 /**

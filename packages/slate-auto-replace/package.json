@@ -18,8 +18,8 @@
     "type-of": "^2.0.1"
   },
   "peerDependencies": {
-    "slate": ">=0.37.0",
-    "slate-react": ">=0.15.0"
+    "slate": ">=0.42.2",
+    "slate-react": ">=0.19.2"
   },
   "devDependencies": {
     "microbundle": "^0.6.0"
