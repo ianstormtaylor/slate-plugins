@@ -4,7 +4,7 @@ This document maintains a list of changes. Until `1.0.0` is released, breaking c
 
 ---
 
-### `0.9.0` — October 10, 2018
+### `0.8.0` — October 10, 2018
 
 - Update for `slate@0.42`.
 
