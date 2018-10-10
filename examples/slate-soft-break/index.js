@@ -5,13 +5,7 @@ import initialValue from './value.json'
 import { Editor } from 'slate-react'
 import { Value } from 'slate'
 
-/**
- * Example.
- *
- * @type {Component}
- */
-
-class Example extends React.Component {
+export default class Example extends React.Component {
   plugins = [
     When({
       when: value => value.blocks.every(b => b.type === 'code'),
@@ -31,7 +25,7 @@ class Example extends React.Component {
     this.setState({ value })
   }
 
-  render = () => {
+  render() {
     return (
       <Editor
         value={this.state.value}
@@ -42,7 +36,7 @@ class Example extends React.Component {
     )
   }
 
-  renderNode = props => {
+  renderNode(props, next) {
     const { node, attributes, children } = props
     switch (node.type) {
       case 'paragraph':
@@ -58,14 +52,8 @@ class Example extends React.Component {
             <code>{children}</code>
           </pre>
         )
+      default:
+        return next()
     }
   }
 }
-
-/**
- * Export.
- *
- * @type {Component}
- */
-
-export default Example

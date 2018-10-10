@@ -13,12 +13,11 @@
     "slate-react": "SlateReact"
   },
   "dependencies": {
-    "is-url": "^1.2.2",
-    "to-pascal-case": "^1.0.0"
+    "is-url": "^1.2.2"
   },
   "peerDependencies": {
-    "slate": ">=0.37.0",
-    "slate-react": ">=0.15.0"
+    "slate": ">=0.42.2",
+    "slate-react": ">=0.19.2"
   },
   "keywords": [
     "slate"

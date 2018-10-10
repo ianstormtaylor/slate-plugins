@@ -14,6 +14,15 @@ p {
   margin: 0;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
 pre {
   padding: 10px;
   background-color: #eee;
@@ -36,8 +45,7 @@ img.active {
 
 blockquote {
   border-left: 2px solid #ddd;
-  margin-left: 0;
-  margin-right: 0;
+  margin: 0;
   padding-left: 10px;
   color: #aaa;
   font-style: italic;
@@ -74,6 +82,11 @@ input:focus {
 
 :not(ul) > li {
   background: red;
+}
+
+[data-slate-editor] > * + *,
+blockquote > * + * {
+  margin-top: 1em;
 }
 
 /**
@@ -154,7 +167,7 @@ input:focus {
   background: #fff;
 }
 
-.editor > * > * + * {
+.editor > * + * {
   margin-top: 1em;
 }
 

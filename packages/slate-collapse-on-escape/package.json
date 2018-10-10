@@ -16,8 +16,8 @@
     "to-pascal-case": "^1.0.0"
   },
   "peerDependencies": {
-    "slate": ">=0.37.0",
-    "slate-react": ">=0.15.0"
+    "slate": ">=0.42.2",
+    "slate-react": ">=0.19.3"
   },
   "keywords": [
     "slate"

@@ -11,13 +11,24 @@ import { Value } from 'slate'
  */
 
 class Example extends React.Component {
-  plugins = [
-    PasteLinkify({
-      type: 'link',
-      hrefProperty: 'url',
-      collapseTo: 'end',
-    }),
-  ]
+  plugins = [PasteLinkify()]
+
+  commands = {
+    wrapLink(change, url) {
+      change.wrapInline({ type: 'link', data: { url } })
+    },
+    unwrapLink(change) {
+      change.unwrapInline('link')
+    },
+  }
+
+  queries = {
+    isLinkActive(editor, value) {
+      const { inlines } = value
+      const active = inlines.some(i => i.type === 'link')
+      return active
+    },
+  }
 
   state = {
     value: Value.fromJSON(initialValue),
@@ -27,18 +38,20 @@ class Example extends React.Component {
     this.setState({ value })
   }
 
-  render = () => {
+  render() {
     return (
       <Editor
         value={this.state.value}
         plugins={this.plugins}
+        commands={this.commands}
+        queries={this.queries}
         onChange={this.onChange}
         renderNode={this.renderNode}
       />
     )
   }
 
-  renderNode = props => {
+  renderNode(props, next) {
     const { node, attributes, children } = props
     switch (node.type) {
       case 'link':
@@ -47,6 +60,8 @@ class Example extends React.Component {
             {children}
           </a>
         )
+      default:
+        return next()
     }
   }
 }

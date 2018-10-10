@@ -1,75 +1,45 @@
 import isUrl from 'is-url'
-import toPascal from 'to-pascal-case'
-import { getEventTransfer } from 'slate-react'
 
-/**
- * A Slate plugin to add soft breaks on return.
- *
- * @param {Object} options
- *   @property {String} type
- *   @property {String} hrefProperty
- *   @property {String} collapseTo
- * @return {Object}
- */
-
-function PasteLinkify(options = {}) {
-  const { type = 'link', hrefProperty = 'href' } = options
-
-  function hasLinks(value) {
-    return value.inlines.some(inline => inline.type == type)
-  }
-
-  function unwrapLink(change) {
-    change.unwrapInline(type)
-  }
-
-  function wrapLink(change, href) {
-    change.wrapInline({
-      type,
-      data: { [hrefProperty]: href },
-    })
-  }
+export default function PasteLinkify(options = {}) {
+  const {
+    isActiveQuery = 'isLinkActive',
+    wrapCommand = 'wrapLink',
+    unwrapCommand = 'unwrapLink',
+  } = options
 
   return {
-    onPaste(event, change) {
-      const transfer = getEventTransfer(event)
+    onCommand(command, change, next) {
+      const { type, args } = command
       const { value } = change
       const { selection } = value
-      const { text } = transfer
+      const { isCollapsed, start } = selection
+      let url
 
-      if (transfer.type !== 'text' && transfer.type !== 'html') {
+      if (
+        (type === 'insertText' && isUrl((url = args[0]))) ||
+        (type === 'insertFragment' && isUrl((url = args[0].text)))
+      ) {
+        // If there is already a link active, unwrap it so that we don't end up
+        // with a confusing overlapping inline situation.
+        if (change.query(isActiveQuery, value)) {
+          change.command(unwrapCommand)
+        }
+
+        // If the selection is collapsed, we need to allow the default inserting
+        // to occur instead of just wrapping the existing text in a link.
+        if (isCollapsed) {
+          next()
+          change
+            .moveAnchorTo(start.offset)
+            .moveFocusTo(start.offset + url.length)
+        }
+
+        // Wrap the selection in a link, and collapse to the end of it.
+        change.command(wrapCommand, url).moveToEnd()
         return
       }
 
-      if (!isUrl(text)) {
-        return
-      }
-
-      if (selection.isCollapsed) {
-        const { startOffset } = selection
-        change
-          .insertText(text)
-          .moveAnchorTo(startOffset)
-          .moveFocusTo(startOffset + text.length)
-      } else if (hasLinks(value)) {
-        change.call(unwrapLink)
-      }
-
-      change.call(wrapLink, text)
-
-      if (options.collapseTo) {
-        change[`moveTo${toPascal(options.collapseTo)}`]()
-      }
-
-      return change
+      next()
     },
   }
 }
-
-/**
- * Export.
- *
- * @type {Function}
- */
-
-export default PasteLinkify

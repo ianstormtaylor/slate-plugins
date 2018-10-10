@@ -13,8 +13,8 @@
     "slate-react": "SlateReact"
   },
   "peerDependencies": {
-    "slate": ">=0.37.0",
-    "slate-react": ">=0.15.0"
+    "slate": ">=0.42.2",
+    "slate-react": ">=0.19.2"
   },
   "keywords": [
     "slate"

@@ -20,35 +20,22 @@ function AutoReplace(opts = {}) {
    *
    * @param {Event} event
    * @param {Change} change
-   * @param {Editor} editor
+   * @param {Function} next
    * @return {Value}
    */
 
-  function onKeyDown(event, change, editor) {
-    if (trigger(event, change, editor)) {
-      return replace(event, change, editor)
-    }
-  }
+  function onKeyDown(event, change, next) {
+    if (!trigger(event, change, next)) return next()
 
-  /**
-   * Replace a block's properties.
-   *
-   * @param {Event} event
-   * @param {Change} change
-   * @param {Editor} editor
-   * @return {Value}
-   */
-
-  function replace(event, change, editor) {
     const { value } = change
     const { selection } = value
-    if (selection.isExpanded) return
+    if (selection.isExpanded) return next()
 
     const { startBlock } = value
-    if (!startBlock) return
+    if (!startBlock) return next()
 
     const matches = getMatches(value)
-    if (!matches) return
+    if (!matches) return next()
 
     event.preventDefault()
 
@@ -67,8 +54,7 @@ function AutoReplace(opts = {}) {
 
     startOffset -= totalRemoved
     change.moveTo(startOffset)
-
-    return change.call(opts.change, event, matches, editor)
+    change.call(opts.change, event, matches)
   }
 
   /**
