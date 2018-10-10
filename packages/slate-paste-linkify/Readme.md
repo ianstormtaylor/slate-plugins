@@ -10,9 +10,7 @@ import { Editor } from 'slate-react'
 
 // Add the plugin to your set of plugins...
 const plugins = [
-  PasteLinkify({
-    type: 'link'
-  })
+  PasteLinkify()
 ]
 
 // And later pass it into the Slate editor...
@@ -22,8 +20,10 @@ const plugins = [
 />
 ```
 
-| Option                | Type     | Description                                                                                                                                                                      |
-| --------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`type`** (required) | `String` | The type of the inline element to create.                                                                                                                                        |
-| **`hrefProperty`**    | `String` | The key of the data property to store the link's `href` in. Defaults to `'href'`.                                                                                                |
-| **`collapseTo`**      | `String` | The edge to collapse the selection to after pasting the link, either: `'start'`, `'end'`, `'anchor'`, `'focus'`. If this option is not passed, the selection will stay expanded. |
+This plugin works by taking in options that specify link-related commands and queries to execute when it detects that the user is trying to insert a link (by pasting or drag-dropping). This way you can define the exact behavior you want in the commands, but delegate the detection of links being inserted to the plugin.
+
+| Option                                          | Type     | Description                                                                                                          |
+| ----------------------------------------------- | -------- | -------------------------------------------------------------------------------------------------------------------- |
+| **`isActiveQuery`** (default: `'isLinkActive'`) | `String` | The name of the query that checks whether the current selection has a link in it to unwrap.                          |
+| **`wrapCommand`** (default: `'wrapLink'`)       | `String` | The name of the command that wraps the selection in a link. It will be passed the `url` of the link as its argument. |
+| **`unwrapCommand`** (default: `'unwrapLink'`)   | `String` | The name of the command that unwraps a link in the current selection.                                                |

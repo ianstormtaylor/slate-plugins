@@ -14,7 +14,7 @@
   },
   "peerDependencies": {
     "slate": ">=0.42.2",
-    "slate-react": ">=0.19.2"
+    "slate-react": ">=0.19.3"
   },
   "keywords": [
     "slate"

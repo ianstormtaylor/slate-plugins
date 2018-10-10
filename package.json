@@ -57,12 +57,8 @@
   "peerDependencies": {
     "slate-auto-replace": "*",
     "slate-collapse-on-escape": "*",
-    "slate-dom-indent": "*",
     "slate-drop-or-paste-images": "*",
-    "slate-heading-behavior": "*",
-    "slate-list-behavior": "*",
     "slate-paste-linkify": "*",
-    "slate-quote-behavior": "*",
     "slate-soft-break": "*",
     "slate-when": "*"
   },
