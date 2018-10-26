@@ -23,8 +23,8 @@ import { Editor } from 'slate-react'
 const plugins = [
   InsertImages({
     extensions: ['png'],
-    insertImage: (transform, file) => {
-      return transform.insertBlock({
+    insertImage: (change, file) => {
+      return change.insertBlock({
         type: 'image',
         isVoid: true,
         data: { file }
