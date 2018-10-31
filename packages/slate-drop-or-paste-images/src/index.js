@@ -85,7 +85,7 @@ function DropOrPasteImages(options = {}) {
       case 'text':
         return onInsertText(event, change, next, transfer, range)
       default:
-        return next() 
+        return next()
     }
   }
 
