@@ -23,7 +23,7 @@ import { Editor } from 'slate-react'
 const plugins = [
   InsertImages({
     extensions: ['png'],
-    insertImage: (change, file) => {
+    insertImage: (change, file, _context) => {
       return change.insertBlock({
         type: 'image',
         isVoid: true,
@@ -40,7 +40,7 @@ const plugins = [
 />
 ```
 
-| Option            | Type       | Description                                                                                                                                                                                                                                                         |
-| ----------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **`insertImage`** | `Function` | A transforming function that is passed a Slate `Change` and a `File` object representing an image. It should apply the proper transform that inserts the image into Slate based on your schema. It can return a promise resolved with the resulting Slate `Change`. |
-| **`extensions`**  | `Array`    | An array of allowed extensions.                                                                                                                                                                                                                                     |
+| Option            | Type       | Description                                                                                                                                                                                                                                                                       |
+| ----------------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`insertImage`** | `Function` | A transforming function that is passed a Slate `Change`, a `File` representing an image, and a `context` object. It should apply the proper transform that inserts the image into Slate based on your schema. It can return a promise resolved with the resulting Slate `Change`. |
+| **`extensions`**  | `Array`    | An array of allowed extensions.                                                                                                                                                                                                                                                   |

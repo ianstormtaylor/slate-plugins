@@ -4,6 +4,14 @@ This document maintains a list of changes. Until `1.0.0` is released, breaking c
 
 ---
 
+### `0.10.0` — November 19, 2018
+
+- Update for `slate@0.43`.
+- Add contextual `source` argument to `insertImage` to provide hinting on how
+image was parsed.
+
+---
+
 ### `0.9.0` — October 10, 2018
 
 - Update for `slate@0.42`.
