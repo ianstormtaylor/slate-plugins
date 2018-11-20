@@ -86,9 +86,10 @@ function DropOrPasteImages(options = {}) {
     const { files } = transfer
 
     for (const file of files) {
+      const type = file.type
+      const [, ext] = type.split('/')
+
       if (extensions) {
-        const type = file.type
-        const [, ext] = type.split('/')
         if (!matchExt(ext)) continue
       }
 
@@ -96,7 +97,7 @@ function DropOrPasteImages(options = {}) {
         editor.select(range)
       }
 
-      insertImage(editor, file, { source: 'files' })
+      insertImage(editor, file, { source: 'files', ext })
     }
   }
 
@@ -120,9 +121,9 @@ function DropOrPasteImages(options = {}) {
     if (firstChild.nodeName.toLowerCase() != 'img') return next()
 
     const src = firstChild.src
+    const ext = extname(src).slice(1)
 
     if (extensions) {
-      const ext = extname(src).slice(1)
       if (!matchExt(ext)) return next()
     }
 
@@ -133,7 +134,7 @@ function DropOrPasteImages(options = {}) {
         editor.select(range)
       }
 
-      insertImage(editor, file, { source: 'html', src })
+      insertImage(editor, file, { source: 'html', src, ext })
     })
   }
 
@@ -160,7 +161,7 @@ function DropOrPasteImages(options = {}) {
         editor.select(range)
       }
 
-      insertImage(editor, file, { source: 'text', text })
+      insertImage(editor, file, { source: 'text', text, ext: extname(text).slice(1) })
     })
   }
 
