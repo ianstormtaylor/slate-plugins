@@ -2,7 +2,7 @@
 
 A Slate plugin to add soft breaks on <kbd>enter</kbd>.
 
-[View Demo ⬈](https://ianstormtaylor.github.io/slate-plugins/#/slate-soft-break)
+[View Demo ⬈](https://slate-plugins.netlify.com/#/slate-soft-break)
 
 ```js
 import SoftBreak from 'slate-soft-break'

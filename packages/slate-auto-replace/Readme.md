@@ -2,7 +2,7 @@
 
 A [**Slate**](https://github.com/ianstormtaylor/slate) plugin to automatically replace text and apply transforms when the user types certain strings. Useful for implementing "auto-markdown" or other hotkey-based replacement behaviors.
 
-[View Demo ⬈](https://ianstormtaylor.github.io/slate-plugins/#/slate-auto-replace)
+[View Demo ⬈](https://slate-plugins.netlify.com/#/slate-auto-replace)
 
 ```js
 import AutoReplace from 'slate-auto-replace'

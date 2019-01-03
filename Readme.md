@@ -16,7 +16,7 @@ _Note: this is not an "official" set of plugins, just ones that I've happened to
 
 ### Demo
 
-Check out the [**live demo**](https://ianstormtaylor.github.io/slate-plugins) of each of the plugins!
+Check out the [**live demo**](https://slate-plugins.netlify.com/) of each of the plugins!
 
 <br/>
 

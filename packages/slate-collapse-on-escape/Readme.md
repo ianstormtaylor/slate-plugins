@@ -2,7 +2,7 @@
 
 A Slate plugin that simply collapses the selection on escape.
 
-[View Demo ⬈](https://ianstormtaylor.github.io/slate-plugins/#/slate-collapse-on-escape)
+[View Demo ⬈](https://slate-plugins.netlify.com/#/slate-collapse-on-escape)
 
 ```js
 import CollapseOnEscape from 'slate-collapse-on-escape'
