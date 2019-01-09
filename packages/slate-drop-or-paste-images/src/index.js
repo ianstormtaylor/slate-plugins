@@ -97,7 +97,7 @@ function DropOrPasteImages(options = {}) {
         editor.select(range)
       }
 
-      insertImage(editor, file, { source: 'files', ext })
+      insertImage(event, editor, file, { source: 'files', ext })
     }
   }
 
@@ -134,7 +134,7 @@ function DropOrPasteImages(options = {}) {
         editor.select(range)
       }
 
-      insertImage(editor, file, { source: 'html', src, ext })
+      insertImage(event, editor, file, { source: 'html', src, ext })
     })
   }
 
@@ -161,7 +161,7 @@ function DropOrPasteImages(options = {}) {
         editor.select(range)
       }
 
-      insertImage(editor, file, { source: 'text', text, ext: extname(text).slice(1) })
+      insertImage(event, editor, file, { source: 'text', text, ext: extname(text).slice(1) })
     })
   }
 

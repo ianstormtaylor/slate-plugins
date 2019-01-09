@@ -46,7 +46,7 @@ class Image extends React.Component {
 class Example extends React.Component {
   plugins = [
     DropOrPasteImages({
-      insertImage: (transform, file, _context) => {
+      insertImage: (_event, transform, file, _context) => {
         return transform.insertBlock({
           type: 'image',
           isVoid: true,
