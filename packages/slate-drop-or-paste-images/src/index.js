@@ -59,10 +59,10 @@ function DropOrPasteImages(options = {}) {
    */
 
   function onInsert(event, editor, next) {
+    const transfer = getEventTransfer(event)
     const fn = insertFn[transfer.type]
     if (!fn) return next()
 
-    const transfer = getEventTransfer(event)
     const range = getEventRange(event, editor)
     return fn(event, editor, next, transfer, range)
   }
