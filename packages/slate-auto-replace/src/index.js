@@ -54,7 +54,7 @@ function AutoReplace(opts = {}) {
 
     startOffset -= totalRemoved
     change.moveTo(startOffset)
-    change.call(opts.change, event, matches)
+    change.command(opts.change, event, matches)
   }
 
   /**
