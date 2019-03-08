@@ -21,7 +21,7 @@
     "slate-dev-logger": "^0.1.0"
   },
   "peerDependencies": {
-    "slate": ">=0.42.2",
+    "slate": ">=0.43.0",
     "slate-react": ">=0.19.3"
   },
   "keywords": [

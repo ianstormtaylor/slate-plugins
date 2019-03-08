@@ -17,6 +17,7 @@ function loadImageFile(url, callback) {
     })
   } else {
     imageToDataUri(url, (err, uri) => {
+      if (err) return callback(err)
       const file = dataUriToBlob(uri)
       callback(err, file)
     })
