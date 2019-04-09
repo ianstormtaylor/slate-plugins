@@ -183,7 +183,7 @@ function DropOrPasteImages(options = {}) {
           c.select(range)
         }
 
-        asyncApplyChange(c, editor, file)
+        asyncApplyChange(c, file)
       })
     })
   }
