@@ -4,7 +4,7 @@ import isUrl from 'is-url'
 import logger from 'slate-dev-logger'
 import loadImageFile from './load-image-file'
 import { extname } from 'path'
-import { getEventTransfer, getEventRange } from 'slate-react'
+import { getEventTransfer } from 'slate-react'
 
 /**
  * Insert images on drop or paste.
@@ -75,7 +75,7 @@ function DropOrPasteImages(options = {}) {
   function onInsert(event, change, next) {
     const { editor } = change
     const transfer = getEventTransfer(event)
-    const range = getEventRange(event, editor)
+    const range = editor.findEventRange(event)
 
     switch (transfer.type) {
       case 'files':
