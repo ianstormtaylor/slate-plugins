@@ -47,6 +47,10 @@ function DropOrPasteImages(options = {}) {
     return accepted
   }
 
+  function isImageUrl(text) {
+    return isUrl(text) && isImage(text)
+  }
+
   /**
    * Apply the change for a given file and update the editor with the result.
    *
@@ -75,15 +79,18 @@ function DropOrPasteImages(options = {}) {
   function onInsert(event, change, next) {
     const { editor } = change
     const transfer = getEventTransfer(event)
+    const { text } = transfer
     const range = getEventRange(event, editor)
+
+    if (isImageUrl(text)) {
+      return onInsertImageUrl(event, change, next, transfer, range)
+    }
 
     switch (transfer.type) {
       case 'files':
         return onInsertFiles(event, change, next, transfer, range)
       case 'html':
         return onInsertHtml(event, change, next, transfer, range)
-      case 'text':
-        return onInsertText(event, change, next, transfer, range)
       default:
         return next()
     }
@@ -159,7 +166,7 @@ function DropOrPasteImages(options = {}) {
   }
 
   /**
-   * On drop or paste text.
+   * On drop or paste url to image.
    *
    * @param {Event} event
    * @param {Change} change
@@ -169,11 +176,9 @@ function DropOrPasteImages(options = {}) {
    * @return {Boolean}
    */
 
-  function onInsertText(event, change, next, transfer, range) {
+  function onInsertImageUrl(event, change, next, transfer, range) {
     const { editor } = change
     const { text } = transfer
-    if (!isUrl(text)) return next()
-    if (!isImage(text)) return next()
 
     loadImageFile(text, (err, file) => {
       if (err) return
@@ -183,7 +188,7 @@ function DropOrPasteImages(options = {}) {
           c.select(range)
         }
 
-        asyncApplyChange(c, editor, file)
+        asyncApplyChange(c, file)
       })
     })
   }
