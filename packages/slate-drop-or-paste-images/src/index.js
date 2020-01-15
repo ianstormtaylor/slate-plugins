@@ -17,6 +17,9 @@ import { getEventTransfer, getEventRange } from 'slate-react'
 
 function DropOrPasteImages(options = {}) {
   let { insertImage, extensions } = options
+  const convertUrlsToImages = [undefined, true].includes(
+    options.convertUrlsToImages
+  )
 
   if (options.applyTransform) {
     logger.deprecate(
@@ -179,6 +182,7 @@ function DropOrPasteImages(options = {}) {
   function onInsertImageUrl(event, change, next, transfer, range) {
     const { editor } = change
     const { text } = transfer
+    if (!convertUrlsToImages) return next()
 
     loadImageFile(text, (err, file) => {
       if (err) return
