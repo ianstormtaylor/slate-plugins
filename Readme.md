@@ -1,3 +1,7 @@
+**These slate-plugins are outdated. You may, for example, want to take a look at [udecode/slate-plugins](https://github.com/udecode/slate-plugins) instead.**
+
+<br/>
+
 This repository contains a few of [my](https://github.com/ianstormtaylor) Slate plugins in a single monorepo to keep them easier to develop.
 
 <br/>
